@@ -13,7 +13,7 @@ namespace Luna_Bay_Resort
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new LandingForm());
+            Application.Run(new DashbordForm());
         }
     }
 }
