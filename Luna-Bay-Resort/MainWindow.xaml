@@ -5,8 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Luna_Bay_Resort"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Luna Bay Resort : Login" Height="450" Width="800" Background="#FFF4D35E" WindowState="Maximized">
     <Grid>
+        <!-- Background Image -->
+        <Grid Background="#FFD151">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
 
+            <!-- Left Side with Logo and Form -->
+            <StackPanel Grid.Column="0"  VerticalAlignment="Center" HorizontalAlignment="Center" Background="#FFD151">
+
+                <Image  Source="Resources/logo.png" VerticalAlignment="Top" Height="176" Width="206" />
+                
+                
+                <!-- Login Form Box -->
+                <Border BorderBrush="#505581" BorderThickness="2" CornerRadius="10" VerticalAlignment="Bottom"  Background="#F8F0C9" Padding="20" Margin="0,0,0,0" Width="300" Height="300">
+                    <StackPanel>
+                        <!-- Username Field -->
+                        <TextBlock Text="Username:" Foreground="#5B5B63" FontSize="16" Margin="28,20,0,5"/>
+                        <TextBox Height="30" Width="200" Margin="0,0,0,10" Background="#F2F2F2" />
+
+                        <!-- Password Field -->
+                        <TextBlock Text="Password:" Foreground="#5B5B63" FontSize="16" Margin="28,10,0,5"/>
+                        <PasswordBox Height="30" Width="200" Margin="0,0,0,20" Background="#F2F2F2"/>
+
+                        <!-- Login Button -->
+                        <Button Content="Login" Width="200" Height="30" Margin="0,20,0,5" Background="#505581" Foreground="White" FontWeight="Bold" />
+
+                        <!-- Forgot Password Link -->
+                        <TextBlock Text="forgot password?" HorizontalAlignment="Center" Foreground="Red" Margin="0,10,0,0" FontSize="10"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <!-- Right Side with Resort Image -->
+            <Image Grid.Column="1" Source="/landing_bg.jpg" Stretch="Fill"/>
+        </Grid>
     </Grid>
+
+
+
+
 </Window>

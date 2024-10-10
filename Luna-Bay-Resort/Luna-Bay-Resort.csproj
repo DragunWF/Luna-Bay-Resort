@@ -9,4 +9,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="landing_bg.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="landing_bg.jpg" />
+  </ItemGroup>
+
 </Project>
