@@ -247,11 +247,9 @@ Create table Guest(Receipt_No int primary key, Reservation_ID int NULL, Checkin_
 --Employee Table
 Create table Employees(Emp_ID varchar(20) primary key not null, Position varchar (40)not null, Name varchar(50)not null,  Password varchar(30)not null, Auth_ID int not null);
 insert into Employees(Emp_ID, Position, Name,  Password, Auth_ID) values
-('EMP-001', 'Admin','Loraine', 'Admin123', 0),
+('EMP-001', 'Admin', 'Loraine', 'Admin123', 0),
 ('EMP-002', 'Manager', 'Sykiel', 'Manager123', 1),
 ('EMP-003', 'Front Desk', 'Marshall', 'Staff123', 2);
 
 --Finance
-Create table Revenue(Date date not null, Revenue int not null);
-
-
+Create table Revenue(RevenueID int primary key not null, Date date not null, Revenue int not null);
