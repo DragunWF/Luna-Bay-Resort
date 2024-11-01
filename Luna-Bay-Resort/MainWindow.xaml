@@ -53,10 +53,6 @@
                     </Button.Template>
                 </Button>
                 <Label Content="forgot password?" HorizontalAlignment="Center" FontFamily="Trebuchet MS" FontSize="10" Foreground="#FFFA0000" />
-
-
-
-
             </StackPanel>
         </Border>
 

@@ -1,27 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using Luna_Bay_Resort.Controls;
 
 namespace Luna_Bay_Resort
 {
-    /// <summary>
-    /// Interaction logic for Dashboard.xaml
-    /// </summary>
     public partial class Dashboard : Window
     {
         public Dashboard()
         {
             InitializeComponent();
+            NavBar.ButtonClicked += NavBar_ButtonClicked; // Subscribe to the event
+        }
+
+        private void NavBar_ButtonClicked(string view)
+        {
+            ChangeContent(view);
+        }
+
+        public void ChangeContent(string view)
+        {
+            switch (view)
+            {
+                case "Booking":
+                    MainContent.Content = new BookingUserControl();
+                    break;
+                case "POS":
+                    MainContent.Content = new POSUserControl();
+                    break;
+                case "Maintenance":
+                    MainContent.Content = new MaintenanceUserControl();
+                    break;
+                case "FinancialReports":
+                    MainContent.Content = new FinancialReportsUserControl();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

@@ -1,14 +1,22 @@
 ﻿<Window x:Class="Luna_Bay_Resort.Dashboard"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Luna_Bay_Resort"
-        mc:Ignorable="d"
-        Title="Dashboard" Height="450" Width="800">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:Luna_Bay_Resort.Controls"
+        Title="Dashboard" Height="900" Width="1600"  WindowState="Maximized">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <!-- For the NavBar -->
+            <RowDefinition Height="*" />
+            <!-- For the Main Content -->
+        </Grid.RowDefinitions>
+
         
-
-
+        <!-- Your NavBarControl -->
+        <local:NavBarControl x:Name="NavBar" Margin="0,-69,0,665" Grid.RowSpan="2" />
+        <ContentControl x:Name="MainContent" Grid.Row="1" Margin="0,56,0,-92">
+            <!-- This is where the user controls will be displayed -->
+        </ContentControl>
     </Grid>
 </Window>
+
+
