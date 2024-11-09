@@ -136,8 +136,10 @@ namespace LunaBayFinals
                     break;
 
                 case "Amenities":
-                    AmenitiesUserControl amenitiesUserControl = new AmenitiesUserControl();
+                    var amenitiesUserControl = new AmenitiesUserControl();
                     contentPanel.Controls.Add(amenitiesUserControl);
+                    amenitiesUserControl.Dock = DockStyle.Fill;
+                    amenitiesUserControl.Size = new Size(contentPanel.Width, contentPanel.Height);
                     break;
 
                 case "Maintenance":
