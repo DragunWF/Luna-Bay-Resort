@@ -6,5 +6,11 @@ namespace LunaBayFinals
         {
             InitializeComponent();
         }
+
+        private void loginBtn_Click(object sender, EventArgs e)
+        {
+            // temporary code
+            new Dashboard().Show();
+        }
     }
 }
