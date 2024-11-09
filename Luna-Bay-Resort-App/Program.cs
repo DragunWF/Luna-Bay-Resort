@@ -1,6 +1,6 @@
 using Luna_Bay_Sub_Forms;
-using LunaBay_SubForms;
-using LunaBayFinals;
+using SubForms;
+using MainForms;
 
 namespace Luna_Bay_Resort_App
 {

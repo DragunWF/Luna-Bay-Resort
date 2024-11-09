@@ -1,4 +1,4 @@
-namespace LunaBayFinals
+namespace MainForms
 {
     public partial class LoginForm : Form
     {

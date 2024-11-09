@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LunaBay_SubForms
+namespace SubForms
 {
     public partial class CheckIn : Form
     {

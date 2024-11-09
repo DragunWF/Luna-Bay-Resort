@@ -1,4 +1,4 @@
-﻿namespace LunaBay_SubForms
+﻿namespace SubForms
 {
     partial class AmenitiesReceipt
     {
