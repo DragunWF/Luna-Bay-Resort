@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Luna_Bay_Resort_App.Helpers
 {
-    internal class Class1
+    internal class SessionData
     {
     }
 }
