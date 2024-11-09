@@ -310,6 +310,7 @@
             ConfirmButton.TabIndex = 58;
             ConfirmButton.Text = "Confirm";
             ConfirmButton.UseVisualStyleBackColor = false;
+            ConfirmButton.Click += ConfirmButton_Click;
             // 
             // TotalAmountText
             // 

@@ -1,4 +1,5 @@
 ﻿using Luna_Bay_Resort_App;
+using Luna_Bay_Resort_App.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,12 @@ namespace Luna_Bay_Sub_Forms
         public ReservationAddNew()
         {
             InitializeComponent();
+        }
+
+        private void ConfirmButton_Click(object sender, EventArgs e)
+        {
+            DatabaseHelper.AddReservation(FirstNameText.Text + "" + LastNameText.Text, EmailText.Text, ContactNoText.Text, RoomTypeText.Text, int.Parse(GuestNumText.Text), CheckInPicker.Text, CheckOutPicker.Text);
+            MessageBox.Show("Success");
         }
     }
 }
