@@ -12,22 +12,15 @@ namespace Luna_Bay_Resort_App.Helpers
         private static readonly string digits = "0123456789";
         private static readonly Random random = new Random();
 
-        public static int GenerateReservationNum()
+        public static string GenerateReceiptId()
         {
             const int idDigitCount = 9;
-            string strNum = "";
+            string receiptId = "";
             for (int i = 0; i < idDigitCount; i++)
             {
-                strNum += digits[random.Next(0, digits.Length)];
+                receiptId += digits[random.Next(0, digits.Length)];
             }
-            int reservationNum = int.Parse(strNum);
-
-            // Takes care of leading zeroes
-            if (reservationNum.ToString().Length < idDigitCount)
-            {
-                return GenerateReservationNum();
-            }
-            return reservationNum;
+            return receiptId;
         }
 
         public static string FormatCurrency(int amount)
