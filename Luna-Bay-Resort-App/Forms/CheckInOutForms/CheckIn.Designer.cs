@@ -172,8 +172,9 @@
             // 
             // CheckOutPicker
             // 
+            CheckOutPicker.CustomFormat = "M/dd/yyyy hh:mm";
             CheckOutPicker.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            CheckOutPicker.Format = DateTimePickerFormat.Short;
+            CheckOutPicker.Format = DateTimePickerFormat.Custom;
             CheckOutPicker.Location = new Point(266, 296);
             CheckOutPicker.Margin = new Padding(4, 3, 4, 3);
             CheckOutPicker.Name = "CheckOutPicker";
@@ -182,8 +183,9 @@
             // 
             // CheckInPicker
             // 
+            CheckInPicker.CustomFormat = "M/dd/yyyy hh:mm";
             CheckInPicker.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            CheckInPicker.Format = DateTimePickerFormat.Short;
+            CheckInPicker.Format = DateTimePickerFormat.Custom;
             CheckInPicker.Location = new Point(32, 296);
             CheckInPicker.Margin = new Padding(4, 3, 4, 3);
             CheckInPicker.Name = "CheckInPicker";
