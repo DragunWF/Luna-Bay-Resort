@@ -242,7 +242,6 @@ INSERT INTO Food (Food_ID, FoodType_ID, Food_Name, Serving, Price) VALUES
     (507, 5, 'Vigan Empanada', '1 - 2', 60),
     (508, 5, 'Buko Pandan', '1 - 2', 80),
 
-<<<<<<< HEAD
     -- Beverages
     (601, 6, 'Bottled Water', '350 ml', 30),
     (602, 6, 'Hot Coffee', '250 ml', 50),
@@ -252,10 +251,6 @@ INSERT INTO Food (Food_ID, FoodType_ID, Food_Name, Serving, Price) VALUES
     (606, 6, 'San Mig Light', '330 ml', 60),
     (607, 6, 'San Mig Pale Pilsen', '320 ml', 60),
     (608, 6, 'Red Horse', '500 ml', 70);
-=======
---Guest Table 
-Create table Guest(Receipt_No int primary key, Reservation_ID int NULL, Checkin_ID int NULL, Checkout_ID int NULL, Name varchar(50) not null, Email varchar(50), Phone varchar(20)not null, Room int not null, NumofGuest int not null, Check_in datetime not null, Check_out datetime not null, Status varchar(25), Bill_Amount int not null, Balance int not null, PaymentType_ID int foreign key references PaymentMethod(PaymentType_ID));
->>>>>>> 2394cbc7491cc6f395b5553f9e26202c59e9c84f
 
 -- Products table
 CREATE TABLE Products (
