@@ -242,7 +242,7 @@ insert into PaymentMethod(PaymentType_ID, Payment_Type) values
 Create table POSReceipt(Receipt_No int primary key, Date date not null, Items varchar(500) not null, PaymentType_ID int foreign key references PaymentMethod(PaymentType_ID), Total int not null);
 
 --Guest Table 
-Create table Guest(Receipt_No int primary key, Reservation_ID int NULL, Checkin_ID int NULL, Checkout_ID int NULL, Name varchar(50) not null, Email varchar(50) not null, Phone varchar(20)not null, Room int not null, NumofGuest int not null, Check_in date not null, Check_out date not null, Status varchar(25) not null , Bill_Amount int not null, Balance int not null, PaymentType_ID int foreign key references PaymentMethod(PaymentType_ID));
+Create table Guest(Receipt_No int primary key, Reservation_ID int NULL, Checkin_ID int NULL, Checkout_ID int NULL, Name varchar(50) not null, Email varchar(50), Phone varchar(20)not null, Room int not null, NumofGuest int not null, Check_in datetime not null, Check_out datetime not null, Status varchar(25), Bill_Amount int not null, Balance int not null, PaymentType_ID int foreign key references PaymentMethod(PaymentType_ID));
 
 --Employee Table
 Create table Employees(Emp_ID varchar(20) primary key not null, Position varchar (40)not null, Name varchar(50)not null,  Password varchar(30)not null, Auth_ID int not null);
