@@ -1,3 +1,5 @@
+using Luna_Bay_Resort_App.Helpers;
+
 namespace MainForms
 {
     public partial class LoginForm : Form
@@ -11,7 +13,7 @@ namespace MainForms
         private void loginBtn_Click(object sender, EventArgs e)
         {
             // temporary code
-            new Dashboard().Show();
+            FormManager.OpenForm<Dashboard>();
         }
     }
 }
