@@ -14,7 +14,7 @@ namespace Luna_Bay_Resort_App.Helpers
 
         public static int GenerateReservationNum()
         {
-            const int idDigitCount = 5;
+            const int idDigitCount = 9;
             string strNum = "";
             for (int i = 0; i < idDigitCount; i++)
             {
