@@ -5,6 +5,7 @@ namespace MainForms
         public LoginForm()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         private void loginBtn_Click(object sender, EventArgs e)

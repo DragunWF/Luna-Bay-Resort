@@ -15,6 +15,7 @@ namespace SubForms
         public CheckOutReceipt()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.FixedSingle;
         }
     }
 }

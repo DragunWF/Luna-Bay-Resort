@@ -15,6 +15,7 @@ namespace SubForms
         public ReservationReceipt()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.FixedSingle;
         }
     }
 }

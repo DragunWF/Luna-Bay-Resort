@@ -16,6 +16,7 @@ namespace SubForms
         public CheckIn()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.FixedSingle;
         }
     }
 }

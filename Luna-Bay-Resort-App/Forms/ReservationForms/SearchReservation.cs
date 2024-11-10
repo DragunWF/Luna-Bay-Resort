@@ -15,6 +15,7 @@ namespace SubForms
         public SearchView()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.FixedSingle;
         }
     }
 }

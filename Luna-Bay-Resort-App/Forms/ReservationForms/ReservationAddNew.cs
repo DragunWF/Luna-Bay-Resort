@@ -17,6 +17,7 @@ namespace Luna_Bay_Sub_Forms
         public ReservationAddNew()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         private void ConfirmButton_Click(object sender, EventArgs e)

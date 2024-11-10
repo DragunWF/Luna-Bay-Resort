@@ -15,6 +15,7 @@ namespace SubForms
         public AmenitiesReceipt()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.FixedSingle;
         }
     }
 }
