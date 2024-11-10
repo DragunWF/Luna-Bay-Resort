@@ -27,6 +27,7 @@ namespace SubForms
 
         private void DisplayReceiptData()
         {
+            // TODO: Connect to database and retrieve values from there to display data here
             ReceiptNoText.Text = receiptId;
         }
     }
