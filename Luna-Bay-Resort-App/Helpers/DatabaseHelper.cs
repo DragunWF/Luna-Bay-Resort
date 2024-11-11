@@ -70,7 +70,7 @@ namespace Luna_Bay_Resort_App.Helpers
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
-                string query = "SELECT Top 1 Room_ID FROM Accomodation WHERE Name LIKE @RoomName";
+                string query = "SELECT TOP 1 Room_ID FROM Accomodation WHERE Name LIKE @RoomName";
                 SqlCommand getavailableroom = new SqlCommand(query, con);
                 getavailableroom.Parameters.AddWithValue("@RoomName", RoomName);
 
