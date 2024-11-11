@@ -37,7 +37,6 @@
             label12 = new Label();
             GuestNumText = new TextBox();
             label11 = new Label();
-            RoomTypeText = new TextBox();
             label10 = new Label();
             CheckOutPicker = new DateTimePicker();
             CheckInPicker = new DateTimePicker();
@@ -56,6 +55,7 @@
             OnlinePaymentCheck = new CheckBox();
             CardCheck = new CheckBox();
             button1 = new Button();
+            RoomTypeCB = new ComboBox();
             SuspendLayout();
             // 
             // ConfirmButton
@@ -133,31 +133,22 @@
             // GuestNumText
             // 
             GuestNumText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            GuestNumText.Location = new Point(408, 336);
+            GuestNumText.Location = new Point(426, 336);
             GuestNumText.Margin = new Padding(4, 3, 4, 3);
             GuestNumText.Name = "GuestNumText";
-            GuestNumText.Size = new Size(62, 24);
+            GuestNumText.Size = new Size(44, 24);
             GuestNumText.TabIndex = 46;
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Consolas", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label11.Location = new Point(282, 342);
+            label11.Location = new Point(308, 342);
             label11.Margin = new Padding(4, 0, 4, 0);
             label11.Name = "label11";
             label11.Size = new Size(120, 18);
             label11.TabIndex = 45;
             label11.Text = "No. of Guests:";
-            // 
-            // RoomTypeText
-            // 
-            RoomTypeText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            RoomTypeText.Location = new Point(126, 336);
-            RoomTypeText.Margin = new Padding(4, 3, 4, 3);
-            RoomTypeText.Name = "RoomTypeText";
-            RoomTypeText.Size = new Size(148, 24);
-            RoomTypeText.TabIndex = 44;
             // 
             // label10
             // 
@@ -356,12 +347,21 @@
             button1.Text = "Search";
             button1.UseVisualStyleBackColor = false;
             // 
+            // RoomTypeCB
+            // 
+            RoomTypeCB.FormattingEnabled = true;
+            RoomTypeCB.Location = new Point(120, 336);
+            RoomTypeCB.Name = "RoomTypeCB";
+            RoomTypeCB.Size = new Size(181, 23);
+            RoomTypeCB.TabIndex = 61;
+            // 
             // CheckIn
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(234, 234, 234);
             ClientSize = new Size(494, 541);
+            Controls.Add(RoomTypeCB);
             Controls.Add(button1);
             Controls.Add(CardCheck);
             Controls.Add(OnlinePaymentCheck);
@@ -376,7 +376,6 @@
             Controls.Add(label12);
             Controls.Add(GuestNumText);
             Controls.Add(label11);
-            Controls.Add(RoomTypeText);
             Controls.Add(label10);
             Controls.Add(CheckOutPicker);
             Controls.Add(CheckInPicker);
@@ -407,7 +406,6 @@
         private Label label12;
         private TextBox GuestNumText;
         private Label label11;
-        private TextBox RoomTypeText;
         private Label label10;
         private DateTimePicker CheckOutPicker;
         private DateTimePicker CheckInPicker;
@@ -426,5 +424,6 @@
         private CheckBox OnlinePaymentCheck;
         private CheckBox CardCheck;
         private Button button1;
+        private ComboBox RoomTypeCB;
     }
 }
