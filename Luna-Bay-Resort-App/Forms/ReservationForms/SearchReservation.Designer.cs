@@ -1,6 +1,6 @@
 ﻿namespace SubForms
 {
-    partial class SearchView
+    partial class SearchReservation
     {
         /// <summary>
         /// Required designer variable.

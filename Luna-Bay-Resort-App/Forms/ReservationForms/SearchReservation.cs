@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SubForms
 {
-    public partial class SearchView : Form
+    public partial class SearchReservation : Form
     {
-        public SearchView()
+        public SearchReservation()
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.FixedSingle;

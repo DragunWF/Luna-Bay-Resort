@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SubForms
 {
-    public partial class CheckOutcs : Form
+    public partial class CheckOut : Form
     {
-        public CheckOutcs()
+        public CheckOut()
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.FixedSingle;

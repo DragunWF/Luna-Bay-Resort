@@ -1,6 +1,6 @@
 ﻿namespace SubForms
 {
-    partial class CheckOutcs
+    partial class CheckOut
     {
         /// <summary>
         /// Required designer variable.
