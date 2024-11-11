@@ -34,7 +34,7 @@
             LoginUsername = new TextBox();
             label2 = new Label();
             LoginPassword = new TextBox();
-            loginBtn = new Button();
+            LoginBtn = new Button();
             pictureBox2 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -90,21 +90,21 @@
             LoginPassword.Size = new Size(206, 23);
             LoginPassword.TabIndex = 4;
             // 
-            // loginBtn
+            // LoginBtn
             // 
-            loginBtn.BackColor = Color.FromArgb(80, 85, 129);
-            loginBtn.FlatAppearance.BorderSize = 0;
-            loginBtn.FlatStyle = FlatStyle.Flat;
-            loginBtn.Font = new Font("Consolas", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            loginBtn.ForeColor = SystemColors.ButtonHighlight;
-            loginBtn.Location = new Point(47, 436);
-            loginBtn.Margin = new Padding(3, 2, 3, 2);
-            loginBtn.Name = "loginBtn";
-            loginBtn.Size = new Size(206, 28);
-            loginBtn.TabIndex = 5;
-            loginBtn.Text = "Login";
-            loginBtn.UseVisualStyleBackColor = false;
-            loginBtn.Click += loginBtn_Click;
+            LoginBtn.BackColor = Color.FromArgb(80, 85, 129);
+            LoginBtn.FlatAppearance.BorderSize = 0;
+            LoginBtn.FlatStyle = FlatStyle.Flat;
+            LoginBtn.Font = new Font("Consolas", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LoginBtn.ForeColor = SystemColors.ButtonHighlight;
+            LoginBtn.Location = new Point(47, 436);
+            LoginBtn.Margin = new Padding(3, 2, 3, 2);
+            LoginBtn.Name = "LoginBtn";
+            LoginBtn.Size = new Size(206, 28);
+            LoginBtn.TabIndex = 5;
+            LoginBtn.Text = "Login";
+            LoginBtn.UseVisualStyleBackColor = false;
+            LoginBtn.Click += loginBtn_Click;
             // 
             // pictureBox2
             // 
@@ -124,7 +124,7 @@
             BackColor = Color.FromArgb(244, 211, 94);
             ClientSize = new Size(929, 565);
             Controls.Add(pictureBox2);
-            Controls.Add(loginBtn);
+            Controls.Add(LoginBtn);
             Controls.Add(LoginPassword);
             Controls.Add(label2);
             Controls.Add(LoginUsername);
@@ -148,7 +148,7 @@
         private TextBox LoginUsername;
         private Label label2;
         private TextBox LoginPassword;
-        private Button loginBtn;
+        private Button LoginBtn;
         private PictureBox pictureBox2;
     }
 }
