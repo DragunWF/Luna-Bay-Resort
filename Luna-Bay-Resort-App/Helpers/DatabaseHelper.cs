@@ -11,7 +11,7 @@ namespace Luna_Bay_Resort_App.Helpers
 {
     internal class DatabaseHelper
     {
-        public static string Key = "Connection Key";
+        public static string Key = "Insert Key Here";
 
         public static void AddReservation(string name, string email, string phone, string room, int numOfGuest, string checkIn, string checkOut)
         {
@@ -28,7 +28,7 @@ namespace Luna_Bay_Resort_App.Helpers
                 add.Parameters.AddWithValue("@Name", name);
                 add.Parameters.AddWithValue("@Email", email);
                 add.Parameters.AddWithValue("@Phone", phone);
-                add.Parameters.AddWithValue("@Room", room);
+                add.Parameters.AddWithValue("@Room", GetAvailableRoom(room));
                 add.Parameters.AddWithValue("@NumofGuest", numOfGuest);
                 add.Parameters.AddWithValue("@CheckIn", DateTime.Parse(checkIn));
                 add.Parameters.AddWithValue("@CheckOut", DateTime.Parse(checkOut));
@@ -42,7 +42,7 @@ namespace Luna_Bay_Resort_App.Helpers
             }
         }
 
-        public List<String> GetRoomTypes()
+        public static List<String> GetRoomTypes()
         {
             var roomNames = new List<string>();
             using (SqlConnection con = new SqlConnection(Key))
@@ -64,5 +64,25 @@ namespace Luna_Bay_Resort_App.Helpers
             return roomNames;
         }
 
+        public static int GetAvailableRoom(string RoomName)
+        {
+            int RoomNum = 0;
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "Select Top 1 Room_ID From Accomodation Where Name Like @RoomName";
+                SqlCommand getavailableroom = new SqlCommand(query, con);
+                getavailableroom.Parameters.AddWithValue("@RoomName", RoomName);
+
+                using (SqlDataReader read = getavailableroom.ExecuteReader())
+                {
+                    if (read.Read())
+                    {
+                        RoomNum = Convert.ToInt32(read["Room_ID"]);
+                    }
+                }
+                return RoomNum;
+            }
+        }
     }
 }
