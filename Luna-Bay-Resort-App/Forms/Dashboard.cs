@@ -36,8 +36,8 @@ namespace LunaBayFinals
         {
             contentPanel = new Panel
             {
-                Dock = DockStyle.Fill,  // Ensure it fills the entire form
-                BackColor = Color.White  // Optional: set background color for visibility
+                Dock = DockStyle.Fill,  
+                BackColor = Color.White 
             };
 
             this.Controls.Add(contentPanel);
