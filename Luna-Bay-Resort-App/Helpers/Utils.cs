@@ -37,6 +37,12 @@ namespace Luna_Bay_Resort_App.Helpers
             }
         }
 
+        public static string GetCurrentDate()
+        {
+            // Example output in this date format: "2024-11-11 10:30"
+            return DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+        }
+
         public static bool IsValidContactNumber(string contactNumber)
         {
             // Pattern for valid phone numbers (adapt as needed)
