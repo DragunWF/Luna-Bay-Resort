@@ -49,7 +49,10 @@ namespace Luna_Bay_Resort_App.Helpers
 
                 con.Open();
 
-                SqlCommand add = new SqlCommand("INSERT INTO Guest(Receipt_No, Reservation_ID, Name, Email, Phone, Room, NumofGuest, Check_in, Check_out, Status, Bill_Amount, Balance) Values(@ReceiptNo, @ReservationID, @Name, @Email, @Phone, @Room, @NumofGuest,@CheckIn, @CheckOut, @Status, @BillAmount, @Balance)", con);
+                SqlCommand add = new SqlCommand(
+                    "INSERT INTO Guest (Receipt_No, Reservation_ID, Name, Email, Phone, Room, NumofGuest, Check_in, Check_out, Status, Bill_Amount, Balance) VALUES (@ReceiptNo, @ReservationID, @Name, @Email, @Phone, @Room, @NumofGuest,@CheckIn, @CheckOut, @Status, @BillAmount, @Balance)", 
+                    con
+                );
                 add.Parameters.AddWithValue("@ReceiptNo", Receipt);
                 add.Parameters.AddWithValue("@ReservationID", Reservation);
                 add.Parameters.AddWithValue("@Name", name);

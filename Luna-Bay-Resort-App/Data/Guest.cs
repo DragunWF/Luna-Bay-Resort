@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace Luna_Bay_Resort_App.Data
 {
-    internal class Guests
+    internal class Guest
     {
         private string name, email, phone, checkIn, checkOut, status;
         private int receiptId, reservationId, checkInId, checkOutId, room, numOfGuest, billAmount, balance, paymentTypeId;
 
-        public Guests(int receiptId, int reservationId, int checkInId, int checkOutId, string Name, string email, string phone, int room, int numOfGuest, string checkIn, string checkOut, string status, int billAmount, int balance, int paymentTypeId)
+        public Guest(int receiptId, int reservationId, int checkInId, int checkOutId, string name, string email, string phone, int room, int numOfGuest, string checkIn, string checkOut, string status, int billAmount, int balance, int paymentTypeId)
         {
             this.receiptId = receiptId;
             this.reservationId = reservationId;
             this.checkInId = checkInId;
             this.checkOutId = checkOutId;
-            this.name = Name;
+            this.name = name;
             this.email = email;
             this.phone = phone;
             this.room = room;
@@ -30,6 +30,8 @@ namespace Luna_Bay_Resort_App.Data
             this.paymentTypeId = paymentTypeId;
         }
 
+        #region Getter Methods
+
         public int getReceiptId() => receiptId;
         public int getReservationId() => reservationId;
         public int getCheckInId() => checkInId;
@@ -38,12 +40,14 @@ namespace Luna_Bay_Resort_App.Data
         public string getEmail() => email;
         public string getPhone() => phone;
         public int getRoom() => room;
-        public int getNumOfGuest() => room;
+        public int getNumOfGuest() => numOfGuest;
         public string getCheckIn() => checkIn;
         public string getCheckOut() => checkOut;
         public string getStatus() => status;
         public int getBillAmount() => billAmount;
         public int getBalance() => balance;
         public int getPaymentTypeId() => paymentTypeId;
+
+        #endregion
     }
 }

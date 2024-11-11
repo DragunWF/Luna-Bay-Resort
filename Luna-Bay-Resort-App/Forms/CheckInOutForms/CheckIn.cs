@@ -86,7 +86,7 @@ namespace SubForms
         {
             if (CardCheckBox.Checked)
             {
-                paymentMethod = "Card";
+                paymentMethod = "Debit/Credit Card";
                 CashCheckBox.Checked = false;
                 OnlinePaymentCheckBox.Checked = false;
             }
