@@ -11,13 +11,13 @@ namespace Luna_Bay_Resort_App.Data
         private string name, email, phone, checkIn, checkOut, status;
         private int receiptId, reservationId, checkInId, checkOutId, room, numOfGuest, billAmount, balance, paymentTypeId;
 
-        public Guest(int receiptId, int reservationId, int checkInId, int checkOutId, string Name, string email, string phone, int room, int numOfGuest, string checkIn, string checkOut, string status, int billAmount, int balance, int paymentTypeId)
+        public Guest(int receiptId, int reservationId, int checkInId, int checkOutId, string name, string email, string phone, int room, int numOfGuest, string checkIn, string checkOut, string status, int billAmount, int balance, int paymentTypeId)
         {
             this.receiptId = receiptId;
             this.reservationId = reservationId;
             this.checkInId = checkInId;
             this.checkOutId = checkOutId;
-            this.name = Name;
+            this.name = name;
             this.email = email;
             this.phone = phone;
             this.room = room;
