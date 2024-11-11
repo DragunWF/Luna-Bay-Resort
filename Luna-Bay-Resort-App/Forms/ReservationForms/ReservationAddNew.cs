@@ -1,15 +1,5 @@
-﻿using Luna_Bay_Resort_App;
-using Luna_Bay_Resort_App.Helpers;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
+﻿using Luna_Bay_Resort_App.Helpers;
+using SubForms;
 
 namespace Luna_Bay_Sub_Forms
 {
@@ -27,7 +17,7 @@ namespace Luna_Bay_Sub_Forms
             try
             {
                 string fullName = $"{FirstNameText.Text} {LastNameText.Text}";
-                if (IsValidTextBoxes(new string[] {
+                string[] textboxValues = {
                     fullName,
                     EmailText.Text,
                     ContactNoText.Text,
@@ -35,22 +25,39 @@ namespace Luna_Bay_Sub_Forms
                     GuestNumText.Text,
                     CheckInPicker.Text,
                     CheckOutPicker.Text
-                }))
+                };
+                if (!IsValidTextBoxes(textboxValues))
                 {
-                    DatabaseHelper.AddReservation(
-                        fullName,
-                        EmailText.Text,
-                        ContactNoText.Text,
-                        RoomTypeCB.Text,
-                        int.Parse(GuestNumText.Text),
-                        CheckInPicker.Text,
-                        CheckOutPicker.Text
-                    );
-                    MessageBox.Show("Success");
+                    MessageBox.Show("Please don't leave any text boxes empty!");
+
+                }
+                else if (!Utils.IsValidEmail(EmailText.Text))
+                {
+                    MessageBox.Show("Your email is invalid, please make sure you type in a valid email address!");
+                }
+                else if (!Utils.IsValidContactNumber(ContactNoText.Text))
+                {
+                    MessageBox.Show("Your contact number is invalid, please make sure you type in a number with the correct format");
                 }
                 else
                 {
-                    MessageBox.Show("Please don't leave any text boxes empty!");
+                    // Success
+                    // TODO: Uncomment database helper in the future after testing
+                    // DatabaseHelper.AddReservation(
+                    //     fullName,
+                    //     EmailText.Text,
+                    //     ContactNoText.Text,
+                    //     RoomTypeCB.Text,
+                    //     int.Parse(GuestNumText.Text),
+                    //     CheckInPicker.Text,
+                    //     CheckOutPicker.Text
+                    // );
+                    FormManager.OpenForm<ReservationReceipt>(
+                        fullName, CheckInPicker.Text, CheckOutPicker.Text, RoomTypeCB.Text, GuestNumText.Text
+                    );
+                    Utils.ResetTextBoxes(new TextBox[] {
+                        FirstNameText, LastNameText, EmailText, ContactNoText, GuestNumText
+                    });
                 }
             }
             catch (Exception err)

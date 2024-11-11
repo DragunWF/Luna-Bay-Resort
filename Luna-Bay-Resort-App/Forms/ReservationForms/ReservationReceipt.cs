@@ -13,13 +13,22 @@ namespace SubForms
 {
     public partial class ReservationReceipt : Form
     {
-        private string receiptId;
+        private string fullName, checkInDate, checkOutDate, roomType, numOfGuests;
+        private string reservationNo, receiptId;
 
-        public ReservationReceipt()
+        public ReservationReceipt(string fullName, string checkInDate, string checkOutDate, string roomType, string numOfGuests)
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.fullName = fullName;
+            this.checkInDate = checkInDate;
+            this.checkOutDate = checkOutDate;
+            this.roomType = roomType;
+            this.numOfGuests = numOfGuests;
+
+            // Receipt Data
             receiptId = Utils.GenerateReceiptId();
+            reservationNo = Utils.GenerateReservationNo();
 
             // Displays receipt data to the text labels
             DisplayReceiptData();
@@ -27,8 +36,17 @@ namespace SubForms
 
         private void DisplayReceiptData()
         {
-            // TODO: Connect to database and retrieve values from there to display data here
+            // Receipt Details
+            ReservationNoText.Text = reservationNo;
             ReceiptNoText.Text = receiptId;
+            DateTimeText.Text = Utils.GetCurrentDate();
+
+            // Reservation Details
+            FullNameText.Text = fullName;
+            CheckInDateText.Text = checkInDate;
+            CheckOutDateText.Text = checkOutDate;
+            RoomTypeText.Text = roomType;
+            NoOfGuestText.Text = numOfGuests;
         }
     }
 }
