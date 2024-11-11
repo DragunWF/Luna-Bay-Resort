@@ -1,6 +1,7 @@
 using Luna_Bay_Sub_Forms;
 using SubForms;
 using MainForms;
+using Luna_Bay_Resort_App.Forms.Test;
 
 namespace Luna_Bay_Resort_App
 {
@@ -15,7 +16,12 @@ namespace Luna_Bay_Resort_App
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new LoginForm());
+
+            /*
+              For production: Application.Run(new LoginForm());
+              For testing and development: Application.Run(new FormOpener());
+            */
+            Application.Run(new FormOpener());
         }
     }
 }
