@@ -9,6 +9,7 @@ namespace Luna_Bay_Sub_Forms
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             RoomTypeCB.Items.AddRange(DatabaseHelper.GetRoomTypes().ToArray());
         }
 

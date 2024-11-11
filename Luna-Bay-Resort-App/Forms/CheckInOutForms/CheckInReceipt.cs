@@ -21,6 +21,8 @@ namespace SubForms
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+
             this.fullName = fullName;
             this.checkInDate = checkInDate;
             this.checkOutDate = checkOutDate;

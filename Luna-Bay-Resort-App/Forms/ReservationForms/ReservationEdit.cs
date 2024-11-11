@@ -16,6 +16,7 @@ namespace SubForms
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
         }
     }
 }

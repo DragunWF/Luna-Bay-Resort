@@ -8,6 +8,7 @@ namespace MainForms
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
         }
 
         private void loginBtn_Click(object sender, EventArgs e)

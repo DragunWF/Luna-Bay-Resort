@@ -11,6 +11,7 @@ namespace Luna_Bay_Resort_App.Forms.Test
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
         }
 
         private void LoginBtn_Click(object sender, EventArgs e)

@@ -20,6 +20,7 @@ namespace SubForms
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
         }
 
         private void ConfirmBtn_Click(object sender, EventArgs e)
