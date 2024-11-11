@@ -32,7 +32,7 @@
             label1 = new Label();
             CheckInNoText = new TextBox();
             label3 = new Label();
-            SearchButton = new Button();
+            SearchBtn = new Button();
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
@@ -50,7 +50,7 @@
             label11 = new Label();
             TotalPaidText = new Label();
             TotalBillText = new Label();
-            CheckOutButton = new Button();
+            CheckOutBtn = new Button();
             SuspendLayout();
             // 
             // label2
@@ -95,17 +95,17 @@
             label3.TabIndex = 37;
             label3.Text = "Check-In No.:";
             // 
-            // SearchButton
+            // SearchBtn
             // 
-            SearchButton.BackColor = Color.FromArgb(80, 85, 127);
-            SearchButton.Font = new Font("Consolas", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            SearchButton.ForeColor = SystemColors.ButtonHighlight;
-            SearchButton.Location = new Point(379, 145);
-            SearchButton.Name = "SearchButton";
-            SearchButton.Size = new Size(80, 29);
-            SearchButton.TabIndex = 60;
-            SearchButton.Text = "Search";
-            SearchButton.UseVisualStyleBackColor = false;
+            SearchBtn.BackColor = Color.FromArgb(80, 85, 127);
+            SearchBtn.Font = new Font("Consolas", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SearchBtn.ForeColor = SystemColors.ButtonHighlight;
+            SearchBtn.Location = new Point(379, 140);
+            SearchBtn.Name = "SearchBtn";
+            SearchBtn.Size = new Size(80, 29);
+            SearchBtn.TabIndex = 60;
+            SearchBtn.Text = "Search";
+            SearchBtn.UseVisualStyleBackColor = false;
             // 
             // label4
             // 
@@ -297,25 +297,25 @@
             TotalBillText.TabIndex = 77;
             TotalBillText.Text = "0";
             // 
-            // CheckOutButton
+            // CheckOutBtn
             // 
-            CheckOutButton.BackColor = Color.FromArgb(245, 211, 108);
-            CheckOutButton.Font = new Font("Consolas", 10.5F, FontStyle.Bold);
-            CheckOutButton.ForeColor = Color.Black;
-            CheckOutButton.Location = new Point(335, 476);
-            CheckOutButton.Name = "CheckOutButton";
-            CheckOutButton.Size = new Size(124, 33);
-            CheckOutButton.TabIndex = 78;
-            CheckOutButton.Text = "Check-Out Now";
-            CheckOutButton.UseVisualStyleBackColor = false;
+            CheckOutBtn.BackColor = Color.FromArgb(245, 211, 108);
+            CheckOutBtn.Font = new Font("Consolas", 10.5F, FontStyle.Bold);
+            CheckOutBtn.ForeColor = Color.Black;
+            CheckOutBtn.Location = new Point(335, 476);
+            CheckOutBtn.Name = "CheckOutBtn";
+            CheckOutBtn.Size = new Size(124, 33);
+            CheckOutBtn.TabIndex = 78;
+            CheckOutBtn.Text = "Check-Out Now";
+            CheckOutBtn.UseVisualStyleBackColor = false;
             // 
-            // CheckOutcs
+            // CheckOut
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(234, 234, 234);
             ClientSize = new Size(494, 541);
-            Controls.Add(CheckOutButton);
+            Controls.Add(CheckOutBtn);
             Controls.Add(TotalBillText);
             Controls.Add(TotalPaidText);
             Controls.Add(TotalAmountDueText);
@@ -333,12 +333,12 @@
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
-            Controls.Add(SearchButton);
+            Controls.Add(SearchBtn);
             Controls.Add(CheckInNoText);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Name = "CheckOutcs";
+            Name = "CheckOut";
             Text = "CheckOutcs";
             ResumeLayout(false);
             PerformLayout();
@@ -350,7 +350,7 @@
         private Label label1;
         private TextBox CheckInNoText;
         private Label label3;
-        private Button SearchButton;
+        private Button SearchBtn;
         private Label label4;
         private Label label5;
         private Label label6;
@@ -368,6 +368,6 @@
         private Label label11;
         private Label TotalPaidText;
         private Label TotalBillText;
-        private Button CheckOutButton;
+        private Button CheckOutBtn;
     }
 }

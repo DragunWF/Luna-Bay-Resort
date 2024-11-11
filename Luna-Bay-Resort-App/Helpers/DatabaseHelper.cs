@@ -3,15 +3,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Data.SqlClient;
+using Luna_Bay_Resort_App.Data;
 
 namespace Luna_Bay_Resort_App.Helpers
 {
     internal class DatabaseHelper
     {
         public static string Key = "Data Source=DRAGUNWF\\SQLEXPRESS;Initial Catalog=LunaBayResortDB;Integrated Security=True;TrustServerCertificate=True";
+
+        public static User GetUser(string username, string password)
+        {
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "SELECT * FROM Employees WHERE Name = @Username AND Password = @Password";
+
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@Username", username);
+                command.Parameters.AddWithValue("@Password", password);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return new User(
+                            reader["Emp_ID"].ToString(), reader["Position"].ToString(),
+                            reader["Name"].ToString(), int.Parse(reader["Auth_ID"].ToString())
+                        );
+                    }
+                }
+                return null;
+            }
+        }
 
         public static void AddReservation(string name, string email, string phone, string room, int numOfGuest, string checkIn, string checkOut)
         {
@@ -22,6 +48,7 @@ namespace Luna_Bay_Resort_App.Helpers
                 int Reservation = 10;
 
                 con.Open();
+
                 SqlCommand add = new SqlCommand("INSERT INTO Guest(Receipt_No, Reservation_ID, Name, Email, Phone, Room, NumofGuest, Check_in, Check_out, Status, Bill_Amount, Balance) Values(@ReceiptNo, @ReservationID, @Name, @Email, @Phone, @Room, @NumofGuest,@CheckIn, @CheckOut, @Status, @BillAmount, @Balance)", con);
                 add.Parameters.AddWithValue("@ReceiptNo", Receipt);
                 add.Parameters.AddWithValue("@ReservationID", Reservation);
@@ -36,6 +63,7 @@ namespace Luna_Bay_Resort_App.Helpers
                 add.Parameters.AddWithValue("@BillAmount", 2000); //placeholder
                 add.Parameters.AddWithValue("@Balance", 4000); //placeholder
                 add.ExecuteNonQuery();
+
                 con.Close();
                 Receipt += 1;
                 Reservation += 1;
