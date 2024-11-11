@@ -169,13 +169,13 @@ namespace MainForms
 
             Button cancelButton = new Button
             {
-                Text = "Cancel Order",
+                Text = "Cancel",
                 Font = new Font("Consolas", 12, FontStyle.Regular),
                 BackColor = ColorTranslator.FromHtml("#F50000"),
                 Height = 35, 
-                Width = 150, 
+                Width = 100, 
                 ForeColor = Color.White,
-                Margin = new Padding(215, 0, 0, 0)
+                Margin = new Padding(450, 0, 0, 0)
             };
 
            
