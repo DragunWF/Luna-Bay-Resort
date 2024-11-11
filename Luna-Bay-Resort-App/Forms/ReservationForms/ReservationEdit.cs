@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Luna_Bay_Resort_App.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,7 @@ namespace SubForms
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
+            RoomTypeCB.Items.AddRange(DatabaseHelper.GetRoomTypes().ToArray());
         }
     }
 }

@@ -21,6 +21,7 @@ namespace SubForms
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
+            RoomTypeCB.Items.AddRange(DatabaseHelper.GetRoomTypes().ToArray());
         }
 
         private void ConfirmBtn_Click(object sender, EventArgs e)

@@ -12,7 +12,7 @@ namespace Luna_Bay_Resort_App.Helpers
 {
     internal class DatabaseHelper
     {
-        public static string Key = "Data Source=DRAGUNWF\\SQLEXPRESS;Initial Catalog=LunaBayResortDB;Integrated Security=True;TrustServerCertificate=True";
+        public static string Key = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=LunaBayResortDB;Integrated Security=True;TrustServerCertificate=True";
 
         public static User GetUser(string username, string password)
         {
