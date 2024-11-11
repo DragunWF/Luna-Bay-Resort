@@ -19,6 +19,7 @@ namespace Luna_Bay_Sub_Forms
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            RoomTypeCB.Items.AddRange(DatabaseHelper.GetRoomTypes().ToArray());
         }
 
         private void ConfirmButton_Click(object sender, EventArgs e)
@@ -30,7 +31,7 @@ namespace Luna_Bay_Sub_Forms
                     fullName,
                     EmailText.Text,
                     ContactNoText.Text,
-                    RoomTypeText.Text,
+                    RoomTypeCB.Text,
                     GuestNumText.Text,
                     CheckInPicker.Text,
                     CheckOutPicker.Text
@@ -40,7 +41,7 @@ namespace Luna_Bay_Sub_Forms
                         fullName,
                         EmailText.Text,
                         ContactNoText.Text,
-                        RoomTypeText.Text,
+                        RoomTypeCB.Text,
                         int.Parse(GuestNumText.Text),
                         CheckInPicker.Text,
                         CheckOutPicker.Text
