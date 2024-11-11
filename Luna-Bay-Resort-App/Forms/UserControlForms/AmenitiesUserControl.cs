@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LunaBayFinals
+namespace MainForms
 {
     public partial class AmenitiesUserControl : UserControl
     {

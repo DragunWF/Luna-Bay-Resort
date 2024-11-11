@@ -41,10 +41,6 @@
             CheckInPicker = new DateTimePicker();
             CheckOutPicker = new DateTimePicker();
             label10 = new Label();
-            RoomTypeText = new TextBox();
-            label11 = new Label();
-            GuestNumText = new TextBox();
-            label12 = new Label();
             LastNameText = new TextBox();
             EmailText = new TextBox();
             ContactNoText = new TextBox();
@@ -54,6 +50,10 @@
             ConfirmButton = new Button();
             TotalAmountText = new Label();
             label13 = new Label();
+            label12 = new Label();
+            RoomTypeCB = new ComboBox();
+            GuestNumText = new TextBox();
+            label11 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -166,8 +166,9 @@
             // 
             // CheckInPicker
             // 
+            CheckInPicker.CustomFormat = "M/dd/yyyy hh:mm";
             CheckInPicker.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            CheckInPicker.Format = DateTimePickerFormat.Short;
+            CheckInPicker.Format = DateTimePickerFormat.Custom;
             CheckInPicker.Location = new Point(23, 296);
             CheckInPicker.Margin = new Padding(4, 3, 4, 3);
             CheckInPicker.Name = "CheckInPicker";
@@ -176,8 +177,9 @@
             // 
             // CheckOutPicker
             // 
+            CheckOutPicker.CustomFormat = "M/dd/yyyy hh:mm";
             CheckOutPicker.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            CheckOutPicker.Format = DateTimePickerFormat.Short;
+            CheckOutPicker.Format = DateTimePickerFormat.Custom;
             CheckOutPicker.Location = new Point(257, 296);
             CheckOutPicker.Margin = new Padding(4, 3, 4, 3);
             CheckOutPicker.Name = "CheckOutPicker";
@@ -194,46 +196,6 @@
             label10.Size = new Size(88, 18);
             label10.TabIndex = 17;
             label10.Text = "Room Type:";
-            // 
-            // RoomTypeText
-            // 
-            RoomTypeText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            RoomTypeText.Location = new Point(117, 337);
-            RoomTypeText.Margin = new Padding(4, 3, 4, 3);
-            RoomTypeText.Name = "RoomTypeText";
-            RoomTypeText.Size = new Size(148, 24);
-            RoomTypeText.TabIndex = 18;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Consolas", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label11.Location = new Point(273, 343);
-            label11.Margin = new Padding(4, 0, 4, 0);
-            label11.Name = "label11";
-            label11.Size = new Size(120, 18);
-            label11.TabIndex = 19;
-            label11.Text = "No. of Guests:";
-            // 
-            // GuestNumText
-            // 
-            GuestNumText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            GuestNumText.Location = new Point(399, 337);
-            GuestNumText.Margin = new Padding(4, 3, 4, 3);
-            GuestNumText.Name = "GuestNumText";
-            GuestNumText.Size = new Size(62, 24);
-            GuestNumText.TabIndex = 20;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Consolas", 12.75F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            label12.Location = new Point(23, 381);
-            label12.Margin = new Padding(4, 0, 4, 0);
-            label12.Name = "label12";
-            label12.Size = new Size(189, 20);
-            label12.TabIndex = 21;
-            label12.Text = "Payment Information:";
             // 
             // LastNameText
             // 
@@ -310,6 +272,7 @@
             ConfirmButton.TabIndex = 58;
             ConfirmButton.Text = "Confirm";
             ConfirmButton.UseVisualStyleBackColor = false;
+            ConfirmButton.Click += ConfirmButton_Click;
             // 
             // TotalAmountText
             // 
@@ -333,12 +296,54 @@
             label13.TabIndex = 56;
             label13.Text = "Total Amount:";
             // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Consolas", 12.75F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
+            label12.Location = new Point(23, 381);
+            label12.Margin = new Padding(4, 0, 4, 0);
+            label12.Name = "label12";
+            label12.Size = new Size(189, 20);
+            label12.TabIndex = 21;
+            label12.Text = "Payment Information:";
+            // 
+            // RoomTypeCB
+            // 
+            RoomTypeCB.FormattingEnabled = true;
+            RoomTypeCB.Location = new Point(113, 337);
+            RoomTypeCB.Name = "RoomTypeCB";
+            RoomTypeCB.Size = new Size(181, 23);
+            RoomTypeCB.TabIndex = 64;
+            // 
+            // GuestNumText
+            // 
+            GuestNumText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            GuestNumText.Location = new Point(419, 337);
+            GuestNumText.Margin = new Padding(4, 3, 4, 3);
+            GuestNumText.Name = "GuestNumText";
+            GuestNumText.Size = new Size(44, 24);
+            GuestNumText.TabIndex = 63;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Consolas", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label11.Location = new Point(301, 343);
+            label11.Margin = new Padding(4, 0, 4, 0);
+            label11.Name = "label11";
+            label11.Size = new Size(120, 18);
+            label11.TabIndex = 62;
+            label11.Text = "No. of Guests:";
+            // 
             // ReservationAddNew
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(234, 234, 234);
             ClientSize = new Size(494, 541);
+            Controls.Add(RoomTypeCB);
+            Controls.Add(GuestNumText);
+            Controls.Add(label11);
             Controls.Add(ConfirmButton);
             Controls.Add(TotalAmountText);
             Controls.Add(label13);
@@ -349,9 +354,6 @@
             Controls.Add(EmailText);
             Controls.Add(LastNameText);
             Controls.Add(label12);
-            Controls.Add(GuestNumText);
-            Controls.Add(label11);
-            Controls.Add(RoomTypeText);
             Controls.Add(label10);
             Controls.Add(CheckOutPicker);
             Controls.Add(CheckInPicker);
@@ -368,7 +370,7 @@
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(4, 3, 4, 3);
             Name = "ReservationAddNew";
-            Text = "Reservation Add New:";
+            Text = "Add New Reservation Form";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -388,10 +390,6 @@
         private System.Windows.Forms.DateTimePicker CheckInPicker;
         private System.Windows.Forms.DateTimePicker CheckOutPicker;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox RoomTypeText;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox GuestNumText;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox LastNameText;
         private System.Windows.Forms.TextBox EmailText;
         private System.Windows.Forms.TextBox ContactNoText;
@@ -401,6 +399,10 @@
         private Button ConfirmButton;
         private Label TotalAmountText;
         private Label label13;
+        private Label label12;
+        private ComboBox RoomTypeCB;
+        private TextBox GuestNumText;
+        private Label label11;
     }
 }
 

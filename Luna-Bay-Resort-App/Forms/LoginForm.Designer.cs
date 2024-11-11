@@ -1,4 +1,4 @@
-﻿namespace LunaBayFinals
+﻿namespace MainForms
 {
     partial class LoginForm
     {
@@ -31,10 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             pictureBox1 = new PictureBox();
             label1 = new Label();
-            loginUsername = new TextBox();
+            LoginUsername = new TextBox();
             label2 = new Label();
-            loginPassword = new TextBox();
-            loginBtn = new Button();
+            LoginPassword = new TextBox();
+            LoginBtn = new Button();
             pictureBox2 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -63,13 +63,13 @@
             label1.TabIndex = 1;
             label1.Text = "Username:";
             // 
-            // loginUsername
+            // LoginUsername
             // 
-            loginUsername.Location = new Point(47, 302);
-            loginUsername.Margin = new Padding(3, 2, 3, 2);
-            loginUsername.Name = "loginUsername";
-            loginUsername.Size = new Size(206, 23);
-            loginUsername.TabIndex = 2;
+            LoginUsername.Location = new Point(47, 302);
+            LoginUsername.Margin = new Padding(3, 2, 3, 2);
+            LoginUsername.Name = "LoginUsername";
+            LoginUsername.Size = new Size(206, 23);
+            LoginUsername.TabIndex = 2;
             // 
             // label2
             // 
@@ -82,29 +82,29 @@
             label2.TabIndex = 3;
             label2.Text = "Password:";
             // 
-            // loginPassword
+            // LoginPassword
             // 
-            loginPassword.Location = new Point(47, 367);
-            loginPassword.Margin = new Padding(3, 2, 3, 2);
-            loginPassword.Name = "loginPassword";
-            loginPassword.Size = new Size(206, 23);
-            loginPassword.TabIndex = 4;
+            LoginPassword.Location = new Point(47, 367);
+            LoginPassword.Margin = new Padding(3, 2, 3, 2);
+            LoginPassword.Name = "LoginPassword";
+            LoginPassword.Size = new Size(206, 23);
+            LoginPassword.TabIndex = 4;
             // 
-            // loginBtn
+            // LoginBtn
             // 
-            loginBtn.BackColor = Color.FromArgb(80, 85, 129);
-            loginBtn.FlatAppearance.BorderSize = 0;
-            loginBtn.FlatStyle = FlatStyle.Flat;
-            loginBtn.Font = new Font("Consolas", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            loginBtn.ForeColor = SystemColors.ButtonHighlight;
-            loginBtn.Location = new Point(47, 436);
-            loginBtn.Margin = new Padding(3, 2, 3, 2);
-            loginBtn.Name = "loginBtn";
-            loginBtn.Size = new Size(206, 28);
-            loginBtn.TabIndex = 5;
-            loginBtn.Text = "Login";
-            loginBtn.UseVisualStyleBackColor = false;
-            loginBtn.Click += loginBtn_Click;
+            LoginBtn.BackColor = Color.FromArgb(80, 85, 129);
+            LoginBtn.FlatAppearance.BorderSize = 0;
+            LoginBtn.FlatStyle = FlatStyle.Flat;
+            LoginBtn.Font = new Font("Consolas", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LoginBtn.ForeColor = SystemColors.ButtonHighlight;
+            LoginBtn.Location = new Point(47, 436);
+            LoginBtn.Margin = new Padding(3, 2, 3, 2);
+            LoginBtn.Name = "LoginBtn";
+            LoginBtn.Size = new Size(206, 28);
+            LoginBtn.TabIndex = 5;
+            LoginBtn.Text = "Login";
+            LoginBtn.UseVisualStyleBackColor = false;
+            LoginBtn.Click += loginBtn_Click;
             // 
             // pictureBox2
             // 
@@ -124,17 +124,17 @@
             BackColor = Color.FromArgb(244, 211, 94);
             ClientSize = new Size(929, 565);
             Controls.Add(pictureBox2);
-            Controls.Add(loginBtn);
-            Controls.Add(loginPassword);
+            Controls.Add(LoginBtn);
+            Controls.Add(LoginPassword);
             Controls.Add(label2);
-            Controls.Add(loginUsername);
+            Controls.Add(LoginUsername);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
             Margin = new Padding(3, 2, 3, 2);
             Name = "LoginForm";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "LunaBay: Login";
+            Text = "Luna Bay Resort: Login Form";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
@@ -145,10 +145,10 @@
 
         private PictureBox pictureBox1;
         private Label label1;
-        private TextBox loginUsername;
+        private TextBox LoginUsername;
         private Label label2;
-        private TextBox loginPassword;
-        private Button loginBtn;
+        private TextBox LoginPassword;
+        private Button LoginBtn;
         private PictureBox pictureBox2;
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace LunaBay_SubForms
+﻿namespace SubForms
 {
     partial class ReservationReceipt
     {
@@ -44,7 +44,7 @@
             ReservationNoText = new Label();
             ReceiptNoText = new Label();
             DateTimeText = new Label();
-            NameText = new Label();
+            FullNameText = new Label();
             CheckInDateText = new Label();
             CheckOutDateText = new Label();
             RoomTypeText = new Label();
@@ -57,7 +57,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Consolas", 12F);
+            label1.Font = new Font("Consolas", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(176, 20);
             label1.Name = "label1";
             label1.Size = new Size(144, 19);
@@ -214,15 +214,15 @@
             DateTimeText.TabIndex = 15;
             DateTimeText.Text = "Date && Time";
             // 
-            // NameText
+            // FullNameText
             // 
-            NameText.AutoSize = true;
-            NameText.Font = new Font("Consolas", 10F);
-            NameText.Location = new Point(190, 178);
-            NameText.Name = "NameText";
-            NameText.Size = new Size(40, 17);
-            NameText.TabIndex = 16;
-            NameText.Text = "Name";
+            FullNameText.AutoSize = true;
+            FullNameText.Font = new Font("Consolas", 10F);
+            FullNameText.Location = new Point(190, 178);
+            FullNameText.Name = "FullNameText";
+            FullNameText.Size = new Size(40, 17);
+            FullNameText.TabIndex = 16;
+            FullNameText.Text = "Name";
             // 
             // CheckInDateText
             // 
@@ -307,7 +307,7 @@
             Controls.Add(RoomTypeText);
             Controls.Add(CheckOutDateText);
             Controls.Add(CheckInDateText);
-            Controls.Add(NameText);
+            Controls.Add(FullNameText);
             Controls.Add(DateTimeText);
             Controls.Add(ReceiptNoText);
             Controls.Add(ReservationNoText);
@@ -325,7 +325,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "ReservationReceipt";
-            Text = "ReservationReceipt";
+            Text = "Reservation Receipt Form";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -348,7 +348,7 @@
         private Label ReservationNoText;
         private Label ReceiptNoText;
         private Label DateTimeText;
-        private Label NameText;
+        private Label FullNameText;
         private Label CheckInDateText;
         private Label CheckOutDateText;
         private Label RoomTypeText;

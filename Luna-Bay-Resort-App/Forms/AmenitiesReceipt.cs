@@ -8,13 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LunaBay_SubForms
+namespace SubForms
 {
     public partial class AmenitiesReceipt : Form
     {
         public AmenitiesReceipt()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
         }
     }
 }

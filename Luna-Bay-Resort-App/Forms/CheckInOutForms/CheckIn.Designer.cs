@@ -1,4 +1,4 @@
-﻿namespace LunaBay_SubForms
+﻿namespace SubForms
 {
     partial class CheckIn
     {
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ConfirmButton = new Button();
+            ConfirmBtn = new Button();
             TotalAmountText = new Label();
             ContactNoText = new TextBox();
             EmailText = new TextBox();
@@ -37,7 +37,6 @@
             label12 = new Label();
             GuestNumText = new TextBox();
             label11 = new Label();
-            RoomTypeText = new TextBox();
             label10 = new Label();
             CheckOutPicker = new DateTimePicker();
             CheckInPicker = new DateTimePicker();
@@ -51,24 +50,26 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            CashCheck = new CheckBox();
+            CashCheckBox = new CheckBox();
             label14 = new Label();
-            OnlinePaymentCheck = new CheckBox();
-            CardCheck = new CheckBox();
-            button1 = new Button();
+            OnlinePaymentCheckBox = new CheckBox();
+            CardCheckBox = new CheckBox();
+            SearchBtn = new Button();
+            RoomTypeCB = new ComboBox();
             SuspendLayout();
             // 
-            // ConfirmButton
+            // ConfirmBtn
             // 
-            ConfirmButton.BackColor = Color.FromArgb(80, 85, 127);
-            ConfirmButton.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ConfirmButton.ForeColor = SystemColors.ButtonHighlight;
-            ConfirmButton.Location = new Point(365, 480);
-            ConfirmButton.Name = "ConfirmButton";
-            ConfirmButton.Size = new Size(105, 37);
-            ConfirmButton.TabIndex = 55;
-            ConfirmButton.Text = "Confirm";
-            ConfirmButton.UseVisualStyleBackColor = false;
+            ConfirmBtn.BackColor = Color.FromArgb(80, 85, 127);
+            ConfirmBtn.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ConfirmBtn.ForeColor = SystemColors.ButtonHighlight;
+            ConfirmBtn.Location = new Point(365, 480);
+            ConfirmBtn.Name = "ConfirmBtn";
+            ConfirmBtn.Size = new Size(105, 37);
+            ConfirmBtn.TabIndex = 55;
+            ConfirmBtn.Text = "Confirm";
+            ConfirmBtn.UseVisualStyleBackColor = false;
+            ConfirmBtn.Click += ConfirmBtn_Click;
             // 
             // TotalAmountText
             // 
@@ -133,31 +134,22 @@
             // GuestNumText
             // 
             GuestNumText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            GuestNumText.Location = new Point(408, 336);
+            GuestNumText.Location = new Point(426, 336);
             GuestNumText.Margin = new Padding(4, 3, 4, 3);
             GuestNumText.Name = "GuestNumText";
-            GuestNumText.Size = new Size(62, 24);
+            GuestNumText.Size = new Size(44, 24);
             GuestNumText.TabIndex = 46;
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Consolas", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label11.Location = new Point(282, 342);
+            label11.Location = new Point(308, 342);
             label11.Margin = new Padding(4, 0, 4, 0);
             label11.Name = "label11";
             label11.Size = new Size(120, 18);
             label11.TabIndex = 45;
             label11.Text = "No. of Guests:";
-            // 
-            // RoomTypeText
-            // 
-            RoomTypeText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            RoomTypeText.Location = new Point(126, 336);
-            RoomTypeText.Margin = new Padding(4, 3, 4, 3);
-            RoomTypeText.Name = "RoomTypeText";
-            RoomTypeText.Size = new Size(148, 24);
-            RoomTypeText.TabIndex = 44;
             // 
             // label10
             // 
@@ -172,8 +164,9 @@
             // 
             // CheckOutPicker
             // 
+            CheckOutPicker.CustomFormat = "M/dd/yyyy hh:mm";
             CheckOutPicker.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            CheckOutPicker.Format = DateTimePickerFormat.Short;
+            CheckOutPicker.Format = DateTimePickerFormat.Custom;
             CheckOutPicker.Location = new Point(266, 296);
             CheckOutPicker.Margin = new Padding(4, 3, 4, 3);
             CheckOutPicker.Name = "CheckOutPicker";
@@ -182,8 +175,9 @@
             // 
             // CheckInPicker
             // 
+            CheckInPicker.CustomFormat = "M/dd/yyyy hh:mm";
             CheckInPicker.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            CheckInPicker.Format = DateTimePickerFormat.Short;
+            CheckInPicker.Format = DateTimePickerFormat.Custom;
             CheckInPicker.Location = new Point(32, 296);
             CheckInPicker.Margin = new Padding(4, 3, 4, 3);
             CheckInPicker.Name = "CheckInPicker";
@@ -298,16 +292,17 @@
             label1.TabIndex = 30;
             label1.Text = "Form: Check-In";
             // 
-            // CashCheck
+            // CashCheckBox
             // 
-            CashCheck.AutoSize = true;
-            CashCheck.Font = new Font("Consolas", 10F);
-            CashCheck.Location = new Point(33, 441);
-            CashCheck.Name = "CashCheck";
-            CashCheck.Size = new Size(59, 21);
-            CashCheck.TabIndex = 56;
-            CashCheck.Text = "Cash";
-            CashCheck.UseVisualStyleBackColor = true;
+            CashCheckBox.AutoSize = true;
+            CashCheckBox.Font = new Font("Consolas", 10F);
+            CashCheckBox.Location = new Point(33, 441);
+            CashCheckBox.Name = "CashCheckBox";
+            CashCheckBox.Size = new Size(59, 21);
+            CashCheckBox.TabIndex = 56;
+            CashCheckBox.Text = "Cash";
+            CashCheckBox.UseVisualStyleBackColor = true;
+            CashCheckBox.CheckedChanged += CashCheckBox_CheckedChanged;
             // 
             // label14
             // 
@@ -320,39 +315,50 @@
             label14.TabIndex = 57;
             label14.Text = "Payment Method:";
             // 
-            // OnlinePaymentCheck
+            // OnlinePaymentCheckBox
             // 
-            OnlinePaymentCheck.AutoSize = true;
-            OnlinePaymentCheck.Font = new Font("Consolas", 10F);
-            OnlinePaymentCheck.Location = new Point(102, 441);
-            OnlinePaymentCheck.Name = "OnlinePaymentCheck";
-            OnlinePaymentCheck.Size = new Size(139, 21);
-            OnlinePaymentCheck.TabIndex = 58;
-            OnlinePaymentCheck.Text = "Online Payment";
-            OnlinePaymentCheck.UseVisualStyleBackColor = true;
+            OnlinePaymentCheckBox.AutoSize = true;
+            OnlinePaymentCheckBox.Font = new Font("Consolas", 10F);
+            OnlinePaymentCheckBox.Location = new Point(102, 441);
+            OnlinePaymentCheckBox.Name = "OnlinePaymentCheckBox";
+            OnlinePaymentCheckBox.Size = new Size(139, 21);
+            OnlinePaymentCheckBox.TabIndex = 58;
+            OnlinePaymentCheckBox.Text = "Online Payment";
+            OnlinePaymentCheckBox.UseVisualStyleBackColor = true;
+            OnlinePaymentCheckBox.CheckedChanged += OnlinePaymentCheckBox_CheckedChanged;
             // 
-            // CardCheck
+            // CardCheckBox
             // 
-            CardCheck.AutoSize = true;
-            CardCheck.Font = new Font("Consolas", 10F);
-            CardCheck.Location = new Point(247, 441);
-            CardCheck.Name = "CardCheck";
-            CardCheck.Size = new Size(171, 21);
-            CardCheck.TabIndex = 59;
-            CardCheck.Text = "Debit/ Credit Card";
-            CardCheck.UseVisualStyleBackColor = true;
+            CardCheckBox.AutoSize = true;
+            CardCheckBox.Font = new Font("Consolas", 10F);
+            CardCheckBox.Location = new Point(247, 441);
+            CardCheckBox.Name = "CardCheckBox";
+            CardCheckBox.Size = new Size(171, 21);
+            CardCheckBox.TabIndex = 59;
+            CardCheckBox.Text = "Debit/ Credit Card";
+            CardCheckBox.UseVisualStyleBackColor = true;
+            CardCheckBox.CheckedChanged += CardCheckBox_CheckedChanged;
             // 
-            // button1
+            // SearchBtn
             // 
-            button1.BackColor = Color.FromArgb(80, 85, 127);
-            button1.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.ForeColor = SystemColors.ButtonHighlight;
-            button1.Location = new Point(247, 480);
-            button1.Name = "button1";
-            button1.Size = new Size(105, 37);
-            button1.TabIndex = 60;
-            button1.Text = "Search";
-            button1.UseVisualStyleBackColor = false;
+            SearchBtn.BackColor = Color.FromArgb(80, 85, 127);
+            SearchBtn.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            SearchBtn.ForeColor = SystemColors.ButtonHighlight;
+            SearchBtn.Location = new Point(247, 480);
+            SearchBtn.Name = "SearchBtn";
+            SearchBtn.Size = new Size(105, 37);
+            SearchBtn.TabIndex = 60;
+            SearchBtn.Text = "Search";
+            SearchBtn.UseVisualStyleBackColor = false;
+            SearchBtn.Click += SearchBtn_Click;
+            // 
+            // RoomTypeCB
+            // 
+            RoomTypeCB.FormattingEnabled = true;
+            RoomTypeCB.Location = new Point(120, 336);
+            RoomTypeCB.Name = "RoomTypeCB";
+            RoomTypeCB.Size = new Size(181, 23);
+            RoomTypeCB.TabIndex = 61;
             // 
             // CheckIn
             // 
@@ -360,12 +366,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(234, 234, 234);
             ClientSize = new Size(494, 541);
-            Controls.Add(button1);
-            Controls.Add(CardCheck);
-            Controls.Add(OnlinePaymentCheck);
+            Controls.Add(RoomTypeCB);
+            Controls.Add(SearchBtn);
+            Controls.Add(CardCheckBox);
+            Controls.Add(OnlinePaymentCheckBox);
             Controls.Add(label14);
-            Controls.Add(CashCheck);
-            Controls.Add(ConfirmButton);
+            Controls.Add(CashCheckBox);
+            Controls.Add(ConfirmBtn);
             Controls.Add(TotalAmountText);
             Controls.Add(ContactNoText);
             Controls.Add(EmailText);
@@ -374,7 +381,6 @@
             Controls.Add(label12);
             Controls.Add(GuestNumText);
             Controls.Add(label11);
-            Controls.Add(RoomTypeText);
             Controls.Add(label10);
             Controls.Add(CheckOutPicker);
             Controls.Add(CheckInPicker);
@@ -389,14 +395,14 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "CheckIn";
-            Text = "CheckIn";
+            Text = "Check-In Form";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button ConfirmButton;
+        private Button ConfirmBtn;
         private Label TotalAmountText;
         private TextBox ContactNoText;
         private TextBox EmailText;
@@ -405,7 +411,6 @@
         private Label label12;
         private TextBox GuestNumText;
         private Label label11;
-        private TextBox RoomTypeText;
         private Label label10;
         private DateTimePicker CheckOutPicker;
         private DateTimePicker CheckInPicker;
@@ -419,10 +424,11 @@
         private Label label3;
         private Label label2;
         private Label label1;
-        private CheckBox CashCheck;
+        private CheckBox CashCheckBox;
         private Label label14;
-        private CheckBox OnlinePaymentCheck;
-        private CheckBox CardCheck;
-        private Button button1;
+        private CheckBox OnlinePaymentCheckBox;
+        private CheckBox CardCheckBox;
+        private Button SearchBtn;
+        private ComboBox RoomTypeCB;
     }
 }

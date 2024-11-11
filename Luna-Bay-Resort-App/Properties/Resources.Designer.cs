@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LunaBayFinals.Properties {
+namespace MainForms.Properties {
     using System;
     
     

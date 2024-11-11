@@ -1,4 +1,4 @@
-﻿namespace LunaBay_SubForms
+﻿namespace SubForms
 {
     partial class ReservationEdit
     {
@@ -35,9 +35,6 @@
             DepositReqAmountText = new Label();
             label14 = new Label();
             label12 = new Label();
-            GuestNumText = new TextBox();
-            label11 = new Label();
-            RoomTypeText = new TextBox();
             label10 = new Label();
             CheckOutPicker = new DateTimePicker();
             CheckInPicker = new DateTimePicker();
@@ -46,6 +43,9 @@
             ConfirmButton = new Button();
             TotalAmountText = new Label();
             label13 = new Label();
+            RoomTypeCB = new ComboBox();
+            GuestNumText = new TextBox();
+            label11 = new Label();
             SuspendLayout();
             // 
             // ReservationNoText
@@ -125,35 +125,6 @@
             label12.TabIndex = 49;
             label12.Text = "Payment Information:";
             // 
-            // GuestNumText
-            // 
-            GuestNumText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            GuestNumText.Location = new Point(399, 276);
-            GuestNumText.Margin = new Padding(4, 3, 4, 3);
-            GuestNumText.Name = "GuestNumText";
-            GuestNumText.Size = new Size(62, 24);
-            GuestNumText.TabIndex = 48;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Consolas", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label11.Location = new Point(273, 282);
-            label11.Margin = new Padding(4, 0, 4, 0);
-            label11.Name = "label11";
-            label11.Size = new Size(120, 18);
-            label11.TabIndex = 47;
-            label11.Text = "No. of Guests:";
-            // 
-            // RoomTypeText
-            // 
-            RoomTypeText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            RoomTypeText.Location = new Point(117, 276);
-            RoomTypeText.Margin = new Padding(4, 3, 4, 3);
-            RoomTypeText.Name = "RoomTypeText";
-            RoomTypeText.Size = new Size(148, 24);
-            RoomTypeText.TabIndex = 46;
-            // 
             // label10
             // 
             label10.AutoSize = true;
@@ -167,8 +138,9 @@
             // 
             // CheckOutPicker
             // 
+            CheckOutPicker.CustomFormat = "M/dd/yyyy hh:mm";
             CheckOutPicker.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            CheckOutPicker.Format = DateTimePickerFormat.Short;
+            CheckOutPicker.Format = DateTimePickerFormat.Custom;
             CheckOutPicker.Location = new Point(257, 214);
             CheckOutPicker.Margin = new Padding(4, 3, 4, 3);
             CheckOutPicker.Name = "CheckOutPicker";
@@ -177,8 +149,9 @@
             // 
             // CheckInPicker
             // 
+            CheckInPicker.CustomFormat = "M/dd/yyyy hh:mm";
             CheckInPicker.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            CheckInPicker.Format = DateTimePickerFormat.Short;
+            CheckInPicker.Format = DateTimePickerFormat.Custom;
             CheckInPicker.Location = new Point(23, 214);
             CheckInPicker.Margin = new Padding(4, 3, 4, 3);
             CheckInPicker.Name = "CheckInPicker";
@@ -241,21 +214,49 @@
             label13.TabIndex = 56;
             label13.Text = "Total Amount:";
             // 
+            // RoomTypeCB
+            // 
+            RoomTypeCB.FormattingEnabled = true;
+            RoomTypeCB.Location = new Point(111, 276);
+            RoomTypeCB.Name = "RoomTypeCB";
+            RoomTypeCB.Size = new Size(181, 23);
+            RoomTypeCB.TabIndex = 64;
+            // 
+            // GuestNumText
+            // 
+            GuestNumText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            GuestNumText.Location = new Point(417, 276);
+            GuestNumText.Margin = new Padding(4, 3, 4, 3);
+            GuestNumText.Name = "GuestNumText";
+            GuestNumText.Size = new Size(44, 24);
+            GuestNumText.TabIndex = 63;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Consolas", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label11.Location = new Point(299, 282);
+            label11.Margin = new Padding(4, 0, 4, 0);
+            label11.Name = "label11";
+            label11.Size = new Size(120, 18);
+            label11.TabIndex = 62;
+            label11.Text = "No. of Guests:";
+            // 
             // ReservationEdit
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(234, 234, 234);
             ClientSize = new Size(494, 541);
+            Controls.Add(RoomTypeCB);
+            Controls.Add(GuestNumText);
+            Controls.Add(label11);
             Controls.Add(ConfirmButton);
             Controls.Add(TotalAmountText);
             Controls.Add(label13);
             Controls.Add(DepositReqAmountText);
             Controls.Add(label14);
             Controls.Add(label12);
-            Controls.Add(GuestNumText);
-            Controls.Add(label11);
-            Controls.Add(RoomTypeText);
             Controls.Add(label10);
             Controls.Add(CheckOutPicker);
             Controls.Add(CheckInPicker);
@@ -266,7 +267,7 @@
             Controls.Add(ReservationNoText);
             Controls.Add(label3);
             Name = "ReservationEdit";
-            Text = "ReservationEdit";
+            Text = "Edit Reservation Form";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -279,9 +280,6 @@
         private Label DepositReqAmountText;
         private Label label14;
         private Label label12;
-        private TextBox GuestNumText;
-        private Label label11;
-        private TextBox RoomTypeText;
         private Label label10;
         private DateTimePicker CheckOutPicker;
         private DateTimePicker CheckInPicker;
@@ -290,5 +288,8 @@
         private Button ConfirmButton;
         private Label TotalAmountText;
         private Label label13;
+        private ComboBox RoomTypeCB;
+        private TextBox GuestNumText;
+        private Label label11;
     }
 }

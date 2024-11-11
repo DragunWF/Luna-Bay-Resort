@@ -1,6 +1,6 @@
-﻿namespace LunaBay_SubForms
+﻿namespace SubForms
 {
-    partial class SearchView
+    partial class SearchReservation
     {
         /// <summary>
         /// Required designer variable.
@@ -222,7 +222,7 @@
             NoOfGuestText.TabIndex = 70;
             NoOfGuestText.Text = "Num of Guest";
             // 
-            // SearchView
+            // SearchReservation
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -244,8 +244,8 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Name = "SearchView";
-            Text = "SearchReservation";
+            Name = "SearchReservation";
+            Text = "Search Reservation Form";
             ResumeLayout(false);
             PerformLayout();
         }

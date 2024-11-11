@@ -1,4 +1,4 @@
-﻿namespace LunaBay_SubForms
+﻿namespace SubForms
 {
     partial class CheckInReceipt
     {
@@ -54,13 +54,15 @@
             label1 = new Label();
             label13 = new Label();
             RoomNoText = new Label();
+            label14 = new Label();
+            PaymentMethodText = new Label();
             SuspendLayout();
             // 
             // AmountDueText
             // 
             AmountDueText.AutoSize = true;
             AmountDueText.Font = new Font("Consolas", 13F, FontStyle.Bold);
-            AmountDueText.Location = new Point(227, 426);
+            AmountDueText.Location = new Point(227, 448);
             AmountDueText.Name = "AmountDueText";
             AmountDueText.Size = new Size(70, 22);
             AmountDueText.TabIndex = 80;
@@ -70,7 +72,7 @@
             // 
             BillAmountText.AutoSize = true;
             BillAmountText.Font = new Font("Consolas", 8.5F);
-            BillAmountText.Location = new Point(194, 394);
+            BillAmountText.Location = new Point(194, 416);
             BillAmountText.Name = "BillAmountText";
             BillAmountText.Size = new Size(49, 14);
             BillAmountText.TabIndex = 79;
@@ -80,7 +82,7 @@
             // 
             AmountPaidText.AutoSize = true;
             AmountPaidText.Font = new Font("Consolas", 8.5F);
-            AmountPaidText.Location = new Point(194, 371);
+            AmountPaidText.Location = new Point(194, 393);
             AmountPaidText.Name = "AmountPaidText";
             AmountPaidText.Size = new Size(49, 14);
             AmountPaidText.TabIndex = 78;
@@ -90,7 +92,7 @@
             // 
             NoOfGuestText.AutoSize = true;
             NoOfGuestText.Font = new Font("Consolas", 10F);
-            NoOfGuestText.Location = new Point(194, 286);
+            NoOfGuestText.Location = new Point(194, 289);
             NoOfGuestText.Name = "NoOfGuestText";
             NoOfGuestText.Size = new Size(112, 17);
             NoOfGuestText.TabIndex = 77;
@@ -100,7 +102,7 @@
             // 
             RoomTypeText.AutoSize = true;
             RoomTypeText.Font = new Font("Consolas", 10F);
-            RoomTypeText.Location = new Point(194, 260);
+            RoomTypeText.Location = new Point(194, 263);
             RoomTypeText.Name = "RoomTypeText";
             RoomTypeText.Size = new Size(80, 17);
             RoomTypeText.TabIndex = 76;
@@ -110,7 +112,7 @@
             // 
             CheckOutDateText.AutoSize = true;
             CheckOutDateText.Font = new Font("Consolas", 10F);
-            CheckOutDateText.Location = new Point(194, 231);
+            CheckOutDateText.Location = new Point(194, 234);
             CheckOutDateText.Name = "CheckOutDateText";
             CheckOutDateText.Size = new Size(40, 17);
             CheckOutDateText.TabIndex = 75;
@@ -120,7 +122,7 @@
             // 
             CheckInDateText.AutoSize = true;
             CheckInDateText.Font = new Font("Consolas", 10F);
-            CheckInDateText.Location = new Point(194, 204);
+            CheckInDateText.Location = new Point(194, 207);
             CheckInDateText.Name = "CheckInDateText";
             CheckInDateText.Size = new Size(40, 17);
             CheckInDateText.TabIndex = 74;
@@ -130,7 +132,7 @@
             // 
             NameText.AutoSize = true;
             NameText.Font = new Font("Consolas", 10F);
-            NameText.Location = new Point(194, 178);
+            NameText.Location = new Point(194, 181);
             NameText.Name = "NameText";
             NameText.Size = new Size(40, 17);
             NameText.TabIndex = 73;
@@ -140,7 +142,7 @@
             // 
             DateTimeText.AutoSize = true;
             DateTimeText.Font = new Font("Consolas", 10F);
-            DateTimeText.Location = new Point(194, 96);
+            DateTimeText.Location = new Point(194, 113);
             DateTimeText.Name = "DateTimeText";
             DateTimeText.Size = new Size(96, 17);
             DateTimeText.TabIndex = 72;
@@ -170,7 +172,7 @@
             // 
             label.AutoSize = true;
             label.Font = new Font("Consolas", 13F, FontStyle.Bold);
-            label.Location = new Point(41, 426);
+            label.Location = new Point(41, 448);
             label.Name = "label";
             label.Size = new Size(180, 22);
             label.TabIndex = 69;
@@ -180,7 +182,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Consolas", 8.5F);
-            label12.Location = new Point(41, 394);
+            label12.Location = new Point(41, 416);
             label12.Name = "label12";
             label12.Size = new Size(133, 14);
             label12.TabIndex = 68;
@@ -190,7 +192,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Consolas", 8.5F);
-            label11.Location = new Point(41, 371);
+            label11.Location = new Point(41, 393);
             label11.Name = "label11";
             label11.Size = new Size(133, 14);
             label11.TabIndex = 67;
@@ -200,7 +202,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Consolas", 10F);
-            label10.Location = new Point(41, 286);
+            label10.Location = new Point(41, 289);
             label10.Name = "label10";
             label10.Size = new Size(112, 17);
             label10.TabIndex = 66;
@@ -210,7 +212,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Consolas", 10F);
-            label9.Location = new Point(41, 260);
+            label9.Location = new Point(41, 263);
             label9.Name = "label9";
             label9.Size = new Size(88, 17);
             label9.TabIndex = 65;
@@ -220,7 +222,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Consolas", 10F);
-            label8.Location = new Point(41, 231);
+            label8.Location = new Point(41, 234);
             label8.Name = "label8";
             label8.Size = new Size(128, 17);
             label8.TabIndex = 64;
@@ -230,7 +232,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Consolas", 10F);
-            label7.Location = new Point(41, 204);
+            label7.Location = new Point(41, 207);
             label7.Name = "label7";
             label7.Size = new Size(120, 17);
             label7.TabIndex = 63;
@@ -240,7 +242,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Consolas", 10F);
-            label6.Location = new Point(41, 178);
+            label6.Location = new Point(41, 181);
             label6.Name = "label6";
             label6.Size = new Size(88, 17);
             label6.TabIndex = 62;
@@ -250,7 +252,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Consolas", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(41, 137);
+            label5.Location = new Point(41, 151);
             label5.Name = "label5";
             label5.Size = new Size(162, 19);
             label5.TabIndex = 61;
@@ -260,7 +262,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Consolas", 10F);
-            label4.Location = new Point(41, 96);
+            label4.Location = new Point(41, 113);
             label4.Name = "label4";
             label4.Size = new Size(104, 17);
             label4.TabIndex = 60;
@@ -300,7 +302,7 @@
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Consolas", 10F);
-            label13.Location = new Point(41, 313);
+            label13.Location = new Point(41, 316);
             label13.Name = "label13";
             label13.Size = new Size(80, 17);
             label13.TabIndex = 82;
@@ -310,11 +312,31 @@
             // 
             RoomNoText.AutoSize = true;
             RoomNoText.Font = new Font("Consolas", 10F);
-            RoomNoText.Location = new Point(194, 313);
+            RoomNoText.Location = new Point(194, 316);
             RoomNoText.Name = "RoomNoText";
             RoomNoText.Size = new Size(64, 17);
             RoomNoText.TabIndex = 83;
             RoomNoText.Text = "Room No";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Consolas", 10F);
+            label14.Location = new Point(41, 96);
+            label14.Name = "label14";
+            label14.Size = new Size(128, 17);
+            label14.TabIndex = 84;
+            label14.Text = "Payment Method:";
+            // 
+            // PaymentMethodText
+            // 
+            PaymentMethodText.AutoSize = true;
+            PaymentMethodText.Font = new Font("Consolas", 10F);
+            PaymentMethodText.Location = new Point(194, 96);
+            PaymentMethodText.Name = "PaymentMethodText";
+            PaymentMethodText.Size = new Size(120, 17);
+            PaymentMethodText.TabIndex = 85;
+            PaymentMethodText.Text = "Payment Method";
             // 
             // CheckInReceipt
             // 
@@ -322,6 +344,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(484, 511);
+            Controls.Add(PaymentMethodText);
+            Controls.Add(label14);
             Controls.Add(RoomNoText);
             Controls.Add(label13);
             Controls.Add(AmountDueText);
@@ -349,7 +373,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "CheckInReceipt";
-            Text = "CheckInReceipt";
+            Text = "Check-In Receipt Form";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -381,5 +405,7 @@
         private Label label1;
         private Label label13;
         private Label RoomNoText;
+        private Label label14;
+        private Label PaymentMethodText;
     }
 }

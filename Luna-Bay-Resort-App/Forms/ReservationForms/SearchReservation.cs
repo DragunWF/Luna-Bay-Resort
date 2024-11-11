@@ -8,13 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LunaBay_SubForms
+namespace SubForms
 {
-    public partial class SearchView : Form
+    public partial class SearchReservation : Form
     {
-        public SearchView()
+        public SearchReservation()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
         }
     }
 }

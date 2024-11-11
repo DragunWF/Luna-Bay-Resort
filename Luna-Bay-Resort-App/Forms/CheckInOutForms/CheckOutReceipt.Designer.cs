@@ -1,4 +1,4 @@
-﻿namespace LunaBay_SubForms
+﻿namespace SubForms
 {
     partial class CheckOutReceipt
     {
@@ -313,7 +313,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "CheckOutReceipt";
-            Text = "CheckOutReceipt";
+            Text = "Check-Out Receipt form";
             ResumeLayout(false);
             PerformLayout();
         }
