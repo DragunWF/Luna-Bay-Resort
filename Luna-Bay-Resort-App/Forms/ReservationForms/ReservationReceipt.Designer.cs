@@ -325,7 +325,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "ReservationReceipt";
-            Text = "ReservationReceipt";
+            Text = "Reservation Receipt Form";
             ResumeLayout(false);
             PerformLayout();
         }

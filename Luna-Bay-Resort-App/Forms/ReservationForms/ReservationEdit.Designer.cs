@@ -267,7 +267,7 @@
             Controls.Add(ReservationNoText);
             Controls.Add(label3);
             Name = "ReservationEdit";
-            Text = "ReservationEdit";
+            Text = "Edit Reservation Form";
             ResumeLayout(false);
             PerformLayout();
         }

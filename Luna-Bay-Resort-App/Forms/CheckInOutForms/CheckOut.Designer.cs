@@ -106,6 +106,7 @@
             SearchBtn.TabIndex = 60;
             SearchBtn.Text = "Search";
             SearchBtn.UseVisualStyleBackColor = false;
+            SearchBtn.Click += SearchBtn_Click;
             // 
             // label4
             // 
@@ -308,6 +309,7 @@
             CheckOutBtn.TabIndex = 78;
             CheckOutBtn.Text = "Check-Out Now";
             CheckOutBtn.UseVisualStyleBackColor = false;
+            CheckOutBtn.Click += CheckOutBtn_Click;
             // 
             // CheckOut
             // 
@@ -339,7 +341,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "CheckOut";
-            Text = "CheckOutcs";
+            Text = "Check-Out Form";
             ResumeLayout(false);
             PerformLayout();
         }

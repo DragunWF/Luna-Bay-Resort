@@ -373,7 +373,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "CheckInReceipt";
-            Text = "CheckInReceipt";
+            Text = "Check-In Receipt Form";
             ResumeLayout(false);
             PerformLayout();
         }

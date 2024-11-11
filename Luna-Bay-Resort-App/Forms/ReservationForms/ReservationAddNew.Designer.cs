@@ -370,7 +370,7 @@
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(4, 3, 4, 3);
             Name = "ReservationAddNew";
-            Text = "Reservation Add New:";
+            Text = "Add New Reservation Form";
             ResumeLayout(false);
             PerformLayout();
         }

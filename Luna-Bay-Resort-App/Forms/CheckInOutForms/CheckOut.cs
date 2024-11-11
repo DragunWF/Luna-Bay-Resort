@@ -18,5 +18,22 @@ namespace SubForms
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
         }
+
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(CheckInNoText.Text))
+            {
+                MessageBox.Show("Do not leave the check-in text box empty!");
+            }
+            else
+            {
+
+            }
+        }
+
+        private void CheckOutBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

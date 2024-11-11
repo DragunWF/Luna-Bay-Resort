@@ -395,7 +395,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "CheckIn";
-            Text = "CheckIn";
+            Text = "Check-In Form";
             ResumeLayout(false);
             PerformLayout();
         }
