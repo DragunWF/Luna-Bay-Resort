@@ -19,7 +19,7 @@ namespace MainForms
         }
         private void InitializeAmenitiesLayout()
         {
-            // Main panel for layout
+           
             TableLayoutPanel mainPanel = new TableLayoutPanel
             {
                 Dock = DockStyle.Fill,
@@ -28,14 +28,14 @@ namespace MainForms
                 Padding = new Padding(10),
             };
 
-            mainPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60)); // Menu List side
-            mainPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40)); // Checkout side
+            mainPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60));
+            mainPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40)); 
 
-            // Menu List panel
+            
             Panel menuListPanel = CreateMenuListPanel();
             mainPanel.Controls.Add(menuListPanel, 0, 0);
 
-            // Checkout panel
+            
             Panel checkoutPanel = CreateCheckoutPanel();
             mainPanel.Controls.Add(checkoutPanel, 1, 0);
 
@@ -52,12 +52,12 @@ namespace MainForms
                 RowCount = 3,
             };
 
-            // Define row heights: 10% for title, 70% for DataGridView, 20% for controls
+            
             menuPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 10));
             menuPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 75));
             menuPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 15));
 
-            // Title label for Menu List
+           
             Label menuTitle = new Label
             {
                 Text = "Menu List",
@@ -67,7 +67,7 @@ namespace MainForms
             };
             menuPanel.Controls.Add(menuTitle, 0, 0);
 
-            // Table for menu items with controlled size
+            
             DataGridView menuTable = new DataGridView
             {
                 ColumnHeadersVisible = true,
@@ -78,7 +78,7 @@ namespace MainForms
             menuTable.Columns.Add("Price", "Price");
             menuPanel.Controls.Add(menuTable, 0, 1);
 
-            // Add bottom controls like search, add-ons, categories
+            
             FlowLayoutPanel bottomPanel = new FlowLayoutPanel
             {
                 Height = 300,
@@ -91,7 +91,7 @@ namespace MainForms
             {
                 PlaceholderText = "Search..",
                 Font = new Font("Consolas", 12, FontStyle.Regular),
-                Height = 60, // Increased the height for better visibility
+                Height = 60, 
                 Width = 827
             };
 
@@ -100,8 +100,8 @@ namespace MainForms
                 Text = "Search",
                 Font = new Font("Consolas", 12, FontStyle.Regular),
                 BackColor = ColorTranslator.FromHtml("#2E2F5B"),
-                Height = 35, // Increased the height
-                Width = 100, // Custom width for consistency
+                Height = 35, 
+                Width = 100, 
                 ForeColor = Color.White
             };
 
@@ -111,8 +111,8 @@ namespace MainForms
                 Text = "Add-On",
                 Font = new Font("Consolas", 12, FontStyle.Regular),
                 BackColor = ColorTranslator.FromHtml("#3ADF00"),
-                Height = 35, // Increased the height
-                Width = 100, // Custom width for consistency
+                Height = 35, 
+                Width = 100, 
                 ForeColor = Color.White,
                 Margin = new Padding(80, 0, 0, 0)
             };
@@ -122,8 +122,8 @@ namespace MainForms
                 Text = "Breakfast",
                 Font = new Font("Consolas", 12, FontStyle.Regular),
                 BackColor = ColorTranslator.FromHtml("#FFFFFF"),
-                Height = 35, // Increased the height
-                Width = 120, // Custom width for consistency
+                Height = 35, 
+                Width = 120,
                 ForeColor = Color.Black
             };
 
@@ -132,8 +132,8 @@ namespace MainForms
                 Text = "Lunch",
                 Font = new Font("Consolas", 12, FontStyle.Regular),
                 BackColor = ColorTranslator.FromHtml("#FFFFFF"),
-                Height = 35, // Increased the height
-                Width = 100, // Custom width for consistency
+                Height = 35, 
+                Width = 100, 
                 ForeColor = Color.Black
             };
 
@@ -142,8 +142,8 @@ namespace MainForms
                 Text = "Dinner",
                 Font = new Font("Consolas", 12, FontStyle.Regular),
                 BackColor = ColorTranslator.FromHtml("#FFFFFF"),
-                Height = 35, // Increased the height
-                Width = 100, // Custom width for consistency
+                Height = 35, 
+                Width = 100, 
                 ForeColor = Color.Black
             };
 
@@ -152,8 +152,8 @@ namespace MainForms
                 Text = "Beverages",
                 Font = new Font("Consolas", 12, FontStyle.Regular),
                 BackColor = ColorTranslator.FromHtml("#FFFFFF"),
-                Height = 35, // Increased the height
-                Width = 120, // Custom width for consistency
+                Height = 35, 
+                Width = 120, 
                 ForeColor = Color.Black
             };
 
@@ -162,40 +162,36 @@ namespace MainForms
                 Text = "Snacks",
                 Font = new Font("Consolas", 12, FontStyle.Regular),
                 BackColor = ColorTranslator.FromHtml("#FFFFFF"),
-                Height = 35, // Increased the height
-                Width = 100, // Custom width for consistency
+                Height = 35, 
+                Width = 100, 
                 ForeColor = Color.Black
             };
 
             Button cancelButton = new Button
             {
-                Text = "Cancel Order",
+                Text = "Cancel",
                 Font = new Font("Consolas", 12, FontStyle.Regular),
                 BackColor = ColorTranslator.FromHtml("#F50000"),
-                Height = 35, // Increased the height
-                Width = 150, // Custom width to accommodate the text
+                Height = 35, 
+                Width = 100, 
                 ForeColor = Color.White,
-                Margin = new Padding(215, 0, 0, 0)
+                Margin = new Padding(450, 0, 0, 0)
             };
 
-            // Add all controls to bottomPanel
+           
             bottomPanel.Controls.AddRange(new Control[]
             {
-    searchBox,
-    searchButton,
-    addOnButton,
-    breakfastButton,
-    lunchButton,
-    dinnerButton,
-    beveragesButton,
-    snacksButton,
-    cancelButton
+                searchBox,
+                searchButton,
+                addOnButton,
+                breakfastButton,
+                lunchButton,
+                dinnerButton,
+                beveragesButton,
+                snacksButton,
+                cancelButton
             });
-
-            // Add bottomPanel to menuPanel at the specified grid location
             menuPanel.Controls.Add(bottomPanel, 0, 2);
-
-
             return menuPanel;
         }
 
@@ -206,13 +202,11 @@ namespace MainForms
                 Dock = DockStyle.Fill,
                 RowCount = 3,
             };
-
-            // Define row heights: 10% for title, 70% for DataGridView, 20% for totals and button
             checkoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 10));
             checkoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 70));
             checkoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 20));
 
-            // Title label for Checkout
+            
             Label checkoutTitle = new Label
             {
                 Text = "Checkout",
@@ -222,7 +216,7 @@ namespace MainForms
             };
             checkoutPanel.Controls.Add(checkoutTitle, 0, 0);
 
-            // Table for checkout items with controlled size
+            
             DataGridView checkoutTable = new DataGridView
             {
                 ColumnHeadersVisible = true,
@@ -234,7 +228,7 @@ namespace MainForms
             checkoutTable.Columns.Add("Price", "Price");
             checkoutPanel.Controls.Add(checkoutTable, 0, 1);
 
-            // Total and Pay Order button at bottom
+          
             TableLayoutPanel totalPanel = new TableLayoutPanel
             {
                 Dock = DockStyle.Fill,
@@ -261,11 +255,7 @@ namespace MainForms
             totalPanel.Controls.Add(vatLabel, 0, 2);
             totalPanel.Controls.Add(totalLabel, 0, 3);
             totalPanel.Controls.Add(payButton, 0, 4);
-
-
-
             checkoutPanel.Controls.Add(totalPanel, 0, 2);
-
             return checkoutPanel;
         }
     }
