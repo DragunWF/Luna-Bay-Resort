@@ -27,7 +27,7 @@ namespace SubForms
             this.numOfGuests = numOfGuests;
 
             // Receipt Data
-            receiptNo = Utils.GenerateReceiptId();
+            receiptNo = Utils.GenerateReceiptNo();
             reservationNo = Utils.GenerateReservationNo();
 
             // Displays receipt data to the text labels

@@ -26,7 +26,7 @@ namespace Luna_Bay_Sub_Forms
                     CheckInPicker.Text,
                     CheckOutPicker.Text
                 };
-                if (!IsValidTextBoxes(textboxValues))
+                if (!Utils.IsTextBoxesNotEmpty(textboxValues))
                 {
                     MessageBox.Show("Please don't leave any text boxes empty!");
                 }
@@ -63,18 +63,6 @@ namespace Luna_Bay_Sub_Forms
             {
                 MessageBox.Show($"An unexpected error has occured: {err.Message}");
             }
-        }
-
-        private bool IsValidTextBoxes(string[] textValues)
-        {
-            foreach (string value in textValues)
-            {
-                if (string.IsNullOrEmpty(value))
-                {
-                    return false;
-                }
-            }
-            return true;
         }
     }
 }

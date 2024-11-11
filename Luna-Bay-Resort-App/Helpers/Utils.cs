@@ -13,7 +13,12 @@ namespace Luna_Bay_Resort_App.Helpers
         private static readonly string digits = "0123456789";
         private static readonly Random random = new Random();
 
-        public static string GenerateReceiptId()
+        public static string GenerateCheckInOutNo()
+        {
+            return GenerateRandomId(9).ToString();
+        }
+
+        public static string GenerateReceiptNo()
         {
             return GenerateRandomId(9).ToString();
         }
@@ -40,6 +45,18 @@ namespace Luna_Bay_Resort_App.Helpers
         {
             // Example output in this date format: "2024-11-11 10:30"
             return DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+        }
+
+        public static bool IsTextBoxesNotEmpty(string[] textValues)
+        {
+            foreach (string value in textValues)
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public static bool IsValidContactNumber(string contactNumber)
