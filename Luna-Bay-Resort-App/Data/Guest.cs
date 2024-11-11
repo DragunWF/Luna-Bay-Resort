@@ -9,11 +9,13 @@ namespace Luna_Bay_Resort_App.Data
     internal class Guest
     {
         private string name, email, phone, checkIn, checkOut, status;
-        private int receiptId, reservationId, checkInId, checkOutId, room, numOfGuest, billAmount, balance, paymentTypeId;
+        private int guestId, reservationId, checkInId, checkOutId, room, numOfGuest, billAmount, balance, paymentTypeId;
 
-        public Guest(int receiptId, int reservationId, int checkInId, int checkOutId, string name, string email, string phone, int room, int numOfGuest, string checkIn, string checkOut, string status, int billAmount, int balance, int paymentTypeId)
+        public Guest(int guestId, int reservationId, int checkInId, int checkOutId, string name, 
+            string email, string phone, int room, int numOfGuest, string checkIn, string checkOut, 
+            string status, int billAmount, int balance, int paymentTypeId)
         {
-            this.receiptId = receiptId;
+            this.guestId = guestId;
             this.reservationId = reservationId;
             this.checkInId = checkInId;
             this.checkOutId = checkOutId;
@@ -32,7 +34,7 @@ namespace Luna_Bay_Resort_App.Data
 
         #region Getter Methods
 
-        public int getReceiptId() => receiptId;
+        public int getGuestId() => guestId;
         public int getReservationId() => reservationId;
         public int getCheckInId() => checkInId;
         public int getCheckOutId() => checkOutId;
