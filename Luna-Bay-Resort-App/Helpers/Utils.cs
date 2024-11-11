@@ -13,6 +13,8 @@ namespace Luna_Bay_Resort_App.Helpers
         private static readonly string digits = "0123456789";
         private static readonly Random random = new Random();
 
+        #region Generate ID/No Methods
+
         public static string GenerateCheckInOutNo()
         {
             return GenerateRandomId(9).ToString();
@@ -28,24 +30,20 @@ namespace Luna_Bay_Resort_App.Helpers
             return GenerateRandomId(5).ToString();
         }
 
-        public static string FormatCurrency(int amount)
+        private static int GenerateRandomId(int digitCount)
         {
-            return $"{amount} PHP";
-        }
-
-        public static void ResetTextBoxes(TextBox[] textBoxes)
-        {
-            foreach (TextBox textBox in textBoxes)
+            string receiptId = "";
+            for (int i = 0; i < digitCount; i++)
             {
-                textBox.Text = "";
+                // Ternary condition's purpose is to prevent leading zeroes
+                receiptId += digits[random.Next(i == 0 ? 1 : 0, digits.Length)];
             }
+            return int.Parse(receiptId);
         }
 
-        public static string GetCurrentDate()
-        {
-            // Example output in this date format: "2024-11-11 10:30"
-            return DateTime.Now.ToString("yyyy-MM-dd HH:mm");
-        }
+        #endregion
+
+        #region Validator Methods
 
         public static bool IsTextBoxesNotEmpty(string[] textValues)
         {
@@ -71,15 +69,29 @@ namespace Luna_Bay_Resort_App.Helpers
             return Regex.IsMatch(email, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
         }
 
-        private static int GenerateRandomId(int digitCount)
+        #endregion
+
+        #region Miscelleneous Methods
+
+        public static string FormatCurrency(int amount)
         {
-            string receiptId = "";
-            for (int i = 0; i < digitCount; i++)
-            {
-                // Ternary condition's purpose is to prevent leading zeroes
-                receiptId += digits[random.Next(i == 0 ? 1 : 0, digits.Length)];
-            }
-            return int.Parse(receiptId);
+            return $"{amount} PHP";
         }
+
+        public static void ResetTextBoxes(TextBox[] textBoxes)
+        {
+            foreach (TextBox textBox in textBoxes)
+            {
+                textBox.Text = "";
+            }
+        }
+
+        public static string GetCurrentDate()
+        {
+            // Example output in this date format: "2024-11-11 10:30"
+            return DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+        }
+
+        #endregion
     }
 }
