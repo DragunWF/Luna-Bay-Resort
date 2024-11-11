@@ -29,7 +29,6 @@ namespace Luna_Bay_Sub_Forms
                 if (!IsValidTextBoxes(textboxValues))
                 {
                     MessageBox.Show("Please don't leave any text boxes empty!");
-
                 }
                 else if (!Utils.IsValidEmail(EmailText.Text))
                 {

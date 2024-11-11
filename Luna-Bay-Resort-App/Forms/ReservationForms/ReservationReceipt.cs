@@ -14,7 +14,7 @@ namespace SubForms
     public partial class ReservationReceipt : Form
     {
         private string fullName, checkInDate, checkOutDate, roomType, numOfGuests;
-        private string reservationNo, receiptId;
+        private string reservationNo, receiptNo;
 
         public ReservationReceipt(string fullName, string checkInDate, string checkOutDate, string roomType, string numOfGuests)
         {
@@ -27,7 +27,7 @@ namespace SubForms
             this.numOfGuests = numOfGuests;
 
             // Receipt Data
-            receiptId = Utils.GenerateReceiptId();
+            receiptNo = Utils.GenerateReceiptId();
             reservationNo = Utils.GenerateReservationNo();
 
             // Displays receipt data to the text labels
@@ -38,7 +38,7 @@ namespace SubForms
         {
             // Receipt Details
             ReservationNoText.Text = reservationNo;
-            ReceiptNoText.Text = receiptId;
+            ReceiptNoText.Text = receiptNo;
             DateTimeText.Text = Utils.GetCurrentDate();
 
             // Reservation Details
