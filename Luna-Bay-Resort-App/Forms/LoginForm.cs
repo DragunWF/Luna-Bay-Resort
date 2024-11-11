@@ -26,7 +26,7 @@ namespace MainForms
 
         private bool IsValidTextBoxes()
         {
-            return !(string.IsNullOrWhiteSpace(LoginPassword.Text) || 
+            return !(string.IsNullOrWhiteSpace(LoginUsername.Text) || 
                      string.IsNullOrWhiteSpace(LoginPassword.Text));
         }
     }
