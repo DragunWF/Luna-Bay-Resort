@@ -13,7 +13,7 @@ namespace SubForms
 {
     public partial class CheckInReceipt : Form
     {
-        private readonly string fullName, checkInDate, checkOutDate, roomType, numOfGuests, roomNo;
+        private readonly string fullName, checkInDate, checkOutDate, roomType, numOfGuests, roomNo, paymentMethod;
         private readonly string checkInNo, receiptNo;
 
         public CheckInReceipt(string fullName, string checkInDate, string checkOutDate, 
@@ -29,6 +29,7 @@ namespace SubForms
             this.roomType = roomType;
             this.numOfGuests = numOfGuests;
             this.roomNo = roomNo;
+            this.paymentMethod = paymentMethod;
 
             // Receipt data
             checkInNo = Utils.GenerateCheckInOutNo();
@@ -43,6 +44,7 @@ namespace SubForms
             // Receipt Details
             CheckInNoText.Text = checkInNo;
             ReceiptNoText.Text = receiptNo;
+            PaymentMethodText.Text = paymentMethod;
             DateTimeText.Text = Utils.GetCurrentDate();
 
             // Check In Details

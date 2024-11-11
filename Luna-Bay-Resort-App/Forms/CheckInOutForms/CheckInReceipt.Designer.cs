@@ -55,7 +55,7 @@
             label13 = new Label();
             RoomNoText = new Label();
             label14 = new Label();
-            PaymentMethodtxt = new Label();
+            PaymentMethodText = new Label();
             SuspendLayout();
             // 
             // AmountDueText
@@ -328,15 +328,15 @@
             label14.TabIndex = 84;
             label14.Text = "Payment Method:";
             // 
-            // PaymentMethodtxt
+            // PaymentMethodText
             // 
-            PaymentMethodtxt.AutoSize = true;
-            PaymentMethodtxt.Font = new Font("Consolas", 10F);
-            PaymentMethodtxt.Location = new Point(194, 96);
-            PaymentMethodtxt.Name = "PaymentMethodtxt";
-            PaymentMethodtxt.Size = new Size(120, 17);
-            PaymentMethodtxt.TabIndex = 85;
-            PaymentMethodtxt.Text = "Payment Method";
+            PaymentMethodText.AutoSize = true;
+            PaymentMethodText.Font = new Font("Consolas", 10F);
+            PaymentMethodText.Location = new Point(194, 96);
+            PaymentMethodText.Name = "PaymentMethodText";
+            PaymentMethodText.Size = new Size(120, 17);
+            PaymentMethodText.TabIndex = 85;
+            PaymentMethodText.Text = "Payment Method";
             // 
             // CheckInReceipt
             // 
@@ -344,7 +344,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(484, 511);
-            Controls.Add(PaymentMethodtxt);
+            Controls.Add(PaymentMethodText);
             Controls.Add(label14);
             Controls.Add(RoomNoText);
             Controls.Add(label13);
@@ -406,6 +406,6 @@
         private Label label13;
         private Label RoomNoText;
         private Label label14;
-        private Label PaymentMethodtxt;
+        private Label PaymentMethodText;
     }
 }
