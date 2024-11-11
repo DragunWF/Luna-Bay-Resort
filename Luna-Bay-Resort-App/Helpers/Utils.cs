@@ -27,5 +27,13 @@ namespace Luna_Bay_Resort_App.Helpers
         {
             return $"{amount} PHP";
         }
+
+        public static void ResetTextBoxes(TextBox[] textBoxes)
+        {
+            foreach (TextBox textBox in textBoxes)
+            {
+                textBox.Text = "";
+            }
+        }
     }
 }
