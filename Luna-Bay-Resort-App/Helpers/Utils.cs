@@ -3,6 +3,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Luna_Bay_Resort_App.Helpers
@@ -34,6 +35,18 @@ namespace Luna_Bay_Resort_App.Helpers
             {
                 textBox.Text = "";
             }
+        }
+
+        public static bool IsValidContactNumber(string contactNumber)
+        {
+            // Pattern for valid phone numbers (adapt as needed)
+            return Regex.IsMatch(contactNumber, @"^(\+?\d{1,3})?[-.\s]?(\d{3})[-.\s]?(\d{3})[-.\s]?(\d{4})$");
+        }
+
+        public static bool IsValidEmail(string email)
+        {
+            // Standard email pattern, allowing for valid characters and common email formats
+            return Regex.IsMatch(email, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
         }
     }
 }
