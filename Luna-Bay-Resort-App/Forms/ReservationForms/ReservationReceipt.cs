@@ -13,8 +13,8 @@ namespace SubForms
 {
     public partial class ReservationReceipt : Form
     {
-        private string fullName, checkInDate, checkOutDate, roomType, numOfGuests;
-        private string reservationNo, receiptNo;
+        private readonly string fullName, checkInDate, checkOutDate, roomType, numOfGuests;
+        private readonly string reservationNo, receiptNo;
 
         public ReservationReceipt(string fullName, string checkInDate, string checkOutDate, string roomType, string numOfGuests)
         {
@@ -47,6 +47,8 @@ namespace SubForms
             CheckOutDateText.Text = checkOutDate;
             RoomTypeText.Text = roomType;
             NoOfGuestText.Text = numOfGuests;
+
+            // TODO: Amount Details
         }
     }
 }
