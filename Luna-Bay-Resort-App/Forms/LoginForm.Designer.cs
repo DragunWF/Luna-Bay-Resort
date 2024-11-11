@@ -31,9 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             pictureBox1 = new PictureBox();
             label1 = new Label();
-            loginUsername = new TextBox();
+            LoginUsername = new TextBox();
             label2 = new Label();
-            loginPassword = new TextBox();
+            LoginPassword = new TextBox();
             loginBtn = new Button();
             pictureBox2 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -63,13 +63,13 @@
             label1.TabIndex = 1;
             label1.Text = "Username:";
             // 
-            // loginUsername
+            // LoginUsername
             // 
-            loginUsername.Location = new Point(47, 302);
-            loginUsername.Margin = new Padding(3, 2, 3, 2);
-            loginUsername.Name = "loginUsername";
-            loginUsername.Size = new Size(206, 23);
-            loginUsername.TabIndex = 2;
+            LoginUsername.Location = new Point(47, 302);
+            LoginUsername.Margin = new Padding(3, 2, 3, 2);
+            LoginUsername.Name = "LoginUsername";
+            LoginUsername.Size = new Size(206, 23);
+            LoginUsername.TabIndex = 2;
             // 
             // label2
             // 
@@ -82,13 +82,13 @@
             label2.TabIndex = 3;
             label2.Text = "Password:";
             // 
-            // loginPassword
+            // LoginPassword
             // 
-            loginPassword.Location = new Point(47, 367);
-            loginPassword.Margin = new Padding(3, 2, 3, 2);
-            loginPassword.Name = "loginPassword";
-            loginPassword.Size = new Size(206, 23);
-            loginPassword.TabIndex = 4;
+            LoginPassword.Location = new Point(47, 367);
+            LoginPassword.Margin = new Padding(3, 2, 3, 2);
+            LoginPassword.Name = "LoginPassword";
+            LoginPassword.Size = new Size(206, 23);
+            LoginPassword.TabIndex = 4;
             // 
             // loginBtn
             // 
@@ -125,9 +125,9 @@
             ClientSize = new Size(929, 565);
             Controls.Add(pictureBox2);
             Controls.Add(loginBtn);
-            Controls.Add(loginPassword);
+            Controls.Add(LoginPassword);
             Controls.Add(label2);
-            Controls.Add(loginUsername);
+            Controls.Add(LoginUsername);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
             Margin = new Padding(3, 2, 3, 2);
@@ -145,9 +145,9 @@
 
         private PictureBox pictureBox1;
         private Label label1;
-        private TextBox loginUsername;
+        private TextBox LoginUsername;
         private Label label2;
-        private TextBox loginPassword;
+        private TextBox LoginPassword;
         private Button loginBtn;
         private PictureBox pictureBox2;
     }
