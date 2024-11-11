@@ -297,7 +297,7 @@ CREATE TABLE POSReceipt (
 
 -- Guest Table 
 CREATE TABLE Guest (
-    Receipt_No INT PRIMARY KEY,
+    Guest_ID INT PRIMARY KEY,
     Reservation_ID INT NULL,
     Checkin_ID INT NULL,
     Checkout_ID INT NULL,
