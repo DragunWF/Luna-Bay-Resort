@@ -45,6 +45,27 @@ namespace Luna_Bay_Resort_App.Helpers
 
         #region Validator Methods
 
+        public static bool IsValidFormData(string[] inputValues, string email, string contactNo)
+        {
+            if (!IsTextBoxesNotEmpty(inputValues))
+            {
+                MessageBox.Show("Please don't leave any text boxes empty!");
+            }
+            else if (!IsValidEmail(email))
+            {
+                MessageBox.Show("Your email is invalid, please make sure you type in a valid email address!");
+            }
+            else if (!IsValidContactNumber(contactNo))
+            {
+                MessageBox.Show("Your contact number is invalid, please make sure you type in a number with the correct format");
+            }
+            else
+            {
+                return true;
+            }
+            return false; // This gets returned when any of the data is invalid
+        }
+
         public static bool IsTextBoxesNotEmpty(string[] textValues)
         {
             foreach (string value in textValues)

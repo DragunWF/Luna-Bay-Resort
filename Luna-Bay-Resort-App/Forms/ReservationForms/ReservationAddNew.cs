@@ -17,8 +17,9 @@ namespace Luna_Bay_Sub_Forms
             try
             {
                 string fullName = $"{FirstNameText.Text} {LastNameText.Text}";
-                string[] textboxValues = {
-                    fullName,
+                string[] inputValues = {
+                    FirstNameText.Text,
+                    LastNameText.Text,
                     EmailText.Text,
                     ContactNoText.Text,
                     RoomTypeCB.Text,
@@ -26,21 +27,8 @@ namespace Luna_Bay_Sub_Forms
                     CheckInPicker.Text,
                     CheckOutPicker.Text
                 };
-                if (!Utils.IsTextBoxesNotEmpty(textboxValues))
+                if (Utils.IsValidFormData(inputValues, EmailText.Text, ContactNoText.Text))
                 {
-                    MessageBox.Show("Please don't leave any text boxes empty!");
-                }
-                else if (!Utils.IsValidEmail(EmailText.Text))
-                {
-                    MessageBox.Show("Your email is invalid, please make sure you type in a valid email address!");
-                }
-                else if (!Utils.IsValidContactNumber(ContactNoText.Text))
-                {
-                    MessageBox.Show("Your contact number is invalid, please make sure you type in a number with the correct format");
-                }
-                else
-                {
-                    // Success
                     // TODO: Uncomment database helper in the future after testing
                     // DatabaseHelper.AddReservation(
                     //     fullName,
@@ -57,7 +45,7 @@ namespace Luna_Bay_Sub_Forms
                     Utils.ResetTextBoxes(new TextBox[] {
                         FirstNameText, LastNameText, EmailText, ContactNoText, GuestNumText
                     });
-                }
+                } 
             }
             catch (Exception err)
             {
