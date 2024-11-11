@@ -15,13 +15,12 @@ namespace Luna_Bay_Resort_App.Helpers
 
         public static string GenerateReceiptId()
         {
-            const int idDigitCount = 9;
-            string receiptId = "";
-            for (int i = 0; i < idDigitCount; i++)
-            {
-                receiptId += digits[random.Next(0, digits.Length)];
-            }
-            return receiptId;
+            return GenerateRandomId(9).ToString();
+        }
+
+        public static string GenerateReservationNo()
+        {
+            return GenerateRandomId(5).ToString();
         }
 
         public static string FormatCurrency(int amount)
@@ -53,6 +52,17 @@ namespace Luna_Bay_Resort_App.Helpers
         {
             // Standard email pattern, allowing for valid characters and common email formats
             return Regex.IsMatch(email, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
+        }
+
+        private static int GenerateRandomId(int digitCount)
+        {
+            string receiptId = "";
+            for (int i = 0; i < digitCount; i++)
+            {
+                // Ternary condition's purpose is to prevent leading zeroes
+                receiptId += digits[random.Next(i == 0 ? 1 : 0, digits.Length)];
+            }
+            return int.Parse(receiptId);
         }
     }
 }
