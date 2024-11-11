@@ -11,7 +11,7 @@ namespace Luna_Bay_Resort_App.Helpers
 {
     internal class DatabaseHelper
     {
-        public static string Key = "Insert Key Here";
+        public static string Key = "Data Source=DRAGUNWF\\SQLEXPRESS;Initial Catalog=LunaBayResortDB;Integrated Security=True;TrustServerCertificate=True";
 
         public static void AddReservation(string name, string email, string phone, string room, int numOfGuest, string checkIn, string checkOut)
         {
@@ -48,10 +48,10 @@ namespace Luna_Bay_Resort_App.Helpers
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
-                string query = "Select Distinct Name From Accomodation Where Room_status = 'Available';";
+                string query = "SELECT DISTINCT Name FROM Accommodation WHERE Room_status = 'Available';";
                 SqlCommand getroomnames = new SqlCommand(query, con);
 
-                //retrieve all Accomodation names
+                //retrieve all Accommodation names
                 using (var reader = getroomnames.ExecuteReader())
                 {
                     while (reader.Read())
@@ -70,7 +70,7 @@ namespace Luna_Bay_Resort_App.Helpers
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
-                string query = "Select Top 1 Room_ID From Accomodation Where Name Like @RoomName";
+                string query = "SELECT Top 1 Room_ID FROM Accomodation WHERE Name LIKE @RoomName";
                 SqlCommand getavailableroom = new SqlCommand(query, con);
                 getavailableroom.Parameters.AddWithValue("@RoomName", RoomName);
 
