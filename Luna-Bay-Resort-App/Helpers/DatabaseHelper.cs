@@ -74,9 +74,9 @@ namespace Luna_Bay_Resort_App.Helpers
         }
 
         //Retrieve all distinct Available Accomodations
-        public static List<String> GetRoomTypes()
+        public static List<Accommodation> GetRoomTypes()
         {
-            var roomNames = new List<string>();
+            var roomNames = new List<Accommodation>();
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
@@ -88,7 +88,7 @@ namespace Luna_Bay_Resort_App.Helpers
                 {
                     while (reader.Read())
                     {
-                        roomNames.Add(reader["Name"].ToString());
+                        roomNames.Add(new Accommodation(reader["Name"].ToString()));
                     }
                 }
                 con.Close();
