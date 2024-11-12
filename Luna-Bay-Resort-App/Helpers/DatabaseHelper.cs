@@ -125,7 +125,7 @@ namespace Luna_Bay_Resort_App.Helpers
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
-                string query = "SELECT DISTINCT Price FROM Accommodation WHERE Name LIKE @RoomType";
+                string query = "SELECT DISTINCT Price FROM Accommodation WHERE Name LIKE '@RoomType'";
                 SqlCommand returnprice = new SqlCommand(query, con);
                 returnprice.Parameters.AddWithValue("@RoomType", Room);
 
@@ -140,5 +140,58 @@ namespace Luna_Bay_Resort_App.Helpers
             return price;
         }
 
+        //Return Food name and price by FoodType_ID
+        public static List<Food> getFoodbyType(int FoodType)
+        {
+            var foods = new List<Food>();
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "SELECT Distinct Food_Name, Price from Food WHERE FoodType_ID = @FoodId";
+
+                SqlCommand getfoodnames = new SqlCommand(query, con);
+                getfoodnames.Parameters.AddWithValue("@FoodId", FoodType);
+
+                using (var reader = getfoodnames.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string foodName = reader["Food_Name"].ToString();
+                        int price = Convert.ToInt32(reader["Price"]);
+
+                        foods.Add(new Food(foodName, price));
+                    }
+                }
+                con.Close();
+            }
+            return foods;
+        }
+
+        //Search for Food name and price using FoodName
+        public static List<Food> searchFood(string FoodName)
+        {
+            var foods = new List<Food>();
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "SELECT Food_Name, Price from Food WHERE Food_Name LIKE '%' + @FoodName + '%'";
+
+                SqlCommand getfoodnames = new SqlCommand(query, con);
+                getfoodnames.Parameters.AddWithValue("@FoodName", FoodName);
+
+                using (var reader = getfoodnames.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string foodName = reader["Food_Name"].ToString();
+                        int price = Convert.ToInt32(reader["Price"]);
+
+                        foods.Add(new Food(foodName, price));
+                    }
+                }
+                con.Close();
+            }
+            return foods;
+        }
     }
 }

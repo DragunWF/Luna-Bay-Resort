@@ -21,6 +21,12 @@ namespace Luna_Bay_Resort_App.Data
             this.price = price;
         }
 
+        public Food(string foodName, int price)
+        {
+            this.foodName = foodName;
+            this.price = price;
+        }
+
         #region Getter Methods
         public int getFoodId() => foodId;
         public int getFoodType() => foodTypeId;
