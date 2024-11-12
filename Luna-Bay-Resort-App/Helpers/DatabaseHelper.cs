@@ -73,6 +73,7 @@ namespace Luna_Bay_Resort_App.Helpers
             }
         }
 
+        //Retrieve all distinct Available Accomodations
         public static List<String> GetRoomTypes()
         {
             var roomNames = new List<string>();
@@ -95,13 +96,14 @@ namespace Luna_Bay_Resort_App.Helpers
             return roomNames;
         }
 
+        //Gives Available Room_ID based on Name
         public static int GetAvailableRoom(string RoomName)
         {
             int RoomNum = 0;
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
-                string query = "SELECT TOP 1 Room_ID FROM Accomodation WHERE Name LIKE @RoomName";
+                string query = "SELECT TOP 1 Room_ID FROM Accommodation WHERE Name LIKE @RoomName AND Room_Status LIKE 'Available'";
                 SqlCommand getavailableroom = new SqlCommand(query, con);
                 getavailableroom.Parameters.AddWithValue("@RoomName", RoomName);
 
@@ -115,5 +117,28 @@ namespace Luna_Bay_Resort_App.Helpers
                 return RoomNum;
             }
         }
+
+        //Returns Price based on Room Name
+        public static int ReturnRoomPrice(string Room)
+        {
+            int price = 0;
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "SELECT DISTINCT Price FROM Accommodation WHERE Name LIKE @RoomType";
+                SqlCommand returnprice = new SqlCommand(query, con);
+                returnprice.Parameters.AddWithValue("@RoomType", Room);
+
+                using (SqlDataReader read = returnprice.ExecuteReader())
+                {
+                    if (read.Read())
+                    {
+                        price = Convert.ToInt32(read["Price"]);
+                    }
+                }
+            }
+            return price;
+        }
+
     }
 }
