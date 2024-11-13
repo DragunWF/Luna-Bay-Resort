@@ -39,20 +39,29 @@ namespace SubForms
                     RoomTypeCB.Text,
                     GuestNumText.Text,
                 };
-                if (!CashCheckBox.Checked && !OnlinePaymentCheckBox.Checked && !CardCheckBox.Checked)
+                double totalAmount = double.Parse(TotalAmountText.Text);
+                
+                if (totalAmount < 0)
+                {
+                    MessageBox.Show("Total amount cannot be negative!");
+                }
+                else if (!CashCheckBox.Checked && !OnlinePaymentCheckBox.Checked && !CardCheckBox.Checked)
                 {
                     MessageBox.Show("Please make sure to choose a payment method!");
                 }
                 else if (Utils.IsValidFormData(inputValues, EmailText.Text, ContactNoText.Text))
                 {
                     string fullName = $"{FirstNameText.Text} {LastNameText.Text}";
-                    // TODO: Add Room Number text field in form to match the receipt's data fields
                     FormManager.OpenForm<CheckInReceipt>(
                         fullName, CheckInPicker.Text, CheckOutPicker.Text,
                         RoomTypeCB.Text, GuestNumText.Text, "1", // Room number is temporary
-                        paymentMethod
+                        paymentMethod, totalAmount
                     );
                 }
+            }
+            catch (FormatException err)
+            {
+                MessageBox.Show("Please make sure to input a valid number for the total amount");
             }
             catch (Exception err)
             {
@@ -100,10 +109,10 @@ namespace SubForms
             MessageBox.Show("No function yet. Still in development!");
         }
 
-        //Changes text to reflect selected room name from RoomTypeCB
+        // Changes text to reflect selected room name from RoomTypeCB
         private void RoomTypeCB_SelectedValueChanged(object sender, EventArgs e)
         {
-            TotalAmountText.Text = Utils.FormatCurrency(DatabaseHelper.ReturnRoomPrice(RoomTypeCB.Text));
+            TotalAmountText.Text = DatabaseHelper.ReturnRoomPrice(RoomTypeCB.Text).ToString();
         }
 
     }
