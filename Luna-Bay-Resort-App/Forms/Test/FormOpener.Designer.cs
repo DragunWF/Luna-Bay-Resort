@@ -38,7 +38,6 @@
             SearchReservationBtn = new Button();
             CheckOutBtn = new Button();
             label3 = new Label();
-            FoodListTestbtn = new Button();
             roomStatusChangeTest = new Button();
             SuspendLayout();
             // 
@@ -140,19 +139,9 @@
             label3.TabIndex = 9;
             label3.Text = "PS: I'm excluding the receipt forms and user control forms here";
             // 
-            // FoodListTestbtn
-            // 
-            FoodListTestbtn.Location = new Point(156, 142);
-            FoodListTestbtn.Name = "FoodListTestbtn";
-            FoodListTestbtn.Size = new Size(138, 23);
-            FoodListTestbtn.TabIndex = 10;
-            FoodListTestbtn.Text = "Food List Test";
-            FoodListTestbtn.UseVisualStyleBackColor = true;
-            FoodListTestbtn.Click += FoodListTestbtn_Click;
-            // 
             // roomStatusChangeTest
             // 
-            roomStatusChangeTest.Location = new Point(300, 142);
+            roomStatusChangeTest.Location = new Point(156, 142);
             roomStatusChangeTest.Name = "roomStatusChangeTest";
             roomStatusChangeTest.Size = new Size(138, 23);
             roomStatusChangeTest.TabIndex = 11;
@@ -166,7 +155,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(453, 231);
             Controls.Add(roomStatusChangeTest);
-            Controls.Add(FoodListTestbtn);
             Controls.Add(label3);
             Controls.Add(CheckOutBtn);
             Controls.Add(SearchReservationBtn);
@@ -195,7 +183,6 @@
         private Button SearchReservationBtn;
         private Button CheckOutBtn;
         private Label label3;
-        private Button FoodListTestbtn;
         private Button roomStatusChangeTest;
     }
 }

@@ -49,11 +49,6 @@ namespace Luna_Bay_Resort_App.Forms.Test
             FormManager.OpenForm<CheckOut>();
         }
 
-        private void FoodListTestbtn_Click(object sender, EventArgs e)
-        {
-            FormManager.OpenForm<GetFoodsTest>();
-        }
-
         private void roomStatusChangeTest_Click(object sender, EventArgs e)
         {
             FormManager.OpenForm<RoomStatusChangeTest>();
