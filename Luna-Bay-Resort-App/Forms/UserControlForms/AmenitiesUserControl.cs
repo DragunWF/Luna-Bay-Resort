@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Luna_Bay_Resort_App.Data;
+using Luna_Bay_Resort_App.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -105,6 +107,11 @@ namespace MainForms
                 ForeColor = Color.White
             };
 
+            searchButton.Click += (sender, e) =>
+            {
+                SearchFood(searchBox.Text);
+            };
+
             Button addOnButton = new Button
             {
 
@@ -117,6 +124,12 @@ namespace MainForms
                 Margin = new Padding(80, 0, 0, 0)
             };
 
+            addOnButton.Click += (sender, e) =>
+            {
+                int foodtype = 4;
+                DisplayFoodByFoodID(foodtype);
+            };
+
             Button breakfastButton = new Button
             {
                 Text = "Breakfast",
@@ -125,6 +138,12 @@ namespace MainForms
                 Height = 35, 
                 Width = 120,
                 ForeColor = Color.Black
+            };
+
+            breakfastButton.Click += (sender, e) =>
+            {
+                int foodtype = 1;
+                DisplayFoodByFoodID(foodtype);
             };
 
             Button lunchButton = new Button
@@ -137,6 +156,12 @@ namespace MainForms
                 ForeColor = Color.Black
             };
 
+            lunchButton.Click += (sender, e) =>
+            {
+                int foodtype = 2;
+                DisplayFoodByFoodID(foodtype);
+            };
+
             Button dinnerButton = new Button
             {
                 Text = "Dinner",
@@ -145,6 +170,12 @@ namespace MainForms
                 Height = 35, 
                 Width = 100, 
                 ForeColor = Color.Black
+            };
+
+            dinnerButton.Click += (sender, e) =>
+            {
+                int foodtype = 3;
+                DisplayFoodByFoodID(foodtype);
             };
 
             Button beveragesButton = new Button
@@ -157,6 +188,12 @@ namespace MainForms
                 ForeColor = Color.Black
             };
 
+            beveragesButton.Click += (sender, e) =>
+            {
+                int foodtype = 6;
+                DisplayFoodByFoodID(foodtype);
+            };
+
             Button snacksButton = new Button
             {
                 Text = "Snacks",
@@ -165,6 +202,12 @@ namespace MainForms
                 Height = 35, 
                 Width = 100, 
                 ForeColor = Color.Black
+            };
+
+            snacksButton.Click += (sender, e) =>
+            {
+                int foodtype = 5;
+                DisplayFoodByFoodID(foodtype);
             };
 
             Button cancelButton = new Button
@@ -178,7 +221,7 @@ namespace MainForms
                 Margin = new Padding(450, 0, 0, 0)
             };
 
-           
+
             bottomPanel.Controls.AddRange(new Control[]
             {
                 searchBox,
@@ -193,6 +236,32 @@ namespace MainForms
             });
             menuPanel.Controls.Add(bottomPanel, 0, 2);
             return menuPanel;
+
+            void DisplayFoodByFoodID(int FoodType)
+            {
+                List<Food> foods = DatabaseHelper.getFoodbyType(FoodType);
+
+                menuTable.Rows.Clear();
+
+                foreach (var food in foods)
+                {
+                    string formattedPrice = Utils.FormatCurrency(food.getPrice());
+                    menuTable.Rows.Add(food.getFoodName(), formattedPrice);
+                }
+            }
+
+            void SearchFood(string FoodName)
+            {
+                List<Food> foods = DatabaseHelper.searchFood(FoodName);
+
+                menuTable.Rows.Clear();
+
+                foreach (var food in foods)
+                {
+                    string formattedPrice = Utils.FormatCurrency(food.getPrice());
+                    menuTable.Rows.Add(food.getFoodName(), formattedPrice);
+                }
+            }
         }
 
         private Panel CreateCheckoutPanel()
