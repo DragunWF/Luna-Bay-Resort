@@ -14,9 +14,11 @@ namespace SubForms
     public partial class ReservationReceipt : Form
     {
         private readonly string fullName, checkInDate, checkOutDate, roomType, numOfGuests;
+        private readonly double depositAmount, totalAmount, remainingBalance;
         private readonly string reservationNo, receiptNo;
 
-        public ReservationReceipt(string fullName, string checkInDate, string checkOutDate, string roomType, string numOfGuests)
+        public ReservationReceipt(string fullName, string checkInDate, string checkOutDate, 
+            string roomType, string numOfGuests, double totalAmount, double depositAmount, double remainingBalance)
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -27,6 +29,9 @@ namespace SubForms
             this.checkOutDate = checkOutDate;
             this.roomType = roomType;
             this.numOfGuests = numOfGuests;
+            this.totalAmount = totalAmount;
+            this.depositAmount = depositAmount;
+            this.remainingBalance = remainingBalance;
 
             // Receipt Data
             receiptNo = Utils.GenerateReceiptNo();
@@ -50,7 +55,10 @@ namespace SubForms
             RoomTypeText.Text = roomType;
             NoOfGuestText.Text = numOfGuests;
 
-            // TODO: Amount Details
+            // Amount Details
+            TotalAmountText.Text = Utils.FormatCurrency(totalAmount);
+            DepositAmountText.Text = Utils.FormatCurrency(depositAmount);
+            RemainingBalanceText.Text = Utils.FormatCurrency(remainingBalance);
         }
     }
 }

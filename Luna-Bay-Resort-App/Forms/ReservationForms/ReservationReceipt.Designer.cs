@@ -51,7 +51,7 @@
             NoOfGuestText = new Label();
             DepositAmountText = new Label();
             TotalAmountText = new Label();
-            BalanceText = new Label();
+            RemainingBalanceText = new Label();
             SuspendLayout();
             // 
             // label1
@@ -284,15 +284,15 @@
             TotalAmountText.TabIndex = 22;
             TotalAmountText.Text = "Amount";
             // 
-            // BalanceText
+            // RemainingBalanceText
             // 
-            BalanceText.AutoSize = true;
-            BalanceText.Font = new Font("Consolas", 13F, FontStyle.Bold);
-            BalanceText.Location = new Point(232, 426);
-            BalanceText.Name = "BalanceText";
-            BalanceText.Size = new Size(70, 22);
-            BalanceText.TabIndex = 23;
-            BalanceText.Text = "Amount";
+            RemainingBalanceText.AutoSize = true;
+            RemainingBalanceText.Font = new Font("Consolas", 13F, FontStyle.Bold);
+            RemainingBalanceText.Location = new Point(232, 426);
+            RemainingBalanceText.Name = "RemainingBalanceText";
+            RemainingBalanceText.Size = new Size(70, 22);
+            RemainingBalanceText.TabIndex = 23;
+            RemainingBalanceText.Text = "Amount";
             // 
             // ReservationReceipt
             // 
@@ -300,7 +300,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(484, 511);
-            Controls.Add(BalanceText);
+            Controls.Add(RemainingBalanceText);
             Controls.Add(TotalAmountText);
             Controls.Add(DepositAmountText);
             Controls.Add(NoOfGuestText);
@@ -355,6 +355,6 @@
         private Label NoOfGuestText;
         private Label DepositAmountText;
         private Label TotalAmountText;
-        private Label BalanceText;
+        private Label RemainingBalanceText;
     }
 }

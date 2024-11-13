@@ -26,9 +26,19 @@ namespace Luna_Bay_Sub_Forms
                     RoomTypeCB.Text,
                     GuestNumText.Text,
                     CheckInPicker.Text,
-                    CheckOutPicker.Text
+                    CheckOutPicker.Text,
+                    DepositText.Text,
+                    TotalAmountText.Text
                 };
-                if (Utils.IsValidFormData(inputValues, EmailText.Text, ContactNoText.Text))
+                double totalAmount = double.Parse(TotalAmountText.Text);
+                double depositAmount = double.Parse(DepositText.Text);
+                double remainingBalance = totalAmount - depositAmount;
+
+                if (remainingBalance < 0)
+                {
+                    MessageBox.Show("Deposit amount cannot be greater than the total amount!");
+                }
+                else if (Utils.IsValidFormData(inputValues, EmailText.Text, ContactNoText.Text))
                 {
                     // TODO: Uncomment database helper in the future after testing
                     // DatabaseHelper.AddReservation(
@@ -41,12 +51,18 @@ namespace Luna_Bay_Sub_Forms
                     //     CheckOutPicker.Text
                     // );
                     FormManager.OpenForm<ReservationReceipt>(
-                        fullName, CheckInPicker.Text, CheckOutPicker.Text, RoomTypeCB.Text, GuestNumText.Text
+                        fullName, CheckInPicker.Text, CheckOutPicker.Text, RoomTypeCB.Text, GuestNumText.Text,
+                        totalAmount, depositAmount, remainingBalance
                     );
                     Utils.ResetTextBoxes(new TextBox[] {
-                        FirstNameText, LastNameText, EmailText, ContactNoText, GuestNumText
+                        FirstNameText, LastNameText, EmailText, ContactNoText, GuestNumText,
+                        DepositText, TotalAmountText
                     });
                 }
+            }
+            catch (FormatException err)
+            {
+                MessageBox.Show("Please make sure you input valid numbers for the deposit and total amount textboxes!");
             }
             catch (Exception err)
             {
@@ -54,10 +70,10 @@ namespace Luna_Bay_Sub_Forms
             }
         }
 
-        //Changes text to reflect selected room name from RoomTypeCB, can change output label in the future
+        // Changes text to reflect selected room name from RoomTypeCB, can change output label in the future
         private void RoomTypeCB_SelectedValueChanged(object sender, EventArgs e)
         {
-            TotalAmountText.Text = Utils.FormatCurrency(DatabaseHelper.ReturnRoomPrice(RoomTypeCB.Text));
+            DepositText.Text = DatabaseHelper.ReturnRoomPrice(RoomTypeCB.Text).ToString();
         }
     }
 }

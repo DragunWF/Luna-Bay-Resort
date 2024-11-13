@@ -45,7 +45,7 @@
             EmailText = new TextBox();
             ContactNoText = new TextBox();
             label14 = new Label();
-            DepositPaidCheck = new CheckBox();
+            DepositPaidCheckBox = new CheckBox();
             ConfirmButton = new Button();
             label13 = new Label();
             label12 = new Label();
@@ -236,18 +236,18 @@
             label14.TabIndex = 26;
             label14.Text = "Amount of Req. Deposit:";
             // 
-            // DepositPaidCheck
+            // DepositPaidCheckBox
             // 
-            DepositPaidCheck.CheckAlign = ContentAlignment.MiddleRight;
-            DepositPaidCheck.Font = new Font("Consolas", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            DepositPaidCheck.Location = new Point(333, 419);
-            DepositPaidCheck.Margin = new Padding(4, 3, 4, 3);
-            DepositPaidCheck.Name = "DepositPaidCheck";
-            DepositPaidCheck.Size = new Size(128, 21);
-            DepositPaidCheck.TabIndex = 0;
-            DepositPaidCheck.Text = "Desposit Paid:";
-            DepositPaidCheck.TextAlign = ContentAlignment.MiddleRight;
-            DepositPaidCheck.UseVisualStyleBackColor = true;
+            DepositPaidCheckBox.CheckAlign = ContentAlignment.MiddleRight;
+            DepositPaidCheckBox.Font = new Font("Consolas", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            DepositPaidCheckBox.Location = new Point(333, 419);
+            DepositPaidCheckBox.Margin = new Padding(4, 3, 4, 3);
+            DepositPaidCheckBox.Name = "DepositPaidCheckBox";
+            DepositPaidCheckBox.Size = new Size(128, 21);
+            DepositPaidCheckBox.TabIndex = 0;
+            DepositPaidCheckBox.Text = "Desposit Paid:";
+            DepositPaidCheckBox.TextAlign = ContentAlignment.MiddleRight;
+            DepositPaidCheckBox.UseVisualStyleBackColor = true;
             // 
             // ConfirmButton
             // 
@@ -344,7 +344,7 @@
             Controls.Add(label11);
             Controls.Add(ConfirmButton);
             Controls.Add(label13);
-            Controls.Add(DepositPaidCheck);
+            Controls.Add(DepositPaidCheckBox);
             Controls.Add(label14);
             Controls.Add(ContactNoText);
             Controls.Add(EmailText);
@@ -390,7 +390,7 @@
         private System.Windows.Forms.TextBox EmailText;
         private System.Windows.Forms.TextBox ContactNoText;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.CheckBox DepositPaidCheck;
+        private System.Windows.Forms.CheckBox DepositPaidCheckBox;
         private Button ConfirmButton;
         private Label label13;
         private Label label12;
