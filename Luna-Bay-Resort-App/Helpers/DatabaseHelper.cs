@@ -58,7 +58,7 @@ namespace Luna_Bay_Resort_App.Helpers
                 add.Parameters.AddWithValue("@Name", name);
                 add.Parameters.AddWithValue("@Email", email);
                 add.Parameters.AddWithValue("@Phone", phone);
-                add.Parameters.AddWithValue("@Room", GetAvailableRoom(room));
+                add.Parameters.AddWithValue("@Room", GetAvailableRoomID(room));
                 add.Parameters.AddWithValue("@NumofGuest", numOfGuest);
                 add.Parameters.AddWithValue("@CheckIn", DateTime.Parse(checkIn));
                 add.Parameters.AddWithValue("@CheckOut", DateTime.Parse(checkOut));
@@ -96,8 +96,8 @@ namespace Luna_Bay_Resort_App.Helpers
             return roomNames;
         }
 
-        //Gives Available Room_ID based on Name
-        public static int GetAvailableRoom(string RoomName)
+        //Gives available Room_ID based on Name
+        public static int GetAvailableRoomID(string RoomName)
         {
             int RoomNum = 0;
             using (SqlConnection con = new SqlConnection(Key))
@@ -192,6 +192,56 @@ namespace Luna_Bay_Resort_App.Helpers
                 con.Close();
             }
             return foods;
+        }
+
+        //Return all available Room_ID & Name
+        public static List<Accommodation> GetAllAvailableRoom(DataGridView availableroomtable)
+        {
+            var availablerooms = new List<Accommodation>();
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "SELECT Room_ID, Name FROM Accommodation WHERE Room_status = 'Available'";
+                SqlCommand getrooms = new SqlCommand(query, con);
+                
+                using(var reader = getrooms.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int roomId = Convert.ToInt32(reader["Room_ID"]);
+                        string roomName = reader["Name"].ToString();
+
+                        availablerooms.Add(new Accommodation(roomId, roomName));
+                    }
+                }
+                con.Close();
+            }
+            return availablerooms;
+        }
+
+        //Return All NOT available Room_ID & Name
+        public static List<Accommodation> GetAllNotAvaialbleRoom(DataGridView availableroomtable)
+        {
+            var notavailablerooms = new List<Accommodation>();
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "SELECT Room_ID, Name FROM Accommodation WHERE NOT Room_status = 'Available'";
+                SqlCommand getrooms = new SqlCommand(query, con);
+
+                using (var reader = getrooms.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int roomId = Convert.ToInt32(reader["Room_ID"]);
+                        string roomName = reader["Name"].ToString();
+
+                        notavailablerooms.Add(new Accommodation(roomId, roomName));
+                    }
+                }
+                con.Close();
+            }
+            return notavailablerooms;
         }
     }
 }
