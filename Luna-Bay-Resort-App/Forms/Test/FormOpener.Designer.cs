@@ -39,6 +39,7 @@
             CheckOutBtn = new Button();
             label3 = new Label();
             FoodListTestbtn = new Button();
+            roomStatusChangeTest = new Button();
             SuspendLayout();
             // 
             // label1
@@ -149,11 +150,22 @@
             FoodListTestbtn.UseVisualStyleBackColor = true;
             FoodListTestbtn.Click += FoodListTestbtn_Click;
             // 
+            // roomStatusChangeTest
+            // 
+            roomStatusChangeTest.Location = new Point(300, 142);
+            roomStatusChangeTest.Name = "roomStatusChangeTest";
+            roomStatusChangeTest.Size = new Size(138, 23);
+            roomStatusChangeTest.TabIndex = 11;
+            roomStatusChangeTest.Text = "Room Status Change";
+            roomStatusChangeTest.UseVisualStyleBackColor = true;
+            roomStatusChangeTest.Click += roomStatusChangeTest_Click;
+            // 
             // FormOpener
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(453, 231);
+            Controls.Add(roomStatusChangeTest);
             Controls.Add(FoodListTestbtn);
             Controls.Add(label3);
             Controls.Add(CheckOutBtn);
@@ -184,5 +196,6 @@
         private Button CheckOutBtn;
         private Label label3;
         private Button FoodListTestbtn;
+        private Button roomStatusChangeTest;
     }
 }

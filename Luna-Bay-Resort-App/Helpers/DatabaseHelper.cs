@@ -245,5 +245,21 @@ namespace Luna_Bay_Resort_App.Helpers
             return notavailablerooms;
         }
 
+        //Sets roomstatus based on RoomID
+        public static void SetRoomStatus(string roomStatus, int roomID)
+        {
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "Update Accommodation Set Room_status = @status Where Room_ID = @roomId";
+
+                SqlCommand setroomstatus = new SqlCommand(query, con);
+                setroomstatus.Parameters.AddWithValue("@status", roomStatus);
+                setroomstatus.Parameters.AddWithValue("@roomId", roomID);
+                setroomstatus.ExecuteNonQuery();
+                con.Close();
+            }
+        }
+
     }
 }
