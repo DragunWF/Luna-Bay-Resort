@@ -73,9 +73,10 @@ namespace Luna_Bay_Resort_App.Helpers
             }
         }
 
-        public static List<String> GetRoomTypes()
+        //Retrieve all distinct Available Accomodations
+        public static List<Accommodation> GetRoomTypes()
         {
-            var roomNames = new List<string>();
+            var roomNames = new List<Accommodation>();
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
@@ -87,7 +88,7 @@ namespace Luna_Bay_Resort_App.Helpers
                 {
                     while (reader.Read())
                     {
-                        roomNames.Add(reader["Name"].ToString());
+                        roomNames.Add(new Accommodation(reader["Name"].ToString()));
                     }
                 }
                 con.Close();
@@ -95,13 +96,14 @@ namespace Luna_Bay_Resort_App.Helpers
             return roomNames;
         }
 
+        //Gives Available Room_ID based on Name
         public static int GetAvailableRoom(string RoomName)
         {
             int RoomNum = 0;
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
-                string query = "SELECT TOP 1 Room_ID FROM Accomodation WHERE Name LIKE @RoomName";
+                string query = "SELECT TOP 1 Room_ID FROM Accommodation WHERE Name LIKE @RoomName AND Room_Status LIKE 'Available'";
                 SqlCommand getavailableroom = new SqlCommand(query, con);
                 getavailableroom.Parameters.AddWithValue("@RoomName", RoomName);
 
@@ -114,6 +116,82 @@ namespace Luna_Bay_Resort_App.Helpers
                 }
                 return RoomNum;
             }
+        }
+
+        //Returns Price based on Room Name
+        public static int ReturnRoomPrice(string Room)
+        {
+            int price = 0;
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "SELECT DISTINCT Price FROM Accommodation WHERE Name LIKE @RoomType";
+                SqlCommand returnprice = new SqlCommand(query, con);
+                returnprice.Parameters.AddWithValue("@RoomType", Room);
+
+                using (SqlDataReader read = returnprice.ExecuteReader())
+                {
+                    if (read.Read())
+                    {
+                        price = Convert.ToInt32(read["Price"]);
+                    }
+                }
+            }
+            return price;
+        }
+
+        //Return Food name and price by FoodType_ID
+        public static List<Food> getFoodbyType(int FoodType)
+        {
+            var foods = new List<Food>();
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "SELECT Distinct Food_Name, Price from Food WHERE FoodType_ID = @FoodId";
+
+                SqlCommand getfoodnames = new SqlCommand(query, con);
+                getfoodnames.Parameters.AddWithValue("@FoodId", FoodType);
+
+                using (var reader = getfoodnames.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string foodName = reader["Food_Name"].ToString();
+                        int price = Convert.ToInt32(reader["Price"]);
+
+                        foods.Add(new Food(foodName, price));
+                    }
+                }
+                con.Close();
+            }
+            return foods;
+        }
+
+        //Search for Food name and price using FoodName
+        public static List<Food> searchFood(string FoodName)
+        {
+            var foods = new List<Food>();
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "SELECT Food_Name, Price from Food WHERE Food_Name LIKE '%' + @FoodName + '%'";
+
+                SqlCommand getfoodnames = new SqlCommand(query, con);
+                getfoodnames.Parameters.AddWithValue("@FoodName", FoodName);
+
+                using (var reader = getfoodnames.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string foodName = reader["Food_Name"].ToString();
+                        int price = Convert.ToInt32(reader["Price"]);
+
+                        foods.Add(new Food(foodName, price));
+                    }
+                }
+                con.Close();
+            }
+            return foods;
         }
     }
 }
