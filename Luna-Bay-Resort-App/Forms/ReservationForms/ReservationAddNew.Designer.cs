@@ -45,15 +45,15 @@
             EmailText = new TextBox();
             ContactNoText = new TextBox();
             label14 = new Label();
-            DepositReqAmountText = new Label();
             DepositPaidCheck = new CheckBox();
             ConfirmButton = new Button();
-            TotalAmountText = new Label();
             label13 = new Label();
             label12 = new Label();
             RoomTypeCB = new ComboBox();
             GuestNumText = new TextBox();
             label11 = new Label();
+            DepositText = new TextBox();
+            TotalAmountText = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -113,11 +113,11 @@
             // 
             // FirstNameText
             // 
-            FirstNameText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            FirstNameText.Font = new Font("Consolas", 9.75F);
             FirstNameText.Location = new Point(23, 135);
             FirstNameText.Margin = new Padding(4, 3, 4, 3);
             FirstNameText.Name = "FirstNameText";
-            FirstNameText.Size = new Size(204, 24);
+            FirstNameText.Size = new Size(204, 23);
             FirstNameText.TabIndex = 5;
             // 
             // label6
@@ -167,23 +167,23 @@
             // CheckInPicker
             // 
             CheckInPicker.CustomFormat = "M/dd/yyyy hh:mm";
-            CheckInPicker.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CheckInPicker.Font = new Font("Consolas", 9.75F);
             CheckInPicker.Format = DateTimePickerFormat.Custom;
             CheckInPicker.Location = new Point(23, 296);
             CheckInPicker.Margin = new Padding(4, 3, 4, 3);
             CheckInPicker.Name = "CheckInPicker";
-            CheckInPicker.Size = new Size(204, 24);
+            CheckInPicker.Size = new Size(204, 23);
             CheckInPicker.TabIndex = 15;
             // 
             // CheckOutPicker
             // 
             CheckOutPicker.CustomFormat = "M/dd/yyyy hh:mm";
-            CheckOutPicker.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CheckOutPicker.Font = new Font("Consolas", 9.75F);
             CheckOutPicker.Format = DateTimePickerFormat.Custom;
             CheckOutPicker.Location = new Point(257, 296);
             CheckOutPicker.Margin = new Padding(4, 3, 4, 3);
             CheckOutPicker.Name = "CheckOutPicker";
-            CheckOutPicker.Size = new Size(204, 24);
+            CheckOutPicker.Size = new Size(204, 23);
             CheckOutPicker.TabIndex = 16;
             // 
             // label10
@@ -199,29 +199,29 @@
             // 
             // LastNameText
             // 
-            LastNameText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LastNameText.Font = new Font("Consolas", 9.75F);
             LastNameText.Location = new Point(257, 135);
             LastNameText.Margin = new Padding(4, 3, 4, 3);
             LastNameText.Name = "LastNameText";
-            LastNameText.Size = new Size(204, 24);
+            LastNameText.Size = new Size(204, 23);
             LastNameText.TabIndex = 23;
             // 
             // EmailText
             // 
-            EmailText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            EmailText.Font = new Font("Consolas", 9.75F);
             EmailText.Location = new Point(23, 199);
             EmailText.Margin = new Padding(4, 3, 4, 3);
             EmailText.Name = "EmailText";
-            EmailText.Size = new Size(204, 24);
+            EmailText.Size = new Size(204, 23);
             EmailText.TabIndex = 24;
             // 
             // ContactNoText
             // 
-            ContactNoText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ContactNoText.Font = new Font("Consolas", 9.75F);
             ContactNoText.Location = new Point(257, 199);
             ContactNoText.Margin = new Padding(4, 3, 4, 3);
             ContactNoText.Name = "ContactNoText";
-            ContactNoText.Size = new Size(204, 24);
+            ContactNoText.Size = new Size(204, 23);
             ContactNoText.TabIndex = 25;
             // 
             // label14
@@ -235,18 +235,6 @@
             label14.Size = new Size(161, 16);
             label14.TabIndex = 26;
             label14.Text = "Amount of Req. Deposit:";
-            // 
-            // DepositReqAmountText
-            // 
-            DepositReqAmountText.AutoSize = true;
-            DepositReqAmountText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            DepositReqAmountText.ForeColor = Color.FromArgb(255, 20, 41);
-            DepositReqAmountText.Location = new Point(189, 424);
-            DepositReqAmountText.Margin = new Padding(4, 0, 4, 0);
-            DepositReqAmountText.Name = "DepositReqAmountText";
-            DepositReqAmountText.Size = new Size(14, 16);
-            DepositReqAmountText.TabIndex = 27;
-            DepositReqAmountText.Text = "0";
             // 
             // DepositPaidCheck
             // 
@@ -274,17 +262,6 @@
             ConfirmButton.UseVisualStyleBackColor = false;
             ConfirmButton.Click += ConfirmButton_Click;
             // 
-            // TotalAmountText
-            // 
-            TotalAmountText.AutoSize = true;
-            TotalAmountText.Font = new Font("Microsoft Tai Le", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            TotalAmountText.Location = new Point(163, 486);
-            TotalAmountText.Margin = new Padding(4, 0, 4, 0);
-            TotalAmountText.Name = "TotalAmountText";
-            TotalAmountText.Size = new Size(21, 23);
-            TotalAmountText.TabIndex = 57;
-            TotalAmountText.Text = "0";
-            // 
             // label13
             // 
             label13.AutoSize = true;
@@ -310,6 +287,7 @@
             // RoomTypeCB
             // 
             RoomTypeCB.DropDownStyle = ComboBoxStyle.DropDownList;
+            RoomTypeCB.Font = new Font("Consolas", 9.75F);
             RoomTypeCB.FormattingEnabled = true;
             RoomTypeCB.Location = new Point(113, 337);
             RoomTypeCB.Name = "RoomTypeCB";
@@ -319,11 +297,11 @@
             // 
             // GuestNumText
             // 
-            GuestNumText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            GuestNumText.Font = new Font("Consolas", 9.75F);
             GuestNumText.Location = new Point(419, 337);
             GuestNumText.Margin = new Padding(4, 3, 4, 3);
             GuestNumText.Name = "GuestNumText";
-            GuestNumText.Size = new Size(44, 24);
+            GuestNumText.Size = new Size(44, 23);
             GuestNumText.TabIndex = 63;
             // 
             // label11
@@ -337,20 +315,36 @@
             label11.TabIndex = 62;
             label11.Text = "No. of Guests:";
             // 
+            // DepositText
+            // 
+            DepositText.Font = new Font("Consolas", 9.75F);
+            DepositText.Location = new Point(191, 418);
+            DepositText.Name = "DepositText";
+            DepositText.Size = new Size(100, 23);
+            DepositText.TabIndex = 65;
+            // 
+            // TotalAmountText
+            // 
+            TotalAmountText.Font = new Font("Consolas", 9.75F);
+            TotalAmountText.Location = new Point(168, 488);
+            TotalAmountText.Name = "TotalAmountText";
+            TotalAmountText.Size = new Size(123, 23);
+            TotalAmountText.TabIndex = 66;
+            // 
             // ReservationAddNew
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(234, 234, 234);
             ClientSize = new Size(494, 541);
+            Controls.Add(TotalAmountText);
+            Controls.Add(DepositText);
             Controls.Add(RoomTypeCB);
             Controls.Add(GuestNumText);
             Controls.Add(label11);
             Controls.Add(ConfirmButton);
-            Controls.Add(TotalAmountText);
             Controls.Add(label13);
             Controls.Add(DepositPaidCheck);
-            Controls.Add(DepositReqAmountText);
             Controls.Add(label14);
             Controls.Add(ContactNoText);
             Controls.Add(EmailText);
@@ -396,15 +390,15 @@
         private System.Windows.Forms.TextBox EmailText;
         private System.Windows.Forms.TextBox ContactNoText;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label DepositReqAmountText;
         private System.Windows.Forms.CheckBox DepositPaidCheck;
         private Button ConfirmButton;
-        private Label TotalAmountText;
         private Label label13;
         private Label label12;
         private ComboBox RoomTypeCB;
         private TextBox GuestNumText;
         private Label label11;
+        private TextBox DepositText;
+        private TextBox TotalAmountText;
     }
 }
 

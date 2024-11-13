@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             ConfirmBtn = new Button();
-            TotalAmountText = new Label();
             ContactNoText = new TextBox();
             EmailText = new TextBox();
             LastNameText = new TextBox();
@@ -56,6 +55,7 @@
             CardCheckBox = new CheckBox();
             SearchBtn = new Button();
             RoomTypeCB = new ComboBox();
+            TotalAmountText = new TextBox();
             SuspendLayout();
             // 
             // ConfirmBtn
@@ -71,42 +71,31 @@
             ConfirmBtn.UseVisualStyleBackColor = false;
             ConfirmBtn.Click += ConfirmBtn_Click;
             // 
-            // TotalAmountText
-            // 
-            TotalAmountText.AutoSize = true;
-            TotalAmountText.Font = new Font("Microsoft Tai Le", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            TotalAmountText.Location = new Point(32, 496);
-            TotalAmountText.Margin = new Padding(4, 0, 4, 0);
-            TotalAmountText.Name = "TotalAmountText";
-            TotalAmountText.Size = new Size(126, 21);
-            TotalAmountText.TabIndex = 54;
-            TotalAmountText.Text = "PHP 000,000.00";
-            // 
             // ContactNoText
             // 
-            ContactNoText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ContactNoText.Font = new Font("Consolas", 9.75F);
             ContactNoText.Location = new Point(266, 177);
             ContactNoText.Margin = new Padding(4, 3, 4, 3);
             ContactNoText.Name = "ContactNoText";
-            ContactNoText.Size = new Size(204, 24);
+            ContactNoText.Size = new Size(204, 23);
             ContactNoText.TabIndex = 51;
             // 
             // EmailText
             // 
-            EmailText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            EmailText.Font = new Font("Consolas", 9.75F);
             EmailText.Location = new Point(32, 177);
             EmailText.Margin = new Padding(4, 3, 4, 3);
             EmailText.Name = "EmailText";
-            EmailText.Size = new Size(204, 24);
+            EmailText.Size = new Size(204, 23);
             EmailText.TabIndex = 50;
             // 
             // LastNameText
             // 
-            LastNameText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LastNameText.Font = new Font("Consolas", 9.75F);
             LastNameText.Location = new Point(266, 122);
             LastNameText.Margin = new Padding(4, 3, 4, 3);
             LastNameText.Name = "LastNameText";
-            LastNameText.Size = new Size(204, 24);
+            LastNameText.Size = new Size(204, 23);
             LastNameText.TabIndex = 49;
             // 
             // label13
@@ -133,11 +122,11 @@
             // 
             // GuestNumText
             // 
-            GuestNumText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            GuestNumText.Font = new Font("Consolas", 9.75F);
             GuestNumText.Location = new Point(406, 304);
             GuestNumText.Margin = new Padding(4, 3, 4, 3);
             GuestNumText.Name = "GuestNumText";
-            GuestNumText.Size = new Size(64, 24);
+            GuestNumText.Size = new Size(64, 23);
             GuestNumText.TabIndex = 46;
             // 
             // label11
@@ -165,23 +154,23 @@
             // CheckOutPicker
             // 
             CheckOutPicker.CustomFormat = "M/dd/yyyy hh:mm";
-            CheckOutPicker.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CheckOutPicker.Font = new Font("Consolas", 9.75F);
             CheckOutPicker.Format = DateTimePickerFormat.Custom;
             CheckOutPicker.Location = new Point(266, 260);
             CheckOutPicker.Margin = new Padding(4, 3, 4, 3);
             CheckOutPicker.Name = "CheckOutPicker";
-            CheckOutPicker.Size = new Size(204, 24);
+            CheckOutPicker.Size = new Size(204, 23);
             CheckOutPicker.TabIndex = 42;
             // 
             // CheckInPicker
             // 
             CheckInPicker.CustomFormat = "M/dd/yyyy hh:mm";
-            CheckInPicker.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CheckInPicker.Font = new Font("Consolas", 9.75F);
             CheckInPicker.Format = DateTimePickerFormat.Custom;
             CheckInPicker.Location = new Point(32, 260);
             CheckInPicker.Margin = new Padding(4, 3, 4, 3);
             CheckInPicker.Name = "CheckInPicker";
-            CheckInPicker.Size = new Size(204, 24);
+            CheckInPicker.Size = new Size(204, 23);
             CheckInPicker.TabIndex = 41;
             // 
             // label8
@@ -230,11 +219,11 @@
             // 
             // FirstNameText
             // 
-            FirstNameText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            FirstNameText.Font = new Font("Consolas", 9.75F);
             FirstNameText.Location = new Point(32, 122);
             FirstNameText.Margin = new Padding(4, 3, 4, 3);
             FirstNameText.Name = "FirstNameText";
-            FirstNameText.Size = new Size(204, 24);
+            FirstNameText.Size = new Size(204, 23);
             FirstNameText.TabIndex = 36;
             // 
             // label5
@@ -355,6 +344,7 @@
             // RoomTypeCB
             // 
             RoomTypeCB.DropDownStyle = ComboBoxStyle.DropDownList;
+            RoomTypeCB.Font = new Font("Consolas", 9.75F);
             RoomTypeCB.FormattingEnabled = true;
             RoomTypeCB.Location = new Point(32, 314);
             RoomTypeCB.Name = "RoomTypeCB";
@@ -362,12 +352,21 @@
             RoomTypeCB.TabIndex = 61;
             RoomTypeCB.SelectedValueChanged += RoomTypeCB_SelectedValueChanged;
             // 
+            // TotalAmountText
+            // 
+            TotalAmountText.Font = new Font("Consolas", 9.75F);
+            TotalAmountText.Location = new Point(32, 493);
+            TotalAmountText.Name = "TotalAmountText";
+            TotalAmountText.Size = new Size(180, 23);
+            TotalAmountText.TabIndex = 69;
+            // 
             // CheckIn
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(234, 234, 234);
             ClientSize = new Size(494, 541);
+            Controls.Add(TotalAmountText);
             Controls.Add(RoomTypeCB);
             Controls.Add(SearchBtn);
             Controls.Add(CardCheckBox);
@@ -375,7 +374,6 @@
             Controls.Add(label14);
             Controls.Add(CashCheckBox);
             Controls.Add(ConfirmBtn);
-            Controls.Add(TotalAmountText);
             Controls.Add(ContactNoText);
             Controls.Add(EmailText);
             Controls.Add(LastNameText);
@@ -405,7 +403,6 @@
         #endregion
 
         private Button ConfirmBtn;
-        private Label TotalAmountText;
         private TextBox ContactNoText;
         private TextBox EmailText;
         private TextBox LastNameText;
@@ -432,5 +429,6 @@
         private CheckBox CardCheckBox;
         private Button SearchBtn;
         private ComboBox RoomTypeCB;
+        private TextBox TotalAmountText;
     }
 }

@@ -70,11 +70,11 @@
             // 
             // ReservationNoText
             // 
-            ReservationNoText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ReservationNoText.Font = new Font("Consolas", 9.75F);
             ReservationNoText.Location = new Point(177, 154);
             ReservationNoText.Margin = new Padding(4, 3, 4, 3);
             ReservationNoText.Name = "ReservationNoText";
-            ReservationNoText.Size = new Size(204, 24);
+            ReservationNoText.Size = new Size(204, 23);
             ReservationNoText.TabIndex = 36;
             // 
             // label3
