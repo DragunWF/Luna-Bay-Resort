@@ -50,9 +50,19 @@ namespace MainForms
             this.Controls.Add(mainPanel);
 
 
-            //Insert availabler rooms onto availableRoomsPanel
+            //Insert "Available" rooms onto availableRoomsPanel
             var AvailableRoomTable = (DataGridView)availableRoomsPanel.Controls[0].Controls[2];
             PopulateAvailableRooms(AvailableRoomTable);
+
+            //Insert "Cleaning" rooms onto cleaningPanel
+            var CleaningRoomTable = (DataGridView)cleaningPanel.Controls[0].Controls[2];
+            String cleaningstatus = "Cleaning";
+            PopulateNotAvailbeRooms(CleaningRoomTable, cleaningstatus);
+
+            //Insert "Repair" rooms onto repairPanel
+            var RepairRoomTable = (DataGridView)repairPanel.Controls[0].Controls[2];
+            String repairstatus = "Repair";
+            PopulateNotAvailbeRooms(RepairRoomTable, repairstatus);
 
         }
 
@@ -135,20 +145,20 @@ namespace MainForms
         }
 
 
-        //Method for populating availble rooms
+        //Method for populating available rooms
         private void PopulateAvailableRooms(DataGridView roomTable)
         {
-            List<Accommodation> availableRooms= DatabaseHelper.GetAllAvailableRoom(roomTable);
+            List<Accommodation> availableRooms= DatabaseHelper.GetAvailableRoom(roomTable);
             foreach (var room in availableRooms)
             {
                 roomTable.Rows.Add(room.GetRoomId(), room.GetName());
             }
         }
 
-        //Method to be used for CleaningPanel
-        private void PopulateCleaningandInspection(DataGridView roomTable)
+        //Method for populating by room status
+        private void PopulateNotAvailbeRooms(DataGridView roomTable, string roomStatus)
         {
-            List<Accommodation> notavailableRooms = DatabaseHelper.GetAllNotAvaialbleRoom(roomTable);
+            List<Accommodation> notavailableRooms = DatabaseHelper.GetNotAvailableRoom(roomTable, roomStatus);
             foreach (var room in notavailableRooms)
             {
                 roomTable.Rows.Add(room.GetRoomId(), room.GetName());

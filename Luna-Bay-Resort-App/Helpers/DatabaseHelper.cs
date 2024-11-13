@@ -194,16 +194,16 @@ namespace Luna_Bay_Resort_App.Helpers
             return foods;
         }
 
-        //Return all available Room_ID & Name
-        public static List<Accommodation> GetAllAvailableRoom(DataGridView availableroomtable)
+        //Return all Available Room_ID & Name
+        public static List<Accommodation> GetAvailableRoom(DataGridView availableroomtable)
         {
             var availablerooms = new List<Accommodation>();
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
                 string query = "SELECT Room_ID, Name FROM Accommodation WHERE Room_status = 'Available'";
+
                 SqlCommand getrooms = new SqlCommand(query, con);
-                
                 using(var reader = getrooms.ExecuteReader())
                 {
                     while (reader.Read())
@@ -219,29 +219,31 @@ namespace Luna_Bay_Resort_App.Helpers
             return availablerooms;
         }
 
-        //Return All NOT available Room_ID & Name
-        public static List<Accommodation> GetAllNotAvaialbleRoom(DataGridView availableroomtable)
+        //Return all rooms based by Room Status
+        public static List<Accommodation> GetNotAvailableRoom(DataGridView notavailableroomtable, string status)
         {
             var notavailablerooms = new List<Accommodation>();
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
-                string query = "SELECT Room_ID, Name FROM Accommodation WHERE NOT Room_status = 'Available'";
-                SqlCommand getrooms = new SqlCommand(query, con);
+                string query = "SELECT Room_ID, Room_status FROM Accommodation WHERE Room_status = @roomStatus";
 
+                SqlCommand getrooms = new SqlCommand(query, con);
+                getrooms.Parameters.AddWithValue("@roomStatus", status);
                 using (var reader = getrooms.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         int roomId = Convert.ToInt32(reader["Room_ID"]);
-                        string roomName = reader["Name"].ToString();
+                        string roomStatus = reader["Room_status"].ToString();
 
-                        notavailablerooms.Add(new Accommodation(roomId, roomName));
+                        notavailablerooms.Add(new Accommodation(roomId, roomStatus));
                     }
                 }
                 con.Close();
             }
             return notavailablerooms;
         }
+
     }
 }
