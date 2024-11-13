@@ -92,12 +92,21 @@ namespace Luna_Bay_Resort_App.Helpers
 
         #endregion
 
-        #region Miscelleneous Methods
+        #region Format Currency Methods - With Method Overloading
 
         public static string FormatCurrency(int amount)
         {
             return $"{amount} PHP";
         }
+
+        public static string FormatCurrency(double amount)
+        {
+            return $"{amount} PHP";
+        }
+
+        #endregion
+
+        #region Miscelleneous Methods
 
         public static void ResetTextBoxes(TextBox[] textBoxes)
         {
@@ -106,6 +115,7 @@ namespace Luna_Bay_Resort_App.Helpers
                 textBox.Text = "";
             }
         }
+
 
         public static string GetCurrentDate()
         {
