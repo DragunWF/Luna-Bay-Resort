@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Luna_Bay_Resort_App.Helpers;
+using Luna_Bay_Sub_Forms;
+using SubForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -132,7 +135,27 @@ namespace MainForms
             };
             actionButton.Click += (sender, e) =>
             {
-                MessageBox.Show($"{title} button clicked!");
+                switch (title)
+                {
+                    case "Add Reservation":
+                        FormManager.OpenForm<ReservationAddNew>();
+                        break;
+                    case "Edit Reservation":
+                        FormManager.OpenForm<ReservationEdit>();
+                        break;
+                    case "Search Reservation":
+                        FormManager.OpenForm<SearchReservation>();
+                        break;
+                    case "Check In":
+                        FormManager.OpenForm<CheckIn>();
+                        break;
+                    case "Check Out":
+                        FormManager.OpenForm<CheckOut>();
+                        break;
+                    default:
+                        MessageBox.Show($"{title} button clicked!");
+                        break;
+                }
             };
             cardPanel.Controls.Add(actionButton);
 
