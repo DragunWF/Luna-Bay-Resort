@@ -93,7 +93,8 @@ namespace MainForms
                 AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
                 BackgroundColor = Color.White,
                 BorderStyle = BorderStyle.None,
-                RowHeadersVisible = false
+                RowHeadersVisible = false,
+                ScrollBars = ScrollBars.Both,
             };
 
            
