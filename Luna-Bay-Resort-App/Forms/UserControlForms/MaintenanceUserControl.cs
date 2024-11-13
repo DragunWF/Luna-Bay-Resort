@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Luna_Bay_Resort_App.Data;
+using Luna_Bay_Resort_App.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MainForms
 {
@@ -45,6 +48,12 @@ namespace MainForms
             mainPanel.Controls.Add(repairPanel, 2, 0);
 
             this.Controls.Add(mainPanel);
+
+
+            //Insert availabler rooms onto availableRoomsPanel
+            var AvailableRoomTable = (DataGridView)availableRoomsPanel.Controls[0].Controls[2];
+            PopulateAvailableRooms(AvailableRoomTable);
+
         }
 
         private Panel CreateRoomPanel(string title, string[] columns, bool includeStatusComboBox = false)
@@ -124,5 +133,27 @@ namespace MainForms
             containerPanel.Controls.Add(layoutPanel);
             return containerPanel;
         }
+
+
+        //Method for populating availble rooms
+        private void PopulateAvailableRooms(DataGridView roomTable)
+        {
+            List<Accommodation> availableRooms= DatabaseHelper.GetAllAvailableRoom(roomTable);
+            foreach (var room in availableRooms)
+            {
+                roomTable.Rows.Add(room.GetRoomId(), room.GetName());
+            }
+        }
+
+        //Method to be used for CleaningPanel
+        private void PopulateCleaningandInspection(DataGridView roomTable)
+        {
+            List<Accommodation> notavailableRooms = DatabaseHelper.GetAllNotAvaialbleRoom(roomTable);
+            foreach (var room in notavailableRooms)
+            {
+                roomTable.Rows.Add(room.GetRoomId(), room.GetName());
+            }
+        }
+
     }
 }
