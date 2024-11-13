@@ -15,6 +15,10 @@ namespace MainForms
 {
     public partial class MaintenanceUserControl : UserControl
     {
+        private Panel availableRoomsPanel;
+        private Panel cleaningPanel;
+        private Panel repairPanel;
+
         public MaintenanceUserControl()
         {
             InitializeComponent();
@@ -36,15 +40,15 @@ namespace MainForms
             mainPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33)); // Room: For Repair
 
             // Available Rooms panel
-            Panel availableRoomsPanel = CreateRoomPanel("Room : List of Available", new string[] { "Room No.", "Room Type" });
+            availableRoomsPanel = CreateRoomPanel("Room : List of Available", new string[] { "Room No.", "Room Type" });
             mainPanel.Controls.Add(availableRoomsPanel, 0, 0);
 
             // Cleaning & Inspection panel
-            Panel cleaningPanel = CreateRoomPanel("Room : Cleaning & Inspection", new string[] { "Room No."}, true);
+            cleaningPanel = CreateRoomPanel("Room : Cleaning & Inspection", new string[] { "Room No."}, true);
             mainPanel.Controls.Add(cleaningPanel, 1, 0);
 
             // For Repair panel
-            Panel repairPanel = CreateRoomPanel("Room : For Repair", new string[] { "Room No." }, true);
+            repairPanel = CreateRoomPanel("Room : For Repair", new string[] { "Room No." }, true);
             mainPanel.Controls.Add(repairPanel, 2, 0);
 
             this.Controls.Add(mainPanel);
@@ -136,12 +140,24 @@ namespace MainForms
                     FlatStyle = FlatStyle.Flat
                 };
                 roomTable.Columns.Add(statusColumn);
+
+                //Event for when combo box value is changed
+                
+                roomTable.CellValueChanged += (sender, e) =>
+                {
+                    int roomId = Convert.ToInt32(roomTable.Rows[e.RowIndex].Cells["Room No."].Value);
+                    string newStatus = roomTable.Rows[e.RowIndex].Cells["ChangeStatus"].Value.ToString();
+                    DatabaseHelper.SetRoomStatus(newStatus, roomId);
+                    
+                    RefreshRoomData();
+                };
             }
 
             layoutPanel.Controls.Add(roomTable, 0, 2);
 
             containerPanel.Controls.Add(layoutPanel);
             return containerPanel;
+
         }
 
 
@@ -163,6 +179,26 @@ namespace MainForms
             {
                 roomTable.Rows.Add(room.GetRoomId(), room.GetName());
             }
+        }
+
+        //Method for refreshing all datagridviews
+        private void RefreshRoomData()
+        {
+            var availableRoomTable = (DataGridView)availableRoomsPanel.Controls[0].Controls[2];
+            var cleaningRoomTable = (DataGridView)cleaningPanel.Controls[0].Controls[2];
+            var repairRoomTable = (DataGridView)repairPanel.Controls[0].Controls[2];
+
+            availableRoomTable.Rows.Clear();
+            cleaningRoomTable.Rows.Clear();
+            repairRoomTable.Rows.Clear();
+
+            PopulateAvailableRooms(availableRoomTable);
+
+            string cleaningStatus = "Cleaning";
+            PopulateNotAvailbeRooms(cleaningRoomTable, cleaningStatus);
+
+            string repairStatus = "Repair";
+            PopulateNotAvailbeRooms(repairRoomTable, repairStatus);
         }
 
     }
