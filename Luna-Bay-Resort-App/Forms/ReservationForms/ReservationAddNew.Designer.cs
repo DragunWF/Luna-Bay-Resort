@@ -309,11 +309,13 @@
             // 
             // RoomTypeCB
             // 
+            RoomTypeCB.DropDownStyle = ComboBoxStyle.DropDownList;
             RoomTypeCB.FormattingEnabled = true;
             RoomTypeCB.Location = new Point(113, 337);
             RoomTypeCB.Name = "RoomTypeCB";
             RoomTypeCB.Size = new Size(181, 23);
             RoomTypeCB.TabIndex = 64;
+            RoomTypeCB.SelectedValueChanged += RoomTypeCB_SelectedValueChanged;
             // 
             // GuestNumText
             // 

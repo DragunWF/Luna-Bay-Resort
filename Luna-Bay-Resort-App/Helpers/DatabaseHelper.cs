@@ -125,7 +125,7 @@ namespace Luna_Bay_Resort_App.Helpers
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
-                string query = "SELECT DISTINCT Price FROM Accommodation WHERE Name LIKE '@RoomType'";
+                string query = "SELECT DISTINCT Price FROM Accommodation WHERE Name LIKE @RoomType";
                 SqlCommand returnprice = new SqlCommand(query, con);
                 returnprice.Parameters.AddWithValue("@RoomType", Room);
 

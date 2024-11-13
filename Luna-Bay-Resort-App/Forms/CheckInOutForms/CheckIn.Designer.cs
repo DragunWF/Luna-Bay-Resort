@@ -63,10 +63,9 @@
             ConfirmBtn.BackColor = Color.FromArgb(80, 85, 127);
             ConfirmBtn.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ConfirmBtn.ForeColor = SystemColors.ButtonHighlight;
-            ConfirmBtn.Location = new Point(428, 661);
-            ConfirmBtn.Margin = new Padding(3, 4, 3, 4);
+            ConfirmBtn.Location = new Point(374, 496);
             ConfirmBtn.Name = "ConfirmBtn";
-            ConfirmBtn.Size = new Size(109, 38);
+            ConfirmBtn.Size = new Size(95, 28);
             ConfirmBtn.TabIndex = 55;
             ConfirmBtn.Text = "Confirm";
             ConfirmBtn.UseVisualStyleBackColor = false;
@@ -76,48 +75,48 @@
             // 
             TotalAmountText.AutoSize = true;
             TotalAmountText.Font = new Font("Microsoft Tai Le", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            TotalAmountText.Location = new Point(37, 661);
-            TotalAmountText.Margin = new Padding(5, 0, 5, 0);
+            TotalAmountText.Location = new Point(32, 496);
+            TotalAmountText.Margin = new Padding(4, 0, 4, 0);
             TotalAmountText.Name = "TotalAmountText";
-            TotalAmountText.Size = new Size(163, 26);
+            TotalAmountText.Size = new Size(126, 21);
             TotalAmountText.TabIndex = 54;
             TotalAmountText.Text = "PHP 000,000.00";
             // 
             // ContactNoText
             // 
             ContactNoText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ContactNoText.Location = new Point(304, 236);
-            ContactNoText.Margin = new Padding(5, 4, 5, 4);
+            ContactNoText.Location = new Point(266, 177);
+            ContactNoText.Margin = new Padding(4, 3, 4, 3);
             ContactNoText.Name = "ContactNoText";
-            ContactNoText.Size = new Size(233, 28);
+            ContactNoText.Size = new Size(204, 24);
             ContactNoText.TabIndex = 51;
             // 
             // EmailText
             // 
             EmailText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            EmailText.Location = new Point(37, 236);
-            EmailText.Margin = new Padding(5, 4, 5, 4);
+            EmailText.Location = new Point(32, 177);
+            EmailText.Margin = new Padding(4, 3, 4, 3);
             EmailText.Name = "EmailText";
-            EmailText.Size = new Size(233, 28);
+            EmailText.Size = new Size(204, 24);
             EmailText.TabIndex = 50;
             // 
             // LastNameText
             // 
             LastNameText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LastNameText.Location = new Point(304, 163);
-            LastNameText.Margin = new Padding(5, 4, 5, 4);
+            LastNameText.Location = new Point(266, 122);
+            LastNameText.Margin = new Padding(4, 3, 4, 3);
             LastNameText.Name = "LastNameText";
-            LastNameText.Size = new Size(233, 28);
+            LastNameText.Size = new Size(204, 24);
             LastNameText.TabIndex = 49;
             // 
             // label13
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Microsoft Tai Le", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.Location = new Point(37, 625);
-            label13.Margin = new Padding(5, 0, 5, 0);
+            label13.Location = new Point(32, 469);
+            label13.Margin = new Padding(4, 0, 4, 0);
             label13.Name = "label13";
-            label13.Size = new Size(148, 26);
+            label13.Size = new Size(119, 21);
             label13.TabIndex = 48;
             label13.Text = "Total Amount:";
             // 
@@ -125,30 +124,30 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Consolas", 12.75F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            label12.Location = new Point(37, 477);
-            label12.Margin = new Padding(5, 0, 5, 0);
+            label12.Location = new Point(32, 358);
+            label12.Margin = new Padding(4, 0, 4, 0);
             label12.Name = "label12";
-            label12.Size = new Size(252, 26);
+            label12.Size = new Size(189, 20);
             label12.TabIndex = 47;
             label12.Text = "Payment Information:";
             // 
             // GuestNumText
             // 
             GuestNumText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            GuestNumText.Location = new Point(464, 406);
-            GuestNumText.Margin = new Padding(5, 4, 5, 4);
+            GuestNumText.Location = new Point(406, 304);
+            GuestNumText.Margin = new Padding(4, 3, 4, 3);
             GuestNumText.Name = "GuestNumText";
-            GuestNumText.Size = new Size(73, 28);
+            GuestNumText.Size = new Size(64, 24);
             GuestNumText.TabIndex = 46;
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Consolas", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label11.Location = new Point(304, 407);
-            label11.Margin = new Padding(5, 0, 5, 0);
+            label11.Location = new Point(266, 305);
+            label11.Margin = new Padding(4, 0, 4, 0);
             label11.Name = "label11";
-            label11.Size = new Size(150, 22);
+            label11.Size = new Size(120, 18);
             label11.TabIndex = 45;
             label11.Text = "No. of Guests:";
             // 
@@ -156,10 +155,10 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Consolas", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label10.Location = new Point(37, 393);
-            label10.Margin = new Padding(5, 0, 5, 0);
+            label10.Location = new Point(32, 295);
+            label10.Margin = new Padding(4, 0, 4, 0);
             label10.Name = "label10";
-            label10.Size = new Size(110, 22);
+            label10.Size = new Size(88, 18);
             label10.TabIndex = 43;
             label10.Text = "Room Type:";
             // 
@@ -168,10 +167,10 @@
             CheckOutPicker.CustomFormat = "M/dd/yyyy hh:mm";
             CheckOutPicker.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             CheckOutPicker.Format = DateTimePickerFormat.Custom;
-            CheckOutPicker.Location = new Point(304, 347);
-            CheckOutPicker.Margin = new Padding(5, 4, 5, 4);
+            CheckOutPicker.Location = new Point(266, 260);
+            CheckOutPicker.Margin = new Padding(4, 3, 4, 3);
             CheckOutPicker.Name = "CheckOutPicker";
-            CheckOutPicker.Size = new Size(233, 28);
+            CheckOutPicker.Size = new Size(204, 24);
             CheckOutPicker.TabIndex = 42;
             // 
             // CheckInPicker
@@ -179,20 +178,20 @@
             CheckInPicker.CustomFormat = "M/dd/yyyy hh:mm";
             CheckInPicker.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             CheckInPicker.Format = DateTimePickerFormat.Custom;
-            CheckInPicker.Location = new Point(37, 347);
-            CheckInPicker.Margin = new Padding(5, 4, 5, 4);
+            CheckInPicker.Location = new Point(32, 260);
+            CheckInPicker.Margin = new Padding(4, 3, 4, 3);
             CheckInPicker.Name = "CheckInPicker";
-            CheckInPicker.Size = new Size(233, 28);
+            CheckInPicker.Size = new Size(204, 24);
             CheckInPicker.TabIndex = 41;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Consolas", 11.25F);
-            label8.Location = new Point(304, 319);
-            label8.Margin = new Padding(5, 0, 5, 0);
+            label8.Location = new Point(266, 239);
+            label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
-            label8.Size = new Size(160, 22);
+            label8.Size = new Size(128, 18);
             label8.TabIndex = 40;
             label8.Text = "Check-Out Date:";
             // 
@@ -200,10 +199,10 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Consolas", 11.25F);
-            label9.Location = new Point(37, 319);
-            label9.Margin = new Padding(5, 0, 5, 0);
+            label9.Location = new Point(32, 239);
+            label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
-            label9.Size = new Size(150, 22);
+            label9.Size = new Size(120, 18);
             label9.TabIndex = 39;
             label9.Text = "Check-In Date:";
             // 
@@ -211,10 +210,10 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Consolas", 12.75F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            label7.Location = new Point(37, 281);
-            label7.Margin = new Padding(5, 0, 5, 0);
+            label7.Location = new Point(32, 211);
+            label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(240, 26);
+            label7.Size = new Size(180, 20);
             label7.TabIndex = 38;
             label7.Text = "Reservation Details";
             // 
@@ -222,30 +221,30 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Consolas", 11.25F);
-            label6.Location = new Point(304, 210);
-            label6.Margin = new Padding(5, 0, 5, 0);
+            label6.Location = new Point(266, 158);
+            label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(130, 22);
+            label6.Size = new Size(104, 18);
             label6.TabIndex = 37;
             label6.Text = "Contact No.:";
             // 
             // FirstNameText
             // 
             FirstNameText.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            FirstNameText.Location = new Point(37, 163);
-            FirstNameText.Margin = new Padding(5, 4, 5, 4);
+            FirstNameText.Location = new Point(32, 122);
+            FirstNameText.Margin = new Padding(4, 3, 4, 3);
             FirstNameText.Name = "FirstNameText";
-            FirstNameText.Size = new Size(233, 28);
+            FirstNameText.Size = new Size(204, 24);
             FirstNameText.TabIndex = 36;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Consolas", 11.25F);
-            label5.Location = new Point(37, 210);
-            label5.Margin = new Padding(5, 0, 5, 0);
+            label5.Location = new Point(32, 158);
+            label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(70, 22);
+            label5.Size = new Size(56, 18);
             label5.TabIndex = 35;
             label5.Text = "Email:";
             // 
@@ -253,10 +252,10 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Consolas", 11.25F);
-            label4.Location = new Point(304, 134);
-            label4.Margin = new Padding(5, 0, 5, 0);
+            label4.Location = new Point(266, 100);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(110, 22);
+            label4.Size = new Size(88, 18);
             label4.TabIndex = 34;
             label4.Text = "Last Name:";
             // 
@@ -264,10 +263,10 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Consolas", 11.25F);
-            label3.Location = new Point(37, 134);
-            label3.Margin = new Padding(5, 0, 5, 0);
+            label3.Location = new Point(32, 100);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(120, 22);
+            label3.Size = new Size(96, 18);
             label3.TabIndex = 33;
             label3.Text = "First Name:";
             // 
@@ -275,10 +274,10 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Consolas", 12.75F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            label2.Location = new Point(37, 93);
-            label2.Margin = new Padding(5, 0, 5, 0);
+            label2.Location = new Point(32, 70);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(252, 26);
+            label2.Size = new Size(189, 20);
             label2.TabIndex = 32;
             label2.Text = "Customer Information";
             // 
@@ -286,10 +285,10 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Consolas", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(169, 33);
-            label1.Margin = new Padding(5, 0, 5, 0);
+            label1.Location = new Point(148, 25);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(194, 28);
+            label1.Size = new Size(150, 22);
             label1.TabIndex = 30;
             label1.Text = "Form: Check-In";
             // 
@@ -297,10 +296,9 @@
             // 
             CashCheckBox.AutoSize = true;
             CashCheckBox.Font = new Font("Consolas", 10F);
-            CashCheckBox.Location = new Point(37, 565);
-            CashCheckBox.Margin = new Padding(3, 4, 3, 4);
+            CashCheckBox.Location = new Point(32, 424);
             CashCheckBox.Name = "CashCheckBox";
-            CashCheckBox.Size = new Size(67, 24);
+            CashCheckBox.Size = new Size(59, 21);
             CashCheckBox.TabIndex = 56;
             CashCheckBox.Text = "Cash";
             CashCheckBox.UseVisualStyleBackColor = true;
@@ -310,10 +308,10 @@
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Consolas", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label14.Location = new Point(61, 519);
-            label14.Margin = new Padding(5, 0, 5, 0);
+            label14.Location = new Point(53, 389);
+            label14.Margin = new Padding(4, 0, 4, 0);
             label14.Name = "label14";
-            label14.Size = new Size(160, 22);
+            label14.Size = new Size(128, 18);
             label14.TabIndex = 57;
             label14.Text = "Payment Method:";
             // 
@@ -321,10 +319,9 @@
             // 
             OnlinePaymentCheckBox.AutoSize = true;
             OnlinePaymentCheckBox.Font = new Font("Consolas", 10F);
-            OnlinePaymentCheckBox.Location = new Point(148, 565);
-            OnlinePaymentCheckBox.Margin = new Padding(3, 4, 3, 4);
+            OnlinePaymentCheckBox.Location = new Point(130, 424);
             OnlinePaymentCheckBox.Name = "OnlinePaymentCheckBox";
-            OnlinePaymentCheckBox.Size = new Size(157, 24);
+            OnlinePaymentCheckBox.Size = new Size(139, 21);
             OnlinePaymentCheckBox.TabIndex = 58;
             OnlinePaymentCheckBox.Text = "Online Payment";
             OnlinePaymentCheckBox.UseVisualStyleBackColor = true;
@@ -334,10 +331,9 @@
             // 
             CardCheckBox.AutoSize = true;
             CardCheckBox.Font = new Font("Consolas", 10F);
-            CardCheckBox.Location = new Point(344, 565);
-            CardCheckBox.Margin = new Padding(3, 4, 3, 4);
+            CardCheckBox.Location = new Point(301, 424);
             CardCheckBox.Name = "CardCheckBox";
-            CardCheckBox.Size = new Size(193, 24);
+            CardCheckBox.Size = new Size(171, 21);
             CardCheckBox.TabIndex = 59;
             CardCheckBox.Text = "Debit/ Credit Card";
             CardCheckBox.UseVisualStyleBackColor = true;
@@ -348,10 +344,9 @@
             SearchBtn.BackColor = Color.FromArgb(80, 85, 127);
             SearchBtn.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             SearchBtn.ForeColor = SystemColors.ButtonHighlight;
-            SearchBtn.Location = new Point(316, 661);
-            SearchBtn.Margin = new Padding(3, 4, 3, 4);
+            SearchBtn.Location = new Point(276, 496);
             SearchBtn.Name = "SearchBtn";
-            SearchBtn.Size = new Size(106, 38);
+            SearchBtn.Size = new Size(93, 28);
             SearchBtn.TabIndex = 60;
             SearchBtn.Text = "Search";
             SearchBtn.UseVisualStyleBackColor = false;
@@ -359,19 +354,20 @@
             // 
             // RoomTypeCB
             // 
+            RoomTypeCB.DropDownStyle = ComboBoxStyle.DropDownList;
             RoomTypeCB.FormattingEnabled = true;
-            RoomTypeCB.Location = new Point(37, 419);
-            RoomTypeCB.Margin = new Padding(3, 4, 3, 4);
+            RoomTypeCB.Location = new Point(32, 314);
             RoomTypeCB.Name = "RoomTypeCB";
-            RoomTypeCB.Size = new Size(232, 28);
+            RoomTypeCB.Size = new Size(204, 23);
             RoomTypeCB.TabIndex = 61;
+            RoomTypeCB.SelectedValueChanged += RoomTypeCB_SelectedValueChanged;
             // 
             // CheckIn
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(234, 234, 234);
-            ClientSize = new Size(565, 721);
+            ClientSize = new Size(494, 541);
             Controls.Add(RoomTypeCB);
             Controls.Add(SearchBtn);
             Controls.Add(CardCheckBox);
@@ -400,7 +396,6 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "CheckIn";
             Text = "Check-In Form";
             ResumeLayout(false);

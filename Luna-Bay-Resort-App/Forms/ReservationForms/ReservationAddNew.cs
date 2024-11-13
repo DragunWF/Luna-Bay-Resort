@@ -46,12 +46,18 @@ namespace Luna_Bay_Sub_Forms
                     Utils.ResetTextBoxes(new TextBox[] {
                         FirstNameText, LastNameText, EmailText, ContactNoText, GuestNumText
                     });
-                } 
+                }
             }
             catch (Exception err)
             {
                 MessageBox.Show($"An unexpected error has occured: {err.Message}");
             }
+        }
+
+        //Changes text to reflect selected room name from RoomTypeCB, can change output label in the future
+        private void RoomTypeCB_SelectedValueChanged(object sender, EventArgs e)
+        {
+            TotalAmountText.Text = Utils.FormatCurrency(DatabaseHelper.ReturnRoomPrice(RoomTypeCB.Text));
         }
     }
 }
