@@ -19,9 +19,10 @@ namespace MainForms
         private DataGridView checkoutTable;
 
         private Label subTotalLabel;
+        private Label vatLabel;
         private Label totalLabel;
 
-        private int subtotal, total;
+        private double subtotal, vat, total;
 
         public AmenitiesUserControl()
         {
@@ -381,9 +382,9 @@ namespace MainForms
                 RowCount = 4,
             };
 
-            subTotalLabel = new Label { Text = "Sub Total: 200.00", Font = new Font("Consolas", 10), AutoSize = true};
-            Label vatLabel = new Label { Text = "VAT: 24.00", Font = new Font("Consolas", 10) };
-            totalLabel = new Label { Text = "Total: 224.00", Font = new Font("Consolas", 14, FontStyle.Bold), Margin = new Padding(0, 10, 0, 0), AutoSize = true};
+            subTotalLabel = new Label { Text = "Sub Total:", Font = new Font("Consolas", 10), AutoSize = true};
+            vatLabel = new Label { Text = "VAT:", Font = new Font("Consolas", 10), AutoSize = true};
+            totalLabel = new Label { Text = "Total:", Font = new Font("Consolas", 14, FontStyle.Bold), Margin = new Padding(0, 10, 0, 0), AutoSize = true};
 
             Button payButton = new Button
             {
@@ -441,9 +442,11 @@ namespace MainForms
                     subtotal += price;
                 }
             }
+            vat = subtotal * 0.10;
+            total = subtotal + vat;
 
-            total = subtotal + 24;
             subTotalLabel.Text = $"Sub Total: {Utils.FormatCurrency(subtotal)}";
+            vatLabel.Text = $"VAT: {Utils.FormatCurrency(vat)}";
             totalLabel.Text = $"Total: {Utils.FormatCurrency(total)}";
         }
     }
