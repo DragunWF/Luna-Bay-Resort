@@ -32,15 +32,21 @@ namespace SubForms
                     TotalPaymentAmountText.Text,
                     TotalBillAmountText.Text
                 };
-                double totalAmount = double.Parse(TotalPaymentAmountText.Text);
+                double paymentAmount = double.Parse(TotalPaymentAmountText.Text);
                 double billAmount = double.Parse(TotalBillAmountText.Text);
-                double amountDue = billAmount - totalAmount;
+                double amountDue = billAmount - paymentAmount;
                 if (amountDue < 0)
                 {
                     amountDue = 0;
                 }
+                if (paymentAmount > billAmount)
+                {
+                    paymentAmount = billAmount;
+                    TotalPaymentAmountText.Text = paymentAmount.ToString();
+                    MessageBox.Show("Payment amount has been set to the exact bill amount to prevent overpayment");
+                }
                 
-                if (totalAmount < 0 || billAmount < 0)
+                if (paymentAmount < 0 || billAmount < 0)
                 {
                     MessageBox.Show("Total amount and the bill amount cannot be negative!");
                 }
@@ -54,7 +60,7 @@ namespace SubForms
                     FormManager.OpenForm<CheckInReceipt>(
                         fullName, CheckInPicker.Text, CheckOutPicker.Text,
                         RoomTypeCB.Text, GuestNumText.Text, "1", // Room number is temporary
-                        paymentMethod, totalAmount, billAmount, amountDue
+                        paymentMethod, paymentAmount, billAmount, amountDue
                     );
                 }
             }
