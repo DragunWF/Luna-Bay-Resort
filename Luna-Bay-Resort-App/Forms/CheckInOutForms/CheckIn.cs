@@ -1,14 +1,5 @@
-﻿using Luna_Bay_Resort_App;
-using Luna_Bay_Resort_App.Helpers;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Luna_Bay_Resort_App.Helpers;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace SubForms
 {
@@ -38,12 +29,20 @@ namespace SubForms
                     CheckOutPicker.Text,
                     RoomTypeCB.Text,
                     GuestNumText.Text,
+                    TotalPaymentAmountText.Text,
+                    TotalBillAmountText.Text
                 };
-                double totalAmount = double.Parse(TotalAmountText.Text);
-                
-                if (totalAmount < 0)
+                double totalAmount = double.Parse(TotalPaymentAmountText.Text);
+                double billAmount = double.Parse(TotalBillAmountText.Text);
+                double amountDue = billAmount - totalAmount;
+                if (amountDue < 0)
                 {
-                    MessageBox.Show("Total amount cannot be negative!");
+                    amountDue = 0;
+                }
+                
+                if (totalAmount < 0 || billAmount < 0)
+                {
+                    MessageBox.Show("Total amount and the bill amount cannot be negative!");
                 }
                 else if (!CashCheckBox.Checked && !OnlinePaymentCheckBox.Checked && !CardCheckBox.Checked)
                 {
@@ -55,7 +54,7 @@ namespace SubForms
                     FormManager.OpenForm<CheckInReceipt>(
                         fullName, CheckInPicker.Text, CheckOutPicker.Text,
                         RoomTypeCB.Text, GuestNumText.Text, "1", // Room number is temporary
-                        paymentMethod, totalAmount
+                        paymentMethod, totalAmount, billAmount, amountDue
                     );
                 }
             }
@@ -112,8 +111,7 @@ namespace SubForms
         // Changes text to reflect selected room name from RoomTypeCB
         private void RoomTypeCB_SelectedValueChanged(object sender, EventArgs e)
         {
-            TotalAmountText.Text = DatabaseHelper.ReturnRoomPrice(RoomTypeCB.Text).ToString();
+            TotalBillAmountText.Text = DatabaseHelper.ReturnRoomPrice(RoomTypeCB.Text).ToString();
         }
-
     }
 }

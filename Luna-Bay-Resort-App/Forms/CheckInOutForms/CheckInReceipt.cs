@@ -14,12 +14,12 @@ namespace SubForms
     public partial class CheckInReceipt : Form
     {
         private readonly string fullName, checkInDate, checkOutDate, roomType, numOfGuests, roomNo, paymentMethod;
-        private readonly double totalAmount;
+        private readonly double paymentAmount, billAmount, amountDue;
         private readonly string checkInNo, receiptNo;
 
         public CheckInReceipt(string fullName, string checkInDate, string checkOutDate, 
             string roomType, string numOfGuests, string roomNo, string paymentMethod,
-            double totalAmount)
+            double paymentAmount, double billAmount, double amountDue)
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -32,7 +32,9 @@ namespace SubForms
             this.numOfGuests = numOfGuests;
             this.roomNo = roomNo;
             this.paymentMethod = paymentMethod;
-            this.totalAmount = totalAmount;
+            this.paymentAmount = paymentAmount;
+            this.billAmount = billAmount;
+            this.amountDue = amountDue;
 
             // Receipt data
             checkInNo = Utils.GenerateCheckInOutNo();
@@ -59,7 +61,9 @@ namespace SubForms
             RoomNoText.Text = roomNo;
 
             // Amount Details
-            // TODO Bill Amount should take the same value as the required deposit amount
+            AmountPaidText.Text = Utils.FormatCurrency(paymentAmount);
+            BillAmountText.Text = Utils.FormatCurrency(billAmount);
+            AmountDueText.Text = Utils.FormatCurrency(amountDue);
         }
     }
 }

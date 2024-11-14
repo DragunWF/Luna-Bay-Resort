@@ -55,7 +55,9 @@
             CardCheckBox = new CheckBox();
             SearchBtn = new Button();
             RoomTypeCB = new ComboBox();
-            TotalAmountText = new TextBox();
+            TotalPaymentAmountText = new TextBox();
+            TotalBillAmountText = new TextBox();
+            label15 = new Label();
             SuspendLayout();
             // 
             // ConfirmBtn
@@ -63,7 +65,7 @@
             ConfirmBtn.BackColor = Color.FromArgb(80, 85, 127);
             ConfirmBtn.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ConfirmBtn.ForeColor = SystemColors.ButtonHighlight;
-            ConfirmBtn.Location = new Point(374, 496);
+            ConfirmBtn.Location = new Point(375, 512);
             ConfirmBtn.Name = "ConfirmBtn";
             ConfirmBtn.Size = new Size(95, 28);
             ConfirmBtn.TabIndex = 55;
@@ -102,12 +104,12 @@
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Microsoft Tai Le", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.Location = new Point(32, 469);
+            label13.Location = new Point(30, 459);
             label13.Margin = new Padding(4, 0, 4, 0);
             label13.Name = "label13";
-            label13.Size = new Size(119, 21);
+            label13.Size = new Size(191, 21);
             label13.TabIndex = 48;
-            label13.Text = "Total Amount:";
+            label13.Text = "Total Payment Amount:";
             // 
             // label12
             // 
@@ -297,7 +299,7 @@
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Consolas", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label14.Location = new Point(53, 389);
+            label14.Location = new Point(52, 390);
             label14.Margin = new Padding(4, 0, 4, 0);
             label14.Name = "label14";
             label14.Size = new Size(128, 18);
@@ -333,7 +335,7 @@
             SearchBtn.BackColor = Color.FromArgb(80, 85, 127);
             SearchBtn.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             SearchBtn.ForeColor = SystemColors.ButtonHighlight;
-            SearchBtn.Location = new Point(276, 496);
+            SearchBtn.Location = new Point(27, 512);
             SearchBtn.Name = "SearchBtn";
             SearchBtn.Size = new Size(93, 28);
             SearchBtn.TabIndex = 60;
@@ -352,21 +354,41 @@
             RoomTypeCB.TabIndex = 61;
             RoomTypeCB.SelectedValueChanged += RoomTypeCB_SelectedValueChanged;
             // 
-            // TotalAmountText
+            // TotalPaymentAmountText
             // 
-            TotalAmountText.Font = new Font("Consolas", 9.75F);
-            TotalAmountText.Location = new Point(32, 493);
-            TotalAmountText.Name = "TotalAmountText";
-            TotalAmountText.Size = new Size(180, 23);
-            TotalAmountText.TabIndex = 69;
+            TotalPaymentAmountText.Font = new Font("Consolas", 9.75F);
+            TotalPaymentAmountText.Location = new Point(30, 483);
+            TotalPaymentAmountText.Name = "TotalPaymentAmountText";
+            TotalPaymentAmountText.Size = new Size(180, 23);
+            TotalPaymentAmountText.TabIndex = 69;
+            // 
+            // TotalBillAmountText
+            // 
+            TotalBillAmountText.Location = new Point(288, 483);
+            TotalBillAmountText.Name = "TotalBillAmountText";
+            TotalBillAmountText.Size = new Size(180, 23);
+            TotalBillAmountText.TabIndex = 70;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new Font("Microsoft Tai Le", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label15.Location = new Point(288, 459);
+            label15.Margin = new Padding(4, 0, 4, 0);
+            label15.Name = "label15";
+            label15.Size = new Size(148, 21);
+            label15.TabIndex = 71;
+            label15.Text = "Total Bill Amount:";
             // 
             // CheckIn
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(234, 234, 234);
-            ClientSize = new Size(494, 541);
-            Controls.Add(TotalAmountText);
+            ClientSize = new Size(494, 559);
+            Controls.Add(label15);
+            Controls.Add(TotalBillAmountText);
+            Controls.Add(TotalPaymentAmountText);
             Controls.Add(RoomTypeCB);
             Controls.Add(SearchBtn);
             Controls.Add(CardCheckBox);
@@ -429,6 +451,8 @@
         private CheckBox CardCheckBox;
         private Button SearchBtn;
         private ComboBox RoomTypeCB;
-        private TextBox TotalAmountText;
+        private TextBox TotalPaymentAmountText;
+        private TextBox TotalBillAmountText;
+        private Label label15;
     }
 }
