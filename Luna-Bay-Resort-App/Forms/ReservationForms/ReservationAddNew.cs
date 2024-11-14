@@ -82,7 +82,7 @@ namespace Luna_Bay_Sub_Forms
         // Changes text to reflect selected room name from RoomTypeCB, can change output label in the future
         private void RoomTypeCB_SelectedValueChanged(object sender, EventArgs e)
         {
-            DepositText.Text = DatabaseHelper.ReturnRoomPrice(RoomTypeCB.Text).ToString();
+            DepositText.Text = DatabaseHelper.GetRoomPrice(RoomTypeCB.Text).ToString();
         }
     }
 }

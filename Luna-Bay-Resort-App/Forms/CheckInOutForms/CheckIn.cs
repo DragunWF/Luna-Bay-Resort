@@ -118,7 +118,7 @@ namespace SubForms
         // Changes text to reflect selected room name from RoomTypeCB
         private void RoomTypeCB_SelectedValueChanged(object sender, EventArgs e)
         {
-            TotalBillAmountText.Text = DatabaseHelper.ReturnRoomPrice(RoomTypeCB.Text).ToString();
+            TotalBillAmountText.Text = DatabaseHelper.GetRoomPrice(RoomTypeCB.Text).ToString();
         }
     }
 }

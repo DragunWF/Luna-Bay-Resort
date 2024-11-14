@@ -159,7 +159,7 @@ namespace Luna_Bay_Resort_App.Helpers
         }
 
         //Returns Price based on Room Name
-        public static int ReturnRoomPrice(string Room)
+        public static int GetRoomPrice(string Room)
         {
             int price = 0;
             using (SqlConnection con = new SqlConnection(Key))
