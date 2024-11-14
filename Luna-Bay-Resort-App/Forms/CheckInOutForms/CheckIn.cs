@@ -54,12 +54,13 @@ namespace SubForms
                 {
                     MessageBox.Show("Please make sure to choose a payment method!");
                 }
-                else if (Utils.IsValidFormData(inputValues, EmailText.Text, ContactNoText.Text))
+                else if (Utils.IsValidFormData(inputValues, EmailText.Text, ContactNoText.Text) &&
+                         Utils.IsValidCheckInOut(CheckInPicker, CheckOutPicker))
                 {
                     string fullName = $"{FirstNameText.Text} {LastNameText.Text}";
                     FormManager.OpenForm<CheckInReceipt>(
                         fullName, CheckInPicker.Text, CheckOutPicker.Text,
-                        RoomTypeCB.Text, GuestNumText.Text, "1", // Room number is temporary
+                        RoomTypeCB.Text, GuestNumText.Text, DatabaseHelper.GetRoomNo(RoomTypeCB.Text).ToString(),
                         paymentMethod, paymentAmount, billAmount, amountDue
                     );
                 }

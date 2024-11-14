@@ -104,7 +104,7 @@
             LoginBtn.TabIndex = 5;
             LoginBtn.Text = "Login";
             LoginBtn.UseVisualStyleBackColor = false;
-            LoginBtn.Click += loginBtn_Click;
+            LoginBtn.Click += LoginBtn_Click;
             // 
             // pictureBox2
             // 

@@ -66,6 +66,16 @@ namespace Luna_Bay_Resort_App.Helpers
             return false; // This gets returned when any of the data is invalid
         }
 
+        public static bool IsValidCheckInOut(DateTimePicker checkIn, DateTimePicker checkOut)
+        {
+            if (checkIn.Value > checkOut.Value)
+            {
+                MessageBox.Show("Please make sure that the datetime of checking in happens before date of checking out");
+                return false;
+            }
+            return true;
+        }
+
         public static bool IsTextBoxesNotEmpty(string[] textValues)
         {
             foreach (string value in textValues)

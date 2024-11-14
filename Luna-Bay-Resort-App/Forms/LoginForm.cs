@@ -13,7 +13,7 @@ namespace MainForms
             LoginPassword.PasswordChar = '*';
         }
 
-        private void loginBtn_Click(object sender, EventArgs e)
+        private void LoginBtn_Click(object sender, EventArgs e)
         {
             try
             {
@@ -25,6 +25,7 @@ namespace MainForms
                         MessageBox.Show($"Welcome, {user.getName()}. Your position is {user.getPosition()}.");
                         SessionData.loginUser(user);
                         FormManager.OpenForm<Dashboard>();
+                        Close();
                     }
                     else
                     {
