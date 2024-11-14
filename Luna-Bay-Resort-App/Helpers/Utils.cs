@@ -15,9 +15,9 @@ namespace Luna_Bay_Resort_App.Helpers
 
         #region Generate ID/No Methods
 
-        public static string GenerateCheckInOutNo()
+        public static int GenerateCheckInOutNo()
         {
-            return GenerateRandomId(9).ToString();
+            return GenerateRandomId(5);
         }
 
         public static string GenerateReceiptNo()
