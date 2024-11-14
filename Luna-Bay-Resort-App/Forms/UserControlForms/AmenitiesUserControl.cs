@@ -445,9 +445,16 @@ namespace MainForms
                            ));
                         }
                     }
-                    SessionData.FillAmenities(amenities);
-                    FormManager.OpenForm<AmenitiesReceipt>();
-                    checkoutTable.Rows.Clear();
+                    if (amenities.Count > 0)
+                    {
+                        SessionData.FillAmenities(amenities);
+                        FormManager.OpenForm<AmenitiesReceipt>();
+                        checkoutTable.Rows.Clear();
+                    }
+                    else
+                    {
+                        MessageBox.Show("There are no items in the cart!");
+                    }
                 }
                 catch (Exception err)
                 {
