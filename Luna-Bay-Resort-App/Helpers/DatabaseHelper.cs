@@ -141,7 +141,7 @@ namespace Luna_Bay_Resort_App.Helpers
         }
 
         //Return Food name and price by FoodType_ID
-        public static List<Food> getFoodbyType(int FoodType)
+        public static List<Food> GetFoodbyType(int FoodType)
         {
             var foods = new List<Food>();
             using (SqlConnection con = new SqlConnection(Key))
@@ -168,7 +168,7 @@ namespace Luna_Bay_Resort_App.Helpers
         }
 
         //Search for Food name and price using FoodName
-        public static List<Food> searchFood(string FoodName)
+        public static List<Food> SearchFood(string FoodName)
         {
             var foods = new List<Food>();
             using (SqlConnection con = new SqlConnection(Key))

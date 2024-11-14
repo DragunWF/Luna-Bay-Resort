@@ -241,7 +241,7 @@ namespace MainForms
 
             void DisplayFoodByFoodID(int FoodType)
             {
-                List<Food> foods = DatabaseHelper.getFoodbyType(FoodType);
+                List<Food> foods = DatabaseHelper.GetFoodbyType(FoodType);
 
                 menuTable.Rows.Clear();
 
@@ -254,7 +254,7 @@ namespace MainForms
 
             void SearchFood(string FoodName)
             {
-                List<Food> foods = DatabaseHelper.searchFood(FoodName);
+                List<Food> foods = DatabaseHelper.SearchFood(FoodName);
 
                 menuTable.Rows.Clear();
 
