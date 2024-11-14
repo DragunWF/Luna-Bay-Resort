@@ -14,6 +14,9 @@ namespace SubForms
 {
     public partial class SearchReservation : Form
     {
+        private int reservationNo = -1;
+        private int generatedCheckInId;
+
         public SearchReservation()
         {
             InitializeComponent();
@@ -25,7 +28,7 @@ namespace SubForms
         {
             try
             {
-                int reservationNo = int.Parse(ReservationNoText.Text);
+                reservationNo = int.Parse(ReservationNoText.Text);
                 Guest reservation = DatabaseHelper.GetReservation(reservationNo);
                 if (reservation != null)
                 {
@@ -53,7 +56,28 @@ namespace SubForms
 
         private void CheckInBtn_Click(object sender, EventArgs e)
         {
+            if (reservationNo != -1)
+            {
+                generatedCheckInId = Utils.GenerateCheckInOutNo();
+                MessageBox.Show($"Reservation {reservationNo} has been checked in! Generated check-in ID: {generatedCheckInId}");
+                DatabaseHelper.CheckInReservation(reservationNo, generatedCheckInId);
+                ResetTextLabels();
+                reservationNo = -1;
+            }
+            else
+            {
+                MessageBox.Show("Please search a reservation with a reservation number first before checking in");
+            }
+        }
 
+        private void ResetTextLabels()
+        {
+            ReservationNoText.Text = "";
+            FullNameText.Text = "-";
+            CheckInDateText.Text = "-";
+            CheckOutDateText.Text = "-";
+            RoomTypeText.Text = "-";
+            NoOfGuestText.Text = "-";
         }
     }
 }

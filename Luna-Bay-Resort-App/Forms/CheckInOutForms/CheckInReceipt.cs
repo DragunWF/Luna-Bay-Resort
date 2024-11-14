@@ -15,7 +15,8 @@ namespace SubForms
     {
         private readonly string fullName, checkInDate, checkOutDate, roomType, numOfGuests, roomNo, paymentMethod;
         private readonly double paymentAmount, billAmount, amountDue;
-        private readonly string checkInNo, receiptNo;
+        private readonly string receiptNo;
+        private readonly int checkInNo;
 
         public CheckInReceipt(string fullName, string checkInDate, string checkOutDate, 
             string roomType, string numOfGuests, string roomNo, string paymentMethod,
@@ -47,7 +48,7 @@ namespace SubForms
         public void DisplayReceiptData()
         {
             // Receipt Details
-            CheckInNoText.Text = checkInNo;
+            CheckInNoText.Text = checkInNo.ToString();
             ReceiptNoText.Text = receiptNo;
             PaymentMethodText.Text = paymentMethod;
             DateTimeText.Text = Utils.GetCurrentDate();

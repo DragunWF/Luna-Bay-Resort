@@ -176,9 +176,9 @@
             FullNameText.Location = new Point(177, 220);
             FullNameText.Margin = new Padding(4, 0, 4, 0);
             FullNameText.Name = "FullNameText";
-            FullNameText.Size = new Size(40, 18);
+            FullNameText.Size = new Size(16, 18);
             FullNameText.TabIndex = 66;
-            FullNameText.Text = "Name";
+            FullNameText.Text = "-";
             // 
             // CheckInDateText
             // 
@@ -187,9 +187,9 @@
             CheckInDateText.Location = new Point(177, 280);
             CheckInDateText.Margin = new Padding(4, 0, 4, 0);
             CheckInDateText.Name = "CheckInDateText";
-            CheckInDateText.Size = new Size(40, 18);
+            CheckInDateText.Size = new Size(16, 18);
             CheckInDateText.TabIndex = 67;
-            CheckInDateText.Text = "Date";
+            CheckInDateText.Text = "-";
             // 
             // CheckOutDateText
             // 
@@ -198,9 +198,9 @@
             CheckOutDateText.Location = new Point(177, 338);
             CheckOutDateText.Margin = new Padding(4, 0, 4, 0);
             CheckOutDateText.Name = "CheckOutDateText";
-            CheckOutDateText.Size = new Size(40, 18);
+            CheckOutDateText.Size = new Size(16, 18);
             CheckOutDateText.TabIndex = 68;
-            CheckOutDateText.Text = "Date";
+            CheckOutDateText.Text = "-";
             // 
             // RoomTypeText
             // 
@@ -209,9 +209,9 @@
             RoomTypeText.Location = new Point(177, 398);
             RoomTypeText.Margin = new Padding(4, 0, 4, 0);
             RoomTypeText.Name = "RoomTypeText";
-            RoomTypeText.Size = new Size(80, 18);
+            RoomTypeText.Size = new Size(16, 18);
             RoomTypeText.TabIndex = 69;
-            RoomTypeText.Text = "Room Type";
+            RoomTypeText.Text = "-";
             // 
             // NoOfGuestText
             // 
@@ -220,9 +220,9 @@
             NoOfGuestText.Location = new Point(177, 454);
             NoOfGuestText.Margin = new Padding(4, 0, 4, 0);
             NoOfGuestText.Name = "NoOfGuestText";
-            NoOfGuestText.Size = new Size(104, 18);
+            NoOfGuestText.Size = new Size(16, 18);
             NoOfGuestText.TabIndex = 70;
-            NoOfGuestText.Text = "Num of Guest";
+            NoOfGuestText.Text = "-";
             // 
             // SearchReservation
             // 

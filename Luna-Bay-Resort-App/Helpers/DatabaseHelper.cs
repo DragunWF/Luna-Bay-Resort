@@ -113,6 +113,21 @@ namespace Luna_Bay_Resort_App.Helpers
             return null;
         }
 
+        public static void CheckInReservation(int reservationId, int checkInId)
+        {
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "UPDATE Guest SET Reservation_ID = NULL, Checkin_ID = @checkInId WHERE Reservation_ID = @reservationId";
+
+                SqlCommand setroomstatus = new SqlCommand(query, con);
+                setroomstatus.Parameters.AddWithValue("@checkInId", checkInId);
+                setroomstatus.Parameters.AddWithValue("@reservationId", reservationId);
+                setroomstatus.ExecuteNonQuery();
+                con.Close();
+            }
+        }
+
         //Retrieve all distinct Available Accomodations
         public static List<Accommodation> GetRoomTypes()
         {

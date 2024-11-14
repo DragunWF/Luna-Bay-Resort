@@ -14,7 +14,8 @@ namespace SubForms
     public partial class CheckOutReceipt : Form
     {
         private readonly string fullName, checkInDate, checkOutDate, roomType, numOfGuests, roomNo;
-        private readonly string checkOutNo, receiptNo;
+        private readonly string receiptNo;
+        private readonly int checkOutNo;
 
         public CheckOutReceipt(string fullName, string checkInDate, string checkOutDate, 
             string roomType, string numOfGuests, string roomNo)
@@ -41,7 +42,7 @@ namespace SubForms
         private void DisplayReceiptData()
         {
             // Receipt Data
-            CheckOutNoText.Text = checkOutNo;
+            CheckOutNoText.Text = checkOutNo.ToString();
             ReceiptNoText.Text = receiptNo;
             DateTimeText.Text = Utils.GetCurrentDate();
 
