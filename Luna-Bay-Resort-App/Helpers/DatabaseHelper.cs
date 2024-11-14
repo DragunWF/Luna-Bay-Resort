@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Data.SqlClient;
 using Luna_Bay_Resort_App.Data;
+using System.Diagnostics;
 
 namespace Luna_Bay_Resort_App.Helpers
 {
@@ -138,6 +139,27 @@ namespace Luna_Bay_Resort_App.Helpers
                 }
             }
             return price;
+        }
+
+        public static int GetRoomNo(string Room)
+        {
+            int roomNo = -1;
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "SELECT DISTINCT Room_ID FROM Accommodation WHERE Name LIKE @RoomType";
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@RoomType", Room);
+
+                using (SqlDataReader read = command.ExecuteReader())
+                {
+                    if (read.Read())
+                    {
+                        roomNo = Convert.ToInt32(read["Room_ID"]);
+                    }
+                }
+            }
+            return roomNo;
         }
 
         //Return Food name and price by FoodType_ID

@@ -245,7 +245,7 @@
             DepositPaidCheckBox.Name = "DepositPaidCheckBox";
             DepositPaidCheckBox.Size = new Size(128, 21);
             DepositPaidCheckBox.TabIndex = 0;
-            DepositPaidCheckBox.Text = "Desposit Paid:";
+            DepositPaidCheckBox.Text = "Deposit Paid:";
             DepositPaidCheckBox.TextAlign = ContentAlignment.MiddleRight;
             DepositPaidCheckBox.UseVisualStyleBackColor = true;
             // 
