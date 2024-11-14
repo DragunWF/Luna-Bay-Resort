@@ -12,7 +12,7 @@ namespace Luna_Bay_Resort_App.Helpers
         private static User currentUser;
         private static List<Amenity> amenities = new();
 
-        public static void loginUser(User user) => currentUser = user;
+        public static void LoginUser(User user) => currentUser = user;
         public static User GetUser() => currentUser;
 
         /* 

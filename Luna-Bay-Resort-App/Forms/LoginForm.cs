@@ -23,7 +23,7 @@ namespace MainForms
                     if (user != null)
                     {
                         MessageBox.Show($"Welcome, {user.getName()}. Your position is {user.getPosition()}.");
-                        SessionData.loginUser(user);
+                        SessionData.LoginUser(user);
                         FormManager.OpenForm<Dashboard>();
                         Close();
                     }
