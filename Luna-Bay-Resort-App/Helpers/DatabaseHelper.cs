@@ -130,8 +130,8 @@ namespace Luna_Bay_Resort_App.Helpers
             }
         }
 
-        public static void UpdateReservation(int reservationId, string name, string email, string phone,
-            int room, int numOfGuest, string checkIn, string checkOut, double billAmount, double balance)
+        public static void UpdateReservation(int reservationId, string checkIn, string checkOut, int roomNo, 
+            int numOfGuest, double billAmount, double balance)
         {
             using (SqlConnection con = new SqlConnection(Key))
             {
@@ -139,13 +139,10 @@ namespace Luna_Bay_Resort_App.Helpers
 
                 string query = @"
                 UPDATE Guest 
-                SET Name = @Name, 
-                    Email = @Email, 
-                    Phone = @Phone, 
-                    Room = @Room, 
+                SET Check_in = @CheckIn, 
+                    Check_out = @CheckOut,
+                    Room = @Room,
                     NumofGuest = @NumOfGuest, 
-                    Check_in = @CheckIn, 
-                    Check_out = @CheckOut, 
                     Bill_Amount = @BillAmount, 
                     Balance = @Balance
                 WHERE Reservation_ID = @ReservationID";
@@ -154,13 +151,10 @@ namespace Luna_Bay_Resort_App.Helpers
                 {
                     // Set the parameters for the update query
                     cmd.Parameters.Add("@ReservationID", SqlDbType.Int).Value = reservationId;
-                    cmd.Parameters.Add("@Name", SqlDbType.VarChar, 50).Value = name;
-                    cmd.Parameters.Add("@Email", SqlDbType.VarChar, 50).Value = email;
-                    cmd.Parameters.Add("@Phone", SqlDbType.VarChar, 20).Value = phone;
-                    cmd.Parameters.Add("@Room", SqlDbType.Int).Value = room;
-                    cmd.Parameters.Add("@NumOfGuest", SqlDbType.Int).Value = numOfGuest;
                     cmd.Parameters.Add("@CheckIn", SqlDbType.VarChar).Value = checkIn;
                     cmd.Parameters.Add("@CheckOut", SqlDbType.VarChar).Value = checkOut;
+                    cmd.Parameters.Add("@Room", SqlDbType.Int).Value = roomNo;
+                    cmd.Parameters.Add("@NumOfGuest", SqlDbType.Int).Value = numOfGuest;
                     cmd.Parameters.Add("@BillAmount", SqlDbType.Money).Value = billAmount;
                     cmd.Parameters.Add("@Balance", SqlDbType.Money).Value = balance;
 

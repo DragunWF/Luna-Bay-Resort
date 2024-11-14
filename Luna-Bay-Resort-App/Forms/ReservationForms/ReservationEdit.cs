@@ -62,14 +62,41 @@ namespace SubForms
 
         private void ConfirmBtn_Click(object sender, EventArgs e)
         {
-            if (reservationNo != -1)
+            try
             {
-                // TODO: Call DatabaseHelper here to change the reservation
-                reservationNo = -1;
+                string[] inputValues = {
+                    RoomTypeCB.Text,
+                    GuestNumText.Text,
+                    DepositText.Text,
+                    TotalAmountText.Text,
+                };
+                if (reservationNo == -1)
+                {
+                    MessageBox.Show("Please make sure to select a reservation first!");
+                }
+                else if (Utils.IsTextBoxesNotEmpty(inputValues) && 
+                         Utils.IsValidCheckInOut(CheckInPicker, CheckOutPicker))
+                {
+                    DatabaseHelper.UpdateReservation(
+                        reservationNo,
+                        CheckInPicker.Value.ToString(),
+                        CheckOutPicker.Value.ToString(),
+                        DatabaseHelper.GetRoomNo(RoomTypeCB.Text),
+                        int.Parse(GuestNumText.Text),
+                        double.Parse(DepositText.Text),
+                        double.Parse(TotalAmountText.Text)
+                    );
+                    MessageBox.Show($"Reservation {reservationNo} has been successfully edited!");
+                    reservationNo = -1;
+                }
             }
-            else
+            catch (FormatException err)
             {
-                MessageBox.Show("Please make sure to select a reservation first!");
+                MessageBox.Show("Please make sure to input a valid deposit and payment amount!");
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show($"An unexpected error has occured: {err.Message}");
             }
         }
     }
