@@ -19,9 +19,10 @@ namespace MainForms
         private DataGridView checkoutTable;
 
         private Label subTotalLabel;
+        private Label vatLabel;
         private Label totalLabel;
 
-        private int subtotal, total;
+        private double subtotal, vat, total;
 
         public AmenitiesUserControl()
         {
@@ -374,16 +375,47 @@ namespace MainForms
             checkoutTable.Columns.Add("Price", "Price");
             checkoutPanel.Controls.Add(checkoutTable, 0, 1);
 
-          
+            checkoutTable.Columns["Name"].ReadOnly = true;
+            checkoutTable.Columns["Qty"].ReadOnly = true;
+            checkoutTable.Columns["Price"].ReadOnly = true;
+
+            //Remove quantity in checkout table
+            checkoutTable.CellClick += (sender, e) =>
+            {
+                string itemName = checkoutTable.Rows[e.RowIndex].Cells["Name"].Value?.ToString();
+                string qtyText = checkoutTable.Rows[e.RowIndex].Cells["Qty"].Value?.ToString();
+                string itemPriceText = checkoutTable.Rows[e.RowIndex].Cells["Price"].Value?.ToString();
+                
+                if (string.IsNullOrEmpty(itemName) || string.IsNullOrEmpty(qtyText))
+                {
+                    return;
+                }
+                int quantity = Convert.ToInt32(qtyText);
+                int totalItemPrice = Convert.ToInt32(itemPriceText);
+                int itemUnitPrice = totalItemPrice / quantity;
+                
+                if (quantity > 1)
+                {
+                    quantity--;
+                    checkoutTable.Rows[e.RowIndex].Cells["Qty"].Value = quantity;
+                    checkoutTable.Rows[e.RowIndex].Cells["Price"].Value = quantity * itemUnitPrice;
+                }
+                else
+                {
+                    checkoutTable.Rows.RemoveAt(e.RowIndex);
+                }
+                UpdateTotal();
+            };
+
             TableLayoutPanel totalPanel = new TableLayoutPanel
             {
                 Dock = DockStyle.Fill,
                 RowCount = 4,
             };
 
-            subTotalLabel = new Label { Text = "Sub Total: 200.00", Font = new Font("Consolas", 10), AutoSize = true};
-            Label vatLabel = new Label { Text = "VAT: 24.00", Font = new Font("Consolas", 10) };
-            totalLabel = new Label { Text = "Total: 224.00", Font = new Font("Consolas", 14, FontStyle.Bold), Margin = new Padding(0, 10, 0, 0), AutoSize = true};
+            subTotalLabel = new Label { Text = "Sub Total:", Font = new Font("Consolas", 10), AutoSize = true};
+            vatLabel = new Label { Text = "VAT:", Font = new Font("Consolas", 10), AutoSize = true};
+            totalLabel = new Label { Text = "Total:", Font = new Font("Consolas", 14, FontStyle.Bold), Margin = new Padding(0, 10, 0, 0), AutoSize = true};
 
             Button payButton = new Button
             {
@@ -442,9 +474,11 @@ namespace MainForms
                     subtotal += price;
                 }
             }
+            vat = subtotal * 0.10;
+            total = subtotal + vat;
 
-            total = subtotal + 24;
             subTotalLabel.Text = $"Sub Total: {Utils.FormatCurrency(subtotal)}";
+            vatLabel.Text = $"VAT: {Utils.FormatCurrency(vat)}";
             totalLabel.Text = $"Total: {Utils.FormatCurrency(total)}";
         }
     }
