@@ -106,13 +106,14 @@ namespace Luna_Bay_Resort_App.Helpers
 
         public static string FormatCurrency(int amount)
         {
-            return $"{amount} PHP";
+            return $"{amount.ToString("N0")} PHP"; // Formats as "1,000 PHP"
         }
 
         public static string FormatCurrency(double amount)
         {
-            return $"{amount} PHP";
+            return $"{amount.ToString("N2")} PHP"; // Formats as "1,000.00 PHP"
         }
+
 
         #endregion
 
