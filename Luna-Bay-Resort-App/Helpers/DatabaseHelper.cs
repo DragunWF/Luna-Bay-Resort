@@ -115,6 +115,43 @@ namespace Luna_Bay_Resort_App.Helpers
             return null;
         }
 
+        public static void GetCheckIn(int checkInId)
+        {
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+
+                string query = @"
+            SELECT Checkin_ID, Name, Email, Phone, Room, 
+                   Check_in, Check_out, NumOfGuest, Bill_Amount, Balance
+            FROM Guest 
+            WHERE Checkin_ID = @checkInID";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.Add("@checkInID", SqlDbType.Int).Value = checkInId;
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new Guest(
+                                checkInId,
+                                reader.GetString(reader.GetOrdinal("Name")),
+                                reader.GetString(reader.GetOrdinal("Check_in")),
+                                reader.GetString(reader.GetOrdinal("Check_out")),
+                                reader.GetInt32(reader.GetOrdinal("Room")),
+                                reader.GetInt32(reader.GetOrdinal("NumofGuest")),
+                                reader.GetInt32(reader.GetOrdinal("Bill_Amount")),
+                                reader.GetInt32(reader.GetOrdinal("Balance"))
+                            );
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
         public static void CheckInReservation(int reservationId, int checkInId)
         {
             using (SqlConnection con = new SqlConnection(Key))
@@ -131,11 +168,6 @@ namespace Luna_Bay_Resort_App.Helpers
                 setroomstatus.ExecuteNonQuery();
                 con.Close();
             }
-        }
-
-        public static void GetCheckIn(int checkInId)
-        {
-
         }
 
         public static void CheckOutGuest(int checkInId, int checkOutId)
@@ -156,7 +188,7 @@ namespace Luna_Bay_Resort_App.Helpers
             }
         }
 
-        public static void UpdateReservation(int reservationId, string checkIn, string checkOut, int roomNo, 
+        public static void UpdateReservation(int reservationId, string checkIn, string checkOut, int roomNo,
             int numOfGuest, double billAmount, double balance)
         {
             using (SqlConnection con = new SqlConnection(Key))
