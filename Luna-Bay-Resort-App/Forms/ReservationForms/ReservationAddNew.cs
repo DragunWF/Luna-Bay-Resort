@@ -51,9 +51,16 @@ namespace Luna_Bay_Sub_Forms
                     //     CheckInPicker.Text,
                     //     CheckOutPicker.Text
                     // );
+                    int reservationNo = Utils.GenerateReservationNo();
                     FormManager.OpenForm<ReservationReceipt>(
-                        fullName, CheckInPicker.Text, CheckOutPicker.Text, RoomTypeCB.Text, GuestNumText.Text,
-                        totalAmount, depositAmount, remainingBalance
+                        reservationNo, fullName, CheckInPicker.Text, CheckOutPicker.Text, 
+                        RoomTypeCB.Text, GuestNumText.Text, totalAmount, depositAmount, 
+                        remainingBalance
+                    );
+                    DatabaseHelper.AddReservation(
+                        reservationNo, fullName, EmailText.Text, ContactNoText.Text, RoomTypeCB.Text,
+                        int.Parse(GuestNumText.Text), CheckInPicker.Text, CheckOutPicker.Text,
+                        depositAmount, remainingBalance
                     );
                     Utils.ResetTextBoxes(new TextBox[] {
                         FirstNameText, LastNameText, EmailText, ContactNoText, GuestNumText,
@@ -63,6 +70,7 @@ namespace Luna_Bay_Sub_Forms
             }
             catch (FormatException err)
             {
+                MessageBox.Show(err.Message);
                 MessageBox.Show("Please make sure you input valid numbers for the deposit and total amount textboxes!");
             }
             catch (Exception err)

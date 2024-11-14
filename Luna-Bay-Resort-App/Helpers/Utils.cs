@@ -25,9 +25,9 @@ namespace Luna_Bay_Resort_App.Helpers
             return GenerateRandomId(9).ToString();
         }
 
-        public static string GenerateReservationNo()
+        public static int GenerateReservationNo()
         {
-            return GenerateRandomId(5).ToString();
+            return GenerateRandomId(5);
         }
 
         private static int GenerateRandomId(int digitCount)

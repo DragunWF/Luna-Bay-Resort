@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Data.SqlClient;
 using Luna_Bay_Resort_App.Data;
 using System.Diagnostics;
+using System.Data;
 
 namespace Luna_Bay_Resort_App.Helpers
 {
@@ -40,38 +41,40 @@ namespace Luna_Bay_Resort_App.Helpers
             }
         }
 
-        public static void AddReservation(string name, string email, string phone, string room, int numOfGuest, string checkIn, string checkOut)
+        public static void AddReservation(int reservationId, string name, string email, string phone,
+            string room, int numOfGuest, string checkIn, string checkOut, double billAmount, double balance)
         {
+            string status = "Reserved";
+            int roomNo = GetRoomNo(room);
+
             using (SqlConnection con = new SqlConnection(Key))
             {
-                //temporary for testing
-                int Receipt = 10;
-                int Reservation = 10;
-
                 con.Open();
 
-                SqlCommand add = new SqlCommand(
-                    "INSERT INTO Guest (Receipt_No, Reservation_ID, Name, Email, Phone, Room, NumofGuest, Check_in, Check_out, Status, Bill_Amount, Balance) VALUES (@ReceiptNo, @ReservationID, @Name, @Email, @Phone, @Room, @NumofGuest,@CheckIn, @CheckOut, @Status, @BillAmount, @Balance)", 
-                    con
-                );
-                add.Parameters.AddWithValue("@ReceiptNo", Receipt);
-                add.Parameters.AddWithValue("@ReservationID", Reservation);
-                add.Parameters.AddWithValue("@Name", name);
-                add.Parameters.AddWithValue("@Email", email);
-                add.Parameters.AddWithValue("@Phone", phone);
-                add.Parameters.AddWithValue("@Room", GetAvailableRoomID(room));
-                add.Parameters.AddWithValue("@NumofGuest", numOfGuest);
-                add.Parameters.AddWithValue("@CheckIn", DateTime.Parse(checkIn));
-                add.Parameters.AddWithValue("@CheckOut", DateTime.Parse(checkOut));
-                add.Parameters.AddWithValue("@Status", "Reserved");
-                add.Parameters.AddWithValue("@BillAmount", 2000); //placeholder
-                add.Parameters.AddWithValue("@Balance", 4000); //placeholder
-                add.ExecuteNonQuery();
+                string query = @"
+                INSERT INTO Guest 
+                (Reservation_ID, Name, Email, Phone, Room, NumofGuest, Check_in, Check_out, Status, Bill_Amount, Balance) 
+                VALUES 
+                (@ReservationID, @Name, @Email, @Phone, @Room, @NumofGuest, @CheckIn, @CheckOut, @Status, @BillAmount, @Balance)";
 
-                con.Close();
-                Receipt += 1;
-                Reservation += 1;
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.Add("@ReservationID", SqlDbType.Int).Value = reservationId;
+                    cmd.Parameters.Add("@Name", SqlDbType.VarChar, 50).Value = name;
+                    cmd.Parameters.Add("@Email", SqlDbType.VarChar, 50).Value = email;
+                    cmd.Parameters.Add("@Phone", SqlDbType.VarChar, 20).Value = phone;
+                    cmd.Parameters.Add("@Room", SqlDbType.Int).Value = roomNo;
+                    cmd.Parameters.Add("@NumofGuest", SqlDbType.Int).Value = numOfGuest;
+                    cmd.Parameters.Add("@CheckIn", SqlDbType.VarChar).Value = checkIn;
+                    cmd.Parameters.Add("@CheckOut", SqlDbType.VarChar).Value = checkOut;
+                    cmd.Parameters.Add("@Status", SqlDbType.VarChar, 25).Value = status;
+                    cmd.Parameters.Add("@BillAmount", SqlDbType.Int).Value = billAmount;
+                    cmd.Parameters.Add("@Balance", SqlDbType.Int).Value = balance;
+
+                    cmd.ExecuteNonQuery();
+                }
             }
+
         }
 
         //Retrieve all distinct Available Accomodations
@@ -229,7 +232,7 @@ namespace Luna_Bay_Resort_App.Helpers
 
                 using (var reader = getaddons.ExecuteReader())
                 {
-                    while (reader.Read()) 
+                    while (reader.Read())
                     {
                         string addonName = reader["Name"].ToString();
                         int price = Convert.ToInt32(reader["Price"]);
@@ -255,11 +258,11 @@ namespace Luna_Bay_Resort_App.Helpers
 
                 using (var reader = getproduct.ExecuteReader())
                 {
-                    while (reader.Read()) 
+                    while (reader.Read())
                     {
-                        string productname = reader["Name"].ToString(); 
+                        string productname = reader["Name"].ToString();
                         int price = Convert.ToInt32(reader["Price"]);
-                       
+
                         product.Add(new Product(productname, price));
                     }
                 }
@@ -278,7 +281,7 @@ namespace Luna_Bay_Resort_App.Helpers
                 string query = "SELECT Room_ID, Name FROM Accommodation WHERE Room_status = 'Available'";
 
                 SqlCommand getrooms = new SqlCommand(query, con);
-                using(var reader = getrooms.ExecuteReader())
+                using (var reader = getrooms.ExecuteReader())
                 {
                     while (reader.Read())
                     {

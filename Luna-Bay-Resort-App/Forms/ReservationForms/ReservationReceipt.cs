@@ -17,7 +17,7 @@ namespace SubForms
         private readonly double depositAmount, totalAmount, remainingBalance;
         private readonly string reservationNo, receiptNo;
 
-        public ReservationReceipt(string fullName, string checkInDate, string checkOutDate, 
+        public ReservationReceipt(int reservationNo, string fullName, string checkInDate, string checkOutDate, 
             string roomType, string numOfGuests, double totalAmount, double depositAmount, double remainingBalance)
         {
             InitializeComponent();
@@ -35,7 +35,7 @@ namespace SubForms
 
             // Receipt Data
             receiptNo = Utils.GenerateReceiptNo();
-            reservationNo = Utils.GenerateReservationNo();
+            this.reservationNo = reservationNo.ToString();
 
             // Displays receipt data to the text labels
             DisplayReceiptData();
