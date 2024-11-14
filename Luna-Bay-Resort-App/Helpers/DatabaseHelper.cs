@@ -194,6 +194,58 @@ namespace Luna_Bay_Resort_App.Helpers
             return foods;
         }
 
+        //Get Addon List(Name, Price)
+        public static List<Addon> GetAddon()
+        {
+            var addon = new List<Addon>();
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "SELECT DISTINCT Name, Price FROM Addons";
+
+                SqlCommand getaddons = new SqlCommand(query, con);
+
+                using (var reader = getaddons.ExecuteReader())
+                {
+                    while (reader.Read()) 
+                    {
+                        string addonName = reader["Name"].ToString();
+                        int price = Convert.ToInt32(reader["Price"]);
+
+                        addon.Add(new Addon(addonName, price));
+                    }
+                }
+                con.Close();
+            }
+            return addon;
+        }
+
+        //Get Product List(Name, Price)
+        public static List<Product> GetProduct()
+        {
+            var product = new List<Product>();
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "SELECT Name, Price FROM Products";
+
+                SqlCommand getproduct = new SqlCommand(query, con);
+
+                using (var reader = getproduct.ExecuteReader())
+                {
+                    while (reader.Read()) 
+                    {
+                        string productname = reader["Name"].ToString(); 
+                        int price = Convert.ToInt32(reader["Price"]);
+                       
+                        product.Add(new Product(productname, price));
+                    }
+                }
+                con.Close();
+            }
+            return product;
+        }
+
         //Return all Available Room_ID & Name
         public static List<Accommodation> GetAvailableRoom(DataGridView availableroomtable)
         {
@@ -251,7 +303,7 @@ namespace Luna_Bay_Resort_App.Helpers
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
-                string query = "Update Accommodation Set Room_status = @status Where Room_ID = @roomId";
+                string query = "UPDATE Accommodation SET Room_status = @status WHERE Room_ID = @roomId";
 
                 SqlCommand setroomstatus = new SqlCommand(query, con);
                 setroomstatus.Parameters.AddWithValue("@status", roomStatus);

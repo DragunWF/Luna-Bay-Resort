@@ -16,6 +16,13 @@ namespace MainForms
 {
     public partial class AmenitiesUserControl : UserControl
     {
+        private DataGridView checkoutTable;
+
+        private Label subTotalLabel;
+        private Label totalLabel;
+
+        private int subtotal, total;
+
         public AmenitiesUserControl()
         {
             InitializeComponent();
@@ -82,7 +89,49 @@ namespace MainForms
             menuTable.Columns.Add("Price", "Price");
             menuPanel.Controls.Add(menuTable, 0, 1);
 
-            
+            menuTable.Columns["Name"].ReadOnly = true;
+            menuTable.Columns["Price"].ReadOnly = true;
+
+            //Click Option Event
+            menuTable.CellClick += (sender, e) =>
+            {
+                string itemName = menuTable.Rows[e.RowIndex].Cells["Name"].Value?.ToString();
+                string itemPriceText = menuTable.Rows[e.RowIndex].Cells["Price"].Value?.ToString();
+
+                if (string.IsNullOrEmpty(itemName) || string.IsNullOrEmpty(itemPriceText))
+                {
+                    return;
+                }
+
+                // Remove "PHP" from the price
+                decimal itemPrice = 0;
+                if (decimal.TryParse(itemPriceText.Replace("PHP", "").Trim(), out decimal price))
+                {
+                    itemPrice = price;
+                }
+
+                // Check if the item already exists in the checkoutTable
+                bool itemExists = false;
+                foreach (DataGridViewRow row in checkoutTable.Rows)
+                {
+                    if (row.Cells["Name"].Value?.ToString() == itemName)
+                    {
+                        int currentQty = Convert.ToInt32(row.Cells["Qty"].Value);
+                        row.Cells["Qty"].Value = currentQty + 1;
+                        row.Cells["Price"].Value = (currentQty + 1) * itemPrice;
+                        itemExists = true;
+                        break;
+                    }
+                }
+
+                if (!itemExists)
+                {
+                    checkoutTable.Rows.Add(itemName, 1, itemPrice);
+                }
+
+                UpdateTotal();
+            };
+
             FlowLayoutPanel bottomPanel = new FlowLayoutPanel
             {
                 Height = 300,
@@ -128,8 +177,12 @@ namespace MainForms
 
             addOnButton.Click += (sender, e) =>
             {
-                int foodtype = 4;
-                DisplayFoodByFoodID(foodtype);
+                DisplayFoodByFoodID(4);
+
+                GetProduct();
+
+                GetAddon();
+
             };
 
             Button breakfastButton = new Button
@@ -144,8 +197,7 @@ namespace MainForms
 
             breakfastButton.Click += (sender, e) =>
             {
-                int foodtype = 1;
-                DisplayFoodByFoodID(foodtype);
+                DisplayFoodByFoodID(1);
             };
 
             Button lunchButton = new Button
@@ -160,8 +212,7 @@ namespace MainForms
 
             lunchButton.Click += (sender, e) =>
             {
-                int foodtype = 2;
-                DisplayFoodByFoodID(foodtype);
+                DisplayFoodByFoodID(2);
             };
 
             Button dinnerButton = new Button
@@ -176,8 +227,7 @@ namespace MainForms
 
             dinnerButton.Click += (sender, e) =>
             {
-                int foodtype = 3;
-                DisplayFoodByFoodID(foodtype);
+                DisplayFoodByFoodID(3);
             };
 
             Button beveragesButton = new Button
@@ -192,8 +242,7 @@ namespace MainForms
 
             beveragesButton.Click += (sender, e) =>
             {
-                int foodtype = 6;
-                DisplayFoodByFoodID(foodtype);
+                DisplayFoodByFoodID(6);
             };
 
             Button snacksButton = new Button
@@ -208,8 +257,7 @@ namespace MainForms
 
             snacksButton.Click += (sender, e) =>
             {
-                int foodtype = 5;
-                DisplayFoodByFoodID(foodtype);
+                DisplayFoodByFoodID(5);
             };
 
             Button cancelButton = new Button
@@ -221,6 +269,11 @@ namespace MainForms
                 Width = 100, 
                 ForeColor = Color.White,
                 Margin = new Padding(450, 0, 0, 0)
+            };
+
+            cancelButton.Click += (sender, e) =>
+            {
+                checkoutTable.Rows.Clear();
             };
 
 
@@ -264,6 +317,28 @@ namespace MainForms
                     menuTable.Rows.Add(food.getFoodName(), formattedPrice);
                 }
             }
+
+            void GetProduct()
+            {
+                List<Product> products = DatabaseHelper.GetProduct();
+
+                foreach (var product in products)
+                {
+                    string formattedPrice = Utils.FormatCurrency(product.getPrice());
+                    menuTable.Rows.Add(product.getProductName(), formattedPrice);
+                }
+            }
+
+            void GetAddon()
+            {
+                List<Addon> addons = DatabaseHelper.GetAddon();
+
+                foreach (var addon in addons)
+                {
+                    string formattedPrice = Utils.FormatCurrency(addon.getPrice());
+                    menuTable.Rows.Add(addon.getAddonName(), formattedPrice);
+                }
+            }
         }
 
         private Panel CreateCheckoutPanel()
@@ -288,7 +363,7 @@ namespace MainForms
             checkoutPanel.Controls.Add(checkoutTitle, 0, 0);
 
             
-            DataGridView checkoutTable = new DataGridView
+            checkoutTable = new DataGridView
             {
                 ColumnHeadersVisible = true,
                 AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
@@ -306,9 +381,9 @@ namespace MainForms
                 RowCount = 4,
             };
 
-            Label subTotalLabel = new Label { Text = "Sub Total: 200.00", Font = new Font("Consolas", 10) };
+            subTotalLabel = new Label { Text = "Sub Total: 200.00", Font = new Font("Consolas", 10), AutoSize = true};
             Label vatLabel = new Label { Text = "VAT: 24.00", Font = new Font("Consolas", 10) };
-            Label totalLabel = new Label { Text = "Total: 224.00", Font = new Font("Consolas", 14, FontStyle.Bold), Margin = new Padding(0, 10, 0, 0), };
+            totalLabel = new Label { Text = "Total: 224.00", Font = new Font("Consolas", 14, FontStyle.Bold), Margin = new Padding(0, 10, 0, 0), AutoSize = true};
 
             Button payButton = new Button
             {
@@ -334,6 +409,23 @@ namespace MainForms
             totalPanel.Controls.Add(payButton, 0, 4);
             checkoutPanel.Controls.Add(totalPanel, 0, 2);
             return checkoutPanel;
+        }
+
+        private void UpdateTotal()
+        {
+            subtotal = 0;
+
+            foreach (DataGridViewRow row in checkoutTable.Rows)
+            {
+                if (int.TryParse(row.Cells["Price"].Value?.ToString(), out int price))
+                {
+                    subtotal += price;
+                }
+            }
+
+            total = subtotal + 24;
+            subTotalLabel.Text = $"Sub Total: {Utils.FormatCurrency(subtotal)}";
+            totalLabel.Text = $"Total: {Utils.FormatCurrency(total)}";
         }
     }
 }
