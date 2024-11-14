@@ -32,7 +32,7 @@
             label1 = new Label();
             ReservationNoText = new TextBox();
             label3 = new Label();
-            SearchBtn = new Button();
+            SelectBtn = new Button();
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
@@ -88,18 +88,18 @@
             label3.TabIndex = 35;
             label3.Text = "Reservation No.:";
             // 
-            // SearchBtn
+            // SelectBtn
             // 
-            SearchBtn.BackColor = Color.FromArgb(80, 85, 127);
-            SearchBtn.Font = new Font("Consolas", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            SearchBtn.ForeColor = SystemColors.ButtonHighlight;
-            SearchBtn.Location = new Point(388, 150);
-            SearchBtn.Name = "SearchBtn";
-            SearchBtn.Size = new Size(80, 29);
-            SearchBtn.TabIndex = 59;
-            SearchBtn.Text = "Search";
-            SearchBtn.UseVisualStyleBackColor = false;
-            SearchBtn.Click += SearchBtn_Click;
+            SelectBtn.BackColor = Color.FromArgb(80, 85, 127);
+            SelectBtn.Font = new Font("Consolas", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SelectBtn.ForeColor = SystemColors.ButtonHighlight;
+            SelectBtn.Location = new Point(388, 150);
+            SelectBtn.Name = "SelectBtn";
+            SelectBtn.Size = new Size(80, 29);
+            SelectBtn.TabIndex = 59;
+            SelectBtn.Text = "Search";
+            SelectBtn.UseVisualStyleBackColor = false;
+            SelectBtn.Click += SearchBtn_Click;
             // 
             // label4
             // 
@@ -241,7 +241,7 @@
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
-            Controls.Add(SearchBtn);
+            Controls.Add(SelectBtn);
             Controls.Add(ReservationNoText);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -258,7 +258,7 @@
         private Label label1;
         private TextBox ReservationNoText;
         private Label label3;
-        private Button SearchBtn;
+        private Button SelectBtn;
         private Label label4;
         private Label label5;
         private Label label6;

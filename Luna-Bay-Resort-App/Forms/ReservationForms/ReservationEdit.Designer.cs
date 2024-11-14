@@ -39,13 +39,14 @@
             CheckInPicker = new DateTimePicker();
             label8 = new Label();
             label9 = new Label();
-            ConfirmButton = new Button();
+            ConfirmBtn = new Button();
             label13 = new Label();
             RoomTypeCB = new ComboBox();
             GuestNumText = new TextBox();
             label11 = new Label();
             TotalAmountText = new TextBox();
             DepositText = new TextBox();
+            SearchBtn = new Button();
             SuspendLayout();
             // 
             // ReservationNoText
@@ -168,17 +169,18 @@
             label9.TabIndex = 41;
             label9.Text = "Check-In Date:";
             // 
-            // ConfirmButton
+            // ConfirmBtn
             // 
-            ConfirmButton.BackColor = Color.FromArgb(80, 85, 127);
-            ConfirmButton.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ConfirmButton.ForeColor = SystemColors.ButtonHighlight;
-            ConfirmButton.Location = new Point(356, 456);
-            ConfirmButton.Name = "ConfirmButton";
-            ConfirmButton.Size = new Size(105, 37);
-            ConfirmButton.TabIndex = 58;
-            ConfirmButton.Text = "Confirm";
-            ConfirmButton.UseVisualStyleBackColor = false;
+            ConfirmBtn.BackColor = Color.FromArgb(80, 85, 127);
+            ConfirmBtn.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ConfirmBtn.ForeColor = SystemColors.ButtonHighlight;
+            ConfirmBtn.Location = new Point(356, 456);
+            ConfirmBtn.Name = "ConfirmBtn";
+            ConfirmBtn.Size = new Size(105, 37);
+            ConfirmBtn.TabIndex = 58;
+            ConfirmBtn.Text = "Confirm";
+            ConfirmBtn.UseVisualStyleBackColor = false;
+            ConfirmBtn.Click += ConfirmBtn_Click;
             // 
             // label13
             // 
@@ -238,18 +240,32 @@
             DepositText.Size = new Size(100, 23);
             DepositText.TabIndex = 67;
             // 
+            // SearchBtn
+            // 
+            SearchBtn.BackColor = Color.FromArgb(80, 85, 127);
+            SearchBtn.Font = new Font("Consolas", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SearchBtn.ForeColor = SystemColors.ButtonHighlight;
+            SearchBtn.Location = new Point(381, 131);
+            SearchBtn.Name = "SearchBtn";
+            SearchBtn.Size = new Size(80, 29);
+            SearchBtn.TabIndex = 69;
+            SearchBtn.Text = "Search";
+            SearchBtn.UseVisualStyleBackColor = false;
+            SearchBtn.Click += SelectBtn_Click;
+            // 
             // ReservationEdit
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(234, 234, 234);
             ClientSize = new Size(494, 541);
+            Controls.Add(SearchBtn);
             Controls.Add(TotalAmountText);
             Controls.Add(DepositText);
             Controls.Add(RoomTypeCB);
             Controls.Add(GuestNumText);
             Controls.Add(label11);
-            Controls.Add(ConfirmButton);
+            Controls.Add(ConfirmBtn);
             Controls.Add(label13);
             Controls.Add(label14);
             Controls.Add(label12);
@@ -280,12 +296,13 @@
         private DateTimePicker CheckInPicker;
         private Label label8;
         private Label label9;
-        private Button ConfirmButton;
+        private Button ConfirmBtn;
         private Label label13;
         private ComboBox RoomTypeCB;
         private TextBox GuestNumText;
         private Label label11;
         private TextBox TotalAmountText;
         private TextBox DepositText;
+        private Button SearchBtn;
     }
 }
