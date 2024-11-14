@@ -44,6 +44,7 @@
             CheckOutDateText = new Label();
             RoomTypeText = new Label();
             NoOfGuestText = new Label();
+            EditBtn = new Button();
             SuspendLayout();
             // 
             // label2
@@ -224,12 +225,26 @@
             NoOfGuestText.TabIndex = 70;
             NoOfGuestText.Text = "-";
             // 
+            // EditBtn
+            // 
+            EditBtn.BackColor = Color.FromArgb(245, 211, 108);
+            EditBtn.Font = new Font("Consolas", 10.5F, FontStyle.Bold);
+            EditBtn.ForeColor = Color.Black;
+            EditBtn.Location = new Point(260, 486);
+            EditBtn.Name = "EditBtn";
+            EditBtn.Size = new Size(87, 33);
+            EditBtn.TabIndex = 71;
+            EditBtn.Text = "Edit";
+            EditBtn.UseVisualStyleBackColor = false;
+            EditBtn.Click += EditBtn_Click;
+            // 
             // SearchReservation
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(234, 234, 234);
             ClientSize = new Size(494, 541);
+            Controls.Add(EditBtn);
             Controls.Add(NoOfGuestText);
             Controls.Add(RoomTypeText);
             Controls.Add(CheckOutDateText);
@@ -270,5 +285,6 @@
         private Label CheckOutDateText;
         private Label RoomTypeText;
         private Label NoOfGuestText;
+        private Button EditBtn;
     }
 }

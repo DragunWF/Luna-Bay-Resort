@@ -17,6 +17,13 @@ namespace SubForms
             RoomTypeCB.Items.AddRange(DatabaseHelper.GetRoomTypes().Select(r => r.GetName()).ToArray());
         }
 
+        public ReservationEdit(int reservationNo) : this()
+        {
+            this.reservationNo = reservationNo;
+            ReservationNoText.Text = reservationNo.ToString();
+            SelectBtn_Click(this, EventArgs.Empty);
+        }
+
         // Changes text to reflect selected room name from RoomTypeCB
         private void RoomTypeCB_SelectedValueChanged(object sender, EventArgs e)
         {

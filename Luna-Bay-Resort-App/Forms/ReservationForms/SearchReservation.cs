@@ -79,5 +79,18 @@ namespace SubForms
             RoomTypeText.Text = "-";
             NoOfGuestText.Text = "-";
         }
+
+        private void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (reservationNo != -1)
+            {
+                FormManager.OpenForm<ReservationEdit>(reservationNo);
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Search a reservation first to edit!");
+            }
+        }
     }
 }
