@@ -45,6 +45,7 @@
             RoomTypeText = new Label();
             NoOfGuestText = new Label();
             EditBtn = new Button();
+            ViewAllBtn = new Button();
             SuspendLayout();
             // 
             // label2
@@ -162,11 +163,11 @@
             CheckInBtn.BackColor = Color.FromArgb(245, 211, 108);
             CheckInBtn.Font = new Font("Consolas", 10.5F, FontStyle.Bold);
             CheckInBtn.ForeColor = Color.Black;
-            CheckInBtn.Location = new Point(353, 486);
+            CheckInBtn.Location = new Point(368, 496);
             CheckInBtn.Name = "CheckInBtn";
-            CheckInBtn.Size = new Size(115, 33);
+            CheckInBtn.Size = new Size(100, 33);
             CheckInBtn.TabIndex = 65;
-            CheckInBtn.Text = "Check-In Now";
+            CheckInBtn.Text = "Check-In";
             CheckInBtn.UseVisualStyleBackColor = false;
             CheckInBtn.Click += CheckInBtn_Click;
             // 
@@ -230,7 +231,7 @@
             EditBtn.BackColor = Color.FromArgb(245, 211, 108);
             EditBtn.Font = new Font("Consolas", 10.5F, FontStyle.Bold);
             EditBtn.ForeColor = Color.Black;
-            EditBtn.Location = new Point(260, 486);
+            EditBtn.Location = new Point(275, 496);
             EditBtn.Name = "EditBtn";
             EditBtn.Size = new Size(87, 33);
             EditBtn.TabIndex = 71;
@@ -238,12 +239,26 @@
             EditBtn.UseVisualStyleBackColor = false;
             EditBtn.Click += EditBtn_Click;
             // 
+            // ViewAllBtn
+            // 
+            ViewAllBtn.BackColor = Color.FromArgb(245, 211, 108);
+            ViewAllBtn.Font = new Font("Consolas", 10.5F, FontStyle.Bold);
+            ViewAllBtn.ForeColor = Color.Black;
+            ViewAllBtn.Location = new Point(176, 496);
+            ViewAllBtn.Name = "ViewAllBtn";
+            ViewAllBtn.Size = new Size(93, 33);
+            ViewAllBtn.TabIndex = 72;
+            ViewAllBtn.Text = "View All";
+            ViewAllBtn.UseVisualStyleBackColor = false;
+            ViewAllBtn.Click += ViewAllBtn_Click;
+            // 
             // SearchReservation
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(234, 234, 234);
             ClientSize = new Size(494, 541);
+            Controls.Add(ViewAllBtn);
             Controls.Add(EditBtn);
             Controls.Add(NoOfGuestText);
             Controls.Add(RoomTypeText);
@@ -286,5 +301,6 @@
         private Label RoomTypeText;
         private Label NoOfGuestText;
         private Button EditBtn;
+        private Button ViewAllBtn;
     }
 }

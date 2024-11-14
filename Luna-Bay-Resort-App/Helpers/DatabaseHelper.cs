@@ -41,6 +41,8 @@ namespace Luna_Bay_Resort_App.Helpers
             }
         }
 
+        #region Reservation Methods
+
         public static void AddReservation(int reservationId, string name, string email, string phone,
             string room, int numOfGuest, string checkIn, string checkOut, double billAmount, double balance)
         {
@@ -128,7 +130,50 @@ namespace Luna_Bay_Resort_App.Helpers
             }
         }
 
-        //Retrieve all distinct Available Accomodations
+        public static void UpdateReservation(int reservationId, string name, string email, string phone,
+            int room, int numOfGuest, string checkIn, string checkOut, double billAmount, double balance)
+        {
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+
+                string query = @"
+                UPDATE Guest 
+                SET Name = @Name, 
+                    Email = @Email, 
+                    Phone = @Phone, 
+                    Room = @Room, 
+                    NumofGuest = @NumOfGuest, 
+                    Check_in = @CheckIn, 
+                    Check_out = @CheckOut, 
+                    Bill_Amount = @BillAmount, 
+                    Balance = @Balance
+                WHERE Reservation_ID = @ReservationID";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    // Set the parameters for the update query
+                    cmd.Parameters.Add("@ReservationID", SqlDbType.Int).Value = reservationId;
+                    cmd.Parameters.Add("@Name", SqlDbType.VarChar, 50).Value = name;
+                    cmd.Parameters.Add("@Email", SqlDbType.VarChar, 50).Value = email;
+                    cmd.Parameters.Add("@Phone", SqlDbType.VarChar, 20).Value = phone;
+                    cmd.Parameters.Add("@Room", SqlDbType.Int).Value = room;
+                    cmd.Parameters.Add("@NumOfGuest", SqlDbType.Int).Value = numOfGuest;
+                    cmd.Parameters.Add("@CheckIn", SqlDbType.VarChar).Value = checkIn;
+                    cmd.Parameters.Add("@CheckOut", SqlDbType.VarChar).Value = checkOut;
+                    cmd.Parameters.Add("@BillAmount", SqlDbType.Money).Value = billAmount;
+                    cmd.Parameters.Add("@Balance", SqlDbType.Money).Value = balance;
+
+                    // Execute the update query
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        #endregion
+
+        #region Room Methods
+        // Retrieve all distinct Available Accomodations
         public static List<Accommodation> GetRoomTypes()
         {
             var roomNames = new List<Accommodation>();
@@ -236,6 +281,77 @@ namespace Luna_Bay_Resort_App.Helpers
             return roomNo;
         }
 
+        //Return all rooms based by Room Status
+        public static List<Accommodation> GetNotAvailableRoom(DataGridView notavailableroomtable, string status)
+        {
+            var notavailablerooms = new List<Accommodation>();
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "SELECT Room_ID, Room_status FROM Accommodation WHERE Room_status = @roomStatus";
+
+                SqlCommand getrooms = new SqlCommand(query, con);
+                getrooms.Parameters.AddWithValue("@roomStatus", status);
+                using (var reader = getrooms.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int roomId = Convert.ToInt32(reader["Room_ID"]);
+                        string roomStatus = reader["Room_status"].ToString();
+
+                        notavailablerooms.Add(new Accommodation(roomId, roomStatus));
+                    }
+                }
+                con.Close();
+            }
+            return notavailablerooms;
+        }
+
+        //Sets roomstatus based on RoomID
+        public static void SetRoomStatus(string roomStatus, int roomID)
+        {
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "UPDATE Accommodation SET Room_status = @status WHERE Room_ID = @roomId";
+
+                SqlCommand setroomstatus = new SqlCommand(query, con);
+                setroomstatus.Parameters.AddWithValue("@status", roomStatus);
+                setroomstatus.Parameters.AddWithValue("@roomId", roomID);
+                setroomstatus.ExecuteNonQuery();
+                con.Close();
+            }
+        }
+
+        //Return all Available Room_ID & Name
+        public static List<Accommodation> GetAvailableRoom(DataGridView availableroomtable)
+        {
+            var availablerooms = new List<Accommodation>();
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "SELECT Room_ID, Name FROM Accommodation WHERE Room_status = 'Available'";
+
+                SqlCommand getrooms = new SqlCommand(query, con);
+                using (var reader = getrooms.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int roomId = Convert.ToInt32(reader["Room_ID"]);
+                        string roomName = reader["Name"].ToString();
+
+                        availablerooms.Add(new Accommodation(roomId, roomName));
+                    }
+                }
+                con.Close();
+            }
+            return availablerooms;
+        }
+
+        #endregion
+
+        #region Amenities Methods
+
         //Return Food name and price by FoodType_ID
         public static List<Food> GetFoodbyType(int FoodType)
         {
@@ -342,72 +458,6 @@ namespace Luna_Bay_Resort_App.Helpers
             return product;
         }
 
-        //Return all Available Room_ID & Name
-        public static List<Accommodation> GetAvailableRoom(DataGridView availableroomtable)
-        {
-            var availablerooms = new List<Accommodation>();
-            using (SqlConnection con = new SqlConnection(Key))
-            {
-                con.Open();
-                string query = "SELECT Room_ID, Name FROM Accommodation WHERE Room_status = 'Available'";
-
-                SqlCommand getrooms = new SqlCommand(query, con);
-                using (var reader = getrooms.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        int roomId = Convert.ToInt32(reader["Room_ID"]);
-                        string roomName = reader["Name"].ToString();
-
-                        availablerooms.Add(new Accommodation(roomId, roomName));
-                    }
-                }
-                con.Close();
-            }
-            return availablerooms;
-        }
-
-        //Return all rooms based by Room Status
-        public static List<Accommodation> GetNotAvailableRoom(DataGridView notavailableroomtable, string status)
-        {
-            var notavailablerooms = new List<Accommodation>();
-            using (SqlConnection con = new SqlConnection(Key))
-            {
-                con.Open();
-                string query = "SELECT Room_ID, Room_status FROM Accommodation WHERE Room_status = @roomStatus";
-
-                SqlCommand getrooms = new SqlCommand(query, con);
-                getrooms.Parameters.AddWithValue("@roomStatus", status);
-                using (var reader = getrooms.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        int roomId = Convert.ToInt32(reader["Room_ID"]);
-                        string roomStatus = reader["Room_status"].ToString();
-
-                        notavailablerooms.Add(new Accommodation(roomId, roomStatus));
-                    }
-                }
-                con.Close();
-            }
-            return notavailablerooms;
-        }
-
-        //Sets roomstatus based on RoomID
-        public static void SetRoomStatus(string roomStatus, int roomID)
-        {
-            using (SqlConnection con = new SqlConnection(Key))
-            {
-                con.Open();
-                string query = "UPDATE Accommodation SET Room_status = @status WHERE Room_ID = @roomId";
-
-                SqlCommand setroomstatus = new SqlCommand(query, con);
-                setroomstatus.Parameters.AddWithValue("@status", roomStatus);
-                setroomstatus.Parameters.AddWithValue("@roomId", roomID);
-                setroomstatus.ExecuteNonQuery();
-                con.Close();
-            }
-        }
-
+        #endregion
     }
 }
