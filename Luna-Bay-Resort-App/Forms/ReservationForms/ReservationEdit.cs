@@ -32,14 +32,15 @@ namespace SubForms
 
         private void SelectBtn_Click(object sender, EventArgs e)
         {
+            const string dateFormat = "M/dd/yyyy hh:mm";
             try
             {
                 reservationNo = int.Parse(ReservationNoText.Text);
                 Guest reservation = DatabaseHelper.GetReservation(reservationNo);
                 if (reservation != null)
                 {
-                    CheckInPicker.Value = DateTime.ParseExact(reservation.GetCheckIn(), "MM/dd/yyyy HH:mm", CultureInfo.InvariantCulture);
-                    CheckOutPicker.Value = DateTime.ParseExact(reservation.GetCheckOut(), "MM/dd/yyyy HH:mm", CultureInfo.InvariantCulture);
+                    CheckInPicker.Value = DateTime.ParseExact(reservation.GetCheckIn(), dateFormat, CultureInfo.InvariantCulture);
+                    CheckOutPicker.Value = DateTime.ParseExact(reservation.GetCheckOut(), dateFormat, CultureInfo.InvariantCulture);
                     RoomTypeCB.Text = DatabaseHelper.GetRoomName(reservation.GetRoomNo());
                     GuestNumText.Text = reservation.GetNumOfGuest().ToString();
                     DepositText.Text = reservation.GetBillAmount().ToString();
@@ -79,8 +80,8 @@ namespace SubForms
                 {
                     DatabaseHelper.UpdateReservation(
                         reservationNo,
-                        CheckInPicker.Value.ToString(),
-                        CheckOutPicker.Value.ToString(),
+                        CheckInPicker.Text.ToString(),
+                        CheckOutPicker.Text.ToString(),
                         DatabaseHelper.GetRoomNo(RoomTypeCB.Text),
                         int.Parse(GuestNumText.Text),
                         double.Parse(DepositText.Text),
