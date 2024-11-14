@@ -375,7 +375,38 @@ namespace MainForms
             checkoutTable.Columns.Add("Price", "Price");
             checkoutPanel.Controls.Add(checkoutTable, 0, 1);
 
-          
+            checkoutTable.Columns["Name"].ReadOnly = true;
+            checkoutTable.Columns["Qty"].ReadOnly = true;
+            checkoutTable.Columns["Price"].ReadOnly = true;
+
+            //Remove quantity in checkout table
+            checkoutTable.CellClick += (sender, e) =>
+            {
+                string itemName = checkoutTable.Rows[e.RowIndex].Cells["Name"].Value?.ToString();
+                string qtyText = checkoutTable.Rows[e.RowIndex].Cells["Qty"].Value?.ToString();
+                string itemPriceText = checkoutTable.Rows[e.RowIndex].Cells["Price"].Value?.ToString();
+                
+                if (string.IsNullOrEmpty(itemName) || string.IsNullOrEmpty(qtyText))
+                {
+                    return;
+                }
+                int quantity = Convert.ToInt32(qtyText);
+                int totalItemPrice = Convert.ToInt32(itemPriceText);
+                int itemUnitPrice = totalItemPrice / quantity;
+                
+                if (quantity > 1)
+                {
+                    quantity--;
+                    checkoutTable.Rows[e.RowIndex].Cells["Qty"].Value = quantity;
+                    checkoutTable.Rows[e.RowIndex].Cells["Price"].Value = quantity * itemUnitPrice;
+                }
+                else
+                {
+                    checkoutTable.Rows.RemoveAt(e.RowIndex);
+                }
+                UpdateTotal();
+            };
+
             TableLayoutPanel totalPanel = new TableLayoutPanel
             {
                 Dock = DockStyle.Fill,
