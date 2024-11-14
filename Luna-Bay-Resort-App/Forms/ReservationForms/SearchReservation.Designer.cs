@@ -32,13 +32,13 @@
             label1 = new Label();
             ReservationNoText = new TextBox();
             label3 = new Label();
-            SearchButton = new Button();
+            SearchBtn = new Button();
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
-            CheckInButton = new Button();
+            CheckInBtn = new Button();
             FullNameText = new Label();
             CheckInDateText = new Label();
             CheckOutDateText = new Label();
@@ -88,17 +88,18 @@
             label3.TabIndex = 35;
             label3.Text = "Reservation No.:";
             // 
-            // SearchButton
+            // SearchBtn
             // 
-            SearchButton.BackColor = Color.FromArgb(80, 85, 127);
-            SearchButton.Font = new Font("Consolas", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            SearchButton.ForeColor = SystemColors.ButtonHighlight;
-            SearchButton.Location = new Point(388, 150);
-            SearchButton.Name = "SearchButton";
-            SearchButton.Size = new Size(80, 29);
-            SearchButton.TabIndex = 59;
-            SearchButton.Text = "Search";
-            SearchButton.UseVisualStyleBackColor = false;
+            SearchBtn.BackColor = Color.FromArgb(80, 85, 127);
+            SearchBtn.Font = new Font("Consolas", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SearchBtn.ForeColor = SystemColors.ButtonHighlight;
+            SearchBtn.Location = new Point(388, 150);
+            SearchBtn.Name = "SearchBtn";
+            SearchBtn.Size = new Size(80, 29);
+            SearchBtn.TabIndex = 59;
+            SearchBtn.Text = "Search";
+            SearchBtn.UseVisualStyleBackColor = false;
+            SearchBtn.Click += SearchBtn_Click;
             // 
             // label4
             // 
@@ -155,17 +156,18 @@
             label8.TabIndex = 64;
             label8.Text = "No. of Guest:";
             // 
-            // CheckInButton
+            // CheckInBtn
             // 
-            CheckInButton.BackColor = Color.FromArgb(245, 211, 108);
-            CheckInButton.Font = new Font("Consolas", 10.5F, FontStyle.Bold);
-            CheckInButton.ForeColor = Color.Black;
-            CheckInButton.Location = new Point(353, 486);
-            CheckInButton.Name = "CheckInButton";
-            CheckInButton.Size = new Size(115, 33);
-            CheckInButton.TabIndex = 65;
-            CheckInButton.Text = "Check-In Now";
-            CheckInButton.UseVisualStyleBackColor = false;
+            CheckInBtn.BackColor = Color.FromArgb(245, 211, 108);
+            CheckInBtn.Font = new Font("Consolas", 10.5F, FontStyle.Bold);
+            CheckInBtn.ForeColor = Color.Black;
+            CheckInBtn.Location = new Point(353, 486);
+            CheckInBtn.Name = "CheckInBtn";
+            CheckInBtn.Size = new Size(115, 33);
+            CheckInBtn.TabIndex = 65;
+            CheckInBtn.Text = "Check-In Now";
+            CheckInBtn.UseVisualStyleBackColor = false;
+            CheckInBtn.Click += CheckInBtn_Click;
             // 
             // FullNameText
             // 
@@ -233,13 +235,13 @@
             Controls.Add(CheckOutDateText);
             Controls.Add(CheckInDateText);
             Controls.Add(FullNameText);
-            Controls.Add(CheckInButton);
+            Controls.Add(CheckInBtn);
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
-            Controls.Add(SearchButton);
+            Controls.Add(SearchBtn);
             Controls.Add(ReservationNoText);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -256,13 +258,13 @@
         private Label label1;
         private TextBox ReservationNoText;
         private Label label3;
-        private Button SearchButton;
+        private Button SearchBtn;
         private Label label4;
         private Label label5;
         private Label label6;
         private Label label7;
         private Label label8;
-        private Button CheckInButton;
+        private Button CheckInBtn;
         private Label FullNameText;
         private Label CheckInDateText;
         private Label CheckOutDateText;

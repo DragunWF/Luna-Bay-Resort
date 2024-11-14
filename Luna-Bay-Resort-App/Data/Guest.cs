@@ -77,23 +77,24 @@ namespace Luna_Bay_Resort_App.Data
             this.room = room;
             this.billAmount = billAmount;
         }
+
         #region Getter Methods
 
-        public int getGuestId() => guestId;
-        public int getReservationId() => reservationId;
-        public int getCheckInId() => checkInId;
-        public int getCheckOutId() => checkOutId;
-        public string getName() => name;
-        public string getEmail() => email;
-        public string getPhone() => phone;
-        public int getRoom() => room;
-        public int getNumOfGuest() => numOfGuest;
-        public string getCheckIn() => checkIn;
-        public string getCheckOut() => checkOut;
-        public string getStatus() => status;
-        public int getBillAmount() => billAmount;
-        public int getBalance() => balance;
-        public int getPaymentTypeId() => paymentTypeId;
+        public int GetGuestId() => guestId;
+        public int GetReservationId() => reservationId;
+        public int GetCheckInId() => checkInId;
+        public int GetCheckOutId() => checkOutId;
+        public string GetName() => name;
+        public string GetEmail() => email;
+        public string GetPhone() => phone;
+        public int GetRoomNo() => room;
+        public int GetNumOfGuest() => numOfGuest;
+        public string GetCheckIn() => checkIn;
+        public string GetCheckOut() => checkOut;
+        public string GetStatus() => status;
+        public int GetBillAmount() => billAmount;
+        public int GetBalance() => balance;
+        public int GetPaymentTypeId() => paymentTypeId;
 
         #endregion
     }
