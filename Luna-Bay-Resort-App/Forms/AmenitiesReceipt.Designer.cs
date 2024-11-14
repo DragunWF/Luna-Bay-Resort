@@ -49,7 +49,7 @@
             // 
             TotalText.AutoSize = true;
             TotalText.Font = new Font("Consolas", 13F, FontStyle.Bold);
-            TotalText.Location = new Point(369, 453);
+            TotalText.Location = new Point(324, 453);
             TotalText.Name = "TotalText";
             TotalText.Size = new Size(70, 22);
             TotalText.TabIndex = 107;
@@ -99,7 +99,7 @@
             // 
             label.AutoSize = true;
             label.Font = new Font("Consolas", 13F, FontStyle.Bold);
-            label.Location = new Point(293, 453);
+            label.Location = new Point(248, 453);
             label.Name = "label";
             label.Size = new Size(70, 22);
             label.TabIndex = 96;

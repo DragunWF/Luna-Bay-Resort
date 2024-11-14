@@ -414,12 +414,13 @@ namespace MainForms
                         }
                     }
                     SessionData.FillAmenities(amenities);
+                    FormManager.OpenForm<AmenitiesReceipt>();
+                    checkoutTable.Rows.Clear();
                 }
                 catch (Exception err)
                 {
                     MessageBox.Show($"An unexpected error has occured: {err.Message}");
                 }
-                FormManager.OpenForm<AmenitiesReceipt>();
             };
 
             totalPanel.Controls.Add(subTotalLabel, 0, 1);
