@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Luna_Bay_Resort_App.Data;
+﻿using Luna_Bay_Resort_App.Data;
 
 namespace Luna_Bay_Resort_App.Helpers
 {
