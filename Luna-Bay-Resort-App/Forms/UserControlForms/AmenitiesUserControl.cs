@@ -399,9 +399,28 @@ namespace MainForms
 
             payButton.Click += (sender, e) =>
             {
+                List<Amenity> amenities = new();
+                try
+                {
+                    foreach (DataGridViewRow row in checkoutTable.Rows)
+                    {
+                        if (row.Cells["Name"].Value != null)
+                        {
+                            amenities.Add(new Amenity(
+                                row.Cells["Name"].Value.ToString(),
+                                int.Parse(row.Cells["Qty"].Value.ToString()),
+                                double.Parse(row.Cells["Price"].Value.ToString())
+                           ));
+                        }
+                    }
+                    SessionData.FillAmenities(amenities);
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show($"An unexpected error has occured: {err.Message}");
+                }
                 FormManager.OpenForm<AmenitiesReceipt>();
             };
-
 
             totalPanel.Controls.Add(subTotalLabel, 0, 1);
             totalPanel.Controls.Add(vatLabel, 0, 2);

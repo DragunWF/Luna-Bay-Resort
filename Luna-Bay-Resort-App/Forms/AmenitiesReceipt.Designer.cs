@@ -148,7 +148,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Consolas", 12F);
+            label1.Font = new Font("Consolas", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(174, 21);
             label1.Name = "label1";
             label1.Size = new Size(144, 19);
