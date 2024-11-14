@@ -1,5 +1,7 @@
 ﻿using Luna_Bay_Resort_App.Data;
 using Luna_Bay_Resort_App.Helpers;
+using Luna_Bay_Sub_Forms;
+using SubForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -319,6 +321,12 @@ namespace MainForms
                 Margin = new Padding(0, 20, 0, 0),
 
             };
+
+            payButton.Click += (sender, e) =>
+            {
+                FormManager.OpenForm<AmenitiesReceipt>();
+            };
+
 
             totalPanel.Controls.Add(subTotalLabel, 0, 1);
             totalPanel.Controls.Add(vatLabel, 0, 2);
