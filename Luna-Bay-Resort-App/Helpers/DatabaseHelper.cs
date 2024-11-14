@@ -120,11 +120,37 @@ namespace Luna_Bay_Resort_App.Helpers
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
-                string query = "UPDATE Guest SET Reservation_ID = NULL, Checkin_ID = @checkInId WHERE Reservation_ID = @reservationId";
+                string query = @"
+                    UPDATE Guest 
+                    SET Reservation_ID = NULL, Checkin_ID = @checkInId 
+                    WHERE Reservation_ID = @reservationId";
 
                 SqlCommand setroomstatus = new SqlCommand(query, con);
                 setroomstatus.Parameters.AddWithValue("@checkInId", checkInId);
                 setroomstatus.Parameters.AddWithValue("@reservationId", reservationId);
+                setroomstatus.ExecuteNonQuery();
+                con.Close();
+            }
+        }
+
+        public static void GetCheckIn(int checkInId)
+        {
+
+        }
+
+        public static void CheckOutGuest(int checkInId, int checkOutId)
+        {
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = @"
+                    UPDATE Guest 
+                    SET Checkin_ID = NULL, Checkout_ID = @checkOutId 
+                    WHERE Checkin_ID = @checkInId";
+
+                SqlCommand setroomstatus = new SqlCommand(query, con);
+                setroomstatus.Parameters.AddWithValue("@checkInId", checkInId);
+                setroomstatus.Parameters.AddWithValue("@checkOutId", checkOutId);
                 setroomstatus.ExecuteNonQuery();
                 con.Close();
             }

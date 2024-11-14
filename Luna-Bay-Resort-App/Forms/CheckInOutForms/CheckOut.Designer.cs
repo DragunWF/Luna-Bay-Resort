@@ -39,10 +39,10 @@
             label7 = new Label();
             label8 = new Label();
             NameText = new Label();
-            CheckInDateText = new Label();
+            CheckInDate = new Label();
             CheckOutDate = new Label();
             RoomTypeText = new Label();
-            label13 = new Label();
+            GuestNumText = new Label();
             label12 = new Label();
             label9 = new Label();
             label10 = new Label();
@@ -170,20 +170,20 @@
             NameText.Location = new Point(154, 163);
             NameText.Margin = new Padding(4, 0, 4, 0);
             NameText.Name = "NameText";
-            NameText.Size = new Size(35, 15);
+            NameText.Size = new Size(14, 15);
             NameText.TabIndex = 66;
-            NameText.Text = "Name";
+            NameText.Text = "-";
             // 
-            // CheckInDateText
+            // CheckInDate
             // 
-            CheckInDateText.AutoSize = true;
-            CheckInDateText.Font = new Font("Consolas", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            CheckInDateText.Location = new Point(154, 194);
-            CheckInDateText.Margin = new Padding(4, 0, 4, 0);
-            CheckInDateText.Name = "CheckInDateText";
-            CheckInDateText.Size = new Size(35, 15);
-            CheckInDateText.TabIndex = 67;
-            CheckInDateText.Text = "Date";
+            CheckInDate.AutoSize = true;
+            CheckInDate.Font = new Font("Consolas", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CheckInDate.Location = new Point(154, 194);
+            CheckInDate.Margin = new Padding(4, 0, 4, 0);
+            CheckInDate.Name = "CheckInDate";
+            CheckInDate.Size = new Size(14, 15);
+            CheckInDate.TabIndex = 67;
+            CheckInDate.Text = "-";
             // 
             // CheckOutDate
             // 
@@ -192,9 +192,9 @@
             CheckOutDate.Location = new Point(154, 226);
             CheckOutDate.Margin = new Padding(4, 0, 4, 0);
             CheckOutDate.Name = "CheckOutDate";
-            CheckOutDate.Size = new Size(35, 15);
+            CheckOutDate.Size = new Size(14, 15);
             CheckOutDate.TabIndex = 68;
-            CheckOutDate.Text = "Date";
+            CheckOutDate.Text = "-";
             CheckOutDate.TextAlign = ContentAlignment.TopCenter;
             // 
             // RoomTypeText
@@ -204,20 +204,20 @@
             RoomTypeText.Location = new Point(154, 256);
             RoomTypeText.Margin = new Padding(4, 0, 4, 0);
             RoomTypeText.Name = "RoomTypeText";
-            RoomTypeText.Size = new Size(70, 15);
+            RoomTypeText.Size = new Size(14, 15);
             RoomTypeText.TabIndex = 69;
-            RoomTypeText.Text = "Room Type";
+            RoomTypeText.Text = "-";
             // 
-            // label13
+            // GuestNumText
             // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Consolas", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label13.Location = new Point(154, 289);
-            label13.Margin = new Padding(4, 0, 4, 0);
-            label13.Name = "label13";
-            label13.Size = new Size(91, 15);
-            label13.TabIndex = 70;
-            label13.Text = "Num of Guest";
+            GuestNumText.AutoSize = true;
+            GuestNumText.Font = new Font("Consolas", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            GuestNumText.Location = new Point(154, 289);
+            GuestNumText.Margin = new Padding(4, 0, 4, 0);
+            GuestNumText.Name = "GuestNumText";
+            GuestNumText.Size = new Size(14, 15);
+            GuestNumText.TabIndex = 70;
+            GuestNumText.Text = "-";
             // 
             // label12
             // 
@@ -269,7 +269,7 @@
             CheckOutBtn.BackColor = Color.FromArgb(245, 211, 108);
             CheckOutBtn.Font = new Font("Consolas", 10.5F, FontStyle.Bold);
             CheckOutBtn.ForeColor = Color.Black;
-            CheckOutBtn.Location = new Point(321, 480);
+            CheckOutBtn.Location = new Point(344, 500);
             CheckOutBtn.Name = "CheckOutBtn";
             CheckOutBtn.Size = new Size(138, 29);
             CheckOutBtn.TabIndex = 78;
@@ -315,10 +315,10 @@
             Controls.Add(label10);
             Controls.Add(label9);
             Controls.Add(label12);
-            Controls.Add(label13);
+            Controls.Add(GuestNumText);
             Controls.Add(RoomTypeText);
             Controls.Add(CheckOutDate);
-            Controls.Add(CheckInDateText);
+            Controls.Add(CheckInDate);
             Controls.Add(NameText);
             Controls.Add(label8);
             Controls.Add(label7);
@@ -349,10 +349,10 @@
         private Label label7;
         private Label label8;
         private Label NameText;
-        private Label CheckInDateText;
+        private Label CheckInDate;
         private Label CheckOutDate;
         private Label RoomTypeText;
-        private Label label13;
+        private Label GuestNumText;
         private Label label12;
         private Label label9;
         private Label label10;
