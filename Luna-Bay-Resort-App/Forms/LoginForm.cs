@@ -13,7 +13,7 @@ namespace MainForms
             LoginPassword.PasswordChar = '*';
         }
 
-        private void loginBtn_Click(object sender, EventArgs e)
+        private void LoginBtn_Click(object sender, EventArgs e)
         {
             try
             {
