@@ -130,17 +130,11 @@ namespace MainForms
             switch (sectionName)
             {
                 case "Booking":
-                    var bookingControl = new BookingUserControl();
-                    contentPanel.Controls.Add(bookingControl);
-                    bookingControl.Dock = DockStyle.Fill;
-                    bookingControl.Size = new Size(contentPanel.Width, contentPanel.Height);
+                    AddUserControlToContentPanel(new BookingUserControl());
                     break;
 
                 case "Amenities":
-                    var amenitiesUserControl = new AmenitiesUserControl();
-                    contentPanel.Controls.Add(amenitiesUserControl);
-                    amenitiesUserControl.Dock = DockStyle.Fill;
-                    amenitiesUserControl.Size = new Size(contentPanel.Width, contentPanel.Height);
+                    AddUserControlToContentPanel(new AmenitiesUserControl());
                     break;
 
                 case "Maintenance":

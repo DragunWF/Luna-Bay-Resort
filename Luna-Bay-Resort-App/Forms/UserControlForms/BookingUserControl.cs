@@ -87,8 +87,8 @@ namespace MainForms
 
             // Add the booking cards
             ReservationPanel.Controls.Add(CreateBookingCard(Properties.Resources.addReservation, "Add Reservation", Color.White));
-            ReservationPanel.Controls.Add(CreateBookingCard(Properties.Resources.editReservation, "Edit Reservation", Color.White));
-            ReservationPanel.Controls.Add(CreateBookingCard(Properties.Resources.viewReservation, "Search Reservation", Color.White));
+            ReservationPanel.Controls.Add(CreateBookingCard(Properties.Resources.editReservation, "Search Reservation", Color.White));
+            ReservationPanel.Controls.Add(CreateBookingCard(Properties.Resources.viewReservation, "View Guest", Color.White));
 
             // Add check-in/out cards
             CheckInOutPanel.Controls.Add(CreateBookingCard(Properties.Resources.check_in, "Check In", Color.White));

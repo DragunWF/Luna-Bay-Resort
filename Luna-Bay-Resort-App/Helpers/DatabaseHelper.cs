@@ -115,7 +115,7 @@ namespace Luna_Bay_Resort_App.Helpers
             return null;
         }
 
-        public static void GetCheckIn(int checkInId)
+        public static Guest GetCheckIn(int checkInId)
         {
             using (SqlConnection con = new SqlConnection(Key))
             {
