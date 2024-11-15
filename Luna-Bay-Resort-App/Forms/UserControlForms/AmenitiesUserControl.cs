@@ -275,6 +275,7 @@ namespace MainForms
             cancelButton.Click += (sender, e) =>
             {
                 checkoutTable.Rows.Clear();
+                UpdateTotal();
             };
 
 
