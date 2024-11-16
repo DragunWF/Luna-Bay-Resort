@@ -1,4 +1,7 @@
-﻿using Luna_Bay_Resort_App.Helpers;
+﻿using Luna_Bay_Resort_App.Forms;
+using Luna_Bay_Resort_App.Forms.CheckInOutForms;
+using Luna_Bay_Resort_App.Helpers;
+using MainForms;
 using System.Data;
 
 namespace SubForms
@@ -94,6 +97,8 @@ namespace SubForms
                 paymentMethod = "Online Payment";
                 CashCheckBox.Checked = false;
                 CardCheckBox.Checked = false;
+
+                FormManager.OpenForm<OnlinePaymentReference>();
             }
         }
 
@@ -104,6 +109,8 @@ namespace SubForms
                 paymentMethod = "Debit/Credit Card";
                 CashCheckBox.Checked = false;
                 OnlinePaymentCheckBox.Checked = false;
+
+                FormManager.OpenForm<CardReference>();
             }
         }
 
