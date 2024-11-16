@@ -458,32 +458,6 @@ namespace Luna_Bay_Resort_App.Helpers
             return foods;
         }
 
-        //Get Addon List(Name, Price)
-        public static List<Addon> GetAddon()
-        {
-            var addon = new List<Addon>();
-            using (SqlConnection con = new SqlConnection(Key))
-            {
-                con.Open();
-                string query = "SELECT DISTINCT Name, Price FROM Addons";
-
-                SqlCommand getaddons = new SqlCommand(query, con);
-
-                using (var reader = getaddons.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        string addonName = reader["Name"].ToString();
-                        int price = Convert.ToInt32(reader["Price"]);
-
-                        addon.Add(new Addon(addonName, price));
-                    }
-                }
-                con.Close();
-            }
-            return addon;
-        }
-
         //Get Product List(Name, Price)
         public static List<Product> GetProduct()
         {
