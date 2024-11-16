@@ -156,26 +156,6 @@ INSERT INTO Accommodation (Room_ID, RoomType_ID, Name, Pax, Price) VALUES
     (6031, 06, 'Conference C','40 � 45', 15000),
     (6041, 06, 'Convention Hall','600 - 700', 125000);
 
--- Addons Table
-CREATE TABLE Addons (
-    ID INT PRIMARY KEY,
-    Name VARCHAR(20),
-    Pax VARCHAR(25),
-    Price INT,
-    Status VARCHAR(20) DEFAULT 'Available'
-);
-
-INSERT INTO Addons (ID, Name, Pax, Price) VALUES
-    (7001, 'Karaoke', '10-20', 700),
-    (7002, 'Karaoke', '10-20', 700),
-    (7003, 'Karaoke', '10-20', 700),
-    (7004, 'Karaoke', '10-20', 700),
-    (7005, 'Karaoke', '10-20', 700),
-    (8001, 'Court', '5-10', 300),
-    (8002, 'Court', '5-10', 300),
-    (8003, 'Court', '5-10', 300),
-    (8004, 'Court', '5-10', 300);
-
 -- Food Type Table
 CREATE TABLE FoodType (
     FoodType_ID INT PRIMARY KEY,
@@ -196,61 +176,62 @@ CREATE TABLE Food (
     FoodType_ID INT FOREIGN KEY REFERENCES FoodType(FoodType_ID),
     Food_Name VARCHAR(40),
     Serving VARCHAR(30),
+	Quantity INT,
     Price INT
 );
 
-INSERT INTO Food (Food_ID, FoodType_ID, Food_Name, Serving, Price) VALUES
+INSERT INTO Food (Food_ID, FoodType_ID, Food_Name, Serving, Quantity, Price) VALUES
     -- Breakfast Items
-    (101, 1, 'Tapsilog', '1', 105), 
-    (102, 1, 'Tosilog', '1', 105), 
-    (103, 1, 'Bangsilog', '1', 135), 
-    (104, 1, 'Cornbeef Silog', '1', 125),
-    (105, 1, 'Sopas', '1 - 2', 120), 
-    (106, 1, 'Champorado', '1 - 2', 120),
+    (101, 1, 'Tapsilog', '1', 50, 105), 
+    (102, 1, 'Tosilog', '1', 50, 105), 
+    (103, 1, 'Bangsilog', '1', 50, 135), 
+    (104, 1, 'Cornbeef Silog', '1', 50, 125),
+    (105, 1, 'Sopas', '1 - 2', 50, 120), 
+    (106, 1, 'Champorado', '1 - 2', 50, 120),
 
     -- Lunch Items
-    (201, 2, 'Chicken Adobo', '3 - 4', 350), 
-    (202, 2, 'Sinigang na Bangus', '3 - 4', 380), 
-    (203, 2, 'Pork Sisig', '2 - 3', 250), 
-    (204, 2, 'Pork Liempo', '3 - 4', 350),
-    (205, 2, 'Pinakbet', '3 - 4', 280), 
-    (206, 2, 'Daing na Bangus', '3', 320),
-    (207, 2, 'Pork Bistek', '2 - 3', 320),
+    (201, 2, 'Chicken Adobo', '3 - 4', 50, 350), 
+    (202, 2, 'Sinigang na Bangus', '3 - 4', 50, 380), 
+    (203, 2, 'Pork Sisig', '2 - 3', 50, 250), 
+    (204, 2, 'Pork Liempo', '3 - 4', 50, 350),
+    (205, 2, 'Pinakbet', '3 - 4', 50, 280), 
+    (206, 2, 'Daing na Bangus', '3', 50, 320),
+    (207, 2, 'Pork Bistek', '2 - 3', 50, 320),
 
     -- Dinner Items
-    (301, 3, 'Special Laing', '3 - 4', 320), 
-    (302, 3, 'Kare Kare', '3 - 4', 380),
-    (304, 3, 'Buttered Shrimp', '3', 320),
-    (305, 3, 'Adobong Pusit', '3 - 4', 350),
-    (306, 3, 'Chicken Tinola', '3 - 4', 380),
-    (307, 3, 'Pork Caldereta', '3 - 4', 350),
-    (308, 3, 'Lechon Kawali', '3', 320),
+    (301, 3, 'Special Laing', '3 - 4', 50, 320), 
+    (302, 3, 'Kare Kare', '3 - 4', 50, 380),
+    (304, 3, 'Buttered Shrimp', '3', 50, 320),
+    (305, 3, 'Adobong Pusit', '3 - 4', 50, 350),
+    (306, 3, 'Chicken Tinola', '3 - 4', 50, 380),
+    (307, 3, 'Pork Caldereta', '3 - 4', 50, 350),
+    (308, 3, 'Lechon Kawali', '3', 50, 320),
 
     -- Rice Addons
-    (401, 4, 'Plain Rice', '1', 30),
-    (402, 4, 'Garlic Rice', '2', 40),
-    (403, 4, 'Java Rice', '3', 50),
-    (404, 4, 'Rice Platter', '3 - 6', 180),
+    (401, 4, 'Plain Rice', '1', 50, 30),
+    (402, 4, 'Garlic Rice', '2', 50, 40),
+    (403, 4, 'Java Rice', '3', 50, 50),
+    (404, 4, 'Rice Platter', '3 - 6', 50, 180),
 
     -- Snacks And Desserts
-    (501, 5, 'Chicken Skin', '2 - 3', 150),
-    (502, 5, 'Chicharon', '2 - 3', 130),
-    (503, 5, 'Banana Chips', '2 - 3', 80),
-    (504, 5, 'Halo-halo', '1', 80),
-    (505, 5, 'Mangga with Bagoong', '1 - 2', 70),
-    (506, 5, 'Bibingka', '1 - 2', 50),
-    (507, 5, 'Vigan Empanada', '1 - 2', 60),
-    (508, 5, 'Buko Pandan', '1 - 2', 80),
+    (501, 5, 'Chicken Skin', '2 - 3', 50, 150),
+    (502, 5, 'Chicharon', '2 - 3', 50, 130),
+    (503, 5, 'Banana Chips', '2 - 3', 50, 80),
+    (504, 5, 'Halo-halo', '1', 50, 80),
+    (505, 5, 'Mangga with Bagoong', '1 - 2', 50, 70),
+    (506, 5, 'Bibingka', '1 - 2', 50, 50),
+    (507, 5, 'Vigan Empanada', '1 - 2', 50, 60),
+    (508, 5, 'Buko Pandan', '1 - 2', 50, 80),
 
     -- Beverages
-    (601, 6, 'Bottled Water', '350 ml', 30),
-    (602, 6, 'Hot Coffee', '250 ml', 50),
-    (603, 6, 'Hot Choco', '250 ml', 50),
-    (604, 6, 'Mango Shake', '500 ml', 100),
-    (605, 6, 'Buko Juice', '1 Coconut Shell', 80),
-    (606, 6, 'San Mig Light', '330 ml', 60),
-    (607, 6, 'San Mig Pale Pilsen', '320 ml', 60),
-    (608, 6, 'Red Horse', '500 ml', 70);
+    (601, 6, 'Bottled Water', '350 ml', 50, 30),
+    (602, 6, 'Hot Coffee', '250 ml', 50, 50),
+    (603, 6, 'Hot Choco', '250 ml', 50, 50),
+    (604, 6, 'Mango Shake', '500 ml', 50, 100),
+    (605, 6, 'Buko Juice', '1 Coconut Shell', 50, 80),
+    (606, 6, 'San Mig Light', '330 ml', 50, 60),
+    (607, 6, 'San Mig Pale Pilsen', '320 ml', 50, 60),
+    (608, 6, 'Red Horse', '500 ml', 50, 70);
 
 -- Products table
 CREATE TABLE Products (
@@ -311,25 +292,34 @@ CREATE TABLE Guest (
     Status VARCHAR(25),
     Bill_Amount INT NOT NULL,
     Balance INT NOT NULL,
-    PaymentType_ID INT FOREIGN KEY REFERENCES PaymentMethod(PaymentType_ID)
+    PaymentType_ID INT FOREIGN KEY REFERENCES PaymentMethod(PaymentType_ID),
+	PaymentReference_NO INT NULL
 );
 
 -- Employee Table
 CREATE TABLE Employees (
-    Emp_ID VARCHAR(20) IDENTITY(1, 1) PRIMARY KEY NOT NULL,
+    Emp_ID INT IDENTITY(1000, 1) PRIMARY KEY NOT NULL,
     Position VARCHAR(40) NOT NULL,
     Name VARCHAR(50) NOT NULL,
     Password VARCHAR(30) NOT NULL,
     Auth_ID INT NOT NULL
 );
-INSERT INTO Employees (Emp_ID, Position, Name, Password, Auth_ID) VALUES
-    ('EMP-001', 'Admin', 'Loraine', 'Admin123', 0),
-    ('EMP-002', 'Manager', 'Sykiel', 'Manager123', 1),
-    ('EMP-003', 'Front Desk', 'Marshall', 'Staff123', 2);
+INSERT INTO Employees (Position, Name, Password, Auth_ID) VALUES
+    ('Admin', 'Loraine', 'Admin123', 0),
+    ('Manager', 'Sykiel', 'Manager123', 1),
+    ('Front Desk', 'Marshall', 'Frontdesk123', 2),
+	('Cashier', 'Sean', 'Cashier123', 3);
 
 -- Finance
 CREATE TABLE Revenue (
     RevenueID INT PRIMARY KEY NOT NULL,
     Date DATE NOT NULL,
     Revenue INT NOT NULL
+);
+
+--Activities
+CREATE TABLE Activities(
+	ActivityID INT PRIMARY KEY NOT NULL,
+	Descritpion VARCHAR(500) NOT NULL,
+	Date VARCHAR(50) NOT NULL
 );
