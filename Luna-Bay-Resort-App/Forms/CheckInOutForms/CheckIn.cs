@@ -31,7 +31,7 @@ namespace SubForms
                     CheckInPicker.Text,
                     CheckOutPicker.Text,
                     RoomTypeCB.Text,
-                    GuestNumText.Text,
+                    Paxlbl.Text,
                     TotalPaymentAmountText.Text,
                     TotalBillAmountText.Text
                 };
@@ -63,7 +63,7 @@ namespace SubForms
                     string fullName = $"{FirstNameText.Text} {LastNameText.Text}";
                     FormManager.OpenForm<CheckInReceipt>(
                         fullName, CheckInPicker.Text, CheckOutPicker.Text,
-                        RoomTypeCB.Text, GuestNumText.Text, DatabaseHelper.GetRoomNo(RoomTypeCB.Text).ToString(),
+                        RoomTypeCB.Text, Paxlbl.Text, DatabaseHelper.GetRoomNo(RoomTypeCB.Text).ToString(),
                         paymentMethod, paymentAmount, billAmount, amountDue
                     );
                 }
@@ -125,6 +125,7 @@ namespace SubForms
         // Changes text to reflect selected room name from RoomTypeCB
         private void RoomTypeCB_SelectedValueChanged(object sender, EventArgs e)
         {
+            Paxlbl.Text = DatabaseHelper.GetPax(RoomTypeCB.Text).ToString();
             TotalBillAmountText.Text = DatabaseHelper.GetRoomPrice(RoomTypeCB.Text).ToString();
         }
     }

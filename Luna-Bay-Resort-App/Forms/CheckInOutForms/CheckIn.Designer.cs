@@ -34,7 +34,6 @@
             LastNameText = new TextBox();
             label13 = new Label();
             label12 = new Label();
-            GuestNumText = new TextBox();
             label11 = new Label();
             label10 = new Label();
             CheckOutPicker = new DateTimePicker();
@@ -58,6 +57,8 @@
             TotalPaymentAmountText = new TextBox();
             TotalBillAmountText = new TextBox();
             label15 = new Label();
+            Paxlbl = new Label();
+            AddPaxbtn = new Button();
             SuspendLayout();
             // 
             // ConfirmBtn
@@ -122,25 +123,16 @@
             label12.TabIndex = 47;
             label12.Text = "Payment Information:";
             // 
-            // GuestNumText
-            // 
-            GuestNumText.Font = new Font("Consolas", 9.75F);
-            GuestNumText.Location = new Point(406, 304);
-            GuestNumText.Margin = new Padding(4, 3, 4, 3);
-            GuestNumText.Name = "GuestNumText";
-            GuestNumText.Size = new Size(64, 23);
-            GuestNumText.TabIndex = 46;
-            // 
             // label11
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Consolas", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label11.Location = new Point(266, 305);
+            label11.Location = new Point(266, 314);
             label11.Margin = new Padding(4, 0, 4, 0);
             label11.Name = "label11";
-            label11.Size = new Size(120, 18);
+            label11.Size = new Size(40, 18);
             label11.TabIndex = 45;
-            label11.Text = "No. of Guests:";
+            label11.Text = "Pax:";
             // 
             // label10
             // 
@@ -380,12 +372,36 @@
             label15.TabIndex = 71;
             label15.Text = "Total Bill Amount:";
             // 
+            // Paxlbl
+            // 
+            Paxlbl.AutoSize = true;
+            Paxlbl.Font = new Font("Consolas", 11.25F);
+            Paxlbl.Location = new Point(301, 314);
+            Paxlbl.Name = "Paxlbl";
+            Paxlbl.Size = new Size(16, 18);
+            Paxlbl.TabIndex = 72;
+            Paxlbl.Text = "0";
+            // 
+            // AddPaxbtn
+            // 
+            AddPaxbtn.BackColor = Color.Green;
+            AddPaxbtn.Font = new Font("Consolas", 11F);
+            AddPaxbtn.ForeColor = Color.White;
+            AddPaxbtn.Location = new Point(335, 309);
+            AddPaxbtn.Name = "AddPaxbtn";
+            AddPaxbtn.Size = new Size(83, 30);
+            AddPaxbtn.TabIndex = 73;
+            AddPaxbtn.Text = "Add Pax";
+            AddPaxbtn.UseVisualStyleBackColor = false;
+            // 
             // CheckIn
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(234, 234, 234);
             ClientSize = new Size(494, 559);
+            Controls.Add(AddPaxbtn);
+            Controls.Add(Paxlbl);
             Controls.Add(label15);
             Controls.Add(TotalBillAmountText);
             Controls.Add(TotalPaymentAmountText);
@@ -401,7 +417,6 @@
             Controls.Add(LastNameText);
             Controls.Add(label13);
             Controls.Add(label12);
-            Controls.Add(GuestNumText);
             Controls.Add(label11);
             Controls.Add(label10);
             Controls.Add(CheckOutPicker);
@@ -430,7 +445,6 @@
         private TextBox LastNameText;
         private Label label13;
         private Label label12;
-        private TextBox GuestNumText;
         private Label label11;
         private Label label10;
         private DateTimePicker CheckOutPicker;
@@ -454,5 +468,7 @@
         private TextBox TotalPaymentAmountText;
         private TextBox TotalBillAmountText;
         private Label label15;
+        private Label Paxlbl;
+        private Button AddPaxbtn;
     }
 }

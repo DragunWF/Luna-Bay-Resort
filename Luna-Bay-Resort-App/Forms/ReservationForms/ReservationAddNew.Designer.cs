@@ -50,10 +50,11 @@
             label13 = new Label();
             label12 = new Label();
             RoomTypeCB = new ComboBox();
-            GuestNumText = new TextBox();
-            label11 = new Label();
             DepositText = new TextBox();
             TotalAmountText = new TextBox();
+            AddPaxbtn = new Button();
+            Paxlbl = new Label();
+            label11 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -295,26 +296,6 @@
             RoomTypeCB.TabIndex = 64;
             RoomTypeCB.SelectedValueChanged += RoomTypeCB_SelectedValueChanged;
             // 
-            // GuestNumText
-            // 
-            GuestNumText.Font = new Font("Consolas", 9.75F);
-            GuestNumText.Location = new Point(419, 337);
-            GuestNumText.Margin = new Padding(4, 3, 4, 3);
-            GuestNumText.Name = "GuestNumText";
-            GuestNumText.Size = new Size(44, 23);
-            GuestNumText.TabIndex = 63;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Consolas", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label11.Location = new Point(301, 343);
-            label11.Margin = new Padding(4, 0, 4, 0);
-            label11.Name = "label11";
-            label11.Size = new Size(120, 18);
-            label11.TabIndex = 62;
-            label11.Text = "No. of Guests:";
-            // 
             // DepositText
             // 
             DepositText.Font = new Font("Consolas", 9.75F);
@@ -331,17 +312,51 @@
             TotalAmountText.Size = new Size(123, 23);
             TotalAmountText.TabIndex = 66;
             // 
+            // AddPaxbtn
+            // 
+            AddPaxbtn.BackColor = Color.Green;
+            AddPaxbtn.Font = new Font("Consolas", 11F);
+            AddPaxbtn.ForeColor = Color.White;
+            AddPaxbtn.Location = new Point(378, 337);
+            AddPaxbtn.Name = "AddPaxbtn";
+            AddPaxbtn.Size = new Size(83, 30);
+            AddPaxbtn.TabIndex = 76;
+            AddPaxbtn.Text = "Add Pax";
+            AddPaxbtn.UseVisualStyleBackColor = false;
+            // 
+            // Paxlbl
+            // 
+            Paxlbl.AutoSize = true;
+            Paxlbl.Font = new Font("Consolas", 11.25F);
+            Paxlbl.Location = new Point(343, 343);
+            Paxlbl.Name = "Paxlbl";
+            Paxlbl.Size = new Size(16, 18);
+            Paxlbl.TabIndex = 75;
+            Paxlbl.Text = "0";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Consolas", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label11.Location = new Point(308, 343);
+            label11.Margin = new Padding(4, 0, 4, 0);
+            label11.Name = "label11";
+            label11.Size = new Size(40, 18);
+            label11.TabIndex = 74;
+            label11.Text = "Pax:";
+            // 
             // ReservationAddNew
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(234, 234, 234);
             ClientSize = new Size(494, 541);
+            Controls.Add(AddPaxbtn);
+            Controls.Add(Paxlbl);
+            Controls.Add(label11);
             Controls.Add(TotalAmountText);
             Controls.Add(DepositText);
             Controls.Add(RoomTypeCB);
-            Controls.Add(GuestNumText);
-            Controls.Add(label11);
             Controls.Add(ConfirmButton);
             Controls.Add(label13);
             Controls.Add(DepositPaidCheckBox);
@@ -395,10 +410,11 @@
         private Label label13;
         private Label label12;
         private ComboBox RoomTypeCB;
-        private TextBox GuestNumText;
-        private Label label11;
         private TextBox DepositText;
         private TextBox TotalAmountText;
+        private Button AddPaxbtn;
+        private Label Paxlbl;
+        private Label label11;
     }
 }
 

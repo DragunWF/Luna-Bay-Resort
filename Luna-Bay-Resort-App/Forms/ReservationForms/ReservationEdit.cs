@@ -27,6 +27,7 @@ namespace SubForms
         // Changes text to reflect selected room name from RoomTypeCB
         private void RoomTypeCB_SelectedValueChanged(object sender, EventArgs e)
         {
+            Paxlbl.Text = DatabaseHelper.GetPax(RoomTypeCB.Text).ToString();
             TotalAmountText.Text = DatabaseHelper.GetRoomPrice(RoomTypeCB.Text).ToString();
         }
 
@@ -42,7 +43,7 @@ namespace SubForms
                     CheckInPicker.Value = DateTime.ParseExact(reservation.GetCheckIn(), dateFormat, CultureInfo.InvariantCulture);
                     CheckOutPicker.Value = DateTime.ParseExact(reservation.GetCheckOut(), dateFormat, CultureInfo.InvariantCulture);
                     RoomTypeCB.Text = DatabaseHelper.GetRoomName(reservation.GetRoomNo());
-                    GuestNumText.Text = reservation.GetNumOfGuest().ToString();
+                    Paxlbl.Text = reservation.GetNumOfGuest().ToString();
                     DepositText.Text = reservation.GetBillAmount().ToString();
                     TotalAmountText.Text = reservation.GetBalance().ToString();
                 }
@@ -67,7 +68,7 @@ namespace SubForms
             {
                 string[] inputValues = {
                     RoomTypeCB.Text,
-                    GuestNumText.Text,
+                    Paxlbl.Text,
                     DepositText.Text,
                     TotalAmountText.Text,
                 };
@@ -83,7 +84,7 @@ namespace SubForms
                         CheckInPicker.Text.ToString(),
                         CheckOutPicker.Text.ToString(),
                         DatabaseHelper.GetRoomNo(RoomTypeCB.Text),
-                        int.Parse(GuestNumText.Text),
+                        int.Parse(Paxlbl.Text),
                         double.Parse(DepositText.Text),
                         double.Parse(TotalAmountText.Text)
                     );

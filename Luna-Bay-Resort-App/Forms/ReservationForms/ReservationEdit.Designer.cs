@@ -42,11 +42,12 @@
             ConfirmBtn = new Button();
             label13 = new Label();
             RoomTypeCB = new ComboBox();
-            GuestNumText = new TextBox();
-            label11 = new Label();
             TotalAmountText = new TextBox();
             DepositText = new TextBox();
             SearchBtn = new Button();
+            AddPaxbtn = new Button();
+            Paxlbl = new Label();
+            label11 = new Label();
             SuspendLayout();
             // 
             // ReservationNoText
@@ -204,26 +205,6 @@
             RoomTypeCB.TabIndex = 64;
             RoomTypeCB.SelectedValueChanged += RoomTypeCB_SelectedValueChanged;
             // 
-            // GuestNumText
-            // 
-            GuestNumText.Font = new Font("Consolas", 9.75F);
-            GuestNumText.Location = new Point(417, 276);
-            GuestNumText.Margin = new Padding(4, 3, 4, 3);
-            GuestNumText.Name = "GuestNumText";
-            GuestNumText.Size = new Size(44, 23);
-            GuestNumText.TabIndex = 63;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Consolas", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label11.Location = new Point(299, 282);
-            label11.Margin = new Padding(4, 0, 4, 0);
-            label11.Name = "label11";
-            label11.Size = new Size(120, 18);
-            label11.TabIndex = 62;
-            label11.Text = "No. of Guests:";
-            // 
             // TotalAmountText
             // 
             TotalAmountText.Font = new Font("Consolas", 9.75F);
@@ -253,18 +234,52 @@
             SearchBtn.UseVisualStyleBackColor = false;
             SearchBtn.Click += SelectBtn_Click;
             // 
+            // AddPaxbtn
+            // 
+            AddPaxbtn.BackColor = Color.Green;
+            AddPaxbtn.Font = new Font("Consolas", 11F);
+            AddPaxbtn.ForeColor = Color.White;
+            AddPaxbtn.Location = new Point(381, 270);
+            AddPaxbtn.Name = "AddPaxbtn";
+            AddPaxbtn.Size = new Size(83, 30);
+            AddPaxbtn.TabIndex = 76;
+            AddPaxbtn.Text = "Add Pax";
+            AddPaxbtn.UseVisualStyleBackColor = false;
+            // 
+            // Paxlbl
+            // 
+            Paxlbl.AutoSize = true;
+            Paxlbl.Font = new Font("Consolas", 11.25F);
+            Paxlbl.Location = new Point(337, 277);
+            Paxlbl.Name = "Paxlbl";
+            Paxlbl.Size = new Size(16, 18);
+            Paxlbl.TabIndex = 75;
+            Paxlbl.Text = "0";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Consolas", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label11.Location = new Point(302, 277);
+            label11.Margin = new Padding(4, 0, 4, 0);
+            label11.Name = "label11";
+            label11.Size = new Size(40, 18);
+            label11.TabIndex = 74;
+            label11.Text = "Pax:";
+            // 
             // ReservationEdit
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(234, 234, 234);
             ClientSize = new Size(494, 541);
+            Controls.Add(AddPaxbtn);
+            Controls.Add(Paxlbl);
+            Controls.Add(label11);
             Controls.Add(SearchBtn);
             Controls.Add(TotalAmountText);
             Controls.Add(DepositText);
             Controls.Add(RoomTypeCB);
-            Controls.Add(GuestNumText);
-            Controls.Add(label11);
             Controls.Add(ConfirmBtn);
             Controls.Add(label13);
             Controls.Add(label14);
@@ -299,10 +314,11 @@
         private Button ConfirmBtn;
         private Label label13;
         private ComboBox RoomTypeCB;
-        private TextBox GuestNumText;
-        private Label label11;
         private TextBox TotalAmountText;
         private TextBox DepositText;
         private Button SearchBtn;
+        private Button AddPaxbtn;
+        private Label Paxlbl;
+        private Label label11;
     }
 }

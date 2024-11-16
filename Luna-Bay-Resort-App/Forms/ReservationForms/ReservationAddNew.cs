@@ -24,7 +24,7 @@ namespace Luna_Bay_Sub_Forms
                     EmailText.Text,
                     ContactNoText.Text,
                     RoomTypeCB.Text,
-                    GuestNumText.Text,
+                    Paxlbl.Text,
                     CheckInPicker.Text,
                     CheckOutPicker.Text,
                     DepositText.Text,
@@ -47,25 +47,26 @@ namespace Luna_Bay_Sub_Forms
                     //     EmailText.Text,
                     //     ContactNoText.Text,
                     //     RoomTypeCB.Text,
-                    //     int.Parse(GuestNumText.Text),
+                    //     int.Parse(Paxlbl.Text),
                     //     CheckInPicker.Text,
                     //     CheckOutPicker.Text
                     // );
                     int reservationNo = Utils.GenerateReservationNo();
                     FormManager.OpenForm<ReservationReceipt>(
                         reservationNo, fullName, CheckInPicker.Text, CheckOutPicker.Text, 
-                        RoomTypeCB.Text, GuestNumText.Text, totalAmount, depositAmount, 
+                        RoomTypeCB.Text, Paxlbl.Text, totalAmount, depositAmount, 
                         remainingBalance
                     );
                     DatabaseHelper.AddReservation(
                         reservationNo, fullName, EmailText.Text, ContactNoText.Text, RoomTypeCB.Text,
-                        int.Parse(GuestNumText.Text), CheckInPicker.Text, CheckOutPicker.Text,
+                        int.Parse(Paxlbl.Text), CheckInPicker.Text, CheckOutPicker.Text,
                         depositAmount, remainingBalance
                     );
                     Utils.ResetTextBoxes(new TextBox[] {
-                        FirstNameText, LastNameText, EmailText, ContactNoText, GuestNumText,
+                        FirstNameText, LastNameText, EmailText, ContactNoText,
                         DepositText, TotalAmountText
                     });
+                    Paxlbl.Text = "0"; // Reset Pax Label    
                 }
             }
             catch (FormatException err)
@@ -82,6 +83,7 @@ namespace Luna_Bay_Sub_Forms
         // Changes text to reflect selected room name from RoomTypeCB, can change output label in the future
         private void RoomTypeCB_SelectedValueChanged(object sender, EventArgs e)
         {
+            Paxlbl.Text = DatabaseHelper.GetPax(RoomTypeCB.Text).ToString();
             DepositText.Text = DatabaseHelper.GetRoomPrice(RoomTypeCB.Text).ToString();
         }
     }

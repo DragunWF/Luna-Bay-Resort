@@ -400,6 +400,29 @@ namespace Luna_Bay_Resort_App.Helpers
             return availablerooms;
         }
 
+        public static int GetPax(String roomName)
+        {
+            int pax = 0;
+            using(SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "SELECT DISTINCT Pax FROM Accommodation WHERE Name = @RoomName";
+
+                SqlCommand getpax = new SqlCommand(query, con);
+                getpax.Parameters.AddWithValue("@RoomName", roomName);
+
+                using (SqlDataReader read = getpax.ExecuteReader())
+                {
+                    if (read.Read())
+                    {
+                        pax = Convert.ToInt32(read["Pax"]);
+                        
+                    }
+                    return pax;
+                }
+            }
+        }
+
         #endregion
 
         #region Amenities Methods
