@@ -245,6 +245,7 @@
             AddPaxbtn.TabIndex = 76;
             AddPaxbtn.Text = "Add Pax";
             AddPaxbtn.UseVisualStyleBackColor = false;
+            AddPaxbtn.Click += AddPaxbtn_Click;
             // 
             // Paxlbl
             // 

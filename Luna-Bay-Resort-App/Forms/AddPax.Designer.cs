@@ -1,6 +1,6 @@
-﻿namespace Luna_Bay_Resort_App.Forms.CheckInOutForms
+﻿namespace Luna_Bay_Resort_App.Forms
 {
-    partial class CardReference
+    partial class AddPax
     {
         /// <summary>
         /// Required designer variable.
@@ -28,63 +28,62 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Enterbtn = new Button();
-            Referencetxt = new TextBox();
             label1 = new Label();
+            Paxtxt = new TextBox();
+            Enterbtn = new Button();
             SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Consolas", 12F);
+            label1.Location = new Point(12, 21);
+            label1.Name = "label1";
+            label1.Size = new Size(135, 19);
+            label1.TabIndex = 0;
+            label1.Text = "Number of Pax:";
+            // 
+            // Paxtxt
+            // 
+            Paxtxt.Font = new Font("Consolas", 12F);
+            Paxtxt.Location = new Point(153, 18);
+            Paxtxt.Name = "Paxtxt";
+            Paxtxt.Size = new Size(100, 26);
+            Paxtxt.TabIndex = 1;
             // 
             // Enterbtn
             // 
             Enterbtn.BackColor = Color.Green;
             Enterbtn.Font = new Font("Consolas", 12F);
             Enterbtn.ForeColor = Color.White;
-            Enterbtn.Location = new Point(388, 18);
+            Enterbtn.Location = new Point(262, 16);
             Enterbtn.Name = "Enterbtn";
             Enterbtn.Size = new Size(98, 29);
-            Enterbtn.TabIndex = 5;
+            Enterbtn.TabIndex = 6;
             Enterbtn.Text = "Enter";
             Enterbtn.UseVisualStyleBackColor = false;
-            Enterbtn.Click += Enterbtn_Click;
             // 
-            // Referencetxt
-            // 
-            Referencetxt.Font = new Font("Consolas", 12F);
-            Referencetxt.Location = new Point(149, 21);
-            Referencetxt.Name = "Referencetxt";
-            Referencetxt.Size = new Size(233, 26);
-            Referencetxt.TabIndex = 4;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(17, 24);
-            label1.Name = "label1";
-            label1.Size = new Size(126, 19);
-            label1.TabIndex = 3;
-            label1.Text = "Reference No:";
-            // 
-            // CardReference
+            // AddPax
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(507, 64);
+            ClientSize = new Size(372, 56);
             Controls.Add(Enterbtn);
-            Controls.Add(Referencetxt);
+            Controls.Add(Paxtxt);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "CardReference";
-            Text = "Enter Card Transaction Reference Number";
+            Name = "AddPax";
+            Text = "Enter number of Pax to be added";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button Enterbtn;
-        private TextBox Referencetxt;
         private Label label1;
+        private TextBox Paxtxt;
+        private Button Enterbtn;
     }
 }

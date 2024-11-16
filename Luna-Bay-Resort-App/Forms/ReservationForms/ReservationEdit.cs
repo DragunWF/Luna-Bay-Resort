@@ -1,4 +1,5 @@
 ﻿using Luna_Bay_Resort_App.Data;
+using Luna_Bay_Resort_App.Forms;
 using Luna_Bay_Resort_App.Helpers;
 using System.Data;
 using System.Globalization;
@@ -76,7 +77,7 @@ namespace SubForms
                 {
                     MessageBox.Show("Please make sure to select a reservation first!");
                 }
-                else if (Utils.IsTextBoxesNotEmpty(inputValues) && 
+                else if (Utils.IsTextBoxesNotEmpty(inputValues) &&
                          Utils.IsValidCheckInOut(CheckInPicker, CheckOutPicker))
                 {
                     DatabaseHelper.UpdateReservation(
@@ -100,6 +101,11 @@ namespace SubForms
             {
                 MessageBox.Show($"An unexpected error has occured: {err.Message}");
             }
+        }
+
+        private void AddPaxbtn_Click(object sender, EventArgs e)
+        {
+            FormManager.OpenForm<AddPax>();
         }
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            textBox1 = new TextBox();
+            ReferenceTxt = new TextBox();
             Enterbtn = new Button();
             SuspendLayout();
             // 
@@ -43,23 +43,25 @@
             label1.TabIndex = 0;
             label1.Text = "Reference No:";
             // 
-            // textBox1
+            // ReferenceTxt
             // 
-            textBox1.Font = new Font("Consolas", 12F);
-            textBox1.Location = new Point(144, 16);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(233, 26);
-            textBox1.TabIndex = 1;
+            ReferenceTxt.Font = new Font("Consolas", 12F);
+            ReferenceTxt.Location = new Point(144, 16);
+            ReferenceTxt.Name = "ReferenceTxt";
+            ReferenceTxt.Size = new Size(233, 26);
+            ReferenceTxt.TabIndex = 1;
             // 
             // Enterbtn
             // 
+            Enterbtn.BackColor = Color.Green;
             Enterbtn.Font = new Font("Consolas", 12F);
-            Enterbtn.Location = new Point(392, 18);
+            Enterbtn.ForeColor = Color.White;
+            Enterbtn.Location = new Point(383, 14);
             Enterbtn.Name = "Enterbtn";
-            Enterbtn.Size = new Size(91, 25);
+            Enterbtn.Size = new Size(94, 29);
             Enterbtn.TabIndex = 2;
             Enterbtn.Text = "Enter";
-            Enterbtn.UseVisualStyleBackColor = true;
+            Enterbtn.UseVisualStyleBackColor = false;
             Enterbtn.Click += Enterbtn_Click;
             // 
             // OnlinePaymentReference
@@ -68,7 +70,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(498, 59);
             Controls.Add(Enterbtn);
-            Controls.Add(textBox1);
+            Controls.Add(ReferenceTxt);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
@@ -82,7 +84,7 @@
         #endregion
 
         private Label label1;
-        private TextBox textBox1;
+        private TextBox ReferenceTxt;
         private Button Enterbtn;
     }
 }

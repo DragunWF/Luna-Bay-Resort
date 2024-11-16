@@ -48,7 +48,7 @@ namespace SubForms
                     TotalPaymentAmountText.Text = paymentAmount.ToString();
                     MessageBox.Show("Payment amount has been set to the exact bill amount to prevent overpayment");
                 }
-                
+
                 if (paymentAmount < 0 || billAmount < 0)
                 {
                     MessageBox.Show("Total amount and the bill amount cannot be negative!");
@@ -127,6 +127,11 @@ namespace SubForms
         {
             Paxlbl.Text = DatabaseHelper.GetPax(RoomTypeCB.Text).ToString();
             TotalBillAmountText.Text = DatabaseHelper.GetRoomPrice(RoomTypeCB.Text).ToString();
+        }
+
+        private void AddPaxbtn_Click(object sender, EventArgs e)
+        {
+            FormManager.OpenForm<AddPax>();
         }
     }
 }

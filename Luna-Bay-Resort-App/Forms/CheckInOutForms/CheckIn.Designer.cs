@@ -393,6 +393,7 @@
             AddPaxbtn.TabIndex = 73;
             AddPaxbtn.Text = "Add Pax";
             AddPaxbtn.UseVisualStyleBackColor = false;
+            AddPaxbtn.Click += AddPaxbtn_Click;
             // 
             // CheckIn
             // 

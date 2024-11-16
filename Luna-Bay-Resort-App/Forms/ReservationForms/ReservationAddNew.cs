@@ -1,4 +1,5 @@
-﻿using Luna_Bay_Resort_App.Helpers;
+﻿using Luna_Bay_Resort_App.Forms;
+using Luna_Bay_Resort_App.Helpers;
 using SubForms;
 
 namespace Luna_Bay_Sub_Forms
@@ -38,7 +39,7 @@ namespace Luna_Bay_Sub_Forms
                 {
                     MessageBox.Show("Deposit amount cannot be greater than the total amount!");
                 }
-                else if (Utils.IsValidFormData(inputValues, EmailText.Text, ContactNoText.Text) && 
+                else if (Utils.IsValidFormData(inputValues, EmailText.Text, ContactNoText.Text) &&
                          Utils.IsValidCheckInOut(CheckInPicker, CheckOutPicker))
                 {
                     // TODO: Uncomment database helper in the future after testing
@@ -53,8 +54,8 @@ namespace Luna_Bay_Sub_Forms
                     // );
                     int reservationNo = Utils.GenerateReservationNo();
                     FormManager.OpenForm<ReservationReceipt>(
-                        reservationNo, fullName, CheckInPicker.Text, CheckOutPicker.Text, 
-                        RoomTypeCB.Text, Paxlbl.Text, totalAmount, depositAmount, 
+                        reservationNo, fullName, CheckInPicker.Text, CheckOutPicker.Text,
+                        RoomTypeCB.Text, Paxlbl.Text, totalAmount, depositAmount,
                         remainingBalance
                     );
                     DatabaseHelper.AddReservation(
@@ -85,6 +86,11 @@ namespace Luna_Bay_Sub_Forms
         {
             Paxlbl.Text = DatabaseHelper.GetPax(RoomTypeCB.Text).ToString();
             DepositText.Text = DatabaseHelper.GetRoomPrice(RoomTypeCB.Text).ToString();
+        }
+
+        private void AddPaxbtn_Click(object sender, EventArgs e)
+        {
+            FormManager.OpenForm<AddPax>();
         }
     }
 }
