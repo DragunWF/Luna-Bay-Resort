@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace MainForms
+﻿namespace MainForms
 {
     public partial class FinancialReportsUserControl : UserControl
     {
@@ -51,7 +41,7 @@ namespace MainForms
                 BackColor = Color.Transparent,
                 Padding = new Padding(10)
             };
-            
+
 
             // Add three cards to the panel
             cardsPanel.Controls.Add(CreateVerticalRevenueCard("Today", "As of 8:00am, 09-10-2024", "PHP 9,000.00", "14% greater than yesterday", Color.Green), 0, 0);
@@ -148,5 +138,5 @@ namespace MainForms
 
             return cardPanel;
         }
-        }
+    }
 }

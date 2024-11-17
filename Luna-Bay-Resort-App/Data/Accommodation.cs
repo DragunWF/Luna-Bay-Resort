@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Luna_Bay_Resort_App.Data
+﻿namespace Luna_Bay_Resort_App.Data
 {
     internal class Accommodation
     {
@@ -20,7 +14,7 @@ namespace Luna_Bay_Resort_App.Data
             this.price = price;
             this.roomstatus = roomstatus;
         }
-        
+
         //Room name
         public Accommodation(string name)
         {
@@ -47,7 +41,7 @@ namespace Luna_Bay_Resort_App.Data
             this.roomId = roomId;
         }
 
-        
+
 
 
         #region Getter Methods

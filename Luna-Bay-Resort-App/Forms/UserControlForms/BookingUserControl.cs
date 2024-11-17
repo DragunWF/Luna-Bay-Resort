@@ -1,15 +1,6 @@
 ﻿using Luna_Bay_Resort_App.Helpers;
 using Luna_Bay_Sub_Forms;
 using SubForms;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace MainForms
 {
@@ -22,9 +13,9 @@ namespace MainForms
         }
         private void InitializeBookingCards()
         {
-            SuspendLayout();  
+            SuspendLayout();
 
-            
+
             TableLayoutPanel mainPanel = new TableLayoutPanel
             {
                 Dock = DockStyle.Fill,
@@ -34,10 +25,10 @@ namespace MainForms
                 Padding = new Padding(10, 10, 10, 10),
             };
 
-            mainPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 40));  
-            mainPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100));  
-            mainPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 40));  
-            mainPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100));  
+            mainPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 40));
+            mainPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+            mainPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 40));
+            mainPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
 
             // Reservation title
             Label ReservationTitle = new Label
@@ -47,7 +38,7 @@ namespace MainForms
                 ForeColor = Color.Black,
                 TextAlign = ContentAlignment.TopLeft,
                 Dock = DockStyle.Fill,
-                Margin = new Padding(10,0,10,0)
+                Margin = new Padding(10, 0, 10, 0)
             };
             mainPanel.Controls.Add(ReservationTitle, 0, 0);
 
@@ -97,7 +88,7 @@ namespace MainForms
             // Add the main panel to the UserControl
             this.Controls.Add(mainPanel);
 
-            ResumeLayout(false);  
+            ResumeLayout(false);
         }
 
         private Panel CreateBookingCard(Image icon, string title, Color cardColor)
@@ -111,7 +102,7 @@ namespace MainForms
                 BorderStyle = BorderStyle.FixedSingle,
             };
 
-            
+
             PictureBox pictureBox = new PictureBox
             {
                 Image = icon,
@@ -123,7 +114,7 @@ namespace MainForms
             };
             cardPanel.Controls.Add(pictureBox);
 
-            
+
             Button actionButton = new Button
             {
                 Text = title,

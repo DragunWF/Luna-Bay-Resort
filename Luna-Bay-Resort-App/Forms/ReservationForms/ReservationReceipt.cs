@@ -1,13 +1,4 @@
 ﻿using Luna_Bay_Resort_App.Helpers;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace SubForms
 {
@@ -17,7 +8,7 @@ namespace SubForms
         private readonly double depositAmount, totalAmount, remainingBalance;
         private readonly string reservationNo, receiptNo;
 
-        public ReservationReceipt(int reservationNo, string fullName, string checkInDate, string checkOutDate, 
+        public ReservationReceipt(int reservationNo, string fullName, string checkInDate, string checkOutDate,
             string roomType, string numOfGuests, double totalAmount, double depositAmount, double remainingBalance)
         {
             InitializeComponent();

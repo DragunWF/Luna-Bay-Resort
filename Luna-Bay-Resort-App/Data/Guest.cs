@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Luna_Bay_Resort_App.Data
+﻿namespace Luna_Bay_Resort_App.Data
 {
     internal class Guest
     {
@@ -12,8 +6,8 @@ namespace Luna_Bay_Resort_App.Data
         private int guestId, reservationId, checkInId, checkOutId, room, numOfGuest, billAmount, balance, paymentTypeId;
 
         //All columns
-        public Guest(int guestId, int reservationId, int checkInId, int checkOutId, string name, 
-            string email, string phone, int room, int numOfGuest, string checkIn, string checkOut, 
+        public Guest(int guestId, int reservationId, int checkInId, int checkOutId, string name,
+            string email, string phone, int room, int numOfGuest, string checkIn, string checkOut,
             string status, int billAmount, int balance, int paymentTypeId)
         {
             this.guestId = guestId;
@@ -38,7 +32,7 @@ namespace Luna_Bay_Resort_App.Data
             string checkIn, string checkOut, int room, int numOfGuest,
             int billAmount, int balance)
         {
-            
+
             this.reservationId = reservationId;
             this.name = name;
             this.room = room;
@@ -50,7 +44,7 @@ namespace Luna_Bay_Resort_App.Data
         }
 
         //For check in receipt
-        public Guest(int checkInId, int paymentTypeId, string name, string checkIn, 
+        public Guest(int checkInId, int paymentTypeId, string name, string checkIn,
             string checkOut, int numOfGuest, int room, int billAmount, int balance)
         {
             this.checkInId = checkInId;
@@ -62,7 +56,7 @@ namespace Luna_Bay_Resort_App.Data
             this.room = room;
             this.billAmount = billAmount;
             this.balance = balance;
-            
+
         }
 
         //For check-out receipt 

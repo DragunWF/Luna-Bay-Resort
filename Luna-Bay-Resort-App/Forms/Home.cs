@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MainForms;
+﻿using Luna_Bay_Resort_App.Forms.UserControlForms;
 
 namespace MainForms
 {
@@ -36,8 +27,8 @@ namespace MainForms
         {
             contentPanel = new Panel
             {
-                Dock = DockStyle.Fill,  
-                BackColor = Color.White 
+                Dock = DockStyle.Fill,
+                BackColor = Color.White
             };
 
             this.Controls.Add(contentPanel);
@@ -57,7 +48,7 @@ namespace MainForms
                 }
             };
 
-           
+
 
             PictureBox logoPictureBox = new PictureBox
             {
@@ -73,10 +64,11 @@ namespace MainForms
             int margin = 100;
 
             // Create navigation buttons for different sections
-            CreateNavButton("Booking",120 ,logoPictureBox.Right + margin + 35, (sender, e) => OnButtonClicked(sender, "Booking"), topNavPanel);
-            CreateNavButton("Amenities",140, logoPictureBox.Right + margin + 160, (sender, e) => OnButtonClicked(sender, "Amenities"), topNavPanel);
-            CreateNavButton("Maintenance",180, logoPictureBox.Right + margin + 300, (sender, e) => OnButtonClicked(sender, "Maintenance"), topNavPanel);
-            CreateNavButton("Financial Reports",250, logoPictureBox.Right + margin + 480, (sender, e) => OnButtonClicked(sender, "Financial"), topNavPanel);
+            CreateNavButton("Dashboard", 120, logoPictureBox.Right + margin + 35, (sender, e) => OnButtonClicked(sender, "Dashboard"), topNavPanel);
+            CreateNavButton("Booking", 120, logoPictureBox.Right + margin + 35, (sender, e) => OnButtonClicked(sender, "Booking"), topNavPanel);
+            CreateNavButton("Amenities", 140, logoPictureBox.Right + margin + 160, (sender, e) => OnButtonClicked(sender, "Amenities"), topNavPanel);
+            CreateNavButton("Maintenance", 180, logoPictureBox.Right + margin + 300, (sender, e) => OnButtonClicked(sender, "Maintenance"), topNavPanel);
+            CreateNavButton("Financial Reports", 250, logoPictureBox.Right + margin + 480, (sender, e) => OnButtonClicked(sender, "Financial"), topNavPanel);
 
             PictureBox profilePictureBox = new PictureBox
             {
@@ -90,7 +82,7 @@ namespace MainForms
             topNavPanel.Controls.Add(profilePictureBox);
         }
 
-        private void CreateNavButton(string text,int width, int leftPosition, EventHandler clickEventHandler, Panel parentPanel)
+        private void CreateNavButton(string text, int width, int leftPosition, EventHandler clickEventHandler, Panel parentPanel)
         {
             Button btn = new Button
             {
@@ -125,10 +117,13 @@ namespace MainForms
         private void SwitchContent(string sectionName)
         {
             contentPanel.Controls.Clear();
-            
+
 
             switch (sectionName)
             {
+                case "Dashboard":
+                    AddUserControlToContentPanel(new DashboardUserControl());
+                    break;
                 case "Booking":
                     AddUserControlToContentPanel(new BookingUserControl());
                     break;

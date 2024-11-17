@@ -1,5 +1,5 @@
-﻿using Luna_Bay_Resort_App.Helpers;
-using System.Data;
+﻿using System.Data;
+using Luna_Bay_Resort_App.Helpers;
 
 namespace SubForms
 {
@@ -45,7 +45,7 @@ namespace SubForms
                     TotalPaymentAmountText.Text = paymentAmount.ToString();
                     MessageBox.Show("Payment amount has been set to the exact bill amount to prevent overpayment");
                 }
-                
+
                 if (paymentAmount < 0 || billAmount < 0)
                 {
                     MessageBox.Show("Total amount and the bill amount cannot be negative!");

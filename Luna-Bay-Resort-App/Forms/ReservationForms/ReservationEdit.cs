@@ -1,7 +1,7 @@
-﻿using Luna_Bay_Resort_App.Data;
-using Luna_Bay_Resort_App.Helpers;
-using System.Data;
+﻿using System.Data;
 using System.Globalization;
+using Luna_Bay_Resort_App.Data;
+using Luna_Bay_Resort_App.Helpers;
 
 namespace SubForms
 {
@@ -75,7 +75,7 @@ namespace SubForms
                 {
                     MessageBox.Show("Please make sure to select a reservation first!");
                 }
-                else if (Utils.IsTextBoxesNotEmpty(inputValues) && 
+                else if (Utils.IsTextBoxesNotEmpty(inputValues) &&
                          Utils.IsValidCheckInOut(CheckInPicker, CheckOutPicker))
                 {
                     DatabaseHelper.UpdateReservation(

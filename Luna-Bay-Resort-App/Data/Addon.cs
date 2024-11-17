@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Luna_Bay_Resort_App.Data
+﻿namespace Luna_Bay_Resort_App.Data
 {
     internal class Addon
     {
@@ -32,7 +26,7 @@ namespace Luna_Bay_Resort_App.Data
         public string getPax() => pax;
         public int getPrice() => price;
         public string getStatus() => status;
-       
+
         #endregion
     }
 }

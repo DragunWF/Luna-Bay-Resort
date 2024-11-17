@@ -1,5 +1,5 @@
-using Luna_Bay_Resort_App.Helpers;
 using Luna_Bay_Resort_App.Data;
+using Luna_Bay_Resort_App.Helpers;
 
 namespace MainForms
 {
@@ -46,7 +46,7 @@ namespace MainForms
 
         private bool IsValidTextBoxes()
         {
-            return !(string.IsNullOrWhiteSpace(LoginUsername.Text) || 
+            return !(string.IsNullOrWhiteSpace(LoginUsername.Text) ||
                      string.IsNullOrWhiteSpace(LoginPassword.Text));
         }
     }

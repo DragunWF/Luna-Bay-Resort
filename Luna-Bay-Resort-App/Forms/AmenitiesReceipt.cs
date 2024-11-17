@@ -33,7 +33,7 @@ namespace SubForms
             totalPrice = subTotalPrice + vat;
 
             SubTotalText.Text = Utils.FormatCurrency(subTotalPrice);
-            VATText.Text = Utils.FormatCurrency(vat); 
+            VATText.Text = Utils.FormatCurrency(vat);
             TotalText.Text = Utils.FormatCurrency(totalPrice);
         }
 

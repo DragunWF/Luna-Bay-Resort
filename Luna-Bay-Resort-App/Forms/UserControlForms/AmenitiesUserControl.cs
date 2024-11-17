@@ -1,16 +1,6 @@
 ﻿using Luna_Bay_Resort_App.Data;
 using Luna_Bay_Resort_App.Helpers;
-using Luna_Bay_Sub_Forms;
 using SubForms;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace MainForms
 {
@@ -31,7 +21,7 @@ namespace MainForms
         }
         private void InitializeAmenitiesLayout()
         {
-           
+
             TableLayoutPanel mainPanel = new TableLayoutPanel
             {
                 Dock = DockStyle.Fill,
@@ -41,13 +31,13 @@ namespace MainForms
             };
 
             mainPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60));
-            mainPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40)); 
+            mainPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40));
 
-            
+
             Panel menuListPanel = CreateMenuListPanel();
             mainPanel.Controls.Add(menuListPanel, 0, 0);
 
-            
+
             Panel checkoutPanel = CreateCheckoutPanel();
             mainPanel.Controls.Add(checkoutPanel, 1, 0);
 
@@ -64,12 +54,12 @@ namespace MainForms
                 RowCount = 3,
             };
 
-            
+
             menuPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 10));
             menuPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 75));
             menuPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 15));
 
-           
+
             Label menuTitle = new Label
             {
                 Text = "Menu List",
@@ -79,7 +69,7 @@ namespace MainForms
             };
             menuPanel.Controls.Add(menuTitle, 0, 0);
 
-            
+
             DataGridView menuTable = new DataGridView
             {
                 ColumnHeadersVisible = true,
@@ -145,7 +135,7 @@ namespace MainForms
             {
                 PlaceholderText = "Search..",
                 Font = new Font("Consolas", 12, FontStyle.Regular),
-                Height = 60, 
+                Height = 60,
                 Width = 827
             };
 
@@ -154,8 +144,8 @@ namespace MainForms
                 Text = "Search",
                 Font = new Font("Consolas", 12, FontStyle.Regular),
                 BackColor = ColorTranslator.FromHtml("#2E2F5B"),
-                Height = 35, 
-                Width = 100, 
+                Height = 35,
+                Width = 100,
                 ForeColor = Color.White
             };
 
@@ -170,8 +160,8 @@ namespace MainForms
                 Text = "Add-On",
                 Font = new Font("Consolas", 12, FontStyle.Regular),
                 BackColor = ColorTranslator.FromHtml("#3ADF00"),
-                Height = 35, 
-                Width = 100, 
+                Height = 35,
+                Width = 100,
                 ForeColor = Color.White,
                 Margin = new Padding(80, 0, 0, 0)
             };
@@ -191,7 +181,7 @@ namespace MainForms
                 Text = "Breakfast",
                 Font = new Font("Consolas", 12, FontStyle.Regular),
                 BackColor = ColorTranslator.FromHtml("#FFFFFF"),
-                Height = 35, 
+                Height = 35,
                 Width = 120,
                 ForeColor = Color.Black
             };
@@ -206,8 +196,8 @@ namespace MainForms
                 Text = "Lunch",
                 Font = new Font("Consolas", 12, FontStyle.Regular),
                 BackColor = ColorTranslator.FromHtml("#FFFFFF"),
-                Height = 35, 
-                Width = 100, 
+                Height = 35,
+                Width = 100,
                 ForeColor = Color.Black
             };
 
@@ -221,8 +211,8 @@ namespace MainForms
                 Text = "Dinner",
                 Font = new Font("Consolas", 12, FontStyle.Regular),
                 BackColor = ColorTranslator.FromHtml("#FFFFFF"),
-                Height = 35, 
-                Width = 100, 
+                Height = 35,
+                Width = 100,
                 ForeColor = Color.Black
             };
 
@@ -236,8 +226,8 @@ namespace MainForms
                 Text = "Beverages",
                 Font = new Font("Consolas", 12, FontStyle.Regular),
                 BackColor = ColorTranslator.FromHtml("#FFFFFF"),
-                Height = 35, 
-                Width = 120, 
+                Height = 35,
+                Width = 120,
                 ForeColor = Color.Black
             };
 
@@ -251,8 +241,8 @@ namespace MainForms
                 Text = "Snacks",
                 Font = new Font("Consolas", 12, FontStyle.Regular),
                 BackColor = ColorTranslator.FromHtml("#FFFFFF"),
-                Height = 35, 
-                Width = 100, 
+                Height = 35,
+                Width = 100,
                 ForeColor = Color.Black
             };
 
@@ -266,8 +256,8 @@ namespace MainForms
                 Text = "Cancel",
                 Font = new Font("Consolas", 12, FontStyle.Regular),
                 BackColor = ColorTranslator.FromHtml("#F50000"),
-                Height = 35, 
-                Width = 100, 
+                Height = 35,
+                Width = 100,
                 ForeColor = Color.White,
                 Margin = new Padding(450, 0, 0, 0)
             };
@@ -354,7 +344,7 @@ namespace MainForms
             checkoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 70));
             checkoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 20));
 
-            
+
             Label checkoutTitle = new Label
             {
                 Text = "Checkout",
@@ -364,7 +354,7 @@ namespace MainForms
             };
             checkoutPanel.Controls.Add(checkoutTitle, 0, 0);
 
-            
+
             checkoutTable = new DataGridView
             {
                 ColumnHeadersVisible = true,
@@ -386,7 +376,7 @@ namespace MainForms
                 string itemName = checkoutTable.Rows[e.RowIndex].Cells["Name"].Value?.ToString();
                 string qtyText = checkoutTable.Rows[e.RowIndex].Cells["Qty"].Value?.ToString();
                 string itemPriceText = checkoutTable.Rows[e.RowIndex].Cells["Price"].Value?.ToString();
-                
+
                 if (string.IsNullOrEmpty(itemName) || string.IsNullOrEmpty(qtyText))
                 {
                     return;
@@ -394,7 +384,7 @@ namespace MainForms
                 int quantity = Convert.ToInt32(qtyText);
                 int totalItemPrice = Convert.ToInt32(itemPriceText);
                 int itemUnitPrice = totalItemPrice / quantity;
-                
+
                 if (quantity > 1)
                 {
                     quantity--;
@@ -414,9 +404,9 @@ namespace MainForms
                 RowCount = 4,
             };
 
-            subTotalLabel = new Label { Text = "Sub Total:", Font = new Font("Consolas", 10), AutoSize = true};
-            vatLabel = new Label { Text = "VAT:", Font = new Font("Consolas", 10), AutoSize = true};
-            totalLabel = new Label { Text = "Total:", Font = new Font("Consolas", 14, FontStyle.Bold), Margin = new Padding(0, 10, 0, 0), AutoSize = true};
+            subTotalLabel = new Label { Text = "Sub Total:", Font = new Font("Consolas", 10), AutoSize = true };
+            vatLabel = new Label { Text = "VAT:", Font = new Font("Consolas", 10), AutoSize = true };
+            totalLabel = new Label { Text = "Total:", Font = new Font("Consolas", 14, FontStyle.Bold), Margin = new Padding(0, 10, 0, 0), AutoSize = true };
 
             Button payButton = new Button
             {

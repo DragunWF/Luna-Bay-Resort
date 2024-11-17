@@ -1,15 +1,5 @@
 ﻿using Luna_Bay_Resort_App.Data;
 using Luna_Bay_Resort_App.Helpers;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MainForms
 {
@@ -44,7 +34,7 @@ namespace MainForms
             mainPanel.Controls.Add(availableRoomsPanel, 0, 0);
 
             // Cleaning & Inspection panel
-            cleaningPanel = CreateRoomPanel("Room : Cleaning & Inspection", new string[] { "Room No."}, true);
+            cleaningPanel = CreateRoomPanel("Room : Cleaning & Inspection", new string[] { "Room No." }, true);
             mainPanel.Controls.Add(cleaningPanel, 1, 0);
 
             // For Repair panel
@@ -72,10 +62,10 @@ namespace MainForms
 
         private Panel CreateRoomPanel(string title, string[] columns, bool includeStatusComboBox = false)
         {
-            
+
             Panel containerPanel = new Panel { Dock = DockStyle.Fill };
 
-            
+
             TableLayoutPanel layoutPanel = new TableLayoutPanel
             {
                 Dock = DockStyle.Fill,
@@ -83,11 +73,11 @@ namespace MainForms
                 ColumnCount = 1
             };
 
-            layoutPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize)); 
-            layoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 10)); 
-            layoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100)); 
+            layoutPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            layoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 10));
+            layoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
 
-            
+
             Label titleLabel = new Label
             {
                 Text = title,
@@ -99,15 +89,15 @@ namespace MainForms
             };
             layoutPanel.Controls.Add(titleLabel, 0, 0);
 
-            
+
             Panel spacerPanel = new Panel
             {
-                Height = 100, 
+                Height = 100,
                 Dock = DockStyle.Top
             };
             layoutPanel.Controls.Add(spacerPanel, 0, 1);
 
-            
+
             DataGridView roomTable = new DataGridView
             {
                 Font = new Font("Consolas", 12, FontStyle.Regular),
@@ -120,16 +110,16 @@ namespace MainForms
                 ScrollBars = ScrollBars.Both,
             };
 
-           
+
             roomTable.Columns.Clear();
 
-            
+
             foreach (var column in columns)
             {
                 roomTable.Columns.Add(column, column);
             }
 
-            
+
             if (includeStatusComboBox && roomTable.Columns["ChangeStatus"] == null)
             {
                 DataGridViewComboBoxColumn statusColumn = new DataGridViewComboBoxColumn
@@ -142,13 +132,13 @@ namespace MainForms
                 roomTable.Columns.Add(statusColumn);
 
                 //Event for when combo box value is changed
-                
+
                 roomTable.CellValueChanged += (sender, e) =>
                 {
                     int roomId = Convert.ToInt32(roomTable.Rows[e.RowIndex].Cells["Room No."].Value);
                     string newStatus = roomTable.Rows[e.RowIndex].Cells["ChangeStatus"].Value.ToString();
                     DatabaseHelper.SetRoomStatus(newStatus, roomId);
-                    
+
                     RefreshRoomData();
                 };
             }
@@ -164,7 +154,7 @@ namespace MainForms
         //Method for populating available rooms
         private void PopulateAvailableRooms(DataGridView roomTable)
         {
-            List<Accommodation> availableRooms= DatabaseHelper.GetAvailableRoom(roomTable);
+            List<Accommodation> availableRooms = DatabaseHelper.GetAvailableRoom(roomTable);
             foreach (var room in availableRooms)
             {
                 roomTable.Rows.Add(room.GetRoomId(), room.GetName());

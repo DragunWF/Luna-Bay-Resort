@@ -8,7 +8,7 @@ namespace SubForms
         private readonly string receiptNo;
         private readonly int checkOutNo;
 
-        public CheckOutReceipt(string fullName, string checkInDate, string checkOutDate, 
+        public CheckOutReceipt(string fullName, string checkInDate, string checkOutDate,
             string roomType, string numOfGuests, string roomNo)
         {
             InitializeComponent();
