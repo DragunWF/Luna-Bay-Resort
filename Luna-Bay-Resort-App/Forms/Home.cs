@@ -61,14 +61,14 @@ namespace MainForms
             };
             topNavPanel.Controls.Add(logoPictureBox);
 
-            int margin = 100;
+            int margin = 30;
 
             // Create navigation buttons for different sections
-            CreateNavButton("Dashboard", 120, logoPictureBox.Right + margin + 35, (sender, e) => OnButtonClicked(sender, "Dashboard"), topNavPanel);
-            CreateNavButton("Booking", 120, logoPictureBox.Right + margin + 35, (sender, e) => OnButtonClicked(sender, "Booking"), topNavPanel);
-            CreateNavButton("Amenities", 140, logoPictureBox.Right + margin + 160, (sender, e) => OnButtonClicked(sender, "Amenities"), topNavPanel);
-            CreateNavButton("Maintenance", 180, logoPictureBox.Right + margin + 300, (sender, e) => OnButtonClicked(sender, "Maintenance"), topNavPanel);
-            CreateNavButton("Financial Reports", 250, logoPictureBox.Right + margin + 480, (sender, e) => OnButtonClicked(sender, "Financial"), topNavPanel);
+            CreateNavButton("Dashboard", 150, logoPictureBox.Right + margin , (sender, e) => OnButtonClicked(sender, "Dashboard"), topNavPanel);
+            CreateNavButton("Booking", 120, logoPictureBox.Right + margin + 148, (sender, e) => OnButtonClicked(sender, "Booking"), topNavPanel);
+            CreateNavButton("Amenities", 140, logoPictureBox.Right + margin + 270, (sender, e) => OnButtonClicked(sender, "Amenities"), topNavPanel);
+            CreateNavButton("Maintenance", 180, logoPictureBox.Right + margin + 410, (sender, e) => OnButtonClicked(sender, "Maintenance"), topNavPanel);
+            CreateNavButton("Financial Reports", 250, logoPictureBox.Right + margin + 590, (sender, e) => OnButtonClicked(sender, "Financial"), topNavPanel);
 
             PictureBox profilePictureBox = new PictureBox
             {

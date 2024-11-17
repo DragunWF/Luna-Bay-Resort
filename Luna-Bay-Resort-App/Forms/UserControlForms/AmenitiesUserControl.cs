@@ -172,8 +172,6 @@ namespace MainForms
 
                 GetProduct();
 
-                GetAddon();
-
             };
 
             Button breakfastButton = new Button
@@ -321,16 +319,6 @@ namespace MainForms
                 }
             }
 
-            void GetAddon()
-            {
-                List<Addon> addons = DatabaseHelper.GetAddon();
-
-                foreach (var addon in addons)
-                {
-                    string formattedPrice = Utils.FormatCurrency(addon.getPrice());
-                    menuTable.Rows.Add(addon.getAddonName(), formattedPrice);
-                }
-            }
         }
 
         private Panel CreateCheckoutPanel()

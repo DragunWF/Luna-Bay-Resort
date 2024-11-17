@@ -1,6 +1,6 @@
-﻿using System.Data;
-using System.Globalization;
+﻿using System.Globalization;
 using Luna_Bay_Resort_App.Data;
+using Luna_Bay_Resort_App.Forms;
 using Luna_Bay_Resort_App.Helpers;
 
 namespace SubForms
@@ -27,6 +27,7 @@ namespace SubForms
         // Changes text to reflect selected room name from RoomTypeCB
         private void RoomTypeCB_SelectedValueChanged(object sender, EventArgs e)
         {
+            Paxlbl.Text = DatabaseHelper.GetPax(RoomTypeCB.Text).ToString();
             TotalAmountText.Text = DatabaseHelper.GetRoomPrice(RoomTypeCB.Text).ToString();
         }
 
@@ -40,9 +41,9 @@ namespace SubForms
                 if (reservation != null)
                 {
                     CheckInPicker.Value = DateTime.ParseExact(reservation.GetCheckIn(), dateFormat, CultureInfo.InvariantCulture);
-                    CheckOutPicker.Value = DateTime.ParseExact(reservation.GetCheckOut(), dateFormat, CultureInfo.InvariantCulture);
+                    CheckOutPicker.Value = DateTime.ParseExact(reservation.GetCheckOut(), dateFormat,CultureInfo.InvariantCulture);
                     RoomTypeCB.Text = DatabaseHelper.GetRoomName(reservation.GetRoomNo());
-                    GuestNumText.Text = reservation.GetNumOfGuest().ToString();
+                    Paxlbl.Text = reservation.GetNumOfGuest().ToString();
                     DepositText.Text = reservation.GetBillAmount().ToString();
                     TotalAmountText.Text = reservation.GetBalance().ToString();
                 }
@@ -67,7 +68,7 @@ namespace SubForms
             {
                 string[] inputValues = {
                     RoomTypeCB.Text,
-                    GuestNumText.Text,
+                    Paxlbl.Text,
                     DepositText.Text,
                     TotalAmountText.Text,
                 };
@@ -83,7 +84,7 @@ namespace SubForms
                         CheckInPicker.Text.ToString(),
                         CheckOutPicker.Text.ToString(),
                         DatabaseHelper.GetRoomNo(RoomTypeCB.Text),
-                        int.Parse(GuestNumText.Text),
+                        int.Parse(Paxlbl.Text),
                         double.Parse(DepositText.Text),
                         double.Parse(TotalAmountText.Text)
                     );
@@ -99,6 +100,11 @@ namespace SubForms
             {
                 MessageBox.Show($"An unexpected error has occured: {err.Message}");
             }
+        }
+
+        private void AddPaxbtn_Click(object sender, EventArgs e)
+        {
+            FormManager.OpenForm<AddPax>();
         }
     }
 }

@@ -392,6 +392,29 @@ namespace Luna_Bay_Resort_App.Helpers
             return availablerooms;
         }
 
+        public static int GetPax(String roomName)
+        {
+            int pax = 0;
+            using(SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "SELECT DISTINCT Pax FROM Accommodation WHERE Name = @RoomName";
+
+                SqlCommand getpax = new SqlCommand(query, con);
+                getpax.Parameters.AddWithValue("@RoomName", roomName);
+
+                using (SqlDataReader read = getpax.ExecuteReader())
+                {
+                    if (read.Read())
+                    {
+                        pax = Convert.ToInt32(read["Pax"]);
+                        
+                    }
+                    return pax;
+                }
+            }
+        }
+
         #endregion
 
         #region Amenities Methods
@@ -448,32 +471,6 @@ namespace Luna_Bay_Resort_App.Helpers
                 con.Close();
             }
             return foods;
-        }
-
-        //Get Addon List(Name, Price)
-        public static List<Addon> GetAddon()
-        {
-            var addon = new List<Addon>();
-            using (SqlConnection con = new SqlConnection(Key))
-            {
-                con.Open();
-                string query = "SELECT DISTINCT Name, Price FROM Addons";
-
-                SqlCommand getaddons = new SqlCommand(query, con);
-
-                using (var reader = getaddons.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        string addonName = reader["Name"].ToString();
-                        int price = Convert.ToInt32(reader["Price"]);
-
-                        addon.Add(new Addon(addonName, price));
-                    }
-                }
-                con.Close();
-            }
-            return addon;
         }
 
         //Get Product List(Name, Price)

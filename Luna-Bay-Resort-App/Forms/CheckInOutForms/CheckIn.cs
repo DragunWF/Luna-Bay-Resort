@@ -1,5 +1,6 @@
-﻿using System.Data;
-using Luna_Bay_Resort_App.Helpers;
+﻿using Luna_Bay_Resort_App.Helpers;
+using MainForms;
+using System.Data;
 
 namespace SubForms
 {
@@ -28,7 +29,7 @@ namespace SubForms
                     CheckInPicker.Text,
                     CheckOutPicker.Text,
                     RoomTypeCB.Text,
-                    GuestNumText.Text,
+                    Paxlbl.Text,
                     TotalPaymentAmountText.Text,
                     TotalBillAmountText.Text
                 };
@@ -60,7 +61,7 @@ namespace SubForms
                     string fullName = $"{FirstNameText.Text} {LastNameText.Text}";
                     FormManager.OpenForm<CheckInReceipt>(
                         fullName, CheckInPicker.Text, CheckOutPicker.Text,
-                        RoomTypeCB.Text, GuestNumText.Text, DatabaseHelper.GetRoomNo(RoomTypeCB.Text).ToString(),
+                        RoomTypeCB.Text, Paxlbl.Text, DatabaseHelper.GetRoomNo(RoomTypeCB.Text).ToString(),
                         paymentMethod, paymentAmount, billAmount, amountDue
                     );
                 }
@@ -94,6 +95,8 @@ namespace SubForms
                 paymentMethod = "Online Payment";
                 CashCheckBox.Checked = false;
                 CardCheckBox.Checked = false;
+
+                //FormManager.OpenForm<OnlinePaymentReference>();
             }
         }
 
@@ -104,6 +107,8 @@ namespace SubForms
                 paymentMethod = "Debit/Credit Card";
                 CashCheckBox.Checked = false;
                 OnlinePaymentCheckBox.Checked = false;
+
+                //FormManager.OpenForm<CardReference>();
             }
         }
 
@@ -118,7 +123,13 @@ namespace SubForms
         // Changes text to reflect selected room name from RoomTypeCB
         private void RoomTypeCB_SelectedValueChanged(object sender, EventArgs e)
         {
+            Paxlbl.Text = DatabaseHelper.GetPax(RoomTypeCB.Text).ToString();
             TotalBillAmountText.Text = DatabaseHelper.GetRoomPrice(RoomTypeCB.Text).ToString();
+        }
+
+        private void AddPaxbtn_Click(object sender, EventArgs e)
+        {
+            //FormManager.OpenForm<AddPax>();
         }
     }
 }
