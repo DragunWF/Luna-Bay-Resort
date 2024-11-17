@@ -36,6 +36,7 @@
             LoginPassword = new TextBox();
             LoginBtn = new Button();
             pictureBox2 = new PictureBox();
+            cbShowPassword = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -43,10 +44,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(314, -1);
-            pictureBox1.Margin = new Padding(3, 2, 3, 2);
+            pictureBox1.Location = new Point(359, -1);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(615, 568);
+            pictureBox1.Size = new Size(703, 757);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -57,18 +57,17 @@
             label1.FlatStyle = FlatStyle.Flat;
             label1.Font = new Font("Consolas", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(47, 276);
+            label1.Location = new Point(54, 368);
             label1.Name = "label1";
-            label1.Size = new Size(80, 17);
+            label1.Size = new Size(90, 20);
             label1.TabIndex = 1;
             label1.Text = "Username:";
             // 
             // LoginUsername
             // 
-            LoginUsername.Location = new Point(47, 302);
-            LoginUsername.Margin = new Padding(3, 2, 3, 2);
+            LoginUsername.Location = new Point(54, 403);
             LoginUsername.Name = "LoginUsername";
-            LoginUsername.Size = new Size(206, 23);
+            LoginUsername.Size = new Size(235, 27);
             LoginUsername.TabIndex = 2;
             // 
             // label2
@@ -76,18 +75,17 @@
             label2.AutoSize = true;
             label2.Font = new Font("Consolas", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ActiveCaptionText;
-            label2.Location = new Point(47, 343);
+            label2.Location = new Point(54, 457);
             label2.Name = "label2";
-            label2.Size = new Size(80, 17);
+            label2.Size = new Size(90, 20);
             label2.TabIndex = 3;
             label2.Text = "Password:";
             // 
             // LoginPassword
             // 
-            LoginPassword.Location = new Point(47, 367);
-            LoginPassword.Margin = new Padding(3, 2, 3, 2);
+            LoginPassword.Location = new Point(54, 489);
             LoginPassword.Name = "LoginPassword";
-            LoginPassword.Size = new Size(206, 23);
+            LoginPassword.Size = new Size(235, 27);
             LoginPassword.TabIndex = 4;
             // 
             // LoginBtn
@@ -97,10 +95,9 @@
             LoginBtn.FlatStyle = FlatStyle.Flat;
             LoginBtn.Font = new Font("Consolas", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             LoginBtn.ForeColor = SystemColors.ButtonHighlight;
-            LoginBtn.Location = new Point(47, 436);
-            LoginBtn.Margin = new Padding(3, 2, 3, 2);
+            LoginBtn.Location = new Point(54, 581);
             LoginBtn.Name = "LoginBtn";
-            LoginBtn.Size = new Size(206, 28);
+            LoginBtn.Size = new Size(235, 37);
             LoginBtn.TabIndex = 5;
             LoginBtn.Text = "Login";
             LoginBtn.UseVisualStyleBackColor = false;
@@ -109,20 +106,31 @@
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(47, 62);
-            pictureBox2.Margin = new Padding(3, 2, 3, 2);
+            pictureBox2.Location = new Point(54, 83);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(206, 161);
+            pictureBox2.Size = new Size(235, 215);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 6;
             pictureBox2.TabStop = false;
             // 
+            // cbShowPassword
+            // 
+            cbShowPassword.AutoSize = true;
+            cbShowPassword.Font = new Font("Consolas", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cbShowPassword.Location = new Point(104, 533);
+            cbShowPassword.Name = "cbShowPassword";
+            cbShowPassword.Size = new Size(134, 22);
+            cbShowPassword.TabIndex = 7;
+            cbShowPassword.Text = "Show password";
+            cbShowPassword.UseVisualStyleBackColor = true;
+            // 
             // LoginForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(244, 211, 94);
-            ClientSize = new Size(929, 565);
+            ClientSize = new Size(1062, 753);
+            Controls.Add(cbShowPassword);
             Controls.Add(pictureBox2);
             Controls.Add(LoginBtn);
             Controls.Add(LoginPassword);
@@ -130,7 +138,6 @@
             Controls.Add(LoginUsername);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "LoginForm";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
@@ -150,5 +157,6 @@
         private TextBox LoginPassword;
         private Button LoginBtn;
         private PictureBox pictureBox2;
+        private CheckBox cbShowPassword;
     }
 }
