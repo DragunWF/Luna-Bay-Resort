@@ -73,14 +73,20 @@ namespace MainForms
             DataGridView menuTable = new DataGridView
             {
                 ColumnHeadersVisible = true,
-                AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
-                Dock = DockStyle.Fill,
+                AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None,
+                Dock = DockStyle.Fill,    
             };
             menuTable.Columns.Add("Name", "Name");
+            menuTable.Columns.Add("Qty", "Qty");
             menuTable.Columns.Add("Price", "Price");
             menuPanel.Controls.Add(menuTable, 0, 1);
 
+            menuTable.Columns["Name"].Width = 700;
+            menuTable.Columns["Qty"].Width = 100;
+            menuTable.Columns["Price"].Width = 275;
+
             menuTable.Columns["Name"].ReadOnly = true;
+            menuTable.Columns["Qty"].ReadOnly = true;
             menuTable.Columns["Price"].ReadOnly = true;
 
             //Click Option Event
@@ -248,6 +254,16 @@ namespace MainForms
             {
                 DisplayFoodByFoodID(5);
             };
+            Button swimWearButton = new Button
+            {
+                Text = "Swimwear",
+                Font = new Font("Consolas", 12, FontStyle.Regular),
+                BackColor = ColorTranslator.FromHtml("#FFFFFF"),
+                Height = 35,
+                Width = 120,
+                ForeColor = Color.Black,
+                
+            };
 
             Button cancelButton = new Button
             {
@@ -257,7 +273,7 @@ namespace MainForms
                 Height = 35,
                 Width = 100,
                 ForeColor = Color.White,
-                Margin = new Padding(450, 0, 0, 0)
+                Margin = new Padding(323, 0, 0, 0)
             };
 
             cancelButton.Click += (sender, e) =>
@@ -277,6 +293,7 @@ namespace MainForms
                 dinnerButton,
                 beveragesButton,
                 snacksButton,
+                swimWearButton,
                 cancelButton
             });
             menuPanel.Controls.Add(bottomPanel, 0, 2);
@@ -354,6 +371,11 @@ namespace MainForms
             checkoutTable.Columns.Add("Price", "Price");
             checkoutPanel.Controls.Add(checkoutTable, 0, 1);
 
+            checkoutTable.Columns["Name"].Width =300;
+            checkoutTable.Columns["Qty"].Width = 50;
+            checkoutTable.Columns["Price"].Width = 80;
+
+
             checkoutTable.Columns["Name"].ReadOnly = true;
             checkoutTable.Columns["Qty"].ReadOnly = true;
             checkoutTable.Columns["Price"].ReadOnly = true;
@@ -398,7 +420,7 @@ namespace MainForms
 
             Button payButton = new Button
             {
-                Width = 740,
+                Width = 743,
                 Text = "Pay Order",
                 Font = new Font("Consolas", 12, FontStyle.Bold),
                 BackColor = ColorTranslator.FromHtml("#FFDA00"),

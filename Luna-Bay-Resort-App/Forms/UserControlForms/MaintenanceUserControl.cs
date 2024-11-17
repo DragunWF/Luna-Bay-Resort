@@ -159,6 +159,7 @@ namespace MainForms
             {
                 roomTable.Rows.Add(room.GetRoomId(), room.GetName());
             }
+            roomTable.Columns["Room No."].Width = 50;
         }
 
         //Method for populating by room status
