@@ -1,4 +1,5 @@
-﻿using Luna_Bay_Resort_App.Helpers;
+﻿using Luna_Bay_Resort_App.Forms;
+using Luna_Bay_Resort_App.Helpers;
 using MainForms;
 using System.Data;
 
@@ -129,7 +130,7 @@ namespace SubForms
 
         private void AddPaxbtn_Click(object sender, EventArgs e)
         {
-            //FormManager.OpenForm<AddPax>();
+            FormManager.OpenForm<AddPax>();
         }
     }
 }
