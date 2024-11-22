@@ -16,6 +16,7 @@ namespace SubForms
             MaximizeBox = false;
 
             DisplayReceiptData();
+            UpdateStock();
         }
 
         private void DisplayReceiptData()
@@ -48,6 +49,17 @@ namespace SubForms
 
             // Add the item to the ListView
             ItemsLV.Items.Add(item);
+        }
+
+        private void UpdateStock()
+        {
+            foreach (ListViewItem item in ItemsLV.Items)
+            {
+                string itemName = item.Text;
+                int quantity = int.Parse(item.SubItems[1].Text);
+
+                DatabaseHelper.ReduceStock(itemName, quantity);
+            }
         }
     }
 }

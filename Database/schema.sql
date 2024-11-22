@@ -174,13 +174,13 @@ INSERT INTO FoodType (FoodType_ID, FoodType) VALUES
 CREATE TABLE Food (
     Food_ID INT PRIMARY KEY,
     FoodType_ID INT FOREIGN KEY REFERENCES FoodType(FoodType_ID),
-    Food_Name VARCHAR(40),
+    Name VARCHAR(40),
     Serving VARCHAR(30),
-	Quantity INT,
+	Stock INT,
     Price INT
 );
 
-INSERT INTO Food (Food_ID, FoodType_ID, Food_Name, Serving, Quantity, Price) VALUES
+INSERT INTO Food (Food_ID, FoodType_ID, Name, Serving, Stock, Price) VALUES
     -- Breakfast Items
     (101, 1, 'Tapsilog', '1', 50, 105), 
     (102, 1, 'Tosilog', '1', 50, 105), 
@@ -253,9 +253,7 @@ INSERT INTO Products (Product_ID, Name, Price) VALUES
     (0010, 'Tee(Boys)', 150),
     (0011, 'Float', 100),
     (0012, 'Goggles', 175),
-    (0013, 'Ear Plugs', 320),
-    (0014, 'Necklace', 150),
-    (0015, 'Ref Magnet', 50);
+    (0013, 'Ear Plugs', 320);
 
 -- Payment Method
 CREATE TABLE PaymentMethod (

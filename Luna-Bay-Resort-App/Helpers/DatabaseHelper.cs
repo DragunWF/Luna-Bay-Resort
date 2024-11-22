@@ -419,14 +419,14 @@ namespace Luna_Bay_Resort_App.Helpers
 
         #region Amenities Methods
 
-        //Return Food name and price by FoodType_ID
+        //Return Food name, stock count, and price by FoodType_ID
         public static List<Food> GetFoodbyType(int FoodType)
         {
             var foods = new List<Food>();
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
-                string query = "SELECT Distinct Food_Name, Price from Food WHERE FoodType_ID = @FoodId";
+                string query = "SELECT Distinct Name, Stock, Price from Food WHERE FoodType_ID = @FoodId";
 
                 SqlCommand getfoodnames = new SqlCommand(query, con);
                 getfoodnames.Parameters.AddWithValue("@FoodId", FoodType);
@@ -435,10 +435,11 @@ namespace Luna_Bay_Resort_App.Helpers
                 {
                     while (reader.Read())
                     {
-                        string foodName = reader["Food_Name"].ToString();
+                        string foodName = reader["Name"].ToString();
+                        int stock = Convert.ToInt32(reader["Stock"]);
                         int price = Convert.ToInt32(reader["Price"]);
 
-                        foods.Add(new Food(foodName, price));
+                        foods.Add(new Food(foodName, stock, price));
                     }
                 }
                 con.Close();
@@ -446,41 +447,42 @@ namespace Luna_Bay_Resort_App.Helpers
             return foods;
         }
 
-        //Search for Food name and price using FoodName
-        public static List<Food> SearchFood(string FoodName)
+        public static List<Items> SearchItem(string itemname)
         {
-            var foods = new List<Food>();
+            var items = new List<Items>();
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
-                string query = "SELECT Food_Name, Price from Food WHERE Food_Name LIKE '%' + @FoodName + '%'";
+                string query = @"SELECT Name, Stock, Price from Food WHERE Name LIKE '%' + @Name + '%' 
+                                 UNION 
+                                 SELECT Name, Stock, Price from Products WHERE Name LIKE '%' + @Name + '%'";
 
-                SqlCommand getfoodnames = new SqlCommand(query, con);
-                getfoodnames.Parameters.AddWithValue("@FoodName", FoodName);
+                SqlCommand getitem = new SqlCommand(query, con);
+                getitem.Parameters.AddWithValue("@Name", itemname);
 
-                using (var reader = getfoodnames.ExecuteReader())
+                using (var reader = getitem.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        string foodName = reader["Food_Name"].ToString();
+                        string name = reader["Name"].ToString();
+                        int quantity = Convert.ToInt32(reader["Stock"]);
                         int price = Convert.ToInt32(reader["Price"]);
 
-                        foods.Add(new Food(foodName, price));
+                        items.Add(new Items(name, quantity, price));
                     }
                 }
                 con.Close();
             }
-            return foods;
+            return items;
         }
 
-        //Get Product List(Name, Price)
         public static List<Product> GetProduct()
         {
             var product = new List<Product>();
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
-                string query = "SELECT Name, Price FROM Products";
+                string query = "SELECT Name, Stock, Price FROM Products";
 
                 SqlCommand getproduct = new SqlCommand(query, con);
 
@@ -489,14 +491,59 @@ namespace Luna_Bay_Resort_App.Helpers
                     while (reader.Read())
                     {
                         string productname = reader["Name"].ToString();
+                        int stock = Convert.ToInt32(reader["Stock"]);
                         int price = Convert.ToInt32(reader["Price"]);
 
-                        product.Add(new Product(productname, price));
+                        product.Add(new Product(productname, stock, price));
                     }
                 }
                 con.Close();
             }
             return product;
+        }
+
+        public static void ReduceStock(string itemname, int quantity)
+        {
+            var cart = new List<Items>();
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string queryFood = "SELECT COUNT(*) FROM Food WHERE Name = @ItemName";
+
+                SqlCommand cmdFood = new SqlCommand(queryFood, con);
+                cmdFood.Parameters.AddWithValue("@ItemName", itemname);
+
+                int foodCount = Convert.ToInt32(cmdFood.ExecuteScalar());
+                //Checks if cart has food items
+                if (foodCount > 0)
+                {
+                    string updateFoodStock = "UPDATE Food SET Stock = Stock - @Quantity WHERE Name = @ItemName";
+                    SqlCommand updateFood = new SqlCommand(updateFoodStock, con);
+                    updateFood.Parameters.AddWithValue("@ItemName", itemname);
+                    updateFood.Parameters.AddWithValue("@Quantity", quantity);
+
+                    updateFood.ExecuteNonQuery();
+                }
+                else
+                {
+                    //Checks if cart has product items
+                    string queryProduct = "SELECT COUNT(*) FROM Products WHERE Name = @ItemName";
+                    SqlCommand cmdProduct = new SqlCommand(queryProduct, con);
+                    cmdProduct.Parameters.AddWithValue("@ItemName", itemname);
+
+                    int productCount = Convert.ToInt32(cmdProduct.ExecuteScalar());
+                    if (productCount > 0)
+                    {
+                        string updateProductStock = "UPDATE Products SET Stock = Stock - @Quantity WHERE Name = @ItemName";
+                        SqlCommand updateProduct = new SqlCommand(updateProductStock, con);
+                        updateProduct.Parameters.AddWithValue("@ItemName", itemname);
+                        updateProduct.Parameters.AddWithValue("@Quantity", quantity);
+
+                        updateProduct.ExecuteNonQuery();
+                    }
+                }
+                con.Close();
+            }
         }
 
         #endregion

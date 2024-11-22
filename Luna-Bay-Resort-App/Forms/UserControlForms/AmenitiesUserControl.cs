@@ -7,6 +7,7 @@ namespace MainForms
     public partial class AmenitiesUserControl : UserControl
     {
         private DataGridView checkoutTable;
+        private DataGridView menuTable;
 
         private Label subTotalLabel;
         private Label vatLabel;
@@ -70,7 +71,7 @@ namespace MainForms
             menuPanel.Controls.Add(menuTitle, 0, 0);
 
 
-            DataGridView menuTable = new DataGridView
+            menuTable = new DataGridView
             {
                 ColumnHeadersVisible = true,
                 AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None,
@@ -93,9 +94,11 @@ namespace MainForms
             menuTable.CellClick += (sender, e) =>
             {
                 string itemName = menuTable.Rows[e.RowIndex].Cells["Name"].Value?.ToString();
+                string QuantityText = menuTable.Rows[e.RowIndex].Cells["Qty"].Value?.ToString();
                 string itemPriceText = menuTable.Rows[e.RowIndex].Cells["Price"].Value?.ToString();
+                
 
-                if (string.IsNullOrEmpty(itemName) || string.IsNullOrEmpty(itemPriceText))
+                if (string.IsNullOrEmpty(itemName) || string.IsNullOrEmpty(itemPriceText) || string.IsNullOrEmpty(QuantityText))
                 {
                     return;
                 }
@@ -105,6 +108,13 @@ namespace MainForms
                 if (decimal.TryParse(itemPriceText.Replace("PHP", "").Trim(), out decimal price))
                 {
                     itemPrice = price;
+                }
+
+                // Check if the item is available in stock
+                if (QuantityText == "0")
+                {
+                    MessageBox.Show($"{itemName} is out of stock.");
+                    return;
                 }
 
                 // Check if the item already exists in the checkoutTable
@@ -157,7 +167,7 @@ namespace MainForms
 
             searchButton.Click += (sender, e) =>
             {
-                SearchFood(searchBox.Text);
+                SearchItem(searchBox.Text);
             };
 
             Button addOnButton = new Button
@@ -175,9 +185,6 @@ namespace MainForms
             addOnButton.Click += (sender, e) =>
             {
                 DisplayFoodByFoodID(4);
-
-                GetProduct();
-
             };
 
             Button breakfastButton = new Button
@@ -262,7 +269,11 @@ namespace MainForms
                 Height = 35,
                 Width = 120,
                 ForeColor = Color.Black,
-                
+            };
+
+            swimWearButton.Click += (sender, e) =>
+            {
+                GetProduct();
             };
 
             Button cancelButton = new Button
@@ -298,43 +309,6 @@ namespace MainForms
             });
             menuPanel.Controls.Add(bottomPanel, 0, 2);
             return menuPanel;
-
-            void DisplayFoodByFoodID(int FoodType)
-            {
-                List<Food> foods = DatabaseHelper.GetFoodbyType(FoodType);
-
-                menuTable.Rows.Clear();
-
-                foreach (var food in foods)
-                {
-                    string formattedPrice = Utils.FormatCurrency(food.getPrice());
-                    menuTable.Rows.Add(food.getFoodName(), formattedPrice);
-                }
-            }
-
-            void SearchFood(string FoodName)
-            {
-                List<Food> foods = DatabaseHelper.SearchFood(FoodName);
-
-                menuTable.Rows.Clear();
-
-                foreach (var food in foods)
-                {
-                    string formattedPrice = Utils.FormatCurrency(food.getPrice());
-                    menuTable.Rows.Add(food.getFoodName(), formattedPrice);
-                }
-            }
-
-            void GetProduct()
-            {
-                List<Product> products = DatabaseHelper.GetProduct();
-
-                foreach (var product in products)
-                {
-                    string formattedPrice = Utils.FormatCurrency(product.getPrice());
-                    menuTable.Rows.Add(product.getProductName(), formattedPrice);
-                }
-            }
 
         }
 
@@ -451,6 +425,7 @@ namespace MainForms
                         SessionData.FillAmenities(amenities);
                         FormManager.OpenForm<AmenitiesReceipt>();
                         checkoutTable.Rows.Clear();
+                        menuTable.Rows.Clear();
                     }
                     else
                     {
@@ -471,6 +446,7 @@ namespace MainForms
             return checkoutPanel;
         }
 
+        #region Methods
         private void UpdateTotal()
         {
             subtotal = 0;
@@ -489,5 +465,44 @@ namespace MainForms
             vatLabel.Text = $"VAT: {Utils.FormatCurrency(vat)}";
             totalLabel.Text = $"Total: {Utils.FormatCurrency(total)}";
         }
+
+        private void DisplayFoodByFoodID(int FoodType)
+        {
+            List<Food> foods = DatabaseHelper.GetFoodbyType(FoodType);
+
+            menuTable.Rows.Clear();
+
+            foreach (var food in foods)
+            {
+                string formattedPrice = Utils.FormatCurrency(food.getPrice());
+                menuTable.Rows.Add(food.getFoodName(), food.getStock(), formattedPrice);
+            }
+        }
+
+        private void GetProduct()
+        {
+            List<Product> products = DatabaseHelper.GetProduct();
+
+            menuTable.Rows.Clear();
+            foreach (var product in products)
+            {
+                string formattedPrice = Utils.FormatCurrency(product.getPrice());
+                menuTable.Rows.Add(product.getProductName(), product.getStock(), formattedPrice);
+            }
+        }
+
+        private void SearchItem(string Name)
+        {
+            List<Items> allitems = DatabaseHelper.SearchItem(Name);
+
+            menuTable.Rows.Clear();
+
+            foreach (var item in allitems)
+            {
+                string formattedPrice = Utils.FormatCurrency(item.getPrice());
+                menuTable.Rows.Add(item.getName(), item.getStock(), formattedPrice);
+            }
+        }
+        #endregion
     }
 }
