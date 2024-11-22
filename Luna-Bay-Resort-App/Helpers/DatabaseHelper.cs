@@ -547,5 +547,89 @@ namespace Luna_Bay_Resort_App.Helpers
         }
 
         #endregion
+
+        #region Stock Methods
+        public static int GetOutofStock()
+        {
+            int stocklevel = 0;
+
+            using(SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = @"SELECT 
+                                (SELECT COUNT(Stock) FROM Food WHERE Stock = 0) 
+                                + 
+                                (SELECT COUNT(Stock) FROM Products WHERE Stock = 0)";
+                SqlCommand command = new SqlCommand(query, con);
+
+                stocklevel = Convert.ToInt32(command.ExecuteScalar());
+                con.Close();
+            }
+            return stocklevel;
+        }
+        public static int GetLowStock()
+        {
+            int stocklevel = 0;
+
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = @"SELECT 
+                                (SELECT COUNT(Stock) FROM Food WHERE Stock <= 30) 
+                                + 
+                                (SELECT COUNT(Stock) FROM Products WHERE Stock <= 30)";
+                SqlCommand command = new SqlCommand(query, con);
+
+                stocklevel = Convert.ToInt32(command.ExecuteScalar());
+                con.Close();
+            }
+            return stocklevel;
+        }
+        public static int GetFullStock()
+        {
+            int stocklevel = 0;
+
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = @"SELECT 
+                                (SELECT COUNT(Stock) FROM Food WHERE Stock > 40) 
+                                + 
+                                (SELECT COUNT(Stock) FROM Products WHERE Stock > 40)";
+                SqlCommand command = new SqlCommand(query, con);
+
+                stocklevel = Convert.ToInt32(command.ExecuteScalar());
+                con.Close();
+            }
+            return stocklevel;
+        }
+        #endregion
+
+        #region Dashboard Methods
+        public static List<Guest> GetDashboardReservations(string checkindate)
+        {
+            var reservations = new List<Guest>();
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "Select Reservation_ID, Name From Guest Where Check_In Like '%' + @CheckInDate + '%'";
+
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@CheckInDate", checkindate);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int reservationId = Convert.ToInt32(reader["Reservation_ID"].ToString());
+                        string name = reader["Name"].ToString();
+
+                        reservations.Add(new Guest(reservationId, name));
+                    }
+                }
+            }
+            return reservations;
+        }
+        #endregion
     }
 }
