@@ -6,6 +6,8 @@ namespace Luna_Bay_Resort_App.Helpers
     {
         private static User currentUser;
         private static List<Amenity> amenities = new();
+        public static int RoomPax = 0;
+        public static int RoomCost = 0;
 
         public static void LoginUser(User user) => currentUser = user;
         public static User GetUser() => currentUser;
@@ -26,5 +28,7 @@ namespace Luna_Bay_Resort_App.Helpers
         }
 
         public static List<Amenity> GetAmenities() => amenities;
+        public static int GetRoomPax() => RoomPax;
+        public static int GetRoomCost() => RoomCost;
     }
 }

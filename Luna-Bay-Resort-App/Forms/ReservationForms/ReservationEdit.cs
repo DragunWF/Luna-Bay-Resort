@@ -15,6 +15,9 @@ namespace SubForms
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             RoomTypeCB.Items.AddRange(DatabaseHelper.GetRoomTypes().Select(r => r.GetName()).ToArray());
+
+            SessionData.RoomPax = 0;
+            SessionData.RoomCost = 0;
         }
 
         public ReservationEdit(int reservationNo) : this()
@@ -27,8 +30,9 @@ namespace SubForms
         // Changes text to reflect selected room name from RoomTypeCB
         private void RoomTypeCB_SelectedValueChanged(object sender, EventArgs e)
         {
-            Paxlbl.Text = DatabaseHelper.GetPax(RoomTypeCB.Text).ToString();
-            TotalAmountText.Text = DatabaseHelper.GetRoomPrice(RoomTypeCB.Text).ToString();
+            SessionData.RoomPax = DatabaseHelper.GetPax(RoomTypeCB.Text);
+            SessionData.RoomCost = DatabaseHelper.GetRoomPrice(RoomTypeCB.Text);
+            UpdatePax();
         }
 
         private void SelectBtn_Click(object sender, EventArgs e)
@@ -104,7 +108,28 @@ namespace SubForms
 
         private void AddPaxbtn_Click(object sender, EventArgs e)
         {
-            FormManager.OpenForm<AddPax>();
+            if (Paxlbl.Text == "0")
+            {
+                MessageBox.Show("Select a Room first before adding additional Pax");
+            }
+            else
+            {
+                FormManager.OpenForm<AddPax>();
+            }
+        }
+        public void UpdatePax()
+        {
+            if (RoomTypeCB.SelectedItem != null)
+            {
+                Paxlbl.Text = SessionData.GetRoomPax().ToString();
+                TotalAmountText.Text = SessionData.GetRoomCost().ToString();
+            }
+        }
+
+        //Updates label whenever it regains focus
+        protected override void OnActivated(EventArgs e)
+        {
+            UpdatePax();
         }
     }
 }

@@ -64,7 +64,7 @@
             label1.Location = new Point(117, 22);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(337, 28);
+            label1.Size = new Size(260, 22);
             label1.TabIndex = 0;
             label1.Text = "Form: Add new reservation";
             // 
@@ -75,7 +75,7 @@
             label2.Location = new Point(23, 77);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(252, 26);
+            label2.Size = new Size(189, 20);
             label2.TabIndex = 1;
             label2.Text = "Customer Information";
             // 
@@ -86,7 +86,7 @@
             label3.Location = new Point(23, 113);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(120, 22);
+            label3.Size = new Size(96, 18);
             label3.TabIndex = 2;
             label3.Text = "First Name:";
             // 
@@ -97,7 +97,7 @@
             label4.Location = new Point(257, 113);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(110, 22);
+            label4.Size = new Size(88, 18);
             label4.TabIndex = 3;
             label4.Text = "Last Name:";
             // 
@@ -108,7 +108,7 @@
             label5.Location = new Point(23, 177);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(70, 22);
+            label5.Size = new Size(56, 18);
             label5.TabIndex = 4;
             label5.Text = "Email:";
             // 
@@ -118,7 +118,7 @@
             FirstNameText.Location = new Point(23, 135);
             FirstNameText.Margin = new Padding(4, 3, 4, 3);
             FirstNameText.Name = "FirstNameText";
-            FirstNameText.Size = new Size(204, 27);
+            FirstNameText.Size = new Size(204, 23);
             FirstNameText.TabIndex = 5;
             // 
             // label6
@@ -128,7 +128,7 @@
             label6.Location = new Point(257, 177);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(130, 22);
+            label6.Size = new Size(104, 18);
             label6.TabIndex = 9;
             label6.Text = "Contact No.:";
             // 
@@ -139,7 +139,7 @@
             label7.Location = new Point(23, 240);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(240, 26);
+            label7.Size = new Size(180, 20);
             label7.TabIndex = 10;
             label7.Text = "Reservation Details";
             // 
@@ -150,7 +150,7 @@
             label8.Location = new Point(257, 275);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
-            label8.Size = new Size(160, 22);
+            label8.Size = new Size(128, 18);
             label8.TabIndex = 12;
             label8.Text = "Check-Out Date:";
             // 
@@ -161,7 +161,7 @@
             label9.Location = new Point(23, 275);
             label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
-            label9.Size = new Size(150, 22);
+            label9.Size = new Size(120, 18);
             label9.TabIndex = 11;
             label9.Text = "Check-In Date:";
             // 
@@ -173,7 +173,7 @@
             CheckInPicker.Location = new Point(23, 296);
             CheckInPicker.Margin = new Padding(4, 3, 4, 3);
             CheckInPicker.Name = "CheckInPicker";
-            CheckInPicker.Size = new Size(204, 27);
+            CheckInPicker.Size = new Size(204, 23);
             CheckInPicker.TabIndex = 15;
             // 
             // CheckOutPicker
@@ -184,7 +184,7 @@
             CheckOutPicker.Location = new Point(257, 296);
             CheckOutPicker.Margin = new Padding(4, 3, 4, 3);
             CheckOutPicker.Name = "CheckOutPicker";
-            CheckOutPicker.Size = new Size(204, 27);
+            CheckOutPicker.Size = new Size(204, 23);
             CheckOutPicker.TabIndex = 16;
             // 
             // label10
@@ -194,7 +194,7 @@
             label10.Location = new Point(23, 343);
             label10.Margin = new Padding(4, 0, 4, 0);
             label10.Name = "label10";
-            label10.Size = new Size(110, 22);
+            label10.Size = new Size(88, 18);
             label10.TabIndex = 17;
             label10.Text = "Room Type:";
             // 
@@ -204,7 +204,7 @@
             LastNameText.Location = new Point(257, 135);
             LastNameText.Margin = new Padding(4, 3, 4, 3);
             LastNameText.Name = "LastNameText";
-            LastNameText.Size = new Size(204, 27);
+            LastNameText.Size = new Size(204, 23);
             LastNameText.TabIndex = 23;
             // 
             // EmailText
@@ -213,7 +213,7 @@
             EmailText.Location = new Point(23, 199);
             EmailText.Margin = new Padding(4, 3, 4, 3);
             EmailText.Name = "EmailText";
-            EmailText.Size = new Size(204, 27);
+            EmailText.Size = new Size(204, 23);
             EmailText.TabIndex = 24;
             // 
             // ContactNoText
@@ -222,7 +222,7 @@
             ContactNoText.Location = new Point(257, 199);
             ContactNoText.Margin = new Padding(4, 3, 4, 3);
             ContactNoText.Name = "ContactNoText";
-            ContactNoText.Size = new Size(204, 27);
+            ContactNoText.Size = new Size(204, 23);
             ContactNoText.TabIndex = 25;
             // 
             // label14
@@ -233,7 +233,7 @@
             label14.Location = new Point(23, 424);
             label14.Margin = new Padding(4, 0, 4, 0);
             label14.Name = "label14";
-            label14.Size = new Size(210, 22);
+            label14.Size = new Size(161, 16);
             label14.TabIndex = 26;
             label14.Text = "Amount of Req. Deposit:";
             // 
@@ -270,7 +270,7 @@
             label13.Location = new Point(23, 486);
             label13.Margin = new Padding(4, 0, 4, 0);
             label13.Name = "label13";
-            label13.Size = new Size(179, 31);
+            label13.Size = new Size(138, 23);
             label13.TabIndex = 56;
             label13.Text = "Total Amount:";
             // 
@@ -281,7 +281,7 @@
             label12.Location = new Point(23, 381);
             label12.Margin = new Padding(4, 0, 4, 0);
             label12.Name = "label12";
-            label12.Size = new Size(252, 26);
+            label12.Size = new Size(189, 20);
             label12.TabIndex = 21;
             label12.Text = "Payment Information:";
             // 
@@ -292,7 +292,7 @@
             RoomTypeCB.FormattingEnabled = true;
             RoomTypeCB.Location = new Point(140, 343);
             RoomTypeCB.Name = "RoomTypeCB";
-            RoomTypeCB.Size = new Size(161, 27);
+            RoomTypeCB.Size = new Size(161, 23);
             RoomTypeCB.TabIndex = 64;
             RoomTypeCB.SelectedValueChanged += RoomTypeCB_SelectedValueChanged;
             // 
@@ -301,7 +301,7 @@
             DepositText.Font = new Font("Consolas", 9.75F);
             DepositText.Location = new Point(191, 418);
             DepositText.Name = "DepositText";
-            DepositText.Size = new Size(100, 27);
+            DepositText.Size = new Size(100, 23);
             DepositText.TabIndex = 65;
             // 
             // TotalAmountText
@@ -309,7 +309,7 @@
             TotalAmountText.Font = new Font("Consolas", 9.75F);
             TotalAmountText.Location = new Point(168, 488);
             TotalAmountText.Name = "TotalAmountText";
-            TotalAmountText.Size = new Size(123, 27);
+            TotalAmountText.Size = new Size(123, 23);
             TotalAmountText.TabIndex = 66;
             // 
             // AddPaxbtn
@@ -331,7 +331,7 @@
             Paxlbl.Font = new Font("Consolas", 11.25F);
             Paxlbl.Location = new Point(343, 343);
             Paxlbl.Name = "Paxlbl";
-            Paxlbl.Size = new Size(20, 22);
+            Paxlbl.Size = new Size(16, 18);
             Paxlbl.TabIndex = 75;
             Paxlbl.Text = "0";
             // 
@@ -342,13 +342,13 @@
             label11.Location = new Point(308, 343);
             label11.Margin = new Padding(4, 0, 4, 0);
             label11.Name = "label11";
-            label11.Size = new Size(50, 22);
+            label11.Size = new Size(40, 18);
             label11.TabIndex = 74;
             label11.Text = "Pax:";
             // 
             // ReservationAddNew
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(234, 234, 234);
             ClientSize = new Size(494, 541);
