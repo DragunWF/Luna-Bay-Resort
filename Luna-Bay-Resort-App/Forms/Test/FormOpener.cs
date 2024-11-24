@@ -1,4 +1,5 @@
-﻿using Luna_Bay_Resort_App.Helpers;
+﻿using Luna_Bay_Resort_App.Forms.AdminPanelForms;
+using Luna_Bay_Resort_App.Helpers;
 using Luna_Bay_Sub_Forms;
 using MainForms;
 using SubForms;
@@ -52,6 +53,11 @@ namespace Luna_Bay_Resort_App.Forms.Test
         private void roomStatusChangeTest_Click(object sender, EventArgs e)
         {
             FormManager.OpenForm<RoomStatusChangeTest>();
+        }
+
+        private void AdminPanelBtn_Click(object sender, EventArgs e)
+        {
+            FormManager.OpenForm<AdminPanel>();
         }
     }
 }
