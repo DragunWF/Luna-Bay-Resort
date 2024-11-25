@@ -21,11 +21,12 @@
         }
 
         #region Getter Methods
-        public int getAddonId() => Id;
-        public string getAddonName() => addonName;
-        public string getPax() => pax;
-        public int getPrice() => price;
-        public string getStatus() => status;
+
+        public int GetAddonId() => Id;
+        public string GetAddonName() => addonName;
+        public string GetPax() => pax;
+        public int GetPrice() => price;
+        public string GetStatus() => status;
 
         #endregion
     }

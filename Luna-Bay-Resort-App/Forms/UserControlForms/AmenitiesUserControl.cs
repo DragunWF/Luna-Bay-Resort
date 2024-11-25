@@ -474,8 +474,8 @@ namespace MainForms
 
             foreach (var food in foods)
             {
-                string formattedPrice = Utils.FormatCurrency(food.getPrice());
-                menuTable.Rows.Add(food.getFoodName(), food.getStock(), formattedPrice);
+                string formattedPrice = Utils.FormatCurrency(food.GetPrice());
+                menuTable.Rows.Add(food.GetFoodName(), food.GetStock(), formattedPrice);
             }
         }
 
@@ -486,8 +486,8 @@ namespace MainForms
             menuTable.Rows.Clear();
             foreach (var product in products)
             {
-                string formattedPrice = Utils.FormatCurrency(product.getPrice());
-                menuTable.Rows.Add(product.getProductName(), product.getStock(), formattedPrice);
+                string formattedPrice = Utils.FormatCurrency(product.GetPrice());
+                menuTable.Rows.Add(product.GetProductName(), product.GetStock(), formattedPrice);
             }
         }
 
@@ -499,8 +499,8 @@ namespace MainForms
 
             foreach (var item in allitems)
             {
-                string formattedPrice = Utils.FormatCurrency(item.getPrice());
-                menuTable.Rows.Add(item.getName(), item.getStock(), formattedPrice);
+                string formattedPrice = Utils.FormatCurrency(item.GetPrice());
+                menuTable.Rows.Add(item.GetName(), item.GetStock(), formattedPrice);
             }
         }
         #endregion

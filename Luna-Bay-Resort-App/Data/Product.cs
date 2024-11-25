@@ -21,10 +21,12 @@
         }
 
         #region Getter Methods
-        public int getProductId() => product_Id;
-        public string getProductName() => name;
-        public int getPrice() => price;
-        public int getStock() => stock;
+
+        public int GetProductId() => product_Id;
+        public string GetProductName() => name;
+        public int GetPrice() => price;
+        public int GetStock() => stock;
+
         #endregion
     }
 }

@@ -41,16 +41,15 @@
             this.roomId = roomId;
         }
 
-
-
-
         #region Getter Methods
+
         public int GetRoomId() => roomId;
         public int GetRoomTypeId() => roomTypeId;
         public string GetName() => name;
         public string GetPax() => pax;
         public int GetPrice() => price;
         public string GetRoomStatus() => roomstatus;
+
         #endregion
     }
 }

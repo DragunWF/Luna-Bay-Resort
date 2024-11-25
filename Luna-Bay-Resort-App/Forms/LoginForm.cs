@@ -22,7 +22,7 @@ namespace MainForms
                     User user = DatabaseHelper.GetUser(LoginUsername.Text, LoginPassword.Text);
                     if (user != null)
                     {
-                        MessageBox.Show($"Welcome, {user.getName()}. Your position is {user.getPosition()}.");
+                        MessageBox.Show($"Welcome, {user.GetName()}. Your position is {user.GetPosition()}.");
                         SessionData.LoginUser(user);
                         FormManager.OpenForm<Dashboard>();
                         Close();

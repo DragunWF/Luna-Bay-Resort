@@ -19,9 +19,11 @@ namespace Luna_Bay_Resort_App.Data
         }
 
         #region Getter Methods
-        public string getName() => Name;
-        public int getStock() => stock;
-        public int getPrice() => price;
+
+        public string GetName() => Name;
+        public int GetStock() => stock;
+        public int GetPrice() => price;
+
         #endregion
     }
 }
