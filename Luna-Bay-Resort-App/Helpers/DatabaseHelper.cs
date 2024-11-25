@@ -8,6 +8,8 @@ namespace Luna_Bay_Resort_App.Helpers
     {
         public static string Key = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=LunaBayResortDB;Integrated Security=True;TrustServerCertificate=True";
 
+        #region User Methods
+
         public static User GetUser(string username, string password)
         {
             using (SqlConnection con = new SqlConnection(Key))
@@ -32,6 +34,27 @@ namespace Luna_Bay_Resort_App.Helpers
                 return null;
             }
         }
+
+        public static void AddUser(string position, string name, int authId)
+        {
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+
+                string query = @"
+                INSERT INTO Employees
+                (position, auth, )
+                VALUES
+                ()";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.Add("@");
+                }
+            }
+        }
+
+        #endregion
 
         #region Reservation Methods
 
