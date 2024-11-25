@@ -294,13 +294,23 @@ CREATE TABLE Guest (
 	PaymentReference_NO INT NULL
 );
 
--- Employee Table
+-- Employees & Positions Table
+CREATE TABLE Positions (
+    Auth_ID INT PRIMARY KEY NOT NULL,
+    Name VARCHAR(50) NOT NULL,
+);
+INSERT INTO Positions VALUES
+    (1, 'Admin')
+    (2, 'Manager'),
+    (3, 'Front Desk'),
+    (4, 'Cashier')
+
 CREATE TABLE Employees (
     Emp_ID INT IDENTITY(1000, 1) PRIMARY KEY NOT NULL,
     Position VARCHAR(40) NOT NULL,
     Name VARCHAR(50) NOT NULL,
     Password VARCHAR(30) NOT NULL,
-    Auth_ID INT NOT NULL
+    Auth_ID INT FOREIGN KEY REFERENCES Positions(Auth_ID)
 );
 INSERT INTO Employees (Position, Name, Password, Auth_ID) VALUES
     ('Admin', 'Loraine', 'Admin123', 0),
@@ -315,7 +325,7 @@ CREATE TABLE Revenue (
     Revenue INT NOT NULL
 );
 
---Activities
+-- Activities
 CREATE TABLE Activities(
 	ActivityID INT PRIMARY KEY NOT NULL,
 	Descritpion VARCHAR(500) NOT NULL,
