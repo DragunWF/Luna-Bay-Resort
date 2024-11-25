@@ -31,20 +31,22 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            txtUsername = new TextBox();
-            txtPassword = new TextBox();
+            TxtUsername = new TextBox();
+            TxtPassword = new TextBox();
             label4 = new Label();
-            txtConfirmPassword = new TextBox();
-            btnCreate = new Button();
+            TxtConfirmPassword = new TextBox();
+            CreateBtn = new Button();
+            label5 = new Label();
+            PositionCB = new ComboBox();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Consolas", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(39, 39);
+            label1.Location = new Point(34, 29);
             label1.Name = "label1";
-            label1.Size = new Size(300, 33);
+            label1.Size = new Size(240, 26);
             label1.TabIndex = 0;
             label1.Text = "Create New Account:";
             // 
@@ -52,9 +54,9 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Consolas", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label2.Location = new Point(39, 115);
+            label2.Location = new Point(34, 86);
             label2.Name = "label2";
-            label2.Size = new Size(109, 23);
+            label2.Size = new Size(90, 19);
             label2.TabIndex = 1;
             label2.Text = "Username:";
             // 
@@ -62,66 +64,92 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Consolas", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label3.Location = new Point(39, 204);
+            label3.Location = new Point(34, 153);
             label3.Name = "label3";
-            label3.Size = new Size(109, 23);
+            label3.Size = new Size(90, 19);
             label3.TabIndex = 2;
             label3.Text = "Password:";
             // 
-            // txtUsername
+            // TxtUsername
             // 
-            txtUsername.Location = new Point(39, 154);
-            txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(300, 27);
-            txtUsername.TabIndex = 3;
+            TxtUsername.Location = new Point(34, 116);
+            TxtUsername.Margin = new Padding(3, 2, 3, 2);
+            TxtUsername.Name = "TxtUsername";
+            TxtUsername.Size = new Size(263, 23);
+            TxtUsername.TabIndex = 3;
             // 
-            // txtPassword
+            // TxtPassword
             // 
-            txtPassword.Location = new Point(39, 239);
-            txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(300, 27);
-            txtPassword.TabIndex = 4;
+            TxtPassword.Location = new Point(34, 179);
+            TxtPassword.Margin = new Padding(3, 2, 3, 2);
+            TxtPassword.Name = "TxtPassword";
+            TxtPassword.Size = new Size(263, 23);
+            TxtPassword.TabIndex = 4;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Consolas", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label4.Location = new Point(39, 290);
+            label4.Location = new Point(34, 218);
             label4.Name = "label4";
-            label4.Size = new Size(197, 23);
+            label4.Size = new Size(162, 19);
             label4.TabIndex = 5;
             label4.Text = "Confirm Password:";
             // 
-            // txtConfirmPassword
+            // TxtConfirmPassword
             // 
-            txtConfirmPassword.Location = new Point(39, 331);
-            txtConfirmPassword.Name = "txtConfirmPassword";
-            txtConfirmPassword.Size = new Size(300, 27);
-            txtConfirmPassword.TabIndex = 6;
+            TxtConfirmPassword.Location = new Point(34, 248);
+            TxtConfirmPassword.Margin = new Padding(3, 2, 3, 2);
+            TxtConfirmPassword.Name = "TxtConfirmPassword";
+            TxtConfirmPassword.Size = new Size(263, 23);
+            TxtConfirmPassword.TabIndex = 6;
             // 
-            // btnCreate
+            // CreateBtn
             // 
-            btnCreate.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnCreate.Location = new Point(39, 399);
-            btnCreate.Name = "btnCreate";
-            btnCreate.Size = new Size(300, 38);
-            btnCreate.TabIndex = 7;
-            btnCreate.Text = "Create";
-            btnCreate.UseVisualStyleBackColor = true;
+            CreateBtn.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CreateBtn.Location = new Point(33, 370);
+            CreateBtn.Margin = new Padding(3, 2, 3, 2);
+            CreateBtn.Name = "CreateBtn";
+            CreateBtn.Size = new Size(262, 28);
+            CreateBtn.TabIndex = 7;
+            CreateBtn.Text = "Create";
+            CreateBtn.UseVisualStyleBackColor = true;
+            CreateBtn.Click += CreateBtn_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Consolas", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label5.Location = new Point(33, 286);
+            label5.Name = "label5";
+            label5.Size = new Size(81, 19);
+            label5.TabIndex = 8;
+            label5.Text = "Position";
+            // 
+            // PositionCB
+            // 
+            PositionCB.FormattingEnabled = true;
+            PositionCB.Location = new Point(33, 318);
+            PositionCB.Name = "PositionCB";
+            PositionCB.Size = new Size(264, 23);
+            PositionCB.TabIndex = 9;
             // 
             // AddAccountForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(386, 468);
-            Controls.Add(btnCreate);
-            Controls.Add(txtConfirmPassword);
+            ClientSize = new Size(338, 409);
+            Controls.Add(PositionCB);
+            Controls.Add(label5);
+            Controls.Add(CreateBtn);
+            Controls.Add(TxtConfirmPassword);
             Controls.Add(label4);
-            Controls.Add(txtPassword);
-            Controls.Add(txtUsername);
+            Controls.Add(TxtPassword);
+            Controls.Add(TxtUsername);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "AddAccountForm";
             Text = "AddAccountForm";
             ResumeLayout(false);
@@ -133,10 +161,12 @@
         private Label label1;
         private Label label2;
         private Label label3;
-        private TextBox txtUsername;
-        private TextBox txtPassword;
+        private TextBox TxtUsername;
+        private TextBox TxtPassword;
         private Label label4;
-        private TextBox txtConfirmPassword;
-        private Button btnCreate;
+        private TextBox TxtConfirmPassword;
+        private Button CreateBtn;
+        private Label label5;
+        private ComboBox PositionCB;
     }
 }
