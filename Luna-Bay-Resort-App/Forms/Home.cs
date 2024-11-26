@@ -76,7 +76,7 @@ namespace MainForms
                 Height = 60,
                 Left = 1830,
                 Top = 20,
-                Image = Properties.Resources.profile,
+                Image = Properties.Resources.a,
                 SizeMode = PictureBoxSizeMode.StretchImage,
             };
             topNavPanel.Controls.Add(profilePictureBox);
