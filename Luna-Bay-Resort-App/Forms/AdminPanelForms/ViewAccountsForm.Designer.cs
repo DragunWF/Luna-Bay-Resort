@@ -28,30 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
+            accountsDataGrid = new DataGridView();
             EmpID = new DataGridViewTextBoxColumn();
             Username = new DataGridViewTextBoxColumn();
             Position = new DataGridViewTextBoxColumn();
             Checkbox = new DataGridViewCheckBoxColumn();
             DeleteAccount = new DataGridViewCheckBoxColumn();
             label1 = new Label();
-            resetBtn = new Button();
-            searchBtn = new Button();
+            ResetBtn = new Button();
+            SearchBtn = new Button();
             SearchTxt = new TextBox();
-            deleteBtn = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            DeleteBtn = new Button();
+            ((System.ComponentModel.ISupportInitialize)accountsDataGrid).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // accountsDataGrid
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { EmpID, Username, Position, Checkbox, DeleteAccount });
-            dataGridView1.Location = new Point(50, 84);
-            dataGridView1.Margin = new Padding(3, 2, 3, 2);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(674, 270);
-            dataGridView1.TabIndex = 0;
+            accountsDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            accountsDataGrid.Columns.AddRange(new DataGridViewColumn[] { EmpID, Username, Position, Checkbox, DeleteAccount });
+            accountsDataGrid.Location = new Point(50, 84);
+            accountsDataGrid.Margin = new Padding(3, 2, 3, 2);
+            accountsDataGrid.Name = "accountsDataGrid";
+            accountsDataGrid.RowHeadersWidth = 51;
+            accountsDataGrid.Size = new Size(674, 270);
+            accountsDataGrid.TabIndex = 0;
             // 
             // EmpID
             // 
@@ -100,27 +100,29 @@
             label1.TabIndex = 1;
             label1.Text = "List Of Accounts:";
             // 
-            // resetBtn
+            // ResetBtn
             // 
-            resetBtn.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            resetBtn.Location = new Point(462, 370);
-            resetBtn.Margin = new Padding(3, 2, 3, 2);
-            resetBtn.Name = "resetBtn";
-            resetBtn.Size = new Size(82, 22);
-            resetBtn.TabIndex = 2;
-            resetBtn.Text = "Reset";
-            resetBtn.UseVisualStyleBackColor = true;
+            ResetBtn.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ResetBtn.Location = new Point(462, 370);
+            ResetBtn.Margin = new Padding(3, 2, 3, 2);
+            ResetBtn.Name = "ResetBtn";
+            ResetBtn.Size = new Size(82, 22);
+            ResetBtn.TabIndex = 2;
+            ResetBtn.Text = "Reset";
+            ResetBtn.UseVisualStyleBackColor = true;
+            ResetBtn.Click += ResetBtn_Click;
             // 
-            // searchBtn
+            // SearchBtn
             // 
-            searchBtn.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            searchBtn.Location = new Point(364, 370);
-            searchBtn.Margin = new Padding(3, 2, 3, 2);
-            searchBtn.Name = "searchBtn";
-            searchBtn.Size = new Size(82, 22);
-            searchBtn.TabIndex = 3;
-            searchBtn.Text = "Search";
-            searchBtn.UseVisualStyleBackColor = true;
+            SearchBtn.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            SearchBtn.Location = new Point(364, 370);
+            SearchBtn.Margin = new Padding(3, 2, 3, 2);
+            SearchBtn.Name = "SearchBtn";
+            SearchBtn.Size = new Size(82, 22);
+            SearchBtn.TabIndex = 3;
+            SearchBtn.Text = "Search";
+            SearchBtn.UseVisualStyleBackColor = true;
+            SearchBtn.Click += SearchBtn_Click;
             // 
             // SearchTxt
             // 
@@ -130,48 +132,49 @@
             SearchTxt.Size = new Size(309, 23);
             SearchTxt.TabIndex = 4;
             // 
-            // deleteBtn
+            // DeleteBtn
             // 
-            deleteBtn.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            deleteBtn.Location = new Point(561, 370);
-            deleteBtn.Margin = new Padding(3, 2, 3, 2);
-            deleteBtn.Name = "deleteBtn";
-            deleteBtn.Size = new Size(82, 22);
-            deleteBtn.TabIndex = 5;
-            deleteBtn.Text = "Delete";
-            deleteBtn.UseVisualStyleBackColor = true;
+            DeleteBtn.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            DeleteBtn.Location = new Point(561, 370);
+            DeleteBtn.Margin = new Padding(3, 2, 3, 2);
+            DeleteBtn.Name = "DeleteBtn";
+            DeleteBtn.Size = new Size(82, 22);
+            DeleteBtn.TabIndex = 5;
+            DeleteBtn.Text = "Delete";
+            DeleteBtn.UseVisualStyleBackColor = true;
+            DeleteBtn.Click += DeleteBtn_Click;
             // 
             // ViewAccountsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(753, 418);
-            Controls.Add(deleteBtn);
+            Controls.Add(DeleteBtn);
             Controls.Add(SearchTxt);
-            Controls.Add(searchBtn);
-            Controls.Add(resetBtn);
+            Controls.Add(SearchBtn);
+            Controls.Add(ResetBtn);
             Controls.Add(label1);
-            Controls.Add(dataGridView1);
+            Controls.Add(accountsDataGrid);
             Margin = new Padding(3, 2, 3, 2);
             Name = "ViewAccountsForm";
             Text = "ViewAccountsForm";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)accountsDataGrid).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView accountsDataGrid;
         private Label label1;
-        private Button resetBtn;
-        private Button searchBtn;
+        private Button ResetBtn;
+        private Button SearchBtn;
         private TextBox SearchTxt;
         private DataGridViewTextBoxColumn EmpID;
         private DataGridViewTextBoxColumn Username;
         private DataGridViewTextBoxColumn Position;
         private DataGridViewCheckBoxColumn Checkbox;
         private DataGridViewCheckBoxColumn DeleteAccount;
-        private Button deleteBtn;
+        private Button DeleteBtn;
     }
 }
