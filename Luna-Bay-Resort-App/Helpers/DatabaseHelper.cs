@@ -91,6 +91,7 @@ namespace Luna_Bay_Resort_App.Helpers
                     cmd.ExecuteNonQuery();
                 }
             }
+            DatabaseHelper.SetRoomStatus(status, roomNo);
         }
 
         public static Guest GetReservation(int reservationId)
@@ -128,6 +129,75 @@ namespace Luna_Bay_Resort_App.Helpers
                 }
             }
             return null;
+        }
+
+        public static void AddCheckinWithCash(int checkinId, string name, string email, string phone,
+            int room, int numOfGuest, string checkIn, string checkOut, double billAmount, double balance, int paymentType)
+        {
+            string status = "Checked In";
+
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+
+                string query = @"
+                INSERT INTO Guest
+                (Checkin_ID, Name, Email, Phone, Room, NumofGuest, Check_in, Check_out, Status, Bill_Amount, Balance, PaymentType_ID)
+                VALUES
+                (@CheckinID, @Name, @Email, @Phone, @Room, @NumofGuest, @CheckIn, @CheckOut, @Status, @BillAmount, @Balance, @PaymentType)";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.Add("@CheckinID", SqlDbType.Int).Value = checkinId;
+                    cmd.Parameters.Add("@Name", SqlDbType.VarChar, 50).Value = name;
+                    cmd.Parameters.Add("@Email", SqlDbType.VarChar, 50).Value = email;
+                    cmd.Parameters.Add("@Phone", SqlDbType.VarChar, 20).Value = phone;
+                    cmd.Parameters.Add("@Room", SqlDbType.Int).Value = room;
+                    cmd.Parameters.Add("@NumofGuest", SqlDbType.Int).Value = numOfGuest;
+                    cmd.Parameters.Add("@CheckIn", SqlDbType.VarChar).Value = checkIn;
+                    cmd.Parameters.Add("@CheckOut", SqlDbType.VarChar).Value = checkOut;
+                    cmd.Parameters.Add("@Status", SqlDbType.VarChar, 25).Value = status;
+                    cmd.Parameters.Add("@BillAmount", SqlDbType.Int).Value = billAmount;
+                    cmd.Parameters.Add("@Balance", SqlDbType.Int).Value = balance;
+                    cmd.Parameters.Add("@PaymentType", SqlDbType.Int).Value = paymentType;
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void AddCheckinWithReference(int checkinId, string name, string email, string phone,
+            int room, int numOfGuest, string checkIn, string checkOut, double billAmount, double balance, int paymentType, int paymentReference)
+        {
+            string status = "Checked In";
+
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+
+                string query = @"
+                INSERT INTO Guest
+                (Checkin_ID, Name, Email, Phone, Room, NumofGuest, Check_in, Check_out, Status, Bill_Amount, Balance, PaymentType_ID, PaymentReference_NO)
+                VALUES
+                (@CheckinID, @Name, @Email, @Phone, @Room, @NumofGuest, @CheckIn, @CheckOut, @Status, @BillAmount, @Balance, @PaymentType, @PaymentReference)";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.Add("@CheckinID", SqlDbType.Int).Value = checkinId;
+                    cmd.Parameters.Add("@Name", SqlDbType.VarChar, 50).Value = name;
+                    cmd.Parameters.Add("@Email", SqlDbType.VarChar, 50).Value = email;
+                    cmd.Parameters.Add("@Phone", SqlDbType.VarChar, 20).Value = phone;
+                    cmd.Parameters.Add("@Room", SqlDbType.Int).Value = room;
+                    cmd.Parameters.Add("@NumofGuest", SqlDbType.Int).Value = numOfGuest;
+                    cmd.Parameters.Add("@CheckIn", SqlDbType.VarChar).Value = checkIn;
+                    cmd.Parameters.Add("@CheckOut", SqlDbType.VarChar).Value = checkOut;
+                    cmd.Parameters.Add("@Status", SqlDbType.VarChar, 25).Value = status;
+                    cmd.Parameters.Add("@BillAmount", SqlDbType.Int).Value = billAmount;
+                    cmd.Parameters.Add("@Balance", SqlDbType.Int).Value = balance;
+                    cmd.Parameters.Add("@PaymentType", SqlDbType.Int).Value = paymentType;
+                    cmd.Parameters.Add("@PaymentReference", SqlDbType.Int).Value = paymentReference;
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         public static Guest GetCheckIn(int checkInId)
@@ -174,7 +244,7 @@ namespace Luna_Bay_Resort_App.Helpers
                 con.Open();
                 string query = @"
                     UPDATE Guest 
-                    SET Reservation_ID = NULL, Checkin_ID = @checkInId 
+                    SET Reservation_ID = NULL, Checkin_ID = @checkInId, Status = 'Checked In' 
                     WHERE Reservation_ID = @reservationId";
 
                 SqlCommand setroomstatus = new SqlCommand(query, con);
@@ -206,6 +276,7 @@ namespace Luna_Bay_Resort_App.Helpers
         public static void UpdateReservation(int reservationId, string checkIn, string checkOut, int roomNo,
             int numOfGuest, double billAmount, double balance)
         {
+            string status = "Reserved";
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
@@ -235,6 +306,7 @@ namespace Luna_Bay_Resort_App.Helpers
                     cmd.ExecuteNonQuery();
                 }
             }
+            SetRoomStatus(status, roomNo);
         }
 
         #endregion
@@ -333,7 +405,7 @@ namespace Luna_Bay_Resort_App.Helpers
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
-                string query = "SELECT DISTINCT Room_ID FROM Accommodation WHERE Name LIKE @RoomType";
+                string query = "SELECT DISTINCT Room_ID FROM Accommodation WHERE Name LIKE @RoomType AND Room_status = 'Available'";
                 SqlCommand command = new SqlCommand(query, con);
                 command.Parameters.AddWithValue("@RoomType", Room);
 
@@ -635,7 +707,7 @@ namespace Luna_Bay_Resort_App.Helpers
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
-                string query = "Select Reservation_ID, Name From Guest Where Check_In Like '%' + @CheckInDate + '%'";
+                string query = "SELECT Reservation_ID, Name FROM Guest WHERE Check_In LIKE '%' + @CheckInDate + '%' AND Reservation_ID IS NOT NULL";
 
                 SqlCommand command = new SqlCommand(query, con);
                 command.Parameters.AddWithValue("@CheckInDate", checkindate);
@@ -652,6 +724,40 @@ namespace Luna_Bay_Resort_App.Helpers
                 }
             }
             return reservations;
+        }
+        #endregion
+
+        #region Misc
+        public static void AddRevenue(string date, double revenue)
+        {
+            using(SqlConnection con = new SqlConnection(Key)){
+                con.Open();
+                string query = "SELECT COUNT(Date) FROM Revenue WHERE Date = @Date";
+
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@Date", date);
+
+                int count = Convert.ToInt32(command.ExecuteScalar());
+
+                if (count > 0)
+                {
+                    string updatequery = "UPDATE Revenue Set Revenue = Revenue + @revenue WHERE Date = @date";
+                    SqlCommand update = new SqlCommand(updatequery, con);
+                    update.Parameters.AddWithValue("@revenue", revenue);
+                    update.Parameters.AddWithValue("@date", date);
+                    update.ExecuteNonQuery();
+                }
+                else
+                {
+                    string add = "INSERT INTO Revenue(Date, Revenue) Values (@date, @revenue)";
+
+                    SqlCommand addDate = new SqlCommand(add, con);
+                    addDate.Parameters.AddWithValue("@date", date);
+                    addDate.Parameters.AddWithValue("@revenue", revenue);
+                    addDate.ExecuteNonQuery();
+                }
+                con.Close();
+            }
         }
         #endregion
     }

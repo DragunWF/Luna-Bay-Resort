@@ -300,7 +300,7 @@ CREATE TABLE Positions (
     Name VARCHAR(50) NOT NULL,
 );
 INSERT INTO Positions VALUES
-    (1, 'Admin')
+    (1, 'Admin'),
     (2, 'Manager'),
     (3, 'Front Desk'),
     (4, 'Cashier')
@@ -320,9 +320,9 @@ INSERT INTO Employees (Position, Name, Password, Auth_ID) VALUES
 
 -- Finance
 CREATE TABLE Revenue (
-    RevenueID INT PRIMARY KEY NOT NULL,
-    Date DATE NOT NULL,
-    Revenue INT NOT NULL
+    RevenueID INT IDENTITY(5000, 1) PRIMARY KEY NOT NULL,
+    Date VARCHAR(30) NOT NULL,
+    Revenue DOUBLE PRECISION NOT NULL
 );
 
 -- Activities

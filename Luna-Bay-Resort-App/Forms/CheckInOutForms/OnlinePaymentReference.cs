@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Luna_Bay_Resort_App.Helpers;
+using SubForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +21,19 @@ namespace Luna_Bay_Resort_App.Forms
 
         private void Enterbtn_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                CheckIn.paymentReference = Convert.ToInt32(ReferenceTxt.Text);
+                this.Close();
+            }
+            catch (FormatException eee)
+            {
+                MessageBox.Show("Input Number Only");
+            }
+            catch (Exception eee)
+            {
+                MessageBox.Show(eee.Message);
+            }
         }
     }
 }

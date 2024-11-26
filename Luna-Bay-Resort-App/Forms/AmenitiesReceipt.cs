@@ -17,6 +17,7 @@ namespace SubForms
 
             DisplayReceiptData();
             UpdateStock();
+            DatabaseHelper.AddRevenue(Utils.GetDateOnly(), totalPrice);
         }
 
         private void DisplayReceiptData()

@@ -1,4 +1,5 @@
 ﻿using Luna_Bay_Resort_App.Forms;
+using Luna_Bay_Resort_App.Forms.CheckInOutForms;
 using Luna_Bay_Resort_App.Helpers;
 using MainForms;
 using System.Data;
@@ -8,7 +9,8 @@ namespace SubForms
     public partial class CheckIn : Form
     {
         private string paymentMethod;
-
+        private int PaymentID;
+        public static int paymentReference;
         public CheckIn()
         {
             InitializeComponent();
@@ -62,12 +64,29 @@ namespace SubForms
                 else if (Utils.IsValidFormData(inputValues, EmailText.Text, ContactNoText.Text) &&
                          Utils.IsValidCheckInOut(CheckInPicker, CheckOutPicker))
                 {
+                    int checkin_no = Utils.GenerateCheckInOutNo();
                     string fullName = $"{FirstNameText.Text} {LastNameText.Text}";
+                    int roomno = DatabaseHelper.GetRoomNo(RoomTypeCB.Text);
+                    string status = "Checked In";
+
+                    if (OnlinePaymentCheckBox.Checked || CardCheckBox.Checked)
+                    {
+                        DatabaseHelper.AddCheckinWithReference(
+                            checkin_no, fullName, EmailText.Text, ContactNoText.Text, roomno,
+                            int.Parse(Paxlbl.Text), CheckInPicker.Text, CheckOutPicker.Text, billAmount, amountDue, PaymentID, paymentReference); 
+                    }
+                    else
+                    {
+                        DatabaseHelper.AddCheckinWithCash(
+                            checkin_no, fullName, EmailText.Text, ContactNoText.Text, roomno,
+                            int.Parse(Paxlbl.Text), CheckInPicker.Text, CheckOutPicker.Text, billAmount, amountDue, PaymentID);
+                    }
                     FormManager.OpenForm<CheckInReceipt>(
-                        fullName, CheckInPicker.Text, CheckOutPicker.Text,
-                        RoomTypeCB.Text, Paxlbl.Text, DatabaseHelper.GetRoomNo(RoomTypeCB.Text).ToString(),
-                        paymentMethod, paymentAmount, billAmount, amountDue
-                    );
+                            checkin_no, fullName, CheckInPicker.Text, CheckOutPicker.Text,
+                            RoomTypeCB.Text, Paxlbl.Text, roomno.ToString(),
+                            paymentMethod, paymentAmount, billAmount, amountDue
+                        );
+                    DatabaseHelper.SetRoomStatus(status, roomno);
                 }
             }
             catch (FormatException err)
@@ -86,6 +105,7 @@ namespace SubForms
         {
             if (CashCheckBox.Checked)
             {
+                PaymentID = 1;
                 paymentMethod = "Cash";
                 OnlinePaymentCheckBox.Checked = false;
                 CardCheckBox.Checked = false;
@@ -96,11 +116,12 @@ namespace SubForms
         {
             if (OnlinePaymentCheckBox.Checked)
             {
+                PaymentID = 2;
                 paymentMethod = "Online Payment";
                 CashCheckBox.Checked = false;
                 CardCheckBox.Checked = false;
 
-                //FormManager.OpenForm<OnlinePaymentReference>();
+                FormManager.OpenForm<OnlinePaymentReference>();
             }
         }
 
@@ -108,11 +129,12 @@ namespace SubForms
         {
             if (CardCheckBox.Checked)
             {
+                PaymentID = 3;
                 paymentMethod = "Debit/Credit Card";
                 CashCheckBox.Checked = false;
                 OnlinePaymentCheckBox.Checked = false;
 
-                //FormManager.OpenForm<CardReference>();
+                FormManager.OpenForm<CardReference>();
             }
         }
 

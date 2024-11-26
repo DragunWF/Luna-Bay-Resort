@@ -7,7 +7,8 @@ namespace SubForms
     {
         private int reservationNo = -1;
         private int generatedCheckInId;
-
+        string status = "Checked In";
+        Guest reservation;
         public SearchReservation()
         {
             InitializeComponent();
@@ -20,7 +21,7 @@ namespace SubForms
             try
             {
                 reservationNo = int.Parse(ReservationNoText.Text);
-                Guest reservation = DatabaseHelper.GetReservation(reservationNo);
+                reservation = DatabaseHelper.GetReservation(reservationNo);
                 if (reservation != null)
                 {
                     FullNameText.Text = reservation.GetName();
@@ -50,8 +51,10 @@ namespace SubForms
             if (reservationNo != -1)
             {
                 generatedCheckInId = Utils.GenerateCheckInOutNo();
-                MessageBox.Show($"Reservation {reservationNo} has been checked in! Generated check-in ID: {generatedCheckInId}");
+                MessageBox.Show($"Reservation {reservationNo} has been checked in! Generated check-in ID: {generatedCheckInId} " +
+                    $"Your Room Number is {reservation.GetRoomNo()}");
                 DatabaseHelper.CheckInReservation(reservationNo, generatedCheckInId);
+                DatabaseHelper.SetRoomStatus(status, reservation.GetRoomNo());
                 ResetTextLabels();
                 reservationNo = -1;
             }
