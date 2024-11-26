@@ -13,13 +13,13 @@ namespace Luna_Bay_Resort_App.Forms.AdminPanelForms
         public ViewAccountsForm()
         {
             InitializeComponent();
-            employees = DatabaseHelper.GetUsers();
-
             FillDataGridView();
         }
 
         private void FillDataGridView()
         {
+            employees = DatabaseHelper.GetUsers();
+
             // Add columns if not already added
             if (accountsDataGrid.Columns.Count == 0)
             {
@@ -52,25 +52,6 @@ namespace Luna_Bay_Resort_App.Forms.AdminPanelForms
             }
         }
 
-        private void GetCheckedRows()
-        {
-            foreach (DataGridViewRow row in accountsDataGrid.Rows)
-            {
-                bool resetPasswordChecked = Convert.ToBoolean(row.Cells["ResetPassword"].Value);
-                bool deleteChecked = Convert.ToBoolean(row.Cells["Delete"].Value);
-
-                if (resetPasswordChecked || deleteChecked)
-                {
-                    int employeeID = Convert.ToInt32(row.Cells["EmployeeID"].Value);
-                    string username = row.Cells["Username"].Value.ToString();
-                    string position = row.Cells["Position"].Value.ToString();
-
-                    Console.WriteLine($"EmployeeID: {employeeID}, Username: {username}, Position: {position}");
-                    Console.WriteLine($"Reset Password: {resetPasswordChecked}, Delete: {deleteChecked}");
-                }
-            }
-        }
-
         private List<string> SelectEmployees(string checkBoxColumnName)
         {
             List<string> empIds = new(); // Employees' to select
@@ -87,7 +68,13 @@ namespace Luna_Bay_Resort_App.Forms.AdminPanelForms
 
         private void SearchBtn_Click(object sender, EventArgs e)
         {
-            string query = SearchTxt.Text;
+            List<User> results = new();
+            string query = SearchTxt.Text.ToLower();
+            foreach (DataGridViewRow row in accountsDataGrid.Rows)
+            {
+                string name = row["EmployeeID"].Value.ToString();
+            }
+            employees.Clear();
         }
 
         private void ResetBtn_Click(object sender, EventArgs e)
@@ -103,6 +90,8 @@ namespace Luna_Bay_Resort_App.Forms.AdminPanelForms
             if (result == DialogResult.Yes)
             {
                 // TODO:
+                DatabaseHelper.ResetUserPasswords(empIds);
+                FillDataGridView();
             }
         }
 
@@ -119,6 +108,8 @@ namespace Luna_Bay_Resort_App.Forms.AdminPanelForms
             if (result == DialogResult.Yes)
             {
                 // TODO:
+                DatabaseHelper.DeleteUserAccounts(empIds);
+                FillDataGridView();
             }
         }
     }

@@ -87,6 +87,16 @@ namespace Luna_Bay_Resort_App.Helpers
             }
         }
 
+        public static void ResetUserPasswords(List<string> empIds)
+        {
+
+        }
+
+        public static void DeleteUserAccounts(List<string> empIds)
+        {
+
+        }
+
         public static List<string> GetPositions()
         {
             string query = "SELECT Name FROM Positions";
