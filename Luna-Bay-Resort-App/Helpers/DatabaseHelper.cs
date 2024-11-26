@@ -91,6 +91,7 @@ namespace Luna_Bay_Resort_App.Helpers
                     cmd.ExecuteNonQuery();
                 }
             }
+            DatabaseHelper.SetRoomStatus(status, roomNo);
         }
 
         public static Guest GetReservation(int reservationId)
@@ -243,7 +244,7 @@ namespace Luna_Bay_Resort_App.Helpers
                 con.Open();
                 string query = @"
                     UPDATE Guest 
-                    SET Reservation_ID = NULL, Checkin_ID = @checkInId 
+                    SET Reservation_ID = NULL, Checkin_ID = @checkInId, Status = 'Checked In' 
                     WHERE Reservation_ID = @reservationId";
 
                 SqlCommand setroomstatus = new SqlCommand(query, con);
@@ -704,7 +705,7 @@ namespace Luna_Bay_Resort_App.Helpers
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
-                string query = "Select Reservation_ID, Name From Guest Where Check_In Like '%' + @CheckInDate + '%'";
+                string query = "SELECT Reservation_ID, Name FROM Guest WHERE Check_In LIKE '%' + @CheckInDate + '%' AND Reservation_ID IS NOT NULL";
 
                 SqlCommand command = new SqlCommand(query, con);
                 command.Parameters.AddWithValue("@CheckInDate", checkindate);
