@@ -313,10 +313,10 @@ CREATE TABLE Employees (
     Auth_ID INT FOREIGN KEY REFERENCES Positions(Auth_ID)
 );
 INSERT INTO Employees (Position, Name, Password, Auth_ID) VALUES
-    ('Admin', 'Loraine', 'Admin123', 0),
-    ('Manager', 'Sykiel', 'Manager123', 1),
-    ('Front Desk', 'Marshall', 'Frontdesk123', 2),
-	('Cashier', 'Sean', 'Cashier123', 3);
+    ('Admin', 'Loraine', 'Admin123', 1),
+    ('Manager', 'Sykiel', 'Manager123', 2),
+    ('Front Desk', 'Marshall', 'Frontdesk123', 3),
+	('Cashier', 'Sean', 'Cashier123', 4);
 
 -- Finance
 CREATE TABLE Revenue (
