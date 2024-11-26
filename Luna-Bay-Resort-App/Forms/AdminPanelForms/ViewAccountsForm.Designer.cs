@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
-            label1 = new Label();
-            resetBtn = new Button();
-            searchBtn = new Button();
-            txtSearch = new TextBox();
             EmpID = new DataGridViewTextBoxColumn();
             Username = new DataGridViewTextBoxColumn();
             Position = new DataGridViewTextBoxColumn();
             Checkbox = new DataGridViewCheckBoxColumn();
             DeleteAccount = new DataGridViewCheckBoxColumn();
+            label1 = new Label();
+            resetBtn = new Button();
+            searchBtn = new Button();
+            SearchTxt = new TextBox();
             deleteBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -46,48 +46,12 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { EmpID, Username, Position, Checkbox, DeleteAccount });
-            dataGridView1.Location = new Point(57, 112);
+            dataGridView1.Location = new Point(50, 84);
+            dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(678, 360);
+            dataGridView1.Size = new Size(674, 270);
             dataGridView1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Consolas", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(57, 41);
-            label1.Name = "label1";
-            label1.Size = new Size(287, 36);
-            label1.TabIndex = 1;
-            label1.Text = "List Of Accounts:";
-            // 
-            // resetBtn
-            // 
-            resetBtn.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            resetBtn.Location = new Point(528, 494);
-            resetBtn.Name = "resetBtn";
-            resetBtn.Size = new Size(94, 29);
-            resetBtn.TabIndex = 2;
-            resetBtn.Text = "Reset";
-            resetBtn.UseVisualStyleBackColor = true;
-            // 
-            // searchBtn
-            // 
-            searchBtn.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            searchBtn.Location = new Point(416, 493);
-            searchBtn.Name = "searchBtn";
-            searchBtn.Size = new Size(94, 29);
-            searchBtn.TabIndex = 3;
-            searchBtn.Text = "Search";
-            searchBtn.UseVisualStyleBackColor = true;
-            // 
-            // txtSearch
-            // 
-            txtSearch.Location = new Point(57, 495);
-            txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(353, 27);
-            txtSearch.TabIndex = 4;
             // 
             // EmpID
             // 
@@ -126,27 +90,69 @@
             DeleteAccount.SortMode = DataGridViewColumnSortMode.Automatic;
             DeleteAccount.Width = 125;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Consolas", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(50, 31);
+            label1.Name = "label1";
+            label1.Size = new Size(233, 28);
+            label1.TabIndex = 1;
+            label1.Text = "List Of Accounts:";
+            // 
+            // resetBtn
+            // 
+            resetBtn.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            resetBtn.Location = new Point(462, 370);
+            resetBtn.Margin = new Padding(3, 2, 3, 2);
+            resetBtn.Name = "resetBtn";
+            resetBtn.Size = new Size(82, 22);
+            resetBtn.TabIndex = 2;
+            resetBtn.Text = "Reset";
+            resetBtn.UseVisualStyleBackColor = true;
+            // 
+            // searchBtn
+            // 
+            searchBtn.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            searchBtn.Location = new Point(364, 370);
+            searchBtn.Margin = new Padding(3, 2, 3, 2);
+            searchBtn.Name = "searchBtn";
+            searchBtn.Size = new Size(82, 22);
+            searchBtn.TabIndex = 3;
+            searchBtn.Text = "Search";
+            searchBtn.UseVisualStyleBackColor = true;
+            // 
+            // SearchTxt
+            // 
+            SearchTxt.Location = new Point(50, 371);
+            SearchTxt.Margin = new Padding(3, 2, 3, 2);
+            SearchTxt.Name = "SearchTxt";
+            SearchTxt.Size = new Size(309, 23);
+            SearchTxt.TabIndex = 4;
+            // 
             // deleteBtn
             // 
             deleteBtn.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            deleteBtn.Location = new Point(641, 493);
+            deleteBtn.Location = new Point(561, 370);
+            deleteBtn.Margin = new Padding(3, 2, 3, 2);
             deleteBtn.Name = "deleteBtn";
-            deleteBtn.Size = new Size(94, 29);
+            deleteBtn.Size = new Size(82, 22);
             deleteBtn.TabIndex = 5;
             deleteBtn.Text = "Delete";
             deleteBtn.UseVisualStyleBackColor = true;
             // 
             // ViewAccountsForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(841, 558);
+            ClientSize = new Size(753, 418);
             Controls.Add(deleteBtn);
-            Controls.Add(txtSearch);
+            Controls.Add(SearchTxt);
             Controls.Add(searchBtn);
             Controls.Add(resetBtn);
             Controls.Add(label1);
             Controls.Add(dataGridView1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "ViewAccountsForm";
             Text = "ViewAccountsForm";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -160,7 +166,7 @@
         private Label label1;
         private Button resetBtn;
         private Button searchBtn;
-        private TextBox txtSearch;
+        private TextBox SearchTxt;
         private DataGridViewTextBoxColumn EmpID;
         private DataGridViewTextBoxColumn Username;
         private DataGridViewTextBoxColumn Position;
