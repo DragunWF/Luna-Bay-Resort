@@ -1,4 +1,5 @@
-﻿using Luna_Bay_Resort_App.Forms.AdminPanelForms;
+﻿using Luna_Bay_Resort_App.Data;
+using Luna_Bay_Resort_App.Forms.AdminPanelForms;
 using Luna_Bay_Resort_App.Helpers;
 using Luna_Bay_Sub_Forms;
 using MainForms;
@@ -22,6 +23,7 @@ namespace Luna_Bay_Resort_App.Forms.Test
 
         private void DashboardBtn_Click(object sender, EventArgs e)
         {
+            SessionData.LoginUser(new User("9999", "Test Admin", "Test User", 1));
             FormManager.OpenForm<Dashboard>();
         }
 
