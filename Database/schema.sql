@@ -307,16 +307,15 @@ INSERT INTO Positions VALUES
 
 CREATE TABLE Employees (
     Emp_ID INT IDENTITY(1000, 1) PRIMARY KEY NOT NULL,
-    Position VARCHAR(40) NOT NULL,
     Name VARCHAR(50) NOT NULL,
     Password VARCHAR(30) NOT NULL,
     Auth_ID INT FOREIGN KEY REFERENCES Positions(Auth_ID)
 );
-INSERT INTO Employees (Position, Name, Password, Auth_ID) VALUES
-    ('Admin', 'Loraine', 'Admin123', 1),
-    ('Manager', 'Sykiel', 'Manager123', 2),
-    ('Front Desk', 'Marshall', 'Frontdesk123', 3),
-	('Cashier', 'Sean', 'Cashier123', 4);
+INSERT INTO Employees (Name, Password, Auth_ID) VALUES
+    ('Loraine', 'Admin123', 1),
+    ('Sykiel', 'Manager123', 2),
+    ('Marshall', 'Frontdesk123', 3),
+	('Sean', 'Cashier123', 4);
 
 -- Finance
 CREATE TABLE Revenue (
