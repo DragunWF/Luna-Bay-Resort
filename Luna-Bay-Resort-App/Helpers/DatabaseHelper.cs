@@ -654,5 +654,39 @@ namespace Luna_Bay_Resort_App.Helpers
             return reservations;
         }
         #endregion
+
+        #region Misc
+        public static void AddRevenue(string date, double revenue)
+        {
+            using(SqlConnection con = new SqlConnection(Key)){
+                con.Open();
+                string query = "SELECT COUNT(Date) FROM Revenue WHERE Date = @Date";
+
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@Date", date);
+
+                int count = Convert.ToInt32(command.ExecuteScalar());
+
+                if (count > 0)
+                {
+                    string updatequery = "UPDATE Revenue Set Revenue = Revenue + @revenue WHERE Date = @date";
+                    SqlCommand update = new SqlCommand(updatequery, con);
+                    update.Parameters.AddWithValue("@revenue", revenue);
+                    update.Parameters.AddWithValue("@date", date);
+                    update.ExecuteNonQuery();
+                }
+                else
+                {
+                    string add = "INSERT INTO Revenue(Date, Revenue) Values (@date, @revenue)";
+
+                    SqlCommand addDate = new SqlCommand(add, con);
+                    addDate.Parameters.AddWithValue("@date", date);
+                    addDate.Parameters.AddWithValue("@revenue", revenue);
+                    addDate.ExecuteNonQuery();
+                }
+                con.Close();
+            }
+        }
+        #endregion
     }
 }
