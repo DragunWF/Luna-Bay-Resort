@@ -11,7 +11,7 @@ namespace Luna_Bay_Resort_App.Helpers
 
         public static void LoginUser(User user) => currentUser = user;
         public static void LogoutUser() => currentUser = null;
-        public static User GetUser() => currentUser;
+        public static User GetCurrentUser() => currentUser;
 
         /* 
          * You can't create constructors with List Parameters that inherit the Form class.

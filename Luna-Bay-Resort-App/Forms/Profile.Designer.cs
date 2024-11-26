@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             LogoutBtn = new Button();
-            label1 = new Label();
-            label2 = new Label();
+            NameText = new Label();
+            PositionText = new Label();
             SuspendLayout();
             // 
             // LogoutBtn
@@ -44,33 +44,33 @@
             LogoutBtn.UseVisualStyleBackColor = true;
             LogoutBtn.Click += LogoutBtn_Click;
             // 
-            // label1
+            // NameText
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(12, 24);
-            label1.Name = "label1";
-            label1.Size = new Size(162, 19);
-            label1.TabIndex = 1;
-            label1.Text = "Name: <Name Here>";
+            NameText.AutoSize = true;
+            NameText.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            NameText.Location = new Point(12, 24);
+            NameText.Name = "NameText";
+            NameText.Size = new Size(162, 19);
+            NameText.TabIndex = 1;
+            NameText.Text = "Name: <Name Here>";
             // 
-            // label2
+            // PositionText
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(12, 56);
-            label2.Name = "label2";
-            label2.Size = new Size(234, 19);
-            label2.TabIndex = 2;
-            label2.Text = "Position: <Position Here>";
+            PositionText.AutoSize = true;
+            PositionText.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            PositionText.Location = new Point(12, 56);
+            PositionText.Name = "PositionText";
+            PositionText.Size = new Size(234, 19);
+            PositionText.TabIndex = 2;
+            PositionText.Text = "Position: <Position Here>";
             // 
             // Profile
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(260, 142);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(PositionText);
+            Controls.Add(NameText);
             Controls.Add(LogoutBtn);
             Name = "Profile";
             Text = "Profile";
@@ -81,7 +81,7 @@
         #endregion
 
         private Button LogoutBtn;
-        private Label label1;
-        private Label label2;
+        private Label NameText;
+        private Label PositionText;
     }
 }
