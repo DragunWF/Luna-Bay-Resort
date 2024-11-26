@@ -4,8 +4,8 @@ namespace Luna_Bay_Resort_App.Helpers
 {
     internal class SessionData
     {
-        private static User currentUser;
-        private static List<Amenity> amenities = new();
+        private static User? currentUser;
+        private static readonly List<Amenity> amenities = new();
         public static int RoomPax = 0;
         public static int RoomCost = 0;
 
