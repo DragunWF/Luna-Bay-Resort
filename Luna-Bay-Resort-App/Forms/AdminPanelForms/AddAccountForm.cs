@@ -21,7 +21,11 @@ namespace Luna_Bay_Resort_App.Forms.AdminPanelForms
 
         private void CreateBtn_Click(object sender, EventArgs e)
         {
-            if (TxtPassword.Text != TxtConfirmPassword.Text)
+            if (IsUsernameAvailable())
+            {
+                MessageBox.Show($"The username '{TxtUsername.Text}' is already taken, please type a distinct username.");
+            }
+            else if (TxtPassword.Text != TxtConfirmPassword.Text)
             {
                 MessageBox.Show("Password and confirm password fields do not match!");
             }
@@ -52,6 +56,20 @@ namespace Luna_Bay_Resort_App.Forms.AdminPanelForms
             TxtPassword.Text = "";
             TxtConfirmPassword.Text = "";
             PositionCB.Text = "";
+        }
+
+        private bool IsUsernameAvailable()
+        {
+            bool isUsernameTaken = false;
+            foreach (User user in DatabaseHelper.GetUsers())
+            {
+                if (user.GetName() == TxtUsername.Text)
+                {
+                    isUsernameTaken = true;
+                    break;
+                }
+            }
+            return isUsernameTaken;
         }
     }
 }
