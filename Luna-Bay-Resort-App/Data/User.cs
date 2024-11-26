@@ -13,6 +13,13 @@
             this.authId = authId;
         }
 
+        public User(string name, string position, int authId)
+        {
+            this.position = position;
+            this.name = name;
+            this.authId = authId;
+        }
+
         #region Getter Methods
 
         public string GetEmpId() => empId;

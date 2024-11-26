@@ -11,6 +11,7 @@ namespace SubForms
         private string paymentMethod;
         private int PaymentID;
         public static int paymentReference;
+
         public CheckIn()
         {
             InitializeComponent();

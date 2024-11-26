@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
+using System.Xml.Linq;
 using Luna_Bay_Resort_App.Data;
 
 namespace Luna_Bay_Resort_App.Helpers
@@ -39,22 +40,75 @@ namespace Luna_Bay_Resort_App.Helpers
             }
         }
 
-        public static void AddUser(string position, string name, int authId)
+        public static void AddUser(string name, string password, int authId)
         {
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
 
                 string query = @"
-                INSERT INTO Employees
-                (position, auth, )
-                VALUES
-                ()";
+                INSERT INTO Employees (Name, Password, Auth_ID)
+                VALUES (@Name, @Password, @Auth_ID)";
 
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-                    cmd.Parameters.Add("@");
+                    cmd.Parameters.Add("@Name", SqlDbType.VarChar, 50).Value = name;
+                    cmd.Parameters.Add("@Password", SqlDbType.VarChar, 30).Value = password;
+                    cmd.Parameters.Add("@Auth_ID", SqlDbType.Int).Value = authId;
+
+                    cmd.ExecuteNonQuery();
                 }
+            }
+        }
+
+        public static List<string> GetPositions()
+        {
+            string query = "SELECT Name FROM Positions";
+            List<string> positions = new();
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                SqlCommand command = new SqlCommand(query, con);
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            positions.Add(reader["Name"].ToString());
+                        }
+                    }
+                }
+            }
+            return positions;
+        }
+
+        public static string GetPosition(int authId)
+        {
+            string query = "SELECT Name FROM Positions WHERE Auth_ID = @AuthID";
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@AuthID", authId);
+
+                object result = command.ExecuteScalar();
+                return result != null ? result.ToString() : "Position not found";
+            }
+        }
+
+        public static int GetAuthId(string position)
+        {
+            string query = "SELECT Auth_ID FROM Positions WHERE Name = @Position";
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@Position", position);
+
+                con.Open();
+                object result = command.ExecuteScalar();
+                return result != null ? (int)result : -1;
             }
         }
 
