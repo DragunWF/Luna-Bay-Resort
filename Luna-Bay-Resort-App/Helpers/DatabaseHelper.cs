@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using System.Xml.Linq;
 using Luna_Bay_Resort_App.Data;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Luna_Bay_Resort_App.Helpers
 {
@@ -10,6 +11,31 @@ namespace Luna_Bay_Resort_App.Helpers
         public static string Key = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=LunaBayResortDB;Integrated Security=True;TrustServerCertificate=True";
 
         #region User Methods
+
+        public static List<User> GetUsers()
+        {
+            List<User> users = new();
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = @"
+                SELECT E.Emp_ID, P.Name AS Position, P.Auth_ID, E.Name, E.Password
+                FROM Employees E
+                JOIN Positions P ON E.Auth_ID = P.Auth_ID";
+                SqlCommand command = new SqlCommand(query, con);
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        users.Add(new User(
+                            reader["Emp_ID"].ToString(), reader["Position"].ToString(),
+                            reader["Name"].ToString(), int.Parse(reader["Auth_ID"].ToString())
+                        ));
+                    }
+                }
+            }
+            return users;
+        }
 
         public static User GetUser(string username, string password)
         {
