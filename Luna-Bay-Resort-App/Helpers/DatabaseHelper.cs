@@ -15,7 +15,10 @@ namespace Luna_Bay_Resort_App.Helpers
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
-                string query = "SELECT * FROM Employees WHERE Name = @Username AND Password = @Password";
+                string query = @"
+                SELECT E.Emp_ID, P.Name AS Position, P.Auth_ID, E.Name, E.Password
+                FROM Employees E
+                JOIN Positions P ON E.Auth_ID = P.Auth_ID";
 
                 SqlCommand command = new SqlCommand(query, con);
                 command.Parameters.AddWithValue("@Username", username);
