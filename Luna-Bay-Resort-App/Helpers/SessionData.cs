@@ -4,11 +4,14 @@ namespace Luna_Bay_Resort_App.Helpers
 {
     internal class SessionData
     {
-        private static User currentUser;
-        private static List<Amenity> amenities = new();
+        private static User? currentUser;
+        private static readonly List<Amenity> amenities = new();
+        public static int RoomPax = 0;
+        public static int RoomCost = 0;
 
         public static void LoginUser(User user) => currentUser = user;
-        public static User GetUser() => currentUser;
+        public static void LogoutUser() => currentUser = null;
+        public static User GetCurrentUser() => currentUser;
 
         /* 
          * You can't create constructors with List Parameters that inherit the Form class.
@@ -26,5 +29,7 @@ namespace Luna_Bay_Resort_App.Helpers
         }
 
         public static List<Amenity> GetAmenities() => amenities;
+        public static int GetRoomPax() => RoomPax;
+        public static int GetRoomCost() => RoomCost;
     }
 }

@@ -8,6 +8,8 @@ namespace SubForms
     public partial class ReservationEdit : Form
     {
         private int reservationNo = -1;
+        Guest reservation;
+        int newroomnum;
 
         public ReservationEdit()
         {
@@ -15,6 +17,9 @@ namespace SubForms
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             RoomTypeCB.Items.AddRange(DatabaseHelper.GetRoomTypes().Select(r => r.GetName()).ToArray());
+
+            SessionData.RoomPax = 0;
+            SessionData.RoomCost = 0;
         }
 
         public ReservationEdit(int reservationNo) : this()
@@ -27,8 +32,9 @@ namespace SubForms
         // Changes text to reflect selected room name from RoomTypeCB
         private void RoomTypeCB_SelectedValueChanged(object sender, EventArgs e)
         {
-            Paxlbl.Text = DatabaseHelper.GetPax(RoomTypeCB.Text).ToString();
-            TotalAmountText.Text = DatabaseHelper.GetRoomPrice(RoomTypeCB.Text).ToString();
+            SessionData.RoomPax = DatabaseHelper.GetPax(RoomTypeCB.Text);
+            SessionData.RoomCost = DatabaseHelper.GetRoomPrice(RoomTypeCB.Text);
+            UpdatePax();
         }
 
         private void SelectBtn_Click(object sender, EventArgs e)
@@ -37,7 +43,7 @@ namespace SubForms
             try
             {
                 reservationNo = int.Parse(ReservationNoText.Text);
-                Guest reservation = DatabaseHelper.GetReservation(reservationNo);
+                reservation = DatabaseHelper.GetReservation(reservationNo);
                 if (reservation != null)
                 {
                     CheckInPicker.Value = DateTime.ParseExact(reservation.GetCheckIn(), dateFormat, CultureInfo.InvariantCulture);
@@ -79,11 +85,14 @@ namespace SubForms
                 else if (Utils.IsTextBoxesNotEmpty(inputValues) &&
                          Utils.IsValidCheckInOut(CheckInPicker, CheckOutPicker))
                 {
+                    string status = "Available";
+                    DatabaseHelper.SetRoomStatus(status, reservation.GetRoomNo());
+                    newroomnum = DatabaseHelper.GetRoomNo(RoomTypeCB.Text);
                     DatabaseHelper.UpdateReservation(
                         reservationNo,
                         CheckInPicker.Text.ToString(),
                         CheckOutPicker.Text.ToString(),
-                        DatabaseHelper.GetRoomNo(RoomTypeCB.Text),
+                        newroomnum,
                         int.Parse(Paxlbl.Text),
                         double.Parse(DepositText.Text),
                         double.Parse(TotalAmountText.Text)
@@ -104,7 +113,28 @@ namespace SubForms
 
         private void AddPaxbtn_Click(object sender, EventArgs e)
         {
-            FormManager.OpenForm<AddPax>();
+            if (Paxlbl.Text == "0")
+            {
+                MessageBox.Show("Select a Room first before adding additional Pax");
+            }
+            else
+            {
+                FormManager.OpenForm<AddPax>();
+            }
+        }
+        public void UpdatePax()
+        {
+            if (RoomTypeCB.SelectedItem != null)
+            {
+                Paxlbl.Text = SessionData.GetRoomPax().ToString();
+                TotalAmountText.Text = SessionData.GetRoomCost().ToString();
+            }
+        }
+
+        //Updates label whenever it regains focus
+        protected override void OnActivated(EventArgs e)
+        {
+            UpdatePax();
         }
     }
 }

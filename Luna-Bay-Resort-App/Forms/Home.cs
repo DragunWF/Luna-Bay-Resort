@@ -1,4 +1,7 @@
-﻿using Luna_Bay_Resort_App.Forms.UserControlForms;
+﻿using Luna_Bay_Resort_App.Data;
+using Luna_Bay_Resort_App.Forms;
+using Luna_Bay_Resort_App.Forms.UserControlForms;
+using Luna_Bay_Resort_App.Helpers;
 
 namespace MainForms
 {
@@ -63,12 +66,36 @@ namespace MainForms
 
             int margin = 30;
 
-            // Create navigation buttons for different sections
-            CreateNavButton("Dashboard", 150, logoPictureBox.Right + margin , (sender, e) => OnButtonClicked(sender, "Dashboard"), topNavPanel);
-            CreateNavButton("Booking", 120, logoPictureBox.Right + margin + 148, (sender, e) => OnButtonClicked(sender, "Booking"), topNavPanel);
-            CreateNavButton("Amenities", 140, logoPictureBox.Right + margin + 270, (sender, e) => OnButtonClicked(sender, "Amenities"), topNavPanel);
-            CreateNavButton("Maintenance", 180, logoPictureBox.Right + margin + 410, (sender, e) => OnButtonClicked(sender, "Maintenance"), topNavPanel);
-            CreateNavButton("Financial Reports", 250, logoPictureBox.Right + margin + 590, (sender, e) => OnButtonClicked(sender, "Financial"), topNavPanel);
+            // Create navigation buttons for different sections depending on user access level
+            User currentUser = SessionData.GetCurrentUser();
+            if (currentUser != null)
+            {
+                switch (currentUser.GetAuthId())
+                {
+                    case 1: // Admin
+                        CreateNavButton("Dashboard", 150, logoPictureBox.Right + margin, (sender, e) => OnButtonClicked(sender, "Dashboard"), topNavPanel);
+                        CreateNavButton("Booking", 120, logoPictureBox.Right + margin + 148, (sender, e) => OnButtonClicked(sender, "Booking"), topNavPanel);
+                        CreateNavButton("Amenities", 140, logoPictureBox.Right + margin + 270, (sender, e) => OnButtonClicked(sender, "Amenities"), topNavPanel);
+                        CreateNavButton("Maintenance", 180, logoPictureBox.Right + margin + 410, (sender, e) => OnButtonClicked(sender, "Maintenance"), topNavPanel);
+                        CreateNavButton("Financial Reports", 250, logoPictureBox.Right + margin + 590, (sender, e) => OnButtonClicked(sender, "Financial"), topNavPanel);
+                        break;
+                    case 2: // Manager
+                        CreateNavButton("Dashboard", 150, logoPictureBox.Right + margin, (sender, e) => OnButtonClicked(sender, "Dashboard"), topNavPanel);
+                        CreateNavButton("Booking", 120, logoPictureBox.Right + margin + 148, (sender, e) => OnButtonClicked(sender, "Booking"), topNavPanel);
+                        CreateNavButton("Amenities", 140, logoPictureBox.Right + margin + 270, (sender, e) => OnButtonClicked(sender, "Amenities"), topNavPanel);
+                        CreateNavButton("Maintenance", 180, logoPictureBox.Right + margin + 410, (sender, e) => OnButtonClicked(sender, "Maintenance"), topNavPanel);
+                        break;
+                    case 3: // Front Desk
+                        CreateNavButton("Amenities", 140, logoPictureBox.Right + margin, (sender, e) => OnButtonClicked(sender, "Amenities"), topNavPanel);
+                        break;
+                    case 4: // Cashier
+                        CreateNavButton("Booking", 120, logoPictureBox.Right + margin, (sender, e) => OnButtonClicked(sender, "Booking"), topNavPanel);
+                        break;
+                    default: // When Role is Unknown
+                        CreateNavButton("Dashboard", 150, logoPictureBox.Right + margin, (sender, e) => OnButtonClicked(sender, "Dashboard"), topNavPanel);
+                        break;
+                }
+            }
 
             PictureBox profilePictureBox = new PictureBox
             {
@@ -79,6 +106,12 @@ namespace MainForms
                 Image = Properties.Resources.a,
                 SizeMode = PictureBoxSizeMode.StretchImage,
             };
+
+            profilePictureBox.Click += (sender, e) =>
+            {
+                FormManager.OpenForm<Profile>();
+            };
+
             topNavPanel.Controls.Add(profilePictureBox);
         }
 

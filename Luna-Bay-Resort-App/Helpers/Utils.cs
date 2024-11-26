@@ -108,7 +108,6 @@ namespace Luna_Bay_Resort_App.Helpers
             return $"{amount.ToString("N2")} PHP"; // Formats as "1,000.00 PHP"
         }
 
-
         #endregion
 
         #region Miscelleneous Methods
@@ -126,6 +125,11 @@ namespace Luna_Bay_Resort_App.Helpers
         {
             // Example output in this date format: "2024-11-11 10:30"
             return DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+        }
+        public static string GetDateOnly()
+        {
+            // Format: "11/22/2024"
+            return DateTime.Now.ToString("MM/dd/yyyy");
         }
 
         #endregion

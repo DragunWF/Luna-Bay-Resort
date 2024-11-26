@@ -29,68 +29,77 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            resetAccountBtn = new Button();
-            addAccountBtn = new Button();
-            deleteAccountBtn = new Button();
-            viewAccountsBtn = new Button();
+            ResetAccountBtn = new Button();
+            AddAccountBtn = new Button();
+            DeleteAccountBtn = new Button();
+            ViewAccountsBtn = new Button();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Consolas", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(23, 26);
+            label1.Location = new Point(30, 19);
             label1.Name = "label1";
-            label1.Size = new Size(194, 27);
+            label1.Size = new Size(150, 22);
             label1.TabIndex = 0;
             label1.Text = "Admin Control:";
             // 
-            // resetAccountBtn
+            // ResetAccountBtn
             // 
-            resetAccountBtn.Location = new Point(23, 148);
-            resetAccountBtn.Name = "resetAccountBtn";
-            resetAccountBtn.Size = new Size(194, 29);
-            resetAccountBtn.TabIndex = 1;
-            resetAccountBtn.Text = "Reset Accounts";
-            resetAccountBtn.UseVisualStyleBackColor = true;
+            ResetAccountBtn.Location = new Point(20, 111);
+            ResetAccountBtn.Margin = new Padding(3, 2, 3, 2);
+            ResetAccountBtn.Name = "ResetAccountBtn";
+            ResetAccountBtn.Size = new Size(170, 22);
+            ResetAccountBtn.TabIndex = 1;
+            ResetAccountBtn.Text = "Reset Accounts";
+            ResetAccountBtn.UseVisualStyleBackColor = true;
+            ResetAccountBtn.Click += ResetAccountBtn_Click;
             // 
-            // addAccountBtn
+            // AddAccountBtn
             // 
-            addAccountBtn.Location = new Point(23, 78);
-            addAccountBtn.Name = "addAccountBtn";
-            addAccountBtn.Size = new Size(194, 29);
-            addAccountBtn.TabIndex = 2;
-            addAccountBtn.Text = "Add New Account";
-            addAccountBtn.UseVisualStyleBackColor = true;
+            AddAccountBtn.Location = new Point(20, 58);
+            AddAccountBtn.Margin = new Padding(3, 2, 3, 2);
+            AddAccountBtn.Name = "AddAccountBtn";
+            AddAccountBtn.Size = new Size(170, 22);
+            AddAccountBtn.TabIndex = 2;
+            AddAccountBtn.Text = "Add New Account";
+            AddAccountBtn.UseVisualStyleBackColor = true;
+            AddAccountBtn.Click += AddAccountBtn_Click;
             // 
-            // deleteAccountBtn
+            // DeleteAccountBtn
             // 
-            deleteAccountBtn.Location = new Point(23, 183);
-            deleteAccountBtn.Name = "deleteAccountBtn";
-            deleteAccountBtn.Size = new Size(194, 29);
-            deleteAccountBtn.TabIndex = 3;
-            deleteAccountBtn.Text = "Delete Account";
-            deleteAccountBtn.UseVisualStyleBackColor = true;
+            DeleteAccountBtn.Location = new Point(20, 137);
+            DeleteAccountBtn.Margin = new Padding(3, 2, 3, 2);
+            DeleteAccountBtn.Name = "DeleteAccountBtn";
+            DeleteAccountBtn.Size = new Size(170, 22);
+            DeleteAccountBtn.TabIndex = 3;
+            DeleteAccountBtn.Text = "Delete Account";
+            DeleteAccountBtn.UseVisualStyleBackColor = true;
+            DeleteAccountBtn.Click += DeleteAccountBtn_Click;
             // 
-            // viewAccountsBtn
+            // ViewAccountsBtn
             // 
-            viewAccountsBtn.Location = new Point(23, 113);
-            viewAccountsBtn.Name = "viewAccountsBtn";
-            viewAccountsBtn.Size = new Size(194, 29);
-            viewAccountsBtn.TabIndex = 4;
-            viewAccountsBtn.Text = "View All Accounts";
-            viewAccountsBtn.UseVisualStyleBackColor = true;
+            ViewAccountsBtn.Location = new Point(20, 85);
+            ViewAccountsBtn.Margin = new Padding(3, 2, 3, 2);
+            ViewAccountsBtn.Name = "ViewAccountsBtn";
+            ViewAccountsBtn.Size = new Size(170, 22);
+            ViewAccountsBtn.TabIndex = 4;
+            ViewAccountsBtn.Text = "View All Accounts";
+            ViewAccountsBtn.UseVisualStyleBackColor = true;
+            ViewAccountsBtn.Click += ViewAccountsBtn_Click;
             // 
             // AdminPanel
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(245, 238);
-            Controls.Add(viewAccountsBtn);
-            Controls.Add(deleteAccountBtn);
-            Controls.Add(addAccountBtn);
-            Controls.Add(resetAccountBtn);
+            ClientSize = new Size(214, 178);
+            Controls.Add(ViewAccountsBtn);
+            Controls.Add(DeleteAccountBtn);
+            Controls.Add(AddAccountBtn);
+            Controls.Add(ResetAccountBtn);
             Controls.Add(label1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "AdminPanel";
             Text = "AdminPanel";
             ResumeLayout(false);
@@ -100,9 +109,9 @@
         #endregion
 
         private Label label1;
-        private Button resetAccountBtn;
-        private Button addAccountBtn;
-        private Button deleteAccountBtn;
-        private Button viewAccountsBtn;
+        private Button ResetAccountBtn;
+        private Button AddAccountBtn;
+        private Button DeleteAccountBtn;
+        private Button ViewAccountsBtn;
     }
 }

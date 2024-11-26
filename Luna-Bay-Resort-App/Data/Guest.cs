@@ -72,6 +72,12 @@
             this.billAmount = billAmount;
         }
 
+        public Guest(int reservationId, string name)
+        {
+            this.reservationId = reservationId;
+            this.name = name;
+        }
+
         #region Getter Methods
 
         public int GetGuestId() => guestId;

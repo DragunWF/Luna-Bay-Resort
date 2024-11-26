@@ -62,6 +62,7 @@
             Enterbtn.TabIndex = 6;
             Enterbtn.Text = "Enter";
             Enterbtn.UseVisualStyleBackColor = false;
+            Enterbtn.Click += Enterbtn_Click;
             // 
             // AddPax
             // 

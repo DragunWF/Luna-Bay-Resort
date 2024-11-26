@@ -15,10 +15,10 @@
 
         #region Getter Methods
 
-        public string getEmpId() => empId;
-        public string getPosition() => position;
-        public string getName() => name;
-        public int getAuthId() => authId;
+        public string GetEmpId() => empId;
+        public string GetPosition() => position;
+        public string GetName() => name;
+        public int GetAuthId() => authId;
 
         #endregion
     }

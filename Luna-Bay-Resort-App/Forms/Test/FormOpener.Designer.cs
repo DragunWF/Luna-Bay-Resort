@@ -39,6 +39,7 @@
             CheckOutBtn = new Button();
             label3 = new Label();
             roomStatusChangeTest = new Button();
+            AdminPanelBtn = new Button();
             SuspendLayout();
             // 
             // label1
@@ -149,11 +150,22 @@
             roomStatusChangeTest.UseVisualStyleBackColor = true;
             roomStatusChangeTest.Click += roomStatusChangeTest_Click;
             // 
+            // AdminPanelBtn
+            // 
+            AdminPanelBtn.Location = new Point(300, 142);
+            AdminPanelBtn.Name = "AdminPanelBtn";
+            AdminPanelBtn.Size = new Size(138, 23);
+            AdminPanelBtn.TabIndex = 12;
+            AdminPanelBtn.Text = "Admin Panel";
+            AdminPanelBtn.UseVisualStyleBackColor = true;
+            AdminPanelBtn.Click += AdminPanelBtn_Click;
+            // 
             // FormOpener
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(453, 231);
+            Controls.Add(AdminPanelBtn);
             Controls.Add(roomStatusChangeTest);
             Controls.Add(label3);
             Controls.Add(CheckOutBtn);
@@ -184,5 +196,6 @@
         private Button CheckOutBtn;
         private Label label3;
         private Button roomStatusChangeTest;
+        private Button AdminPanelBtn;
     }
 }

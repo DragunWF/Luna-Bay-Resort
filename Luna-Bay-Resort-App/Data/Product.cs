@@ -13,17 +13,20 @@
             this.stock = stock;
         }
 
-        public Product(string name, int price)
+        public Product(string name, int stock, int price)
         {
             this.name = name;
+            this.stock = stock;
             this.price = price;
         }
 
         #region Getter Methods
-        public int getProductId() => product_Id;
-        public string getProductName() => name;
-        public int getPrice() => price;
-        public int getStock() => stock;
+
+        public int GetProductId() => product_Id;
+        public string GetProductName() => name;
+        public int GetPrice() => price;
+        public int GetStock() => stock;
+
         #endregion
     }
 }

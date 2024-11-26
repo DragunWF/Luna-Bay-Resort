@@ -8,12 +8,18 @@ namespace Luna_Bay_Resort_App.Helpers
     {
         public static string Key = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=LunaBayResortDB;Integrated Security=True;TrustServerCertificate=True";
 
+        #region User Methods
+
         public static User GetUser(string username, string password)
         {
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
-                string query = "SELECT * FROM Employees WHERE Name = @Username AND Password = @Password";
+                string query = @"
+                SELECT E.Emp_ID, P.Name AS Position, P.Auth_ID, E.Name, E.Password
+                FROM Employees E
+                JOIN Positions P ON E.Auth_ID = P.Auth_ID
+                WHERE E.Name = @Username AND E.Password = @Password";
 
                 SqlCommand command = new SqlCommand(query, con);
                 command.Parameters.AddWithValue("@Username", username);
@@ -32,6 +38,27 @@ namespace Luna_Bay_Resort_App.Helpers
                 return null;
             }
         }
+
+        public static void AddUser(string position, string name, int authId)
+        {
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+
+                string query = @"
+                INSERT INTO Employees
+                (position, auth, )
+                VALUES
+                ()";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.Add("@");
+                }
+            }
+        }
+
+        #endregion
 
         #region Reservation Methods
 
@@ -68,6 +95,7 @@ namespace Luna_Bay_Resort_App.Helpers
                     cmd.ExecuteNonQuery();
                 }
             }
+            DatabaseHelper.SetRoomStatus(status, roomNo);
         }
 
         public static Guest GetReservation(int reservationId)
@@ -105,6 +133,75 @@ namespace Luna_Bay_Resort_App.Helpers
                 }
             }
             return null;
+        }
+
+        public static void AddCheckinWithCash(int checkinId, string name, string email, string phone,
+            int room, int numOfGuest, string checkIn, string checkOut, double billAmount, double balance, int paymentType)
+        {
+            string status = "Checked In";
+
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+
+                string query = @"
+                INSERT INTO Guest
+                (Checkin_ID, Name, Email, Phone, Room, NumofGuest, Check_in, Check_out, Status, Bill_Amount, Balance, PaymentType_ID)
+                VALUES
+                (@CheckinID, @Name, @Email, @Phone, @Room, @NumofGuest, @CheckIn, @CheckOut, @Status, @BillAmount, @Balance, @PaymentType)";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.Add("@CheckinID", SqlDbType.Int).Value = checkinId;
+                    cmd.Parameters.Add("@Name", SqlDbType.VarChar, 50).Value = name;
+                    cmd.Parameters.Add("@Email", SqlDbType.VarChar, 50).Value = email;
+                    cmd.Parameters.Add("@Phone", SqlDbType.VarChar, 20).Value = phone;
+                    cmd.Parameters.Add("@Room", SqlDbType.Int).Value = room;
+                    cmd.Parameters.Add("@NumofGuest", SqlDbType.Int).Value = numOfGuest;
+                    cmd.Parameters.Add("@CheckIn", SqlDbType.VarChar).Value = checkIn;
+                    cmd.Parameters.Add("@CheckOut", SqlDbType.VarChar).Value = checkOut;
+                    cmd.Parameters.Add("@Status", SqlDbType.VarChar, 25).Value = status;
+                    cmd.Parameters.Add("@BillAmount", SqlDbType.Int).Value = billAmount;
+                    cmd.Parameters.Add("@Balance", SqlDbType.Int).Value = balance;
+                    cmd.Parameters.Add("@PaymentType", SqlDbType.Int).Value = paymentType;
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void AddCheckinWithReference(int checkinId, string name, string email, string phone,
+            int room, int numOfGuest, string checkIn, string checkOut, double billAmount, double balance, int paymentType, int paymentReference)
+        {
+            string status = "Checked In";
+
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+
+                string query = @"
+                INSERT INTO Guest
+                (Checkin_ID, Name, Email, Phone, Room, NumofGuest, Check_in, Check_out, Status, Bill_Amount, Balance, PaymentType_ID, PaymentReference_NO)
+                VALUES
+                (@CheckinID, @Name, @Email, @Phone, @Room, @NumofGuest, @CheckIn, @CheckOut, @Status, @BillAmount, @Balance, @PaymentType, @PaymentReference)";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.Add("@CheckinID", SqlDbType.Int).Value = checkinId;
+                    cmd.Parameters.Add("@Name", SqlDbType.VarChar, 50).Value = name;
+                    cmd.Parameters.Add("@Email", SqlDbType.VarChar, 50).Value = email;
+                    cmd.Parameters.Add("@Phone", SqlDbType.VarChar, 20).Value = phone;
+                    cmd.Parameters.Add("@Room", SqlDbType.Int).Value = room;
+                    cmd.Parameters.Add("@NumofGuest", SqlDbType.Int).Value = numOfGuest;
+                    cmd.Parameters.Add("@CheckIn", SqlDbType.VarChar).Value = checkIn;
+                    cmd.Parameters.Add("@CheckOut", SqlDbType.VarChar).Value = checkOut;
+                    cmd.Parameters.Add("@Status", SqlDbType.VarChar, 25).Value = status;
+                    cmd.Parameters.Add("@BillAmount", SqlDbType.Int).Value = billAmount;
+                    cmd.Parameters.Add("@Balance", SqlDbType.Int).Value = balance;
+                    cmd.Parameters.Add("@PaymentType", SqlDbType.Int).Value = paymentType;
+                    cmd.Parameters.Add("@PaymentReference", SqlDbType.Int).Value = paymentReference;
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         public static Guest GetCheckIn(int checkInId)
@@ -151,7 +248,7 @@ namespace Luna_Bay_Resort_App.Helpers
                 con.Open();
                 string query = @"
                     UPDATE Guest 
-                    SET Reservation_ID = NULL, Checkin_ID = @checkInId 
+                    SET Reservation_ID = NULL, Checkin_ID = @checkInId, Status = 'Checked In' 
                     WHERE Reservation_ID = @reservationId";
 
                 SqlCommand setroomstatus = new SqlCommand(query, con);
@@ -169,7 +266,7 @@ namespace Luna_Bay_Resort_App.Helpers
                 con.Open();
                 string query = @"
                     UPDATE Guest 
-                    SET Checkin_ID = NULL, Checkout_ID = @checkOutId 
+                    SET Checkin_ID = NULL, Checkout_ID = @checkOutId, Status = 'Checked Out', Balance = 0 
                     WHERE Checkin_ID = @checkInId";
 
                 SqlCommand setroomstatus = new SqlCommand(query, con);
@@ -183,6 +280,7 @@ namespace Luna_Bay_Resort_App.Helpers
         public static void UpdateReservation(int reservationId, string checkIn, string checkOut, int roomNo,
             int numOfGuest, double billAmount, double balance)
         {
+            string status = "Reserved";
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
@@ -212,6 +310,7 @@ namespace Luna_Bay_Resort_App.Helpers
                     cmd.ExecuteNonQuery();
                 }
             }
+            SetRoomStatus(status, roomNo);
         }
 
         #endregion
@@ -310,7 +409,7 @@ namespace Luna_Bay_Resort_App.Helpers
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
-                string query = "SELECT DISTINCT Room_ID FROM Accommodation WHERE Name LIKE @RoomType";
+                string query = "SELECT DISTINCT Room_ID FROM Accommodation WHERE Name LIKE @RoomType AND Room_status = 'Available'";
                 SqlCommand command = new SqlCommand(query, con);
                 command.Parameters.AddWithValue("@RoomType", Room);
 
@@ -419,14 +518,14 @@ namespace Luna_Bay_Resort_App.Helpers
 
         #region Amenities Methods
 
-        //Return Food name and price by FoodType_ID
+        //Return Food name, stock count, and price by FoodType_ID
         public static List<Food> GetFoodbyType(int FoodType)
         {
             var foods = new List<Food>();
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
-                string query = "SELECT Distinct Food_Name, Price from Food WHERE FoodType_ID = @FoodId";
+                string query = "SELECT Distinct Name, Stock, Price from Food WHERE FoodType_ID = @FoodId";
 
                 SqlCommand getfoodnames = new SqlCommand(query, con);
                 getfoodnames.Parameters.AddWithValue("@FoodId", FoodType);
@@ -435,10 +534,11 @@ namespace Luna_Bay_Resort_App.Helpers
                 {
                     while (reader.Read())
                     {
-                        string foodName = reader["Food_Name"].ToString();
+                        string foodName = reader["Name"].ToString();
+                        int stock = Convert.ToInt32(reader["Stock"]);
                         int price = Convert.ToInt32(reader["Price"]);
 
-                        foods.Add(new Food(foodName, price));
+                        foods.Add(new Food(foodName, stock, price));
                     }
                 }
                 con.Close();
@@ -446,41 +546,42 @@ namespace Luna_Bay_Resort_App.Helpers
             return foods;
         }
 
-        //Search for Food name and price using FoodName
-        public static List<Food> SearchFood(string FoodName)
+        public static List<Items> SearchItem(string itemname)
         {
-            var foods = new List<Food>();
+            var items = new List<Items>();
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
-                string query = "SELECT Food_Name, Price from Food WHERE Food_Name LIKE '%' + @FoodName + '%'";
+                string query = @"SELECT Name, Stock, Price from Food WHERE Name LIKE '%' + @Name + '%' 
+                                 UNION 
+                                 SELECT Name, Stock, Price from Products WHERE Name LIKE '%' + @Name + '%'";
 
-                SqlCommand getfoodnames = new SqlCommand(query, con);
-                getfoodnames.Parameters.AddWithValue("@FoodName", FoodName);
+                SqlCommand getitem = new SqlCommand(query, con);
+                getitem.Parameters.AddWithValue("@Name", itemname);
 
-                using (var reader = getfoodnames.ExecuteReader())
+                using (var reader = getitem.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        string foodName = reader["Food_Name"].ToString();
+                        string name = reader["Name"].ToString();
+                        int quantity = Convert.ToInt32(reader["Stock"]);
                         int price = Convert.ToInt32(reader["Price"]);
 
-                        foods.Add(new Food(foodName, price));
+                        items.Add(new Items(name, quantity, price));
                     }
                 }
                 con.Close();
             }
-            return foods;
+            return items;
         }
 
-        //Get Product List(Name, Price)
         public static List<Product> GetProduct()
         {
             var product = new List<Product>();
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
-                string query = "SELECT Name, Price FROM Products";
+                string query = "SELECT Name, Stock, Price FROM Products";
 
                 SqlCommand getproduct = new SqlCommand(query, con);
 
@@ -489,9 +590,10 @@ namespace Luna_Bay_Resort_App.Helpers
                     while (reader.Read())
                     {
                         string productname = reader["Name"].ToString();
+                        int stock = Convert.ToInt32(reader["Stock"]);
                         int price = Convert.ToInt32(reader["Price"]);
 
-                        product.Add(new Product(productname, price));
+                        product.Add(new Product(productname, stock, price));
                     }
                 }
                 con.Close();
@@ -499,6 +601,168 @@ namespace Luna_Bay_Resort_App.Helpers
             return product;
         }
 
+        public static void ReduceStock(string itemname, int quantity)
+        {
+            var cart = new List<Items>();
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string queryFood = "SELECT COUNT(*) FROM Food WHERE Name = @ItemName";
+
+                SqlCommand cmdFood = new SqlCommand(queryFood, con);
+                cmdFood.Parameters.AddWithValue("@ItemName", itemname);
+
+                int foodCount = Convert.ToInt32(cmdFood.ExecuteScalar());
+                //Checks if cart has food items
+                if (foodCount > 0)
+                {
+                    string updateFoodStock = "UPDATE Food SET Stock = Stock - @Quantity WHERE Name = @ItemName";
+                    SqlCommand updateFood = new SqlCommand(updateFoodStock, con);
+                    updateFood.Parameters.AddWithValue("@ItemName", itemname);
+                    updateFood.Parameters.AddWithValue("@Quantity", quantity);
+
+                    updateFood.ExecuteNonQuery();
+                }
+                else
+                {
+                    //Checks if cart has product items
+                    string queryProduct = "SELECT COUNT(*) FROM Products WHERE Name = @ItemName";
+                    SqlCommand cmdProduct = new SqlCommand(queryProduct, con);
+                    cmdProduct.Parameters.AddWithValue("@ItemName", itemname);
+
+                    int productCount = Convert.ToInt32(cmdProduct.ExecuteScalar());
+                    if (productCount > 0)
+                    {
+                        string updateProductStock = "UPDATE Products SET Stock = Stock - @Quantity WHERE Name = @ItemName";
+                        SqlCommand updateProduct = new SqlCommand(updateProductStock, con);
+                        updateProduct.Parameters.AddWithValue("@ItemName", itemname);
+                        updateProduct.Parameters.AddWithValue("@Quantity", quantity);
+
+                        updateProduct.ExecuteNonQuery();
+                    }
+                }
+                con.Close();
+            }
+        }
+
+        #endregion
+
+        #region Stock Methods
+        public static int GetOutofStock()
+        {
+            int stocklevel = 0;
+
+            using(SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = @"SELECT 
+                                (SELECT COUNT(Stock) FROM Food WHERE Stock = 0) 
+                                + 
+                                (SELECT COUNT(Stock) FROM Products WHERE Stock = 0)";
+                SqlCommand command = new SqlCommand(query, con);
+
+                stocklevel = Convert.ToInt32(command.ExecuteScalar());
+                con.Close();
+            }
+            return stocklevel;
+        }
+        public static int GetLowStock()
+        {
+            int stocklevel = 0;
+
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = @"SELECT 
+                                (SELECT COUNT(Stock) FROM Food WHERE Stock <= 30) 
+                                + 
+                                (SELECT COUNT(Stock) FROM Products WHERE Stock <= 30)";
+                SqlCommand command = new SqlCommand(query, con);
+
+                stocklevel = Convert.ToInt32(command.ExecuteScalar());
+                con.Close();
+            }
+            return stocklevel;
+        }
+        public static int GetFullStock()
+        {
+            int stocklevel = 0;
+
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = @"SELECT 
+                                (SELECT COUNT(Stock) FROM Food WHERE Stock > 40) 
+                                + 
+                                (SELECT COUNT(Stock) FROM Products WHERE Stock > 40)";
+                SqlCommand command = new SqlCommand(query, con);
+
+                stocklevel = Convert.ToInt32(command.ExecuteScalar());
+                con.Close();
+            }
+            return stocklevel;
+        }
+        #endregion
+
+        #region Dashboard Methods
+        public static List<Guest> GetDashboardReservations(string checkindate)
+        {
+            var reservations = new List<Guest>();
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "SELECT Reservation_ID, Name FROM Guest WHERE Check_In LIKE '%' + @CheckInDate + '%' AND Reservation_ID IS NOT NULL";
+
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@CheckInDate", checkindate);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int reservationId = Convert.ToInt32(reader["Reservation_ID"].ToString());
+                        string name = reader["Name"].ToString();
+
+                        reservations.Add(new Guest(reservationId, name));
+                    }
+                }
+            }
+            return reservations;
+        }
+        #endregion
+
+        #region Misc
+        public static void AddRevenue(string date, double revenue)
+        {
+            using(SqlConnection con = new SqlConnection(Key)){
+                con.Open();
+                string query = "SELECT COUNT(Date) FROM Revenue WHERE Date = @Date";
+
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@Date", date);
+
+                int count = Convert.ToInt32(command.ExecuteScalar());
+
+                if (count > 0)
+                {
+                    string updatequery = "UPDATE Revenue Set Revenue = Revenue + @revenue WHERE Date = @date";
+                    SqlCommand update = new SqlCommand(updatequery, con);
+                    update.Parameters.AddWithValue("@revenue", revenue);
+                    update.Parameters.AddWithValue("@date", date);
+                    update.ExecuteNonQuery();
+                }
+                else
+                {
+                    string add = "INSERT INTO Revenue(Date, Revenue) Values (@date, @revenue)";
+
+                    SqlCommand addDate = new SqlCommand(add, con);
+                    addDate.Parameters.AddWithValue("@date", date);
+                    addDate.Parameters.AddWithValue("@revenue", revenue);
+                    addDate.ExecuteNonQuery();
+                }
+                con.Close();
+            }
+        }
         #endregion
     }
 }

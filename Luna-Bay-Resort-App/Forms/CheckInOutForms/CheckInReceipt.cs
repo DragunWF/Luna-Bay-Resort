@@ -9,7 +9,7 @@ namespace SubForms
         private readonly string receiptNo;
         private readonly int checkInNo;
 
-        public CheckInReceipt(string fullName, string checkInDate, string checkOutDate,
+        public CheckInReceipt(int checkinNo, string fullName, string checkInDate, string checkOutDate,
             string roomType, string numOfGuests, string roomNo, string paymentMethod,
             double paymentAmount, double billAmount, double amountDue)
         {
@@ -17,6 +17,7 @@ namespace SubForms
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
 
+            this.checkInNo = checkinNo;
             this.fullName = fullName;
             this.checkInDate = checkInDate;
             this.checkOutDate = checkOutDate;
@@ -29,7 +30,6 @@ namespace SubForms
             this.amountDue = amountDue;
 
             // Receipt data
-            checkInNo = Utils.GenerateCheckInOutNo();
             receiptNo = Utils.GenerateReceiptNo();
 
             // Displays the data to the text labels
