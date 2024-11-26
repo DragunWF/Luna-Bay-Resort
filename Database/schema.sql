@@ -235,25 +235,25 @@ INSERT INTO Food (Food_ID, FoodType_ID, Name, Serving, Stock, Price) VALUES
 
 -- Products table
 CREATE TABLE Products (
-    Product_ID INT PRIMARY KEY,
+    Product_ID INT IDENTITY(700, 1) PRIMARY KEY,
     Name VARCHAR(40),
     Price INT,
     Stock INT DEFAULT 100
 );
-INSERT INTO Products (Product_ID, Name, Price) VALUES
-    (0001, 'Rashguard(Women)', 450),
-    (0002, 'Trunks (Men)', 250),
-    (0003, 'One Piece (Girls)', 300),
-    (0004, 'Two Piece (Girls)', 300),
-    (0005, 'One Piece (Women)', 375),
-    (0006, 'Two Piece  (Women)', 375),
-    (0007, 'Rashguard(Men)', 450),
-    (0008, 'Cycling(Women)', 150),
-    (0009, 'Summer shorts (Boys)', 200),
-    (0010, 'Tee(Boys)', 150),
-    (0011, 'Float', 100),
-    (0012, 'Goggles', 175),
-    (0013, 'Ear Plugs', 320);
+INSERT INTO Products (Name, Price) VALUES
+    ('Rashguard(Women)', 450),
+    ('Trunks (Men)', 250),
+    ('One Piece (Girls)', 300),
+    ('Two Piece (Girls)', 300),
+    ('One Piece (Women)', 375),
+    ('Two Piece  (Women)', 375),
+    ('Rashguard(Men)', 450),
+    ('Cycling(Women)', 150),
+    ('Summer shorts (Boys)', 200),
+    ('Tee(Boys)', 150),
+    ('Float', 100),
+    ('Goggles', 175),
+    ('Ear Plugs', 320);
 
 -- Payment Method
 CREATE TABLE PaymentMethod (

@@ -821,6 +821,45 @@ namespace Luna_Bay_Resort_App.Helpers
         }
         #endregion
 
+        #region Inventory
+        public static void AddNewFood(int foodType, String name, String serving, int price, int stock)
+        {
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string getlastFoodId = "SELECT TOP 1 Food_ID FROM Food WHERE FoodType_ID = @foodType ORDER BY Food_ID DESC";
+                SqlCommand getlast = new SqlCommand(getlastFoodId, con);
+                getlast.Parameters.AddWithValue("@foodType", foodType);
+                int latestfoodId = Convert.ToInt32(getlast.ExecuteScalar());
+
+                string query = "INSERT INTO FOOD(Food_ID, FoodType_ID, Name, Serving, Price, Stock) VALUES (@foodId, @foodtype, @name, @serving, @price, @stock)";
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@foodId", latestfoodId += 1);
+                command.Parameters.AddWithValue("@foodtype", foodType);
+                command.Parameters.AddWithValue("@name", name);
+                command.Parameters.AddWithValue("@serving", serving);
+                command.Parameters.AddWithValue("@price", price);
+                command.Parameters.AddWithValue("@stock", stock);
+                command.ExecuteNonQuery();
+                con.Close();
+            }
+        }
+        public static void AddNewProduct(String name, int price, int stock)
+        {
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "INSERT INTO Products(Name, Price, Stock) VALUES (@name, @price, @stock)";
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@name", name);
+                command.Parameters.AddWithValue("@price", price);
+                command.Parameters.AddWithValue("@stock", stock);
+                command.ExecuteNonQuery();
+                con.Close();
+            }
+        }
+        #endregion
+
         #region Misc
         public static void AddRevenue(string date, double revenue)
         {
