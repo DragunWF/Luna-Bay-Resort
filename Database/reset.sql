@@ -14,9 +14,6 @@ BEGIN
 		IF OBJECT_ID('Payments', 'U') IS NOT NULL
 			DROP TABLE Payments;
 
-		IF OBJECT_ID('Positions', 'U') IS NOT NULL
-			DROP TABLE Positions;
-
 		IF OBJECT_ID('Employees', 'U') IS NOT NULL
 			DROP TABLE Employees;
 
@@ -46,6 +43,9 @@ BEGIN
 
 		IF OBJECT_ID('RoomType', 'U') IS NOT NULL
 			DROP TABLE RoomType;
+		
+		IF OBJECT_ID('Positions', 'U') IS NOT NULL
+			DROP TABLE Positions;
 	END TRY
 	BEGIN CATCH
 		ROLLBACK TRANSACTION

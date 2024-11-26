@@ -49,5 +49,10 @@ namespace MainForms
             return !(string.IsNullOrWhiteSpace(LoginUsername.Text) ||
                      string.IsNullOrWhiteSpace(LoginPassword.Text));
         }
+
+        private void ShowPasswordCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            LoginPassword.PasswordChar = ShowPasswordCheckBox.Checked ? '\0' : '*';
+        }
     }
 }
