@@ -8,7 +8,8 @@ namespace SubForms
         private int reservationNo = -1;
         private int generatedCheckInId;
         string status = "Checked In";
-        Guest reservation;
+        private Guest reservation;
+
         public SearchReservation()
         {
             InitializeComponent();

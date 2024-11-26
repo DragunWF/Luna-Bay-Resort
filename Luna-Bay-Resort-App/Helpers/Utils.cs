@@ -108,7 +108,6 @@ namespace Luna_Bay_Resort_App.Helpers
             return $"{amount.ToString("N2")} PHP"; // Formats as "1,000.00 PHP"
         }
 
-
         #endregion
 
         #region Miscelleneous Methods
