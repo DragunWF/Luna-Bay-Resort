@@ -18,7 +18,8 @@ namespace Luna_Bay_Resort_App.Helpers
                 string query = @"
                 SELECT E.Emp_ID, P.Name AS Position, P.Auth_ID, E.Name, E.Password
                 FROM Employees E
-                JOIN Positions P ON E.Auth_ID = P.Auth_ID";
+                JOIN Positions P ON E.Auth_ID = P.Auth_ID
+                WHERE E.Name = @Username AND E.Password = @Password";
 
                 SqlCommand command = new SqlCommand(query, con);
                 command.Parameters.AddWithValue("@Username", username);
