@@ -262,7 +262,7 @@ namespace Luna_Bay_Resort_App.Helpers
                 con.Open();
                 string query = @"
                     UPDATE Guest 
-                    SET Checkin_ID = NULL, Checkout_ID = @checkOutId 
+                    SET Checkin_ID = NULL, Checkout_ID = @checkOutId, Status = 'Checked Out', Balance = 0 
                     WHERE Checkin_ID = @checkInId";
 
                 SqlCommand setroomstatus = new SqlCommand(query, con);

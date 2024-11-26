@@ -4,26 +4,27 @@ namespace SubForms
 {
     public partial class CheckOutReceipt : Form
     {
-        private readonly string fullName, checkInDate, checkOutDate, roomType, numOfGuests, roomNo;
+        private readonly string fullName, checkInDate, checkOutDate, roomType;
         private readonly string receiptNo;
-        private readonly int checkOutNo;
+        private readonly int checkOutNo, numOfGuests, roomNo, amountPaid;
 
-        public CheckOutReceipt(string fullName, string checkInDate, string checkOutDate,
-            string roomType, string numOfGuests, string roomNo)
+        public CheckOutReceipt(int checkoutNo, string fullName, string checkInDate, string checkOutDate,
+            string roomType, int numOfGuests, int roomNo, int amountPaid)
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
 
+            this.checkOutNo = checkoutNo;
             this.fullName = fullName;
             this.checkInDate = checkInDate;
             this.checkOutDate = checkOutDate;
             this.roomType = roomType;
             this.numOfGuests = numOfGuests;
             this.roomNo = roomNo;
+            this.amountPaid = amountPaid;
 
             // Check out details
-            checkOutNo = Utils.GenerateCheckInOutNo();
             receiptNo = Utils.GenerateReceiptNo();
 
             // Outputs receipt data to the text labels
@@ -42,10 +43,10 @@ namespace SubForms
             CheckInDateText.Text = checkInDate;
             CheckOutDateText.Text = checkOutDate;
             RoomTypeText.Text = roomType;
-            RoomNoText.Text = roomNo;
+            RoomNoText.Text = roomNo.ToString();
 
             // Amount Details
-
+            AmountPaidText.Text = Utils.FormatCurrency(amountPaid);
         }
     }
 }
