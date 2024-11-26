@@ -29,54 +29,28 @@
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
-            EmpID = new DataGridViewTextBoxColumn();
-            Username = new DataGridViewTextBoxColumn();
-            Position = new DataGridViewTextBoxColumn();
-            Checkbox = new DataGridViewCheckBoxColumn();
             label1 = new Label();
             resetBtn = new Button();
             searchBtn = new Button();
             txtSearch = new TextBox();
+            EmpID = new DataGridViewTextBoxColumn();
+            Username = new DataGridViewTextBoxColumn();
+            Position = new DataGridViewTextBoxColumn();
+            Checkbox = new DataGridViewCheckBoxColumn();
+            DeleteAccount = new DataGridViewCheckBoxColumn();
+            deleteBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { EmpID, Username, Position, Checkbox });
-            dataGridView1.Location = new Point(57, 100);
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { EmpID, Username, Position, Checkbox, DeleteAccount });
+            dataGridView1.Location = new Point(57, 112);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(553, 372);
+            dataGridView1.Size = new Size(678, 360);
             dataGridView1.TabIndex = 0;
-            // 
-            // EmpID
-            // 
-            EmpID.HeaderText = "Employee ID";
-            EmpID.MinimumWidth = 6;
-            EmpID.Name = "EmpID";
-            EmpID.Width = 125;
-            // 
-            // Username
-            // 
-            Username.HeaderText = "Name";
-            Username.MinimumWidth = 6;
-            Username.Name = "Username";
-            Username.Width = 125;
-            // 
-            // Position
-            // 
-            Position.HeaderText = "Position";
-            Position.MinimumWidth = 6;
-            Position.Name = "Position";
-            Position.Width = 125;
-            // 
-            // Checkbox
-            // 
-            Checkbox.HeaderText = "Reset Password";
-            Checkbox.MinimumWidth = 6;
-            Checkbox.Name = "Checkbox";
-            Checkbox.Width = 125;
             // 
             // label1
             // 
@@ -91,7 +65,7 @@
             // resetBtn
             // 
             resetBtn.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            resetBtn.Location = new Point(516, 493);
+            resetBtn.Location = new Point(528, 494);
             resetBtn.Name = "resetBtn";
             resetBtn.Size = new Size(94, 29);
             resetBtn.TabIndex = 2;
@@ -115,11 +89,59 @@
             txtSearch.Size = new Size(353, 27);
             txtSearch.TabIndex = 4;
             // 
+            // EmpID
+            // 
+            EmpID.HeaderText = "Employee ID";
+            EmpID.MinimumWidth = 6;
+            EmpID.Name = "EmpID";
+            EmpID.Width = 125;
+            // 
+            // Username
+            // 
+            Username.HeaderText = "Username";
+            Username.MinimumWidth = 6;
+            Username.Name = "Username";
+            Username.Width = 125;
+            // 
+            // Position
+            // 
+            Position.HeaderText = "Position";
+            Position.MinimumWidth = 6;
+            Position.Name = "Position";
+            Position.Width = 125;
+            // 
+            // Checkbox
+            // 
+            Checkbox.HeaderText = "Reset Password";
+            Checkbox.MinimumWidth = 6;
+            Checkbox.Name = "Checkbox";
+            Checkbox.Width = 125;
+            // 
+            // DeleteAccount
+            // 
+            DeleteAccount.HeaderText = "Delete ";
+            DeleteAccount.MinimumWidth = 6;
+            DeleteAccount.Name = "DeleteAccount";
+            DeleteAccount.Resizable = DataGridViewTriState.True;
+            DeleteAccount.SortMode = DataGridViewColumnSortMode.Automatic;
+            DeleteAccount.Width = 125;
+            // 
+            // deleteBtn
+            // 
+            deleteBtn.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            deleteBtn.Location = new Point(641, 493);
+            deleteBtn.Name = "deleteBtn";
+            deleteBtn.Size = new Size(94, 29);
+            deleteBtn.TabIndex = 5;
+            deleteBtn.Text = "Delete";
+            deleteBtn.UseVisualStyleBackColor = true;
+            // 
             // ViewAccountsForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(674, 558);
+            ClientSize = new Size(841, 558);
+            Controls.Add(deleteBtn);
             Controls.Add(txtSearch);
             Controls.Add(searchBtn);
             Controls.Add(resetBtn);
@@ -135,13 +157,15 @@
         #endregion
 
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn EmpID;
-        private DataGridViewTextBoxColumn Username;
-        private DataGridViewTextBoxColumn Position;
-        private DataGridViewCheckBoxColumn Checkbox;
         private Label label1;
         private Button resetBtn;
         private Button searchBtn;
         private TextBox txtSearch;
+        private DataGridViewTextBoxColumn EmpID;
+        private DataGridViewTextBoxColumn Username;
+        private DataGridViewTextBoxColumn Position;
+        private DataGridViewCheckBoxColumn Checkbox;
+        private DataGridViewCheckBoxColumn DeleteAccount;
+        private Button deleteBtn;
     }
 }
