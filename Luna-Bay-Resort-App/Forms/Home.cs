@@ -1,4 +1,6 @@
-﻿using Luna_Bay_Resort_App.Forms.UserControlForms;
+﻿using Luna_Bay_Resort_App.Forms;
+using Luna_Bay_Resort_App.Forms.UserControlForms;
+using Luna_Bay_Resort_App.Helpers;
 
 namespace MainForms
 {
@@ -79,6 +81,12 @@ namespace MainForms
                 Image = Properties.Resources.profile,
                 SizeMode = PictureBoxSizeMode.StretchImage,
             };
+
+            profilePictureBox.Click += (sender, e) =>
+            {
+                FormManager.OpenForm<Profile>();
+            };
+
             topNavPanel.Controls.Add(profilePictureBox);
         }
 

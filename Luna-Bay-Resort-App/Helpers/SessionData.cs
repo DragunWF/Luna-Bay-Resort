@@ -10,6 +10,7 @@ namespace Luna_Bay_Resort_App.Helpers
         public static int RoomCost = 0;
 
         public static void LoginUser(User user) => currentUser = user;
+        public static void LogoutUser() => currentUser = null;
         public static User GetUser() => currentUser;
 
         /* 
