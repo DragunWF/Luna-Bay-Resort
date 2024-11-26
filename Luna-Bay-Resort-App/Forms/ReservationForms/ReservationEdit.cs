@@ -8,6 +8,8 @@ namespace SubForms
     public partial class ReservationEdit : Form
     {
         private int reservationNo = -1;
+        Guest reservation;
+        int newroomnum;
 
         public ReservationEdit()
         {
@@ -41,7 +43,7 @@ namespace SubForms
             try
             {
                 reservationNo = int.Parse(ReservationNoText.Text);
-                Guest reservation = DatabaseHelper.GetReservation(reservationNo);
+                reservation = DatabaseHelper.GetReservation(reservationNo);
                 if (reservation != null)
                 {
                     CheckInPicker.Value = DateTime.ParseExact(reservation.GetCheckIn(), dateFormat, CultureInfo.InvariantCulture);
@@ -83,11 +85,14 @@ namespace SubForms
                 else if (Utils.IsTextBoxesNotEmpty(inputValues) &&
                          Utils.IsValidCheckInOut(CheckInPicker, CheckOutPicker))
                 {
+                    string status = "Available";
+                    DatabaseHelper.SetRoomStatus(status, reservation.GetRoomNo());
+                    newroomnum = DatabaseHelper.GetRoomNo(RoomTypeCB.Text);
                     DatabaseHelper.UpdateReservation(
                         reservationNo,
                         CheckInPicker.Text.ToString(),
                         CheckOutPicker.Text.ToString(),
-                        DatabaseHelper.GetRoomNo(RoomTypeCB.Text),
+                        newroomnum,
                         int.Parse(Paxlbl.Text),
                         double.Parse(DepositText.Text),
                         double.Parse(TotalAmountText.Text)

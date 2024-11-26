@@ -276,6 +276,7 @@ namespace Luna_Bay_Resort_App.Helpers
         public static void UpdateReservation(int reservationId, string checkIn, string checkOut, int roomNo,
             int numOfGuest, double billAmount, double balance)
         {
+            string status = "Reserved";
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
@@ -305,6 +306,7 @@ namespace Luna_Bay_Resort_App.Helpers
                     cmd.ExecuteNonQuery();
                 }
             }
+            SetRoomStatus(status, roomNo);
         }
 
         #endregion
