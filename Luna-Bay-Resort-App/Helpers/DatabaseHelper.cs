@@ -260,7 +260,7 @@ namespace Luna_Bay_Resort_App.Helpers
         }
 
         public static void AddCheckinWithReference(int checkinId, string name, string email, string phone,
-            int room, int numOfGuest, string checkIn, string checkOut, double billAmount, double balance, int paymentType, int paymentReference)
+            int room, int numOfGuest, string checkIn, string checkOut, double billAmount, double balance, int paymentType, string paymentReference)
         {
             string status = "Checked In";
 
@@ -288,7 +288,7 @@ namespace Luna_Bay_Resort_App.Helpers
                     cmd.Parameters.Add("@BillAmount", SqlDbType.Int).Value = billAmount;
                     cmd.Parameters.Add("@Balance", SqlDbType.Int).Value = balance;
                     cmd.Parameters.Add("@PaymentType", SqlDbType.Int).Value = paymentType;
-                    cmd.Parameters.Add("@PaymentReference", SqlDbType.Int).Value = paymentReference;
+                    cmd.Parameters.Add("@PaymentReference", SqlDbType.VarChar, 30).Value = paymentReference;
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -861,6 +861,7 @@ namespace Luna_Bay_Resort_App.Helpers
         #endregion
 
         #region Misc
+        //USE Utils.GetDateOnly
         public static void AddRevenue(string date, double revenue)
         {
             using(SqlConnection con = new SqlConnection(Key)){
@@ -892,6 +893,28 @@ namespace Luna_Bay_Resort_App.Helpers
                 con.Close();
             }
         }
+
+        public static void AddWalkIn(string name, int numofperson, string duration, string date, int total, int paymentId, string paymentreference)
+        {
+            using(SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                    string query = "INSERT INTO WalkIn(Name, NumOfPerson, Duration, Date, Total, PaymentType_ID, PaymentReference_NO) " +
+                    "VALUES (@name, @numofperson, @duration, @date, @total, @paymentId, @paymentreference)";
+
+                    SqlCommand comm = new SqlCommand(query, con);
+                    comm.Parameters.AddWithValue("@name", name);
+                    comm.Parameters.AddWithValue("@numofperson", numofperson);
+                    comm.Parameters.AddWithValue("@duration", duration);
+                    comm.Parameters.AddWithValue("@date", date);
+                    comm.Parameters.AddWithValue("@total", total);
+                    comm.Parameters.AddWithValue("@paymentId", paymentId);
+                    comm.Parameters.AddWithValue("@paymentreference", paymentreference);
+                    comm.ExecuteNonQuery();
+                con.Close();
+            }
+        }
+
         #endregion
     }
 }

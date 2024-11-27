@@ -291,7 +291,19 @@ CREATE TABLE Guest (
     Bill_Amount INT NOT NULL,
     Balance INT NOT NULL,
     PaymentType_ID INT FOREIGN KEY REFERENCES PaymentMethod(PaymentType_ID),
-	PaymentReference_NO INT NULL
+	PaymentReference_NO VARCHAR(30) NULL
+);
+
+--Walk In Table
+CREATE TABLE WalkIn(
+	WalkIn_ID INT IDENTITY(4000, 1) PRIMARY KEY NOT NULL,
+	Name VARCHAR(50) NOT NULL,
+	NumOfPerson INT NOT NULL,
+	Duration VARCHAR(50) NOT NULL,
+	Date VARCHAR(50) NOT NULL,
+	Total int NOT NULL,
+	PaymentType_ID INT FOREIGN KEY REFERENCES PaymentMethod(PaymentType_ID),
+	PaymentReference_NO VARCHAR(30) NULL
 );
 
 -- Employees & Positions Table

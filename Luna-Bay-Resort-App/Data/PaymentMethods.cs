@@ -2,6 +2,8 @@
 {
     internal class PaymentMethods
     {
+        public static string paymentreference = "";
+
         private Dictionary<string, int> paymentMethods = new(); // Name and ID in Database
 
         public int GetId(string name)

@@ -1,4 +1,5 @@
-﻿using SubForms;
+﻿using Luna_Bay_Resort_App.Data;
+using SubForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,8 +23,15 @@ namespace Luna_Bay_Resort_App.Forms.CheckInOutForms
         {
             try
             {
-                CheckIn.paymentReference = Convert.ToInt32(Referencetxt.Text);
-                this.Close();
+                if (string.IsNullOrEmpty((Referencetxt.Text)))
+                {
+                    MessageBox.Show("Please enter the reference number from your preferred mode of payment");
+                }
+                else
+                {
+                    PaymentMethods.paymentreference = Referencetxt.Text;
+                    this.Close();
+                }
             }
             catch (FormatException eee)
             {

@@ -1,4 +1,5 @@
-﻿using Luna_Bay_Resort_App.Forms;
+﻿using Luna_Bay_Resort_App.Data;
+using Luna_Bay_Resort_App.Forms;
 using Luna_Bay_Resort_App.Forms.CheckInOutForms;
 using Luna_Bay_Resort_App.Helpers;
 using MainForms;
@@ -10,8 +11,7 @@ namespace SubForms
     {
         private string paymentMethod;
         private int PaymentID;
-        public static int paymentReference;
-
+        
         public CheckIn()
         {
             InitializeComponent();
@@ -21,6 +21,7 @@ namespace SubForms
 
             SessionData.RoomPax = 0;
             SessionData.RoomCost = 0;
+            PaymentMethods.paymentreference = "";
         }
 
         private void ConfirmBtn_Click(object sender, EventArgs e)
@@ -74,7 +75,7 @@ namespace SubForms
                     {
                         DatabaseHelper.AddCheckinWithReference(
                             checkin_no, fullName, EmailText.Text, ContactNoText.Text, roomno,
-                            int.Parse(Paxlbl.Text), CheckInPicker.Text, CheckOutPicker.Text, billAmount, amountDue, PaymentID, paymentReference); 
+                            int.Parse(Paxlbl.Text), CheckInPicker.Text, CheckOutPicker.Text, billAmount, amountDue, PaymentID, PaymentMethods.paymentreference); 
                     }
                     else
                     {
