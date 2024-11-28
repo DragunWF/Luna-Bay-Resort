@@ -366,8 +366,8 @@ namespace MainForms
                     return;
                 }
                 int quantity = Convert.ToInt32(qtyText);
-                int totalItemPrice = Convert.ToInt32(itemPriceText);
-                int itemUnitPrice = totalItemPrice / quantity;
+                double totalItemPrice = Convert.ToDouble(itemPriceText);
+                double itemUnitPrice = totalItemPrice / quantity;
 
                 if (quantity > 1)
                 {
@@ -453,7 +453,7 @@ namespace MainForms
 
             foreach (DataGridViewRow row in checkoutTable.Rows)
             {
-                if (int.TryParse(row.Cells["Price"].Value?.ToString(), out int price))
+                if (double.TryParse(row.Cells["Price"].Value?.ToString(), out double price))
                 {
                     subtotal += price;
                 }

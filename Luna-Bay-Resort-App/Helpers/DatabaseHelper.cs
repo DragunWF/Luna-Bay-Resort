@@ -179,8 +179,8 @@ namespace Luna_Bay_Resort_App.Helpers
                     cmd.Parameters.Add("@CheckIn", SqlDbType.VarChar).Value = checkIn;
                     cmd.Parameters.Add("@CheckOut", SqlDbType.VarChar).Value = checkOut;
                     cmd.Parameters.Add("@Status", SqlDbType.VarChar, 25).Value = status;
-                    cmd.Parameters.Add("@BillAmount", SqlDbType.Int).Value = billAmount;
-                    cmd.Parameters.Add("@Balance", SqlDbType.Int).Value = balance;
+                    cmd.Parameters.Add("@BillAmount", SqlDbType.Float).Value = billAmount;
+                    cmd.Parameters.Add("@Balance", SqlDbType.Float).Value = balance;
 
                     cmd.ExecuteNonQuery();
                 }
@@ -215,8 +215,8 @@ namespace Luna_Bay_Resort_App.Helpers
                                 reader.GetString(reader.GetOrdinal("Check_out")),
                                 reader.GetInt32(reader.GetOrdinal("Room")),
                                 reader.GetInt32(reader.GetOrdinal("NumofGuest")),
-                                reader.GetInt32(reader.GetOrdinal("Bill_Amount")),
-                                reader.GetInt32(reader.GetOrdinal("Balance"))
+                                reader.GetDouble(reader.GetOrdinal("Bill_Amount")),
+                                reader.GetDouble(reader.GetOrdinal("Balance"))
                             );
                         }
                     }
@@ -251,8 +251,8 @@ namespace Luna_Bay_Resort_App.Helpers
                     cmd.Parameters.Add("@CheckIn", SqlDbType.VarChar).Value = checkIn;
                     cmd.Parameters.Add("@CheckOut", SqlDbType.VarChar).Value = checkOut;
                     cmd.Parameters.Add("@Status", SqlDbType.VarChar, 25).Value = status;
-                    cmd.Parameters.Add("@BillAmount", SqlDbType.Int).Value = billAmount;
-                    cmd.Parameters.Add("@Balance", SqlDbType.Int).Value = balance;
+                    cmd.Parameters.Add("@BillAmount", SqlDbType.Float).Value = billAmount;
+                    cmd.Parameters.Add("@Balance", SqlDbType.Float).Value = balance;
                     cmd.Parameters.Add("@PaymentType", SqlDbType.Int).Value = paymentType;
                     cmd.ExecuteNonQuery();
                 }
@@ -285,8 +285,8 @@ namespace Luna_Bay_Resort_App.Helpers
                     cmd.Parameters.Add("@CheckIn", SqlDbType.VarChar).Value = checkIn;
                     cmd.Parameters.Add("@CheckOut", SqlDbType.VarChar).Value = checkOut;
                     cmd.Parameters.Add("@Status", SqlDbType.VarChar, 25).Value = status;
-                    cmd.Parameters.Add("@BillAmount", SqlDbType.Int).Value = billAmount;
-                    cmd.Parameters.Add("@Balance", SqlDbType.Int).Value = balance;
+                    cmd.Parameters.Add("@BillAmount", SqlDbType.Float).Value = billAmount;
+                    cmd.Parameters.Add("@Balance", SqlDbType.Float).Value = balance;
                     cmd.Parameters.Add("@PaymentType", SqlDbType.Int).Value = paymentType;
                     cmd.Parameters.Add("@PaymentReference", SqlDbType.VarChar, 30).Value = paymentReference;
                     cmd.ExecuteNonQuery();
@@ -321,8 +321,8 @@ namespace Luna_Bay_Resort_App.Helpers
                                 reader.GetString(reader.GetOrdinal("Check_out")),
                                 reader.GetInt32(reader.GetOrdinal("Room")),
                                 reader.GetInt32(reader.GetOrdinal("NumofGuest")),
-                                reader.GetInt32(reader.GetOrdinal("Bill_Amount")),
-                                reader.GetInt32(reader.GetOrdinal("Balance"))
+                                reader.GetDouble(reader.GetOrdinal("Bill_Amount")),
+                                reader.GetDouble(reader.GetOrdinal("Balance"))
                             );
                         }
                     }
@@ -626,7 +626,7 @@ namespace Luna_Bay_Resort_App.Helpers
                     {
                         string foodName = reader["Name"].ToString();
                         int stock = Convert.ToInt32(reader["Stock"]);
-                        int price = Convert.ToInt32(reader["Price"]);
+                        double price = Convert.ToDouble(reader["Price"]);
 
                         foods.Add(new Food(foodName, stock, price));
                     }
@@ -655,7 +655,7 @@ namespace Luna_Bay_Resort_App.Helpers
                     {
                         string name = reader["Name"].ToString();
                         int quantity = Convert.ToInt32(reader["Stock"]);
-                        int price = Convert.ToInt32(reader["Price"]);
+                        double price = Convert.ToDouble(reader["Price"]);
 
                         items.Add(new Items(name, quantity, price));
                     }
@@ -681,7 +681,7 @@ namespace Luna_Bay_Resort_App.Helpers
                     {
                         string productname = reader["Name"].ToString();
                         int stock = Convert.ToInt32(reader["Stock"]);
-                        int price = Convert.ToInt32(reader["Price"]);
+                        double price = Convert.ToDouble(reader["Price"]);
 
                         product.Add(new Product(productname, stock, price));
                     }
@@ -822,7 +822,7 @@ namespace Luna_Bay_Resort_App.Helpers
         #endregion
 
         #region Inventory
-        public static void AddNewFood(int foodType, String name, String serving, int price, int stock)
+        public static void AddNewFood(int foodType, String name, String serving, double price, int stock)
         {
             using (SqlConnection con = new SqlConnection(Key))
             {
@@ -844,7 +844,7 @@ namespace Luna_Bay_Resort_App.Helpers
                 con.Close();
             }
         }
-        public static void AddNewProduct(String name, int price, int stock)
+        public static void AddNewProduct(String name, double price, int stock)
         {
             using (SqlConnection con = new SqlConnection(Key))
             {
@@ -874,7 +874,7 @@ namespace Luna_Bay_Resort_App.Helpers
                     while (reader.Read())
                     {
                         string foodname = reader["Name"].ToString();
-                        int price = Convert.ToInt32(reader["Price"]);
+                        double price = Convert.ToDouble(reader["Price"]);
                         foods.Add(new Food(foodname, price));
                     }
                 }

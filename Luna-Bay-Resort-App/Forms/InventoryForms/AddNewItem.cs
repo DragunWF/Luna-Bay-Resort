@@ -85,7 +85,7 @@ namespace Luna_Bay_Resort_App.Forms.InventoryForms
                         return;
                     }
 
-                    int price = int.Parse(Pricetxt.Text);
+                    double price = double.Parse(Pricetxt.Text);
                     int stock = int.Parse(Stocktxt.Text);
 
                     if (stock <= 0)

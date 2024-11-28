@@ -66,7 +66,7 @@ namespace SubForms
                         DatabaseHelper.SetRoomStatus(status, checkin.GetRoomNo());
                         FormManager.OpenForm<CheckOutReceipt>(
                         generatedCheckOutId, NameText.Text, CheckInDate.Text, CheckOutDate.Text, RoomTypeText.Text, 
-                        int.Parse(GuestNumText.Text), checkin.GetRoomNo(), int.Parse(BillAmountText.Text)
+                        int.Parse(GuestNumText.Text), checkin.GetRoomNo(), double.Parse(BillAmountText.Text)
                         );
                         ResetTextLabels();
                         ResetTextBoxes();

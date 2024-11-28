@@ -2,10 +2,11 @@
 {
     internal class Product
     {
-        private int product_Id, price, stock;
+        private int product_Id, stock;
+        private double price;
         private string name;
 
-        public Product(int product_Id, string name, int price, int stock)
+        public Product(int product_Id, string name, double price, int stock)
         {
             this.product_Id = product_Id;
             this.name = name;
@@ -13,7 +14,7 @@
             this.stock = stock;
         }
 
-        public Product(string name, int stock, int price)
+        public Product(string name, int stock, double price)
         {
             this.name = name;
             this.stock = stock;
@@ -24,7 +25,7 @@
 
         public int GetProductId() => product_Id;
         public string GetProductName() => name;
-        public int GetPrice() => price;
+        public double GetPrice() => price;
         public int GetStock() => stock;
 
         #endregion

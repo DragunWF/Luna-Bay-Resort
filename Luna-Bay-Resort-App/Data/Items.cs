@@ -8,10 +8,11 @@ namespace Luna_Bay_Resort_App.Data
 {
     internal class Items
     {
-        string Name;
-        int price, stock;
+        private string Name;
+        private int stock;
+        private double price;
 
-        public Items(String name, int stock, int price)
+        public Items(String name, int stock, double price)
         {
             this.Name = name;
             this.stock = stock;
@@ -22,7 +23,7 @@ namespace Luna_Bay_Resort_App.Data
 
         public string GetName() => Name;
         public int GetStock() => stock;
-        public int GetPrice() => price;
+        public double GetPrice() => price;
 
         #endregion
     }

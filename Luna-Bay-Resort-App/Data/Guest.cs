@@ -3,12 +3,13 @@
     internal class Guest
     {
         private string name, email, phone, checkIn, checkOut, status;
-        private int guestId, reservationId, checkInId, checkOutId, room, numOfGuest, billAmount, balance, paymentTypeId;
+        private int guestId, reservationId, checkInId, checkOutId, room, numOfGuest, paymentTypeId;
+        private double billAmount, balance;
 
         //All columns
         public Guest(int guestId, int reservationId, int checkInId, int checkOutId, string name,
             string email, string phone, int room, int numOfGuest, string checkIn, string checkOut,
-            string status, int billAmount, int balance, int paymentTypeId)
+            string status, double billAmount, double balance, int paymentTypeId)
         {
             this.guestId = guestId;
             this.reservationId = reservationId;
@@ -30,7 +31,7 @@
         //For reservation receipts
         public Guest(int reservationId, string name,
             string checkIn, string checkOut, int room, int numOfGuest,
-            int billAmount, int balance)
+            double billAmount, double balance)
         {
 
             this.reservationId = reservationId;
@@ -45,7 +46,7 @@
 
         //For check in receipt
         public Guest(int checkInId, int paymentTypeId, string name, string checkIn,
-            string checkOut, int numOfGuest, int room, int billAmount, int balance)
+            string checkOut, int numOfGuest, int room, double billAmount, double balance)
         {
             this.checkInId = checkInId;
             this.paymentTypeId = paymentTypeId;
@@ -61,7 +62,7 @@
 
         //For check-out receipt 
         public Guest(int checkOutId, string name, string checkIn, string checkOut,
-           int numOfGuest, int room, int billAmount)
+           int numOfGuest, int room, double billAmount)
         {
             this.checkOutId = checkOutId;
             this.name = name;
@@ -92,8 +93,8 @@
         public string GetCheckIn() => checkIn;
         public string GetCheckOut() => checkOut;
         public string GetStatus() => status;
-        public int GetBillAmount() => billAmount;
-        public int GetBalance() => balance;
+        public double GetBillAmount() => billAmount;
+        public double GetBalance() => balance;
         public int GetPaymentTypeId() => paymentTypeId;
 
         #endregion

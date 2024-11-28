@@ -5,11 +5,12 @@ namespace SubForms
     public partial class CheckOutReceipt : Form
     {
         private readonly string fullName, checkInDate, checkOutDate, roomType;
+        private readonly double amountPaid;
         private readonly string receiptNo;
-        private readonly int checkOutNo, numOfGuests, roomNo, amountPaid;
+        private readonly int checkOutNo, numOfGuests, roomNo;
 
         public CheckOutReceipt(int checkoutNo, string fullName, string checkInDate, string checkOutDate,
-            string roomType, int numOfGuests, int roomNo, int amountPaid)
+            string roomType, int numOfGuests, int roomNo, double amountPaid)
         {
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.FixedSingle;
