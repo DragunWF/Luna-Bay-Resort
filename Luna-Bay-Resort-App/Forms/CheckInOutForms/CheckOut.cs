@@ -64,6 +64,7 @@ namespace SubForms
                         int generatedCheckOutId = Utils.GenerateCheckInOutNo(); 
                         DatabaseHelper.CheckOutGuest(checkInNo, generatedCheckOutId);
                         DatabaseHelper.SetRoomStatus(status, checkin.GetRoomNo());
+                        DatabaseHelper.AddRevenue(Utils.GetDateOnly(), double.Parse(BillAmountText.Text));
                         FormManager.OpenForm<CheckOutReceipt>(
                         generatedCheckOutId, NameText.Text, CheckInDate.Text, CheckOutDate.Text, RoomTypeText.Text, 
                         int.Parse(GuestNumText.Text), checkin.GetRoomNo(), double.Parse(BillAmountText.Text)
