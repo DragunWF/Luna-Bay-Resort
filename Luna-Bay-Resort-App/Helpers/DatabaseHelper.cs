@@ -858,6 +858,46 @@ namespace Luna_Bay_Resort_App.Helpers
                 con.Close();
             }
         }
+
+        public static List<Food> GetFoodList()
+        {
+            var foods = new List<Food>();
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "SELECT Name, Price FROM Food";
+
+                SqlCommand getfoods = new SqlCommand(query, con);
+
+                using (var reader = getfoods.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string foodname = reader["Name"].ToString();
+                        int price = Convert.ToInt32(reader["Price"]);
+                        foods.Add(new Food(foodname, price));
+                    }
+                }
+                con.Close();
+            }
+            return foods;
+        }
+
+        public static void UpdateItem(string category, string newname, string orginalname, double price)
+        {
+            using(SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = $"UPDATE {category} SET Name = @name, Price = @price WHERE Name = @originalname";
+                SqlCommand updateitem = new SqlCommand(query, con);
+                updateitem.Parameters.AddWithValue("@name", newname);
+                updateitem.Parameters.AddWithValue("@originalname", orginalname);
+                updateitem.Parameters.AddWithValue("@price", price);
+                updateitem.ExecuteNonQuery();
+                con.Close();
+
+            }
+        }
         #endregion
 
         #region Misc

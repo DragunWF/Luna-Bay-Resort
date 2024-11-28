@@ -20,6 +20,11 @@
             this.stock = stock;
             this.price = price;
         }
+        public Food(string foodName, int price)
+        {
+            this.foodName = foodName;
+            this.price = price;
+        }
 
         #region Getter Methods
         public int GetFoodId() => foodId;

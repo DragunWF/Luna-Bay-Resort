@@ -177,7 +177,7 @@ CREATE TABLE Food (
     Name VARCHAR(40),
     Serving VARCHAR(30),
 	Stock INT,
-    Price INT
+    Price DOUBLE PRECISION
 );
 
 INSERT INTO Food (Food_ID, FoodType_ID, Name, Serving, Stock, Price) VALUES
@@ -237,7 +237,7 @@ INSERT INTO Food (Food_ID, FoodType_ID, Name, Serving, Stock, Price) VALUES
 CREATE TABLE Products (
     Product_ID INT IDENTITY(700, 1) PRIMARY KEY,
     Name VARCHAR(40),
-    Price INT,
+    Price DOUBLE PRECISION,
     Stock INT DEFAULT 100
 );
 INSERT INTO Products (Name, Price) VALUES
@@ -288,8 +288,8 @@ CREATE TABLE Guest (
     Check_in VARCHAR(50) NOT NULL,
     Check_out VARCHAR(50) NOT NULL,
     Status VARCHAR(25),
-    Bill_Amount INT NOT NULL,
-    Balance INT NOT NULL,
+    Bill_Amount DOUBLE PRECISION NOT NULL,
+    Balance DOUBLE PRECISION NOT NULL,
     PaymentType_ID INT FOREIGN KEY REFERENCES PaymentMethod(PaymentType_ID),
 	PaymentReference_NO VARCHAR(30) NULL
 );
