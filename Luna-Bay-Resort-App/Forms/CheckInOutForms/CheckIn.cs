@@ -22,6 +22,7 @@ namespace SubForms
             SessionData.RoomPax = 0;
             SessionData.RoomCost = 0;
             PaymentMethods.paymentreference = "";
+            PaymentMethods.ifPayed = false;
         }
 
         private void ConfirmBtn_Click(object sender, EventArgs e)
@@ -63,19 +64,22 @@ namespace SubForms
                 {
                     MessageBox.Show("Please make sure to choose a payment method!");
                 }
+                else if (PaymentMethods.ifPayed == false && !CashCheckBox.Checked)
+                {
+                    MessageBox.Show("Please enter a Reference Number from your payment method first");
+                }
                 else if (Utils.IsValidFormData(inputValues, EmailText.Text, ContactNoText.Text) &&
                          Utils.IsValidCheckInOut(CheckInPicker, CheckOutPicker))
                 {
                     int checkin_no = Utils.GenerateCheckInOutNo();
                     string fullName = $"{FirstNameText.Text} {LastNameText.Text}";
                     int roomno = DatabaseHelper.GetRoomNo(RoomTypeCB.Text);
-                    string status = "Checked In";
 
                     if (OnlinePaymentCheckBox.Checked || CardCheckBox.Checked)
                     {
                         DatabaseHelper.AddCheckinWithReference(
                             checkin_no, fullName, EmailText.Text, ContactNoText.Text, roomno,
-                            int.Parse(Paxlbl.Text), CheckInPicker.Text, CheckOutPicker.Text, billAmount, amountDue, PaymentID, PaymentMethods.paymentreference); 
+                            int.Parse(Paxlbl.Text), CheckInPicker.Text, CheckOutPicker.Text, billAmount, amountDue, PaymentID, PaymentMethods.paymentreference);
                     }
                     else
                     {
@@ -88,7 +92,7 @@ namespace SubForms
                             RoomTypeCB.Text, Paxlbl.Text, roomno.ToString(),
                             paymentMethod, paymentAmount, billAmount, amountDue
                         );
-                    DatabaseHelper.SetRoomStatus(status, roomno);
+                    DatabaseHelper.SetRoomStatus("Checked In", roomno);
                 }
             }
             catch (FormatException err)
@@ -144,8 +148,7 @@ namespace SubForms
 
         private void SearchBtn_Click(object sender, EventArgs e)
         {
-            // TODO: Implement search functionality
-            MessageBox.Show("No function yet. Still in development!");
+            FormManager.OpenForm<SearchReservation>();
         }
 
         // Changes text to reflect selected room name from RoomTypeCB

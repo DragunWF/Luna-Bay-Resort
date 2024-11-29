@@ -1,7 +1,9 @@
 ﻿using System.Globalization;
 using Luna_Bay_Resort_App.Data;
 using Luna_Bay_Resort_App.Forms;
+using Luna_Bay_Resort_App.Forms.ReservationForms;
 using Luna_Bay_Resort_App.Helpers;
+using MainForms;
 
 namespace SubForms
 {
@@ -9,7 +11,11 @@ namespace SubForms
     {
         private int reservationNo = -1;
         Guest reservation;
-        int newroomnum;
+        private int newroomnum;
+        private double requiredDeposit;
+        private double paidamount;
+        private double updatedBalance;
+        public static double requiredPayment;
 
         public ReservationEdit()
         {
@@ -43,15 +49,17 @@ namespace SubForms
             try
             {
                 reservationNo = int.Parse(ReservationNoText.Text);
-                reservation = DatabaseHelper.GetReservation(reservationNo);
+                reservation = DatabaseHelper.GetReservation(reservationNo); 
                 if (reservation != null)
                 {
+                    paidamount = reservation.GetBillAmount() - reservation.GetBalance();
                     CheckInPicker.Value = DateTime.ParseExact(reservation.GetCheckIn(), dateFormat, CultureInfo.InvariantCulture);
                     CheckOutPicker.Value = DateTime.ParseExact(reservation.GetCheckOut(), dateFormat,CultureInfo.InvariantCulture);
                     RoomTypeCB.Text = DatabaseHelper.GetRoomName(reservation.GetRoomNo());
                     Paxlbl.Text = reservation.GetNumOfGuest().ToString();
-                    DepositText.Text = reservation.GetBillAmount().ToString();
-                    TotalAmountText.Text = reservation.GetBalance().ToString();
+                    Paidtxt.Text = paidamount.ToString();
+                    TotalAmountText.Text = reservation.GetBillAmount().ToString();
+                    DepositText.Text = (Double.Parse(TotalAmountText.Text) * .5).ToString();
                 }
                 else
                 {
@@ -85,20 +93,57 @@ namespace SubForms
                 else if (Utils.IsTextBoxesNotEmpty(inputValues) &&
                          Utils.IsValidCheckInOut(CheckInPicker, CheckOutPicker))
                 {
-                    string status = "Available";
-                    DatabaseHelper.SetRoomStatus(status, reservation.GetRoomNo());
                     newroomnum = DatabaseHelper.GetRoomNo(RoomTypeCB.Text);
-                    DatabaseHelper.UpdateReservation(
-                        reservationNo,
-                        CheckInPicker.Text.ToString(),
-                        CheckOutPicker.Text.ToString(),
-                        newroomnum,
-                        int.Parse(Paxlbl.Text),
-                        double.Parse(DepositText.Text),
-                        double.Parse(TotalAmountText.Text)
-                    );
-                    MessageBox.Show($"Reservation {reservationNo} has been successfully edited!");
-                    reservationNo = -1;
+                    //Asks customer for additional payment when new room's downpayment > previous downpayment
+                    if (requiredDeposit > paidamount)
+                    {
+                        requiredPayment = requiredDeposit - paidamount;
+                        DialogResult result = MessageBox.Show(
+                        $"Additional {Utils.FormatCurrency(requiredPayment)} deposit is required to complete changes",
+                        "Insufficient Funds, Confirm Room Change?",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question
+                        );
+
+                        if (result == DialogResult.Yes)
+                        {
+                            FormManager.OpenForm<PaymentMethodSelection>(reservationNo,
+                                        CheckInPicker.Text.ToString(),
+                                        CheckOutPicker.Text.ToString(),
+                                        reservation.GetRoomNo(),
+                                        newroomnum,
+                                        int.Parse(Paxlbl.Text),
+                                        double.Parse(TotalAmountText.Text),
+                                        requiredDeposit);
+                        }
+                    }
+                    else
+                    {
+                        //If initial paid deposit is greater than the total of the new room then customer will be refunded the excess money
+                        if (paidamount > double.Parse(TotalAmountText.Text))
+                        {
+                            double refund = Math.Abs(paidamount - double.Parse(TotalAmountText.Text));
+                            MessageBox.Show($"Customer is eligible for a refund of {Utils.FormatCurrency(refund)}");
+                            updatedBalance = 0;
+                        }
+                        else
+                        {
+                            updatedBalance = double.Parse(TotalAmountText.Text) - paidamount;
+                        }  
+                        DatabaseHelper.SetRoomStatus("Available", reservation.GetRoomNo());
+                        newroomnum = DatabaseHelper.GetRoomNo(RoomTypeCB.Text);
+                        DatabaseHelper.UpdateReservation(
+                            reservationNo,
+                            CheckInPicker.Text.ToString(),
+                            CheckOutPicker.Text.ToString(),
+                            newroomnum,
+                            int.Parse(Paxlbl.Text),
+                            double.Parse(TotalAmountText.Text),
+                            updatedBalance
+                        );
+                        MessageBox.Show($"Reservation {reservationNo} has been successfully edited!");
+                        reservationNo = -1;
+                    }
                 }
             }
             catch (FormatException err)
@@ -113,19 +158,22 @@ namespace SubForms
 
         private void AddPaxbtn_Click(object sender, EventArgs e)
         {
-            if (Paxlbl.Text == "0")
+            switch (Paxlbl.Text)
             {
-                MessageBox.Show("Select a Room first before adding additional Pax");
-            }
-            else
-            {
-                FormManager.OpenForm<AddPax>();
+                case "0":
+                    MessageBox.Show("Select a Room first before adding additional Pax");
+                    break;
+                default:
+                    FormManager.OpenForm<AddPax>();
+                    break;
             }
         }
         public void UpdatePax()
         {
             if (RoomTypeCB.SelectedItem != null)
             {
+                requiredDeposit = SessionData.GetRoomCost() * .5;
+                DepositText.Text = requiredDeposit.ToString();
                 Paxlbl.Text = SessionData.GetRoomPax().ToString();
                 TotalAmountText.Text = SessionData.GetRoomCost().ToString();
             }

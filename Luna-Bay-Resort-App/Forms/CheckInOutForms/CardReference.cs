@@ -30,6 +30,7 @@ namespace Luna_Bay_Resort_App.Forms.CheckInOutForms
                 else
                 {
                     PaymentMethods.paymentreference = Referencetxt.Text;
+                    PaymentMethods.ifPayed = true;
                     this.Close();
                 }
             }

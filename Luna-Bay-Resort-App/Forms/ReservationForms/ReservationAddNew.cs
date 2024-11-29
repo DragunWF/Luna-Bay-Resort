@@ -1,4 +1,6 @@
-﻿using Luna_Bay_Resort_App.Forms;
+﻿using Luna_Bay_Resort_App.Data;
+using Luna_Bay_Resort_App.Forms;
+using Luna_Bay_Resort_App.Forms.CheckInOutForms;
 using Luna_Bay_Resort_App.Helpers;
 using SubForms;
 
@@ -6,6 +8,9 @@ namespace Luna_Bay_Sub_Forms
 {
     public partial class ReservationAddNew : Form
     {
+        private int PaymentID;
+        private double depositAmount;
+
         public ReservationAddNew()
         {
             InitializeComponent();
@@ -15,6 +20,8 @@ namespace Luna_Bay_Sub_Forms
 
             SessionData.RoomPax = 0;
             SessionData.RoomCost = 0;
+            PaymentMethods.paymentreference = "";
+            PaymentMethods.ifPayed = false;
         }
 
         private void ConfirmButton_Click(object sender, EventArgs e)
@@ -34,27 +41,25 @@ namespace Luna_Bay_Sub_Forms
                     DepositText.Text,
                     TotalAmountText.Text
                 };
+
                 double totalAmount = double.Parse(TotalAmountText.Text);
-                double depositAmount = double.Parse(DepositText.Text);
-                double remainingBalance = totalAmount - depositAmount;
+                double remainingBalance = totalAmount - Double.Parse(DepositText.Text);
 
                 if (remainingBalance < 0)
                 {
                     MessageBox.Show("Deposit amount cannot be greater than the total amount!");
                 }
+                else if (!OnlinePaymentCheckBox.Checked && !CardCheckBox.Checked)
+                {
+                    MessageBox.Show("Please make sure to choose a payment method!");
+                }
+                else if(PaymentMethods.ifPayed == false)
+                {
+                    MessageBox.Show("Please enter a Reference Number from your payment method first");
+                }
                 else if (Utils.IsValidFormData(inputValues, EmailText.Text, ContactNoText.Text) &&
                          Utils.IsValidCheckInOut(CheckInPicker, CheckOutPicker))
                 {
-                    // TODO: Uncomment database helper in the future after testing
-                    // DatabaseHelper.AddReservation(
-                    //     fullName,
-                    //     EmailText.Text,
-                    //     ContactNoText.Text,
-                    //     RoomTypeCB.Text,
-                    //     int.Parse(Paxlbl.Text),
-                    //     CheckInPicker.Text,
-                    //     CheckOutPicker.Text
-                    // );
                     int reservationNo = Utils.GenerateReservationNo();
                     FormManager.OpenForm<ReservationReceipt>(
                         reservationNo, fullName, CheckInPicker.Text, CheckOutPicker.Text,
@@ -64,7 +69,7 @@ namespace Luna_Bay_Sub_Forms
                     DatabaseHelper.AddReservation(
                         reservationNo, fullName, EmailText.Text, ContactNoText.Text, RoomTypeCB.Text,
                         int.Parse(Paxlbl.Text), CheckInPicker.Text, CheckOutPicker.Text,
-                        depositAmount, remainingBalance
+                        totalAmount, remainingBalance, PaymentID, PaymentMethods.paymentreference
                     );
                     Utils.ResetTextBoxes(new TextBox[] {
                         FirstNameText, LastNameText, EmailText, ContactNoText,
@@ -106,9 +111,11 @@ namespace Luna_Bay_Sub_Forms
 
         public void UpdatePax()
         {
-            if(RoomTypeCB.SelectedItem != null)
+            if (RoomTypeCB.SelectedItem != null)
             {
-                DepositText.Text = SessionData.GetRoomCost().ToString();
+                depositAmount = SessionData.GetRoomCost() * .5;
+                DepositText.Text = depositAmount.ToString();
+                TotalAmountText.Text = SessionData.GetRoomCost().ToString();
                 Paxlbl.Text = SessionData.GetRoomPax().ToString();
             }
         }
@@ -118,5 +125,25 @@ namespace Luna_Bay_Sub_Forms
         {
             UpdatePax();
         }
+
+        private void OnlinePaymentCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (OnlinePaymentCheckBox.Checked)
+            {
+                PaymentID = 2;
+                CardCheckBox.Checked = false;
+                FormManager.OpenForm<OnlinePaymentReference>();
+            }
+        }
+        private void CardCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CardCheckBox.Checked)
+            {
+                PaymentID = 3;
+                OnlinePaymentCheckBox.Checked = false;
+                FormManager.OpenForm<CardReference>();
+            }
+        }
+
     }
 }

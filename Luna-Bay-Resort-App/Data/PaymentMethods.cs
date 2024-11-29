@@ -3,7 +3,7 @@
     internal class PaymentMethods
     {
         public static string paymentreference = "";
-
+        public static Boolean ifPayed = false;
         private Dictionary<string, int> paymentMethods = new(); // Name and ID in Database
 
         public int GetId(string name)

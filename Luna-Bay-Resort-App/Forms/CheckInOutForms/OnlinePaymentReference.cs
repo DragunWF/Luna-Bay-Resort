@@ -31,6 +31,7 @@ namespace Luna_Bay_Resort_App.Forms
                 else
                 {
                     PaymentMethods.paymentreference = ReferenceTxt.Text;
+                    PaymentMethods.ifPayed = true;
                     this.Close();
                 }
             }

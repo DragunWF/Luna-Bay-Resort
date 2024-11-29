@@ -150,10 +150,10 @@ namespace Luna_Bay_Resort_App.Helpers
 
         #endregion
 
-        #region Reservation Methods
+        #region Booking Methods
 
         public static void AddReservation(int reservationId, string name, string email, string phone,
-            string room, int numOfGuest, string checkIn, string checkOut, double billAmount, double balance)
+            string room, int numOfGuest, string checkIn, string checkOut, double billAmount, double balance, int paymentType, string paymentReference)
         {
             string status = "Reserved";
             int roomNo = GetRoomNo(room);
@@ -164,9 +164,9 @@ namespace Luna_Bay_Resort_App.Helpers
 
                 string query = @"
                 INSERT INTO Guest 
-                (Reservation_ID, Name, Email, Phone, Room, NumofGuest, Check_in, Check_out, Status, Bill_Amount, Balance) 
+                (Reservation_ID, Name, Email, Phone, Room, NumofGuest, Check_in, Check_out, Status, Bill_Amount, Balance, PaymentType_ID, PaymentReference_NO) 
                 VALUES 
-                (@ReservationID, @Name, @Email, @Phone, @Room, @NumofGuest, @CheckIn, @CheckOut, @Status, @BillAmount, @Balance)";
+                (@ReservationID, @Name, @Email, @Phone, @Room, @NumofGuest, @CheckIn, @CheckOut, @Status, @BillAmount, @Balance, @PaymentType, @PaymentReference)";
 
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
@@ -181,7 +181,8 @@ namespace Luna_Bay_Resort_App.Helpers
                     cmd.Parameters.Add("@Status", SqlDbType.VarChar, 25).Value = status;
                     cmd.Parameters.Add("@BillAmount", SqlDbType.Float).Value = billAmount;
                     cmd.Parameters.Add("@Balance", SqlDbType.Float).Value = balance;
-
+                    cmd.Parameters.Add("@PaymentType", SqlDbType.Int).Value = paymentType;
+                    cmd.Parameters.Add("@PaymentReference", SqlDbType.VarChar, 30).Value = paymentReference;
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -367,8 +368,8 @@ namespace Luna_Bay_Resort_App.Helpers
             }
         }
 
-        public static void UpdateReservation(int reservationId, string checkIn, string checkOut, int roomNo,
-            int numOfGuest, double billAmount, double balance)
+        public static void UpdateReservationWithAddedPayment(int reservationId, string checkIn, string checkOut, int roomNo,
+            int numOfGuest, double billAmount, double balance, int paymentType, string paymentReference)
         {
             string status = "Reserved";
             using (SqlConnection con = new SqlConnection(Key))
@@ -382,6 +383,44 @@ namespace Luna_Bay_Resort_App.Helpers
                     Room = @Room,
                     NumofGuest = @NumOfGuest, 
                     Bill_Amount = @BillAmount, 
+                    Balance = @Balance,
+                    PaymentType_ID = @PaymentType,
+                    PaymentReference_NO = @PaymentReference
+                WHERE Reservation_ID = @ReservationID";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    // Set the parameters for the update query
+                    cmd.Parameters.Add("@ReservationID", SqlDbType.Int).Value = reservationId;
+                    cmd.Parameters.Add("@CheckIn", SqlDbType.VarChar).Value = checkIn;
+                    cmd.Parameters.Add("@CheckOut", SqlDbType.VarChar).Value = checkOut;
+                    cmd.Parameters.Add("@Room", SqlDbType.Int).Value = roomNo;
+                    cmd.Parameters.Add("@NumOfGuest", SqlDbType.Int).Value = numOfGuest;
+                    cmd.Parameters.Add("@BillAmount", SqlDbType.Money).Value = billAmount;
+                    cmd.Parameters.Add("@Balance", SqlDbType.Money).Value = balance;
+                    cmd.Parameters.Add("@PaymentType", SqlDbType.Int).Value = paymentType;
+                    cmd.Parameters.Add("@PaymentReference", SqlDbType.VarChar).Value = paymentReference;
+                    // Execute the update query
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            SetRoomStatus("Reserved", roomNo);
+        }
+
+        public static void UpdateReservation(int reservationId, string checkIn, string checkOut, int roomNo,
+            int numOfGuest, double billAmount, double balance)
+        {
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+
+                string query = @"
+                UPDATE Guest 
+                SET Check_in = @CheckIn, 
+                    Check_out = @CheckOut,
+                    Room = @Room,
+                    NumofGuest = @NumOfGuest,
+                    Bill_Amount = @BillAmount,
                     Balance = @Balance
                 WHERE Reservation_ID = @ReservationID";
 
@@ -400,7 +439,7 @@ namespace Luna_Bay_Resort_App.Helpers
                     cmd.ExecuteNonQuery();
                 }
             }
-            SetRoomStatus(status, roomNo);
+            SetRoomStatus("Reserved", roomNo);
         }
 
         #endregion

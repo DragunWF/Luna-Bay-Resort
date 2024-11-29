@@ -14,7 +14,8 @@ namespace Luna_Bay_Resort_App.Forms.WalkInForms
     public partial class WalkInReceipt : Form
     {
         private readonly string name, date, duration, receiptno, paymentmethod;
-        private readonly int numofPerson, total;
+        private readonly double total;
+        private readonly int numofPerson;
         public WalkInReceipt(string name, string date, string duration, int numofPerson, int total, string paymentmethod)
         {
             InitializeComponent();

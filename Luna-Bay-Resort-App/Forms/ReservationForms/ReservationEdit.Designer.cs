@@ -48,6 +48,8 @@
             AddPaxbtn = new Button();
             Paxlbl = new Label();
             label11 = new Label();
+            Paidtxt = new TextBox();
+            label4 = new Label();
             SuspendLayout();
             // 
             // ReservationNoText
@@ -97,7 +99,7 @@
             label14.AutoSize = true;
             label14.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label14.ForeColor = Color.FromArgb(255, 20, 41);
-            label14.Location = new Point(25, 379);
+            label14.Location = new Point(23, 420);
             label14.Margin = new Padding(4, 0, 4, 0);
             label14.Name = "label14";
             label14.Size = new Size(161, 16);
@@ -196,7 +198,6 @@
             // 
             // RoomTypeCB
             // 
-            RoomTypeCB.DropDownStyle = ComboBoxStyle.DropDownList;
             RoomTypeCB.Font = new Font("Consolas", 9.75F);
             RoomTypeCB.FormattingEnabled = true;
             RoomTypeCB.Location = new Point(111, 276);
@@ -216,7 +217,7 @@
             // DepositText
             // 
             DepositText.Font = new Font("Consolas", 9.75F);
-            DepositText.Location = new Point(192, 373);
+            DepositText.Location = new Point(190, 414);
             DepositText.Name = "DepositText";
             DepositText.Size = new Size(100, 23);
             DepositText.TabIndex = 67;
@@ -268,12 +269,34 @@
             label11.TabIndex = 74;
             label11.Text = "Pax:";
             // 
+            // Paidtxt
+            // 
+            Paidtxt.Font = new Font("Consolas", 9.75F);
+            Paidtxt.Location = new Point(190, 373);
+            Paidtxt.Name = "Paidtxt";
+            Paidtxt.Size = new Size(100, 23);
+            Paidtxt.TabIndex = 78;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Microsoft Tai Le", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.Black;
+            label4.Location = new Point(23, 379);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(149, 16);
+            label4.TabIndex = 77;
+            label4.Text = "Currently Paid Amount";
+            // 
             // ReservationEdit
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(234, 234, 234);
             ClientSize = new Size(494, 541);
+            Controls.Add(Paidtxt);
+            Controls.Add(label4);
             Controls.Add(AddPaxbtn);
             Controls.Add(Paxlbl);
             Controls.Add(label11);
@@ -321,5 +344,7 @@
         private Button AddPaxbtn;
         private Label Paxlbl;
         private Label label11;
+        private TextBox Paidtxt;
+        private Label label4;
     }
 }
