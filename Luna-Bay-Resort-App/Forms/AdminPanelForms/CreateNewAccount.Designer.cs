@@ -1,6 +1,6 @@
 ﻿namespace Luna_Bay_Resort_App.Forms.AdminPanelForms
 {
-    partial class AddAccountForm
+    partial class CreateNewAccount
     {
         /// <summary>
         /// Required designer variable.

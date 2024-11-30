@@ -5,11 +5,11 @@ using System.Windows.Forms;
 
 namespace Luna_Bay_Resort_App.Forms.AdminPanelForms
 {
-    public partial class ViewAccountsForm : Form
+    public partial class ManageAccountsForm : Form
     {
         private List<User> employees;
 
-        public ViewAccountsForm()
+        public ManageAccountsForm()
         {
             InitializeComponent();
             employees = DatabaseHelper.GetUsers();
@@ -54,8 +54,6 @@ namespace Luna_Bay_Resort_App.Forms.AdminPanelForms
 
             return empIds;
         }
-
-
 
         private void SearchBtn_Click(object sender, EventArgs e)
         {

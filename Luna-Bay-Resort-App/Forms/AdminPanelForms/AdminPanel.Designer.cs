@@ -29,10 +29,8 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            ResetAccountBtn = new Button();
-            AddAccountBtn = new Button();
-            DeleteAccountBtn = new Button();
-            ViewAccountsBtn = new Button();
+            CreateAccountBtn = new Button();
+            ManageAccountsBtn = new Button();
             SuspendLayout();
             // 
             // label1
@@ -45,59 +43,35 @@
             label1.TabIndex = 0;
             label1.Text = "Admin Control:";
             // 
-            // ResetAccountBtn
+            // CreateAccountBtn
             // 
-            ResetAccountBtn.Location = new Point(20, 111);
-            ResetAccountBtn.Margin = new Padding(3, 2, 3, 2);
-            ResetAccountBtn.Name = "ResetAccountBtn";
-            ResetAccountBtn.Size = new Size(170, 22);
-            ResetAccountBtn.TabIndex = 1;
-            ResetAccountBtn.Text = "Reset Accounts";
-            ResetAccountBtn.UseVisualStyleBackColor = true;
-            ResetAccountBtn.Click += ResetAccountBtn_Click;
+            CreateAccountBtn.Location = new Point(20, 58);
+            CreateAccountBtn.Margin = new Padding(3, 2, 3, 2);
+            CreateAccountBtn.Name = "CreateAccountBtn";
+            CreateAccountBtn.Size = new Size(170, 22);
+            CreateAccountBtn.TabIndex = 2;
+            CreateAccountBtn.Text = "Create New Account";
+            CreateAccountBtn.UseVisualStyleBackColor = true;
+            CreateAccountBtn.Click += AddAccountBtn_Click;
             // 
-            // AddAccountBtn
+            // ManageAccountsBtn
             // 
-            AddAccountBtn.Location = new Point(20, 58);
-            AddAccountBtn.Margin = new Padding(3, 2, 3, 2);
-            AddAccountBtn.Name = "AddAccountBtn";
-            AddAccountBtn.Size = new Size(170, 22);
-            AddAccountBtn.TabIndex = 2;
-            AddAccountBtn.Text = "Add New Account";
-            AddAccountBtn.UseVisualStyleBackColor = true;
-            AddAccountBtn.Click += AddAccountBtn_Click;
-            // 
-            // DeleteAccountBtn
-            // 
-            DeleteAccountBtn.Location = new Point(20, 137);
-            DeleteAccountBtn.Margin = new Padding(3, 2, 3, 2);
-            DeleteAccountBtn.Name = "DeleteAccountBtn";
-            DeleteAccountBtn.Size = new Size(170, 22);
-            DeleteAccountBtn.TabIndex = 3;
-            DeleteAccountBtn.Text = "Delete Account";
-            DeleteAccountBtn.UseVisualStyleBackColor = true;
-            DeleteAccountBtn.Click += DeleteAccountBtn_Click;
-            // 
-            // ViewAccountsBtn
-            // 
-            ViewAccountsBtn.Location = new Point(20, 85);
-            ViewAccountsBtn.Margin = new Padding(3, 2, 3, 2);
-            ViewAccountsBtn.Name = "ViewAccountsBtn";
-            ViewAccountsBtn.Size = new Size(170, 22);
-            ViewAccountsBtn.TabIndex = 4;
-            ViewAccountsBtn.Text = "View All Accounts";
-            ViewAccountsBtn.UseVisualStyleBackColor = true;
-            ViewAccountsBtn.Click += ViewAccountsBtn_Click;
+            ManageAccountsBtn.Location = new Point(20, 85);
+            ManageAccountsBtn.Margin = new Padding(3, 2, 3, 2);
+            ManageAccountsBtn.Name = "ManageAccountsBtn";
+            ManageAccountsBtn.Size = new Size(170, 22);
+            ManageAccountsBtn.TabIndex = 4;
+            ManageAccountsBtn.Text = "Manage Accounts";
+            ManageAccountsBtn.UseVisualStyleBackColor = true;
+            ManageAccountsBtn.Click += ViewAccountsBtn_Click;
             // 
             // AdminPanel
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(214, 178);
-            Controls.Add(ViewAccountsBtn);
-            Controls.Add(DeleteAccountBtn);
-            Controls.Add(AddAccountBtn);
-            Controls.Add(ResetAccountBtn);
+            ClientSize = new Size(214, 127);
+            Controls.Add(ManageAccountsBtn);
+            Controls.Add(CreateAccountBtn);
             Controls.Add(label1);
             Margin = new Padding(3, 2, 3, 2);
             Name = "AdminPanel";
@@ -109,9 +83,7 @@
         #endregion
 
         private Label label1;
-        private Button ResetAccountBtn;
-        private Button AddAccountBtn;
-        private Button DeleteAccountBtn;
-        private Button ViewAccountsBtn;
+        private Button CreateAccountBtn;
+        private Button ManageAccountsBtn;
     }
 }

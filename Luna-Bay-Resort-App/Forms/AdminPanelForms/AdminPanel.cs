@@ -11,12 +11,12 @@ namespace Luna_Bay_Resort_App.Forms.AdminPanelForms
 
         private void AddAccountBtn_Click(object sender, EventArgs e)
         {
-            FormManager.OpenForm<AddAccountForm>();
+            FormManager.OpenForm<CreateNewAccount>();
         }
 
         private void ViewAccountsBtn_Click(object sender, EventArgs e)
         {
-            FormManager.OpenForm<ViewAccountsForm>();
+            FormManager.OpenForm<ManageAccountsForm>();
         }
 
         private void ResetAccountBtn_Click(object sender, EventArgs e)

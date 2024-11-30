@@ -1,6 +1,6 @@
 ﻿namespace Luna_Bay_Resort_App.Forms.AdminPanelForms
 {
-    partial class ViewAccountsForm
+    partial class ManageAccountsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -157,7 +157,7 @@
             RefreshBtn.UseVisualStyleBackColor = true;
             RefreshBtn.Click += RefreshBtn_Click;
             // 
-            // ViewAccountsForm
+            // ManageAccountsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -170,8 +170,8 @@
             Controls.Add(label1);
             Controls.Add(accountsDataGrid);
             Margin = new Padding(3, 2, 3, 2);
-            Name = "ViewAccountsForm";
-            Text = "ViewAccountsForm";
+            Name = "ManageAccountsForm";
+            Text = "Manage Accounts Form";
             ((System.ComponentModel.ISupportInitialize)accountsDataGrid).EndInit();
             ResumeLayout(false);
             PerformLayout();
