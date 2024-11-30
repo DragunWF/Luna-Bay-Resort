@@ -1,4 +1,5 @@
 ﻿using Luna_Bay_Resort_App.Data;
+using Luna_Bay_Resort_App.Forms.InventoryForms;
 using Luna_Bay_Resort_App.Helpers;
 using SubForms;
 
@@ -13,10 +14,13 @@ namespace MainForms
         private Label vatLabel;
         private Label totalLabel;
 
+        private User currentUser;
+
         private double subtotal, vat, total;
 
         public AmenitiesUserControl()
         {
+            currentUser = SessionData.GetCurrentUser();
             InitializeComponent();
             InitializeAmenitiesLayout();
         }
@@ -164,7 +168,6 @@ namespace MainForms
                 Width = 100,
                 ForeColor = Color.White
             };
-
             searchButton.Click += (sender, e) =>
             {
                 SearchItem(searchBox.Text);
@@ -181,7 +184,6 @@ namespace MainForms
                 ForeColor = Color.White,
                 Margin = new Padding(80, 0, 0, 0)
             };
-
             addOnButton.Click += (sender, e) =>
             {
                 DisplayFoodByFoodID(4);
@@ -196,7 +198,6 @@ namespace MainForms
                 Width = 120,
                 ForeColor = Color.Black
             };
-
             breakfastButton.Click += (sender, e) =>
             {
                 DisplayFoodByFoodID(1);
@@ -211,7 +212,6 @@ namespace MainForms
                 Width = 100,
                 ForeColor = Color.Black
             };
-
             lunchButton.Click += (sender, e) =>
             {
                 DisplayFoodByFoodID(2);
@@ -226,7 +226,6 @@ namespace MainForms
                 Width = 100,
                 ForeColor = Color.Black
             };
-
             dinnerButton.Click += (sender, e) =>
             {
                 DisplayFoodByFoodID(3);
@@ -241,7 +240,6 @@ namespace MainForms
                 Width = 120,
                 ForeColor = Color.Black
             };
-
             beveragesButton.Click += (sender, e) =>
             {
                 DisplayFoodByFoodID(6);
@@ -256,11 +254,11 @@ namespace MainForms
                 Width = 100,
                 ForeColor = Color.Black
             };
-
             snacksButton.Click += (sender, e) =>
             {
                 DisplayFoodByFoodID(5);
             };
+
             Button swimWearButton = new Button
             {
                 Text = "Swimwear",
@@ -270,7 +268,12 @@ namespace MainForms
                 Width = 120,
                 ForeColor = Color.Black,
             };
-            Button Inventory = new Button
+            swimWearButton.Click += (sender, e) =>
+            {
+                GetProduct();
+            };
+
+            Button inventoryButton = new Button
             {
                 Text = "Inventory",
                 Font = new Font("Consolas", 12, FontStyle.Regular),
@@ -279,11 +282,11 @@ namespace MainForms
                 Width = 120,
                 ForeColor = Color.Black,
             };
-
-            swimWearButton.Click += (sender, e) =>
+            inventoryButton.Click += (sender, e) =>
             {
-                GetProduct();
+                FormManager.OpenForm<MainInventory>();
             };
+
 
             Button cancelButton = new Button
             {
@@ -295,7 +298,6 @@ namespace MainForms
                 ForeColor = Color.White,
                 Margin = new Padding(323, 0, 0, 0)
             };
-
             cancelButton.Click += (sender, e) =>
             {
                 checkoutTable.Rows.Clear();
@@ -303,8 +305,8 @@ namespace MainForms
             };
 
 
-            bottomPanel.Controls.AddRange(new Control[]
-            {
+            bottomPanel.Controls.AddRange(
+            [
                 searchBox,
                 searchButton,
                 addOnButton,
@@ -314,12 +316,14 @@ namespace MainForms
                 beveragesButton,
                 snacksButton,
                 swimWearButton,
-                Inventory,
                 cancelButton
-            });
+            ]);
+            if (currentUser == null || currentUser.GetAuthId() == 1 || currentUser.GetAuthId() == 2)
+            {
+                bottomPanel.Controls.AddRange([inventoryButton]);
+            }
             menuPanel.Controls.Add(bottomPanel, 0, 2);
             return menuPanel;
-
         }
 
         private Panel CreateCheckoutPanel()
