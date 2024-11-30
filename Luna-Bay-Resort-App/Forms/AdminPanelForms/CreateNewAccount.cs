@@ -9,6 +9,9 @@ namespace Luna_Bay_Resort_App.Forms.AdminPanelForms
         public CreateNewAccount()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+
             TxtPassword.UseSystemPasswordChar = true;
             TxtConfirmPassword.UseSystemPasswordChar = true;
 

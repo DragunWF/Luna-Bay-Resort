@@ -15,6 +15,8 @@ namespace Luna_Bay_Resort_App.Forms.InventoryForms
         public MainInventory()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
         }
     }
 }

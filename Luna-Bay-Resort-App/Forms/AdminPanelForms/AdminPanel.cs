@@ -7,6 +7,8 @@ namespace Luna_Bay_Resort_App.Forms.AdminPanelForms
         public AdminPanel()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
         }
 
         private void AddAccountBtn_Click(object sender, EventArgs e)

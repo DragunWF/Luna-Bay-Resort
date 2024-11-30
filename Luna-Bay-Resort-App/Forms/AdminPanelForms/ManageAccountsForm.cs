@@ -12,6 +12,9 @@ namespace Luna_Bay_Resort_App.Forms.AdminPanelForms
         public ManageAccountsForm()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+
             employees = DatabaseHelper.GetUsers();
             RefreshDataGrid();
             accountsDataGrid.AllowUserToAddRows = false;

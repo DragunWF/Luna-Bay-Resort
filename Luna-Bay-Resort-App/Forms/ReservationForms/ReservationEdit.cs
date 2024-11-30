@@ -10,7 +10,7 @@ namespace SubForms
     public partial class ReservationEdit : Form
     {
         private int reservationNo = -1;
-        Guest reservation;
+        private Guest reservation;
         private int newroomnum;
         private double requiredDeposit;
         private double paidamount;

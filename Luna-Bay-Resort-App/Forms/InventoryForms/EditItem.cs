@@ -8,9 +8,13 @@ namespace Luna_Bay_Resort_App.Forms.InventoryForms
     {
         private object selectedItem;
         private string selectedItemName;
+
         public EditItem()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+
             ItemNamecb.Enabled = false;
         }
 

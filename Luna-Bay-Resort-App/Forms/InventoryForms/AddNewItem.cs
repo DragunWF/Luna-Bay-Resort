@@ -8,9 +8,13 @@ namespace Luna_Bay_Resort_App.Forms.InventoryForms
     public partial class AddNewItem : Form
     {
         private int foodType;
+
         public AddNewItem()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+
             FoodCategorylbl.Hide();
             FoodCategoryCB.Hide();
             Servinglbl.Hide();
