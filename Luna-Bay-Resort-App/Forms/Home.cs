@@ -108,7 +108,14 @@ namespace MainForms
             };
             profilePictureBox.Click += (sender, e) =>
             {
-                FormManager.OpenForm<Profile>();
+                if (currentUser == null || currentUser.GetAuthId() == 1)
+                {
+                    FormManager.OpenForm<AdminProfile>();
+                }
+                else
+                {
+                    FormManager.OpenForm<Profile>();
+                }
             };
             topNavPanel.Controls.Add(profilePictureBox);
         }

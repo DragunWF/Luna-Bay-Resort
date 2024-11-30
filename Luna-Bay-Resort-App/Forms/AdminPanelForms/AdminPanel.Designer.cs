@@ -56,7 +56,7 @@
             // 
             // ManageAccountsBtn
             // 
-            ManageAccountsBtn.Location = new Point(20, 85);
+            ManageAccountsBtn.Location = new Point(20, 84);
             ManageAccountsBtn.Margin = new Padding(3, 2, 3, 2);
             ManageAccountsBtn.Name = "ManageAccountsBtn";
             ManageAccountsBtn.Size = new Size(170, 22);

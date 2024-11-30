@@ -134,7 +134,7 @@
             PositionCB.Size = new Size(264, 23);
             PositionCB.TabIndex = 9;
             // 
-            // AddAccountForm
+            // CreateNewAccount
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -150,8 +150,8 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Margin = new Padding(3, 2, 3, 2);
-            Name = "AddAccountForm";
-            Text = "AddAccountForm";
+            Name = "CreateNewAccount";
+            Text = "Create New Account Form";
             ResumeLayout(false);
             PerformLayout();
         }
