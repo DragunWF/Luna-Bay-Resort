@@ -270,6 +270,15 @@ namespace MainForms
                 Width = 120,
                 ForeColor = Color.Black,
             };
+            Button Inventory = new Button
+            {
+                Text = "Inventory",
+                Font = new Font("Consolas", 12, FontStyle.Regular),
+                BackColor = ColorTranslator.FromHtml("#FFDA00"),
+                Height = 35,
+                Width = 120,
+                ForeColor = Color.Black,
+            };
 
             swimWearButton.Click += (sender, e) =>
             {
@@ -305,6 +314,7 @@ namespace MainForms
                 beveragesButton,
                 snacksButton,
                 swimWearButton,
+                Inventory,
                 cancelButton
             });
             menuPanel.Controls.Add(bottomPanel, 0, 2);
