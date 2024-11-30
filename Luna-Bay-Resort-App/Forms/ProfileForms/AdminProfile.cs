@@ -26,7 +26,7 @@ namespace Luna_Bay_Resort_App.Forms
             }
         }
 
-        private void LogoutBtn_Click(object sender, EventArgs e)
+        private void LogoutAdminBtn_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
                 "Are you sure you want to log out?",
@@ -47,6 +47,7 @@ namespace Luna_Bay_Resort_App.Forms
         private void AdminPanelBtn_Click(object sender, EventArgs e)
         {
             FormManager.OpenForm<AdminPanel>();
+            Close();
         }
     }
 }

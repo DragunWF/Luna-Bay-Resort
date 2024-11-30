@@ -75,7 +75,7 @@
             Controls.Add(label1);
             Margin = new Padding(3, 2, 3, 2);
             Name = "AdminPanel";
-            Text = "AdminPanel";
+            Text = "Admin";
             ResumeLayout(false);
             PerformLayout();
         }

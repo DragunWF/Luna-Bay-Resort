@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            LogoutBtn = new Button();
+            LogoutAdminBtn = new Button();
             NameText = new Label();
             PositionText = new Label();
             AdminPanelBtn = new Button();
             SuspendLayout();
             // 
-            // LogoutBtn
+            // LogoutAdminBtn
             // 
-            LogoutBtn.Font = new Font("Consolas", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LogoutBtn.Location = new Point(12, 91);
-            LogoutBtn.Name = "LogoutBtn";
-            LogoutBtn.Size = new Size(87, 31);
-            LogoutBtn.TabIndex = 0;
-            LogoutBtn.Text = "Logout";
-            LogoutBtn.UseVisualStyleBackColor = true;
-            LogoutBtn.Click += LogoutBtn_Click;
+            LogoutAdminBtn.Font = new Font("Consolas", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LogoutAdminBtn.Location = new Point(12, 91);
+            LogoutAdminBtn.Name = "LogoutAdminBtn";
+            LogoutAdminBtn.Size = new Size(87, 31);
+            LogoutAdminBtn.TabIndex = 0;
+            LogoutAdminBtn.Text = "Logout";
+            LogoutAdminBtn.UseVisualStyleBackColor = true;
+            LogoutAdminBtn.Click += LogoutAdminBtn_Click;
             // 
             // NameText
             // 
@@ -84,7 +84,7 @@
             Controls.Add(AdminPanelBtn);
             Controls.Add(PositionText);
             Controls.Add(NameText);
-            Controls.Add(LogoutBtn);
+            Controls.Add(LogoutAdminBtn);
             Name = "AdminProfile";
             Text = "Profile";
             ResumeLayout(false);
@@ -93,7 +93,7 @@
 
         #endregion
 
-        private Button LogoutBtn;
+        private Button LogoutAdminBtn;
         private Label NameText;
         private Label PositionText;
         private Button AdminPanelBtn;
