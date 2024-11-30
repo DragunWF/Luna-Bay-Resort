@@ -32,20 +32,21 @@
             EmpID = new DataGridViewTextBoxColumn();
             Username = new DataGridViewTextBoxColumn();
             Position = new DataGridViewTextBoxColumn();
-            Checkbox = new DataGridViewCheckBoxColumn();
-            DeleteAccount = new DataGridViewCheckBoxColumn();
+            ResetPassword = new DataGridViewCheckBoxColumn();
+            Delete = new DataGridViewCheckBoxColumn();
             label1 = new Label();
             ResetBtn = new Button();
             SearchBtn = new Button();
             SearchTxt = new TextBox();
             DeleteBtn = new Button();
+            RefreshBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)accountsDataGrid).BeginInit();
             SuspendLayout();
             // 
             // accountsDataGrid
             // 
             accountsDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            accountsDataGrid.Columns.AddRange(new DataGridViewColumn[] { EmpID, Username, Position, Checkbox, DeleteAccount });
+            accountsDataGrid.Columns.AddRange(new DataGridViewColumn[] { EmpID, Username, Position, ResetPassword, Delete });
             accountsDataGrid.Location = new Point(50, 84);
             accountsDataGrid.Margin = new Padding(3, 2, 3, 2);
             accountsDataGrid.Name = "accountsDataGrid";
@@ -74,21 +75,21 @@
             Position.Name = "Position";
             Position.Width = 125;
             // 
-            // Checkbox
+            // ResetPassword
             // 
-            Checkbox.HeaderText = "Reset Password";
-            Checkbox.MinimumWidth = 6;
-            Checkbox.Name = "Checkbox";
-            Checkbox.Width = 125;
+            ResetPassword.HeaderText = "Reset Password";
+            ResetPassword.MinimumWidth = 6;
+            ResetPassword.Name = "ResetPassword";
+            ResetPassword.Width = 125;
             // 
-            // DeleteAccount
+            // Delete
             // 
-            DeleteAccount.HeaderText = "Delete ";
-            DeleteAccount.MinimumWidth = 6;
-            DeleteAccount.Name = "DeleteAccount";
-            DeleteAccount.Resizable = DataGridViewTriState.True;
-            DeleteAccount.SortMode = DataGridViewColumnSortMode.Automatic;
-            DeleteAccount.Width = 125;
+            Delete.HeaderText = "Delete ";
+            Delete.MinimumWidth = 6;
+            Delete.Name = "Delete";
+            Delete.Resizable = DataGridViewTriState.True;
+            Delete.SortMode = DataGridViewColumnSortMode.Automatic;
+            Delete.Width = 125;
             // 
             // label1
             // 
@@ -103,7 +104,7 @@
             // ResetBtn
             // 
             ResetBtn.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            ResetBtn.Location = new Point(462, 370);
+            ResetBtn.Location = new Point(452, 370);
             ResetBtn.Margin = new Padding(3, 2, 3, 2);
             ResetBtn.Name = "ResetBtn";
             ResetBtn.Size = new Size(82, 22);
@@ -135,7 +136,7 @@
             // DeleteBtn
             // 
             DeleteBtn.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            DeleteBtn.Location = new Point(561, 370);
+            DeleteBtn.Location = new Point(540, 370);
             DeleteBtn.Margin = new Padding(3, 2, 3, 2);
             DeleteBtn.Name = "DeleteBtn";
             DeleteBtn.Size = new Size(82, 22);
@@ -144,11 +145,24 @@
             DeleteBtn.UseVisualStyleBackColor = true;
             DeleteBtn.Click += DeleteBtn_Click;
             // 
+            // RefreshBtn
+            // 
+            RefreshBtn.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            RefreshBtn.Location = new Point(628, 370);
+            RefreshBtn.Margin = new Padding(3, 2, 3, 2);
+            RefreshBtn.Name = "RefreshBtn";
+            RefreshBtn.Size = new Size(82, 22);
+            RefreshBtn.TabIndex = 6;
+            RefreshBtn.Text = "Refresh";
+            RefreshBtn.UseVisualStyleBackColor = true;
+            RefreshBtn.Click += RefreshBtn_Click;
+            // 
             // ViewAccountsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(753, 418);
+            Controls.Add(RefreshBtn);
             Controls.Add(DeleteBtn);
             Controls.Add(SearchTxt);
             Controls.Add(SearchBtn);
@@ -170,11 +184,12 @@
         private Button ResetBtn;
         private Button SearchBtn;
         private TextBox SearchTxt;
+        private Button DeleteBtn;
         private DataGridViewTextBoxColumn EmpID;
         private DataGridViewTextBoxColumn Username;
         private DataGridViewTextBoxColumn Position;
-        private DataGridViewCheckBoxColumn Checkbox;
-        private DataGridViewCheckBoxColumn DeleteAccount;
-        private Button DeleteBtn;
+        private DataGridViewCheckBoxColumn ResetPassword;
+        private DataGridViewCheckBoxColumn Delete;
+        private Button RefreshBtn;
     }
 }

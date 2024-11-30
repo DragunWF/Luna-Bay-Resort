@@ -87,14 +87,48 @@ namespace Luna_Bay_Resort_App.Helpers
             }
         }
 
-        public static void ResetUserPasswords(List<string> empIds)
+        public static void ResetUserPassword(List<string> empIds, string newPassword)
         {
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
 
+                string query = @"
+                UPDATE Employees
+                SET Password = @Password
+                WHERE Emp_ID = @EmpID";
+
+                foreach (string empId in empIds)
+                {
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.Add("@Password", SqlDbType.VarChar).Value = newPassword;
+                        cmd.Parameters.Add("@EmpID", SqlDbType.VarChar).Value = empId;
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
         }
 
         public static void DeleteUserAccounts(List<string> empIds)
         {
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
 
+                string query = @"
+                DELETE FROM Employees
+                WHERE Emp_ID = @EmpID";
+
+                foreach (string empId in empIds)
+                {
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.Add("@EmpID", SqlDbType.VarChar).Value = empId;
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
         }
 
         public static List<string> GetPositions()
