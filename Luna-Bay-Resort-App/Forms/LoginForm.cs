@@ -10,7 +10,7 @@ namespace MainForms
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
-            LoginPassword.PasswordChar = '*';
+            LoginPassword.UseSystemPasswordChar = true;
         }
 
         private void LoginBtn_Click(object sender, EventArgs e)
@@ -52,7 +52,7 @@ namespace MainForms
 
         private void ShowPasswordCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            LoginPassword.PasswordChar = ShowPasswordCheckBox.Checked ? '\0' : '*';
+            LoginPassword.UseSystemPasswordChar = !ShowPasswordCheckBox.Checked;
         }
     }
 }

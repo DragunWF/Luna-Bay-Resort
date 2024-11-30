@@ -9,8 +9,8 @@ namespace Luna_Bay_Resort_App.Forms.AdminPanelForms
         public CreateNewAccount()
         {
             InitializeComponent();
-            TxtPassword.PasswordChar = '*';
-            TxtConfirmPassword.PasswordChar = '*';
+            TxtPassword.UseSystemPasswordChar = true;
+            TxtConfirmPassword.UseSystemPasswordChar = true;
 
             foreach (string position in DatabaseHelper.GetPositions())
             {
