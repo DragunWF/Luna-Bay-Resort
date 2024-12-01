@@ -16,10 +16,14 @@ namespace Luna_Bay_Resort_App.Helpers
             currentUser = user;
         }
 
-        public static void LogoutUser() { 
-            DatabaseHelper.AddActivity($"{currentUser.GetName()} [{currentUser.GetPosition()}] has logged out!",
-                                          Utils.GetCurrentDate());
-            currentUser = null;
+        public static void LogoutUser() 
+        { 
+            if (currentUser != null)
+            {
+                DatabaseHelper.AddActivity($"{currentUser.GetName()} [{currentUser.GetPosition()}] has logged out!",
+                              Utils.GetCurrentDate());
+                currentUser = null;
+            }
         }
 
         public static User GetCurrentUser() => currentUser;
