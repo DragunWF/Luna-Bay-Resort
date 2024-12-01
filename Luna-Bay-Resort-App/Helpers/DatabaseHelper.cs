@@ -657,7 +657,7 @@ namespace Luna_Bay_Resort_App.Helpers
         public static int GetPax(String roomName)
         {
             int pax = 0;
-            using(SqlConnection con = new SqlConnection(Key))
+            using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
                 string query = "SELECT DISTINCT Pax FROM Accommodation WHERE Name = @RoomName";
@@ -670,7 +670,7 @@ namespace Luna_Bay_Resort_App.Helpers
                     if (read.Read())
                     {
                         pax = Convert.ToInt32(read["Pax"]);
-                        
+
                     }
                     return pax;
                 }
@@ -815,7 +815,7 @@ namespace Luna_Bay_Resort_App.Helpers
         {
             int stocklevel = 0;
 
-            using(SqlConnection con = new SqlConnection(Key))
+            using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
                 string query = @"SELECT 
@@ -960,7 +960,7 @@ namespace Luna_Bay_Resort_App.Helpers
 
         public static void UpdateItem(string category, string newname, string orginalname, double price)
         {
-            using(SqlConnection con = new SqlConnection(Key))
+            using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
                 string query = $"UPDATE {category} SET Name = @name, Price = @price WHERE Name = @originalname";
@@ -985,11 +985,11 @@ namespace Luna_Bay_Resort_App.Helpers
                 con.Open();
                 string query = $"SELECT Description, Date FROM Activities";
                 SqlCommand command = new SqlCommand(query, con);
-                using (var reader = command.ExecuteReader()) 
+                using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        activities.Add(new Activity(reader["Description"].ToString(), 
+                        activities.Add(new Activity(reader["Description"].ToString(),
                                                     reader["Date"].ToString()));
                     }
                 }
@@ -1019,7 +1019,8 @@ namespace Luna_Bay_Resort_App.Helpers
         //USE Utils.GetDateOnly
         public static void AddRevenue(string date, double revenue)
         {
-            using (SqlConnection con = new SqlConnection(Key)){
+            using (SqlConnection con = new SqlConnection(Key))
+            {
                 con.Open();
                 string query = "SELECT COUNT(Date) FROM Revenue WHERE Date = @Date";
 
@@ -1051,21 +1052,21 @@ namespace Luna_Bay_Resort_App.Helpers
 
         public static void AddWalkIn(string name, int numofperson, string duration, string date, int total, int paymentId, string paymentreference)
         {
-            using(SqlConnection con = new SqlConnection(Key))
+            using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
-                    string query = "INSERT INTO WalkIn(Name, NumOfPerson, Duration, Date, Total, PaymentType_ID, PaymentReference_NO) " +
-                    "VALUES (@name, @numofperson, @duration, @date, @total, @paymentId, @paymentreference)";
+                string query = "INSERT INTO WalkIn(Name, NumOfPerson, Duration, Date, Total, PaymentType_ID, PaymentReference_NO) " +
+                "VALUES (@name, @numofperson, @duration, @date, @total, @paymentId, @paymentreference)";
 
-                    SqlCommand comm = new SqlCommand(query, con);
-                    comm.Parameters.AddWithValue("@name", name);
-                    comm.Parameters.AddWithValue("@numofperson", numofperson);
-                    comm.Parameters.AddWithValue("@duration", duration);
-                    comm.Parameters.AddWithValue("@date", date);
-                    comm.Parameters.AddWithValue("@total", total);
-                    comm.Parameters.AddWithValue("@paymentId", paymentId);
-                    comm.Parameters.AddWithValue("@paymentreference", paymentreference);
-                    comm.ExecuteNonQuery();
+                SqlCommand comm = new SqlCommand(query, con);
+                comm.Parameters.AddWithValue("@name", name);
+                comm.Parameters.AddWithValue("@numofperson", numofperson);
+                comm.Parameters.AddWithValue("@duration", duration);
+                comm.Parameters.AddWithValue("@date", date);
+                comm.Parameters.AddWithValue("@total", total);
+                comm.Parameters.AddWithValue("@paymentId", paymentId);
+                comm.Parameters.AddWithValue("@paymentreference", paymentreference);
+                comm.ExecuteNonQuery();
                 con.Close();
             }
         }

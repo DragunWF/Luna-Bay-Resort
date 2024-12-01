@@ -13,9 +13,10 @@ namespace Luna_Bay_Resort_App.Forms.WalkInForms
 {
     public partial class WalkInReceipt : Form
     {
-        private readonly string name, date, duration, receiptno, paymentmethod;
+        private readonly string name, date, duration, receiptNo, paymentMethod;
         private readonly double total;
         private readonly int numofPerson;
+
         public WalkInReceipt(string name, string date, string duration, int numofPerson, int total, string paymentmethod)
         {
             InitializeComponent();
@@ -24,18 +25,19 @@ namespace Luna_Bay_Resort_App.Forms.WalkInForms
             this.duration = duration;
             this.numofPerson = numofPerson;
             this.total = total;
-            this.paymentmethod = paymentmethod;
+            this.paymentMethod = paymentmethod;
 
-            receiptno = Utils.GenerateReceiptNo();
+            receiptNo = Utils.GenerateReceiptNo();
+            DatabaseHelper.AddActivity($"Walk-in receipt generated ID: {receiptNo}", Utils.GetCurrentDate());
 
             DisplayReceiptData();
         }
         private void DisplayReceiptData()
         {
             // Receipt Details
-            ReceiptNoText.Text = receiptno;
+            ReceiptNoText.Text = receiptNo;
             DateTimeText.Text = Utils.GetCurrentDate();
-            PaymentMethodText.Text = paymentmethod;
+            PaymentMethodText.Text = paymentMethod;
 
             // Reservation Details
             FullNameText.Text = name;
