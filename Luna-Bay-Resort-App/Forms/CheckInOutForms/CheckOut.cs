@@ -6,7 +6,7 @@ namespace SubForms
     public partial class CheckOut : Form
     {
         private int checkInNo = -1;
-        string status = "Cleaning";
+        private string status = "Cleaning";
         private Guest checkIn;
 
         public CheckOut()
@@ -46,7 +46,7 @@ namespace SubForms
             }
             catch (FormatException err)
             {
-                MessageBox.Show("Please enter a valid check-in nuber!");
+                MessageBox.Show("Please enter a valid check-in number!");
             }
             catch (Exception err)
             {
