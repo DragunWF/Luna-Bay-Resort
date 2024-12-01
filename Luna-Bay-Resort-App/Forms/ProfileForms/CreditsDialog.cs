@@ -12,11 +12,12 @@ namespace Luna_Bay_Resort_App.Forms.ProfileForms
 {
     public partial class CreditsDialog : Form
     {
-        public CreditsDialog(string message, string button1Text, string button2Text)
+        public CreditsDialog(string header, string message, string button1Text, string button2Text)
         {
             InitializeComponent();
 
             // Set the message text
+            HeaderLabel.Text = header;
             MessageLabel.Text = message;
 
             // Set button texts

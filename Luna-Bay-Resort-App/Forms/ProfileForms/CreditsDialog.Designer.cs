@@ -2,6 +2,7 @@
 {
     partial class CreditsDialog
     {
+        private System.Windows.Forms.Label HeaderLabel;
         private System.Windows.Forms.Label MessageLabel;
         private System.Windows.Forms.Button BtnOption1;
         private System.Windows.Forms.Button BtnOption2;
@@ -16,8 +17,6 @@
         {
             if (disposing)
             {
-                // If the `components` container is not used, remove the null check for `components`.
-                // Otherwise, declare it as `private System.ComponentModel.IContainer components = null;` above.
                 components?.Dispose();
             }
             base.Dispose(disposing);
@@ -30,39 +29,51 @@
         /// </summary>
         private void InitializeComponent()
         {
+            HeaderLabel = new Label();
             MessageLabel = new Label();
             BtnOption1 = new Button();
             BtnOption2 = new Button();
             SuspendLayout();
             // 
+            // HeaderLabel
+            // 
+            HeaderLabel.AutoSize = true;
+            HeaderLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            HeaderLabel.Location = new Point(20, 20);
+            HeaderLabel.Margin = new Padding(4, 0, 4, 0);
+            HeaderLabel.Name = "HeaderLabel";
+            HeaderLabel.Size = new Size(181, 21);
+            HeaderLabel.TabIndex = 0;
+            HeaderLabel.Text = "This is the Header Text";
+            // 
             // MessageLabel
             // 
             MessageLabel.AutoSize = true;
-            MessageLabel.Location = new Point(23, 23);
+            MessageLabel.Location = new Point(23, 60);
             MessageLabel.Margin = new Padding(4, 0, 4, 0);
             MessageLabel.MaximumSize = new Size(467, 0);
             MessageLabel.Name = "MessageLabel";
             MessageLabel.Size = new Size(79, 15);
-            MessageLabel.TabIndex = 0;
+            MessageLabel.TabIndex = 1;
             MessageLabel.Text = "Message here";
             // 
             // BtnOption1
             // 
-            BtnOption1.Location = new Point(118, 161);
+            BtnOption1.Location = new Point(118, 181);
             BtnOption1.Margin = new Padding(4, 3, 4, 3);
             BtnOption1.Name = "BtnOption1";
             BtnOption1.Size = new Size(117, 35);
-            BtnOption1.TabIndex = 1;
+            BtnOption1.TabIndex = 2;
             BtnOption1.Text = "Option 1";
             BtnOption1.UseVisualStyleBackColor = true;
             // 
             // BtnOption2
             // 
-            BtnOption2.Location = new Point(259, 161);
+            BtnOption2.Location = new Point(260, 181);
             BtnOption2.Margin = new Padding(4, 3, 4, 3);
             BtnOption2.Name = "BtnOption2";
             BtnOption2.Size = new Size(117, 35);
-            BtnOption2.TabIndex = 2;
+            BtnOption2.TabIndex = 3;
             BtnOption2.Text = "Option 2";
             BtnOption2.UseVisualStyleBackColor = true;
             // 
@@ -70,7 +81,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(513, 208);
+            ClientSize = new Size(513, 228);
+            Controls.Add(HeaderLabel);
             Controls.Add(MessageLabel);
             Controls.Add(BtnOption1);
             Controls.Add(BtnOption2);
