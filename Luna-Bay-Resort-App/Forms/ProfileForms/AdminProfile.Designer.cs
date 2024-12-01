@@ -99,7 +99,7 @@
             Controls.Add(NameText);
             Controls.Add(LogoutAdminBtn);
             Name = "AdminProfile";
-            Text = "Profile";
+            Text = "Admin Profile";
             ResumeLayout(false);
             PerformLayout();
         }
