@@ -706,7 +706,8 @@ namespace Luna_Bay_Resort_App.Helpers
                     while (reader.Read())
                     {
                         string foodName = reader["Name"].ToString();
-                        int stock = Convert.ToInt32(reader["Stock"]);
+
+                        int? stock = reader["Stock"] == DBNull.Value ? (int?)null : Convert.ToInt32(reader["Stock"]);
                         double price = Convert.ToDouble(reader["Price"]);
 
                         foods.Add(new Food(foodName, stock, price));
@@ -1029,7 +1030,7 @@ namespace Luna_Bay_Resort_App.Helpers
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
-                string query = @"SELECT Name, Stock, Price from Food WHERE FoodType_ID = 6 AND Name LIKE '%' + @Name + '%' 
+                string query = @"SELECT Name, Stock, Price from Food WHERE (FoodType_ID = 5 OR FoodType_ID = 6) AND STOCK IS NOT NULL AND Name LIKE '%' + @Name + '%' 
                                  UNION 
                                  SELECT Name, Stock, Price from Products WHERE Name LIKE '%' + @Name + '%'";
 

@@ -20,8 +20,7 @@ namespace Luna_Bay_Resort_App.Forms.InventoryForms
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
 
-            DisplayFoodByFoodID(6);
-            GetProduct();
+            SearchItem("");
         }
 
         private void PurchaseOrderBtn_Click(object sender, EventArgs e)
@@ -81,8 +80,7 @@ namespace Luna_Bay_Resort_App.Forms.InventoryForms
         protected override void OnActivated(EventArgs e)
         {
             inventoryDataGrid.Rows.Clear();
-            DisplayFoodByFoodID(6);
-            GetProduct();
+            SearchItem("");
         }
     }
 }
