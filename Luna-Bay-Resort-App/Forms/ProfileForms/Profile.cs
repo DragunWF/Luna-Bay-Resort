@@ -37,8 +37,8 @@ namespace Luna_Bay_Resort_App.Forms
             if (result == DialogResult.Yes)
             {
                 SessionData.LogoutUser();
+                FormManager.CloseAllForms();
                 FormManager.OpenForm<LoginForm>();
-                FormManager.CloseForm<Dashboard>();
                 Close();
             }
         }
