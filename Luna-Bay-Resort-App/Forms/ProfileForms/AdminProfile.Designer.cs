@@ -32,6 +32,7 @@
             NameText = new Label();
             PositionText = new Label();
             AdminPanelBtn = new Button();
+            CreditsBtn = new Button();
             SuspendLayout();
             // 
             // LogoutAdminBtn
@@ -76,11 +77,23 @@
             AdminPanelBtn.UseVisualStyleBackColor = true;
             AdminPanelBtn.Click += AdminPanelBtn_Click;
             // 
+            // CreditsBtn
+            // 
+            CreditsBtn.Font = new Font("Consolas", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            CreditsBtn.Location = new Point(12, 128);
+            CreditsBtn.Name = "CreditsBtn";
+            CreditsBtn.Size = new Size(234, 31);
+            CreditsBtn.TabIndex = 4;
+            CreditsBtn.Text = "Developers of the System";
+            CreditsBtn.UseVisualStyleBackColor = true;
+            CreditsBtn.Click += CreditsBtn_Click;
+            // 
             // AdminProfile
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(260, 143);
+            ClientSize = new Size(260, 172);
+            Controls.Add(CreditsBtn);
             Controls.Add(AdminPanelBtn);
             Controls.Add(PositionText);
             Controls.Add(NameText);
@@ -97,5 +110,6 @@
         private Label NameText;
         private Label PositionText;
         private Button AdminPanelBtn;
+        private Button CreditsBtn;
     }
 }

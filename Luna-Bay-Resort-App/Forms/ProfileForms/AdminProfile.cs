@@ -1,5 +1,6 @@
 ﻿using Luna_Bay_Resort_App.Data;
 using Luna_Bay_Resort_App.Forms.AdminPanelForms;
+using Luna_Bay_Resort_App.Forms.ProfileForms;
 using Luna_Bay_Resort_App.Helpers;
 using MainForms;
 
@@ -49,5 +50,39 @@ namespace Luna_Bay_Resort_App.Forms
             FormManager.OpenForm<AdminPanel>();
             Close();
         }
+
+        private void CreditsBtn_Click(object sender, EventArgs e)
+        {
+            string creditsText = "Developers of the App:\n" +
+                                 "1. Marc Plarisan | DragunWF - Lead Developer\n" +
+                                 "2. Isaac Severino | Aysaaak - Developer, Database Administrator\n" +
+                                 "3. Jay Arnon Sinahunon | JasDevPH - Developer, UI/UX Designer\n" +
+                                 "4. Bastian Kyle Aguilar - Documentation\n" +
+                                 "5. Daniel Kurt Buante - Assistant\n\n" +
+                                 "GitHub Repository: https://github.com/DragunWF/Luna-Bay-Resort";
+
+            using (var dialog = new CreditsDialog(creditsText, "Visit GitHub", "Close"))
+            {
+                var result = dialog.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    try
+                    {
+                        var psi = new System.Diagnostics.ProcessStartInfo
+                        {
+                            FileName = "https://github.com/DragunWF/Luna-Bay-Resort",
+                            UseShellExecute = true
+                        };
+                        System.Diagnostics.Process.Start(psi);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Failed to open the link. Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
     }
 }
