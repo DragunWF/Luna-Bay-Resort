@@ -958,7 +958,7 @@ namespace Luna_Bay_Resort_App.Helpers
             return foods;
         }
 
-        public static void UpdateItem(string category, string newname, string orginalname, double price)
+        public static void UpdateItemPrice(string category, string newname, string orginalname, double price)
         {
             using (SqlConnection con = new SqlConnection(Key))
             {
@@ -972,6 +972,76 @@ namespace Luna_Bay_Resort_App.Helpers
                 con.Close();
 
             }
+        }
+
+        public static void UpdateItemStock(string name, int stock)
+        {
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string queryFood = "SELECT COUNT(*) FROM Food WHERE Name = @name";
+
+                SqlCommand cmdFood = new SqlCommand(queryFood, con);
+                cmdFood.Parameters.AddWithValue("@name", name);
+                int foodCount = Convert.ToInt32(cmdFood.ExecuteScalar());
+
+                if (foodCount > 0)
+                {
+                    string query = "UPDATE Food SET Stock = Stock + @stock WHERE Name = @name";
+                    SqlCommand cmmdFood = new SqlCommand(query, con);
+                    cmmdFood.Parameters.AddWithValue("@name", name);
+                    cmmdFood.Parameters.AddWithValue("@stock", stock);
+                    cmmdFood.ExecuteNonQuery();
+                    con.Close();
+                }
+                else
+                {
+                    string queryProduct = "SELECT COUNT(*) FROM Products WHERE Name = @ItemName";
+                    SqlCommand cmdProduct = new SqlCommand(queryProduct, con);
+                    cmdProduct.Parameters.AddWithValue("@ItemName", name);
+
+                    int productCount = Convert.ToInt32(cmdProduct.ExecuteScalar());
+                    if (productCount > 0)
+                    {
+                        string query = "UPDATE Products SET Stock = Stock + @stock WHERE Name = @name";
+                        SqlCommand updateitem = new SqlCommand(query, con);
+                        updateitem.Parameters.AddWithValue("@name", name);
+                        updateitem.Parameters.AddWithValue("@stock", stock);
+                        updateitem.ExecuteNonQuery();
+                        con.Close();
+                    }
+                }
+                    
+            }
+        }
+
+        public static List<Items> SearchItemInventory(string itemname)
+        {
+            var items = new List<Items>();
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = @"SELECT Name, Stock, Price from Food WHERE FoodType_ID = 6 AND Name LIKE '%' + @Name + '%' 
+                                 UNION 
+                                 SELECT Name, Stock, Price from Products WHERE Name LIKE '%' + @Name + '%'";
+
+                SqlCommand getitem = new SqlCommand(query, con);
+                getitem.Parameters.AddWithValue("@Name", itemname);
+
+                using (var reader = getitem.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string name = reader["Name"].ToString();
+                        int quantity = Convert.ToInt32(reader["Stock"]);
+                        double price = Convert.ToDouble(reader["Price"]);
+
+                        items.Add(new Items(name, quantity, price));
+                    }
+                }
+                con.Close();
+            }
+            return items;
         }
         #endregion
 

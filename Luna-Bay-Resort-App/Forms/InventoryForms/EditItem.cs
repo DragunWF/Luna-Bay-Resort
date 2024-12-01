@@ -82,7 +82,7 @@ namespace Luna_Bay_Resort_App.Forms.InventoryForms
                 {
                     MessageBox.Show("Price cant be lower than 0");
                 }
-                DatabaseHelper.UpdateItem(Categorycb.Text, ItemNamecb.Text, selectedItemName, price);
+                DatabaseHelper.UpdateItemPrice(Categorycb.Text, ItemNamecb.Text, selectedItemName, price);
                 MessageBox.Show("Item updated successfully.");
             }
             catch (FormatException ex)
