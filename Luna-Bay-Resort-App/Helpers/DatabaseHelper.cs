@@ -895,6 +895,7 @@ namespace Luna_Bay_Resort_App.Helpers
         #endregion
 
         #region Inventory
+
         public static void AddNewFood(int foodType, String name, String serving, double price, int stock)
         {
             using (SqlConnection con = new SqlConnection(Key))
@@ -917,6 +918,7 @@ namespace Luna_Bay_Resort_App.Helpers
                 con.Close();
             }
         }
+
         public static void AddNewProduct(String name, double price, int stock)
         {
             using (SqlConnection con = new SqlConnection(Key))

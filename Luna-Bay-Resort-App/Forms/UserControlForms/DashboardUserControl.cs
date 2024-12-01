@@ -12,6 +12,12 @@ namespace Luna_Bay_Resort_App.Forms.UserControlForms
 
             GetReservation();
             StockLevels();
+            DisplayActivities();
+        }
+
+        private void DisplayActivities()
+        {
+
         }
 
         private void GetReservation()
@@ -25,11 +31,11 @@ namespace Luna_Bay_Resort_App.Forms.UserControlForms
         private void StockLevels()
         {
             //Out of stock label
-            label10.Text = $"{DatabaseHelper.GetOutofStock().ToString()} Items";
+            outOfStockLabel.Text = $"{DatabaseHelper.GetOutofStock().ToString()} Items";
             //Low stock label
-            label11.Text = $"{DatabaseHelper.GetLowStock().ToString()} Items";
+            lowStockLabel.Text = $"{DatabaseHelper.GetLowStock().ToString()} Items";
             //Full stock label
-            label12.Text = $"{DatabaseHelper.GetFullStock().ToString()} Items";
+            fullStockLabel.Text = $"{DatabaseHelper.GetFullStock().ToString()} Items";
         }
     }
 }
