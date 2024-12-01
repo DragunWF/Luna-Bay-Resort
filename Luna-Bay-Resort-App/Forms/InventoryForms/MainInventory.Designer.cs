@@ -28,81 +28,90 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dgvInventory = new DataGridView();
-            purchaseOrderBtn = new Button();
+            inventoryDataGrid = new DataGridView();
+            PurchaseOrderBtn = new Button();
             txtSearch = new TextBox();
-            searchBtn = new Button();
-            addItemBtn = new Button();
-            editItemBtn = new Button();
+            SearchBtn = new Button();
+            AddItemBtn = new Button();
+            EditItemBtn = new Button();
             itemName = new DataGridViewTextBoxColumn();
             price = new DataGridViewTextBoxColumn();
             quantity = new DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)dgvInventory).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)inventoryDataGrid).BeginInit();
             SuspendLayout();
             // 
-            // dgvInventory
+            // inventoryDataGrid
             // 
-            dgvInventory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvInventory.Columns.AddRange(new DataGridViewColumn[] { itemName, price, quantity });
-            dgvInventory.Location = new Point(32, 33);
-            dgvInventory.Name = "dgvInventory";
-            dgvInventory.RowHeadersWidth = 51;
-            dgvInventory.Size = new Size(951, 468);
-            dgvInventory.TabIndex = 0;
+            inventoryDataGrid.Columns.AddRange(new DataGridViewColumn[] { itemName, price, quantity });
+            inventoryDataGrid.Location = new Point(28, 25);
+            inventoryDataGrid.Margin = new Padding(3, 2, 3, 2);
+            inventoryDataGrid.Name = "inventoryDataGrid";
+            inventoryDataGrid.RowHeadersWidth = 51;
+            inventoryDataGrid.Size = new Size(832, 351);
+            inventoryDataGrid.TabIndex = 0;
             // 
-            // purchaseOrderBtn
+            // PurchaseOrderBtn
             // 
-            purchaseOrderBtn.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            purchaseOrderBtn.Location = new Point(543, 530);
-            purchaseOrderBtn.Name = "purchaseOrderBtn";
-            purchaseOrderBtn.Size = new Size(157, 41);
-            purchaseOrderBtn.TabIndex = 1;
-            purchaseOrderBtn.Text = "Purchase Order";
-            purchaseOrderBtn.UseVisualStyleBackColor = true;
+            PurchaseOrderBtn.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            PurchaseOrderBtn.Location = new Point(475, 398);
+            PurchaseOrderBtn.Margin = new Padding(3, 2, 3, 2);
+            PurchaseOrderBtn.Name = "PurchaseOrderBtn";
+            PurchaseOrderBtn.Size = new Size(137, 31);
+            PurchaseOrderBtn.TabIndex = 1;
+            PurchaseOrderBtn.Text = "Purchase Order";
+            PurchaseOrderBtn.UseVisualStyleBackColor = true;
+            PurchaseOrderBtn.Click += PurchaseOrderBtn_Click;
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(32, 537);
+            txtSearch.Location = new Point(28, 403);
+            txtSearch.Margin = new Padding(3, 2, 3, 2);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(220, 27);
+            txtSearch.Size = new Size(193, 23);
             txtSearch.TabIndex = 2;
             // 
-            // searchBtn
+            // SearchBtn
             // 
-            searchBtn.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            searchBtn.Location = new Point(269, 537);
-            searchBtn.Name = "searchBtn";
-            searchBtn.Size = new Size(94, 27);
-            searchBtn.TabIndex = 3;
-            searchBtn.Text = "Search";
-            searchBtn.UseVisualStyleBackColor = true;
+            SearchBtn.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            SearchBtn.Location = new Point(235, 403);
+            SearchBtn.Margin = new Padding(3, 2, 3, 2);
+            SearchBtn.Name = "SearchBtn";
+            SearchBtn.Size = new Size(82, 26);
+            SearchBtn.TabIndex = 3;
+            SearchBtn.Text = "Search";
+            SearchBtn.UseVisualStyleBackColor = true;
+            SearchBtn.Click += SearchBtn_Click;
             // 
-            // addItemBtn
+            // AddItemBtn
             // 
-            addItemBtn.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            addItemBtn.Location = new Point(717, 530);
-            addItemBtn.Name = "addItemBtn";
-            addItemBtn.Size = new Size(125, 41);
-            addItemBtn.TabIndex = 4;
-            addItemBtn.Text = "Add Item";
-            addItemBtn.UseVisualStyleBackColor = true;
+            AddItemBtn.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            AddItemBtn.Location = new Point(627, 398);
+            AddItemBtn.Margin = new Padding(3, 2, 3, 2);
+            AddItemBtn.Name = "AddItemBtn";
+            AddItemBtn.Size = new Size(109, 31);
+            AddItemBtn.TabIndex = 4;
+            AddItemBtn.Text = "Add Item";
+            AddItemBtn.UseVisualStyleBackColor = true;
+            AddItemBtn.Click += AddItemBtn_Click;
             // 
-            // editItemBtn
+            // EditItemBtn
             // 
-            editItemBtn.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            editItemBtn.Location = new Point(858, 530);
-            editItemBtn.Name = "editItemBtn";
-            editItemBtn.Size = new Size(125, 41);
-            editItemBtn.TabIndex = 5;
-            editItemBtn.Text = "Edit Item";
-            editItemBtn.UseVisualStyleBackColor = true;
+            EditItemBtn.Font = new Font("Consolas", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            EditItemBtn.Location = new Point(751, 398);
+            EditItemBtn.Margin = new Padding(3, 2, 3, 2);
+            EditItemBtn.Name = "EditItemBtn";
+            EditItemBtn.Size = new Size(109, 31);
+            EditItemBtn.TabIndex = 5;
+            EditItemBtn.Text = "Edit Item";
+            EditItemBtn.UseVisualStyleBackColor = true;
+            EditItemBtn.Click += EditItemBtn_Click;
             // 
             // itemName
             // 
             itemName.HeaderText = "Item Name";
             itemName.MinimumWidth = 6;
             itemName.Name = "itemName";
-            itemName.Width = 600;
+            itemName.Width = 482;
             // 
             // price
             // 
@@ -120,32 +129,33 @@
             // 
             // MainInventory
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1015, 630);
-            Controls.Add(editItemBtn);
-            Controls.Add(addItemBtn);
-            Controls.Add(searchBtn);
+            ClientSize = new Size(888, 472);
+            Controls.Add(EditItemBtn);
+            Controls.Add(AddItemBtn);
+            Controls.Add(SearchBtn);
             Controls.Add(txtSearch);
-            Controls.Add(purchaseOrderBtn);
-            Controls.Add(dgvInventory);
+            Controls.Add(PurchaseOrderBtn);
+            Controls.Add(inventoryDataGrid);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "MainInventory";
-            Text = "MainInventory";
-            ((System.ComponentModel.ISupportInitialize)dgvInventory).EndInit();
+            Text = "Inventory Management";
+            ((System.ComponentModel.ISupportInitialize)inventoryDataGrid).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dgvInventory;
-        private Button purchaseOrderBtn;
+        private DataGridView inventoryDataGrid;
+        private Button PurchaseOrderBtn;
         private TextBox txtSearch;
-        private Button searchBtn;
+        private Button SearchBtn;
+        private Button AddItemBtn;
+        private Button EditItemBtn;
         private DataGridViewTextBoxColumn itemName;
         private DataGridViewTextBoxColumn price;
         private DataGridViewTextBoxColumn quantity;
-        private Button addItemBtn;
-        private Button editItemBtn;
     }
 }

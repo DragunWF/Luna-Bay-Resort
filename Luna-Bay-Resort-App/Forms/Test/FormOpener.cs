@@ -1,5 +1,6 @@
 ﻿using Luna_Bay_Resort_App.Data;
 using Luna_Bay_Resort_App.Forms.AdminPanelForms;
+using Luna_Bay_Resort_App.Forms.InventoryForms;
 using Luna_Bay_Resort_App.Helpers;
 using Luna_Bay_Sub_Forms;
 using MainForms;
@@ -60,6 +61,11 @@ namespace Luna_Bay_Resort_App.Forms.Test
         private void AdminPanelBtn_Click(object sender, EventArgs e)
         {
             FormManager.OpenForm<AdminPanel>();
+        }
+
+        private void InventoryBtn_Click(object sender, EventArgs e)
+        {
+            FormManager.OpenForm<MainInventory>();
         }
     }
 }

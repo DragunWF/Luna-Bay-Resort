@@ -40,6 +40,7 @@
             label3 = new Label();
             roomStatusChangeTest = new Button();
             AdminPanelBtn = new Button();
+            InventoryBtn = new Button();
             SuspendLayout();
             // 
             // label1
@@ -160,11 +161,22 @@
             AdminPanelBtn.UseVisualStyleBackColor = true;
             AdminPanelBtn.Click += AdminPanelBtn_Click;
             // 
+            // InventoryBtn
+            // 
+            InventoryBtn.Location = new Point(12, 171);
+            InventoryBtn.Name = "InventoryBtn";
+            InventoryBtn.Size = new Size(138, 23);
+            InventoryBtn.TabIndex = 13;
+            InventoryBtn.Text = "Inventory";
+            InventoryBtn.UseVisualStyleBackColor = true;
+            InventoryBtn.Click += InventoryBtn_Click;
+            // 
             // FormOpener
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(453, 231);
+            Controls.Add(InventoryBtn);
             Controls.Add(AdminPanelBtn);
             Controls.Add(roomStatusChangeTest);
             Controls.Add(label3);
@@ -197,5 +209,6 @@
         private Label label3;
         private Button roomStatusChangeTest;
         private Button AdminPanelBtn;
+        private Button InventoryBtn;
     }
 }

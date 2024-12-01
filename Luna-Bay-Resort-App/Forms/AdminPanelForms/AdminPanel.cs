@@ -20,15 +20,5 @@ namespace Luna_Bay_Resort_App.Forms.AdminPanelForms
         {
             FormManager.OpenForm<ManageAccountsForm>();
         }
-
-        private void ResetAccountBtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DeleteAccountBtn_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
