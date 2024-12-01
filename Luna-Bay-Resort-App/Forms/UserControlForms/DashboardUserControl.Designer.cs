@@ -50,12 +50,12 @@
             Description = new DataGridViewTextBoxColumn();
             Date = new DataGridViewTextBoxColumn();
             reservationsDataGrid = new DataGridView();
-            ReservationId = new DataGridViewTextBoxColumn();
-            Name = new DataGridViewTextBoxColumn();
-            Select = new DataGridViewCheckBoxColumn();
             CheckInBtn = new Button();
             RefreshBtn = new Button();
             ClearActivitiesBtn = new Button();
+            ReservationId = new DataGridViewTextBoxColumn();
+            Name = new DataGridViewTextBoxColumn();
+            Select = new DataGridViewCheckBoxColumn();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)activitiesDataGrid).BeginInit();
@@ -294,31 +294,6 @@
             reservationsDataGrid.Size = new Size(567, 442);
             reservationsDataGrid.TabIndex = 3;
             // 
-            // ReservationId
-            // 
-            ReservationId.HeaderText = "ReservationId";
-            ReservationId.MinimumWidth = 6;
-            ReservationId.Name = "ReservationId";
-            ReservationId.ReadOnly = true;
-            ReservationId.Width = 115;
-            // 
-            // Name
-            // 
-            Name.HeaderText = "Name";
-            Name.MinimumWidth = 6;
-            Name.Name = "Name";
-            Name.ReadOnly = true;
-            Name.Width = 280;
-            // 
-            // Select
-            // 
-            Select.HeaderText = "Select to Check-in";
-            Select.MinimumWidth = 6;
-            Select.Name = "Select";
-            Select.Resizable = DataGridViewTriState.True;
-            Select.ToolTipText = "select";
-            Select.Width = 120;
-            // 
             // CheckInBtn
             // 
             CheckInBtn.Font = new Font("Consolas", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -354,6 +329,31 @@
             ClearActivitiesBtn.Text = "Clear Activities";
             ClearActivitiesBtn.UseVisualStyleBackColor = true;
             ClearActivitiesBtn.Click += ClearActivitiesBtn_Click;
+            // 
+            // ReservationId
+            // 
+            ReservationId.HeaderText = "ReservationId";
+            ReservationId.MinimumWidth = 6;
+            ReservationId.Name = "ReservationId";
+            ReservationId.ReadOnly = true;
+            ReservationId.Width = 115;
+            // 
+            // Name
+            // 
+            Name.HeaderText = "Name";
+            Name.MinimumWidth = 6;
+            Name.Name = "Name";
+            Name.ReadOnly = true;
+            Name.Width = 280;
+            // 
+            // Select
+            // 
+            Select.HeaderText = "Select For Check-in";
+            Select.MinimumWidth = 6;
+            Select.Name = "Select";
+            Select.Resizable = DataGridViewTriState.True;
+            Select.ToolTipText = "select";
+            Select.Width = 120;
             // 
             // DashboardUserControl
             // 
@@ -403,11 +403,11 @@
         private Button RefreshBtn;
         private Label label5;
         private Label label4;
-        private DataGridViewTextBoxColumn ReservationId;
-        private DataGridViewTextBoxColumn Name;
-        private DataGridViewCheckBoxColumn Select;
         private Button ClearActivitiesBtn;
         private Label yearLabel;
         private Label label6;
+        private DataGridViewTextBoxColumn ReservationId;
+        private DataGridViewTextBoxColumn Name;
+        private DataGridViewCheckBoxColumn Select;
     }
 }
