@@ -10,11 +10,39 @@ namespace MainForms
         private Button clickedButton = null;
         private Panel contentPanel;
 
+        private User currentUser;
+
         public Dashboard()
         {
+            currentUser = SessionData.GetCurrentUser();
+
             InitializeComponent();
             InitializeNavigationBar();
             SetFullScreenMode();
+            SetInitialContent();
+        }
+
+        private void SetInitialContent()
+        {
+            if (currentUser != null)
+            {
+                switch (currentUser.GetAuthId())
+                {
+                    case 1: // Admin
+                    case 2: // Manager
+                        SwitchContent("Dashboard");
+                        break;
+                    case 3: // Cashier
+                        SwitchContent("Booking");
+                        break;
+                    case 4: // Front Desk
+                        SwitchContent("Amenities");
+                        break;
+                    default: // When Role is Unknown
+                        SwitchContent("Dashboard");
+                        break;
+                }
+            }
         }
 
         private void SetFullScreenMode()
@@ -67,7 +95,6 @@ namespace MainForms
             int margin = 30;
 
             // Create navigation buttons for different sections
-            User currentUser = SessionData.GetCurrentUser();
             if (currentUser != null)
             {
                 switch (currentUser.GetAuthId())
