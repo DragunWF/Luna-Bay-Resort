@@ -2,7 +2,8 @@
 {
     internal class Food
     {
-        private int foodId, foodTypeId, stock;
+        private int foodId, foodTypeId;
+        private int? stock;
         private double price;
         private string foodName, serving;
 
@@ -15,7 +16,7 @@
             this.price = price;
         }
 
-        public Food(string foodName, int stock, double price)
+        public Food(string foodName, int? stock, double price)
         {
             this.foodName = foodName;
             this.stock = stock;
@@ -32,7 +33,7 @@
         public int GetFoodType() => foodTypeId;
         public string GetFoodName() => foodName;
         public string GetServing() => serving;
-        public int GetStock() => stock;
+        public int? GetStock() => stock;
         public double GetPrice() => price;
         #endregion
     }

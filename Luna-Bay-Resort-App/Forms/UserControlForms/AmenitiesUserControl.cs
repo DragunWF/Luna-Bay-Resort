@@ -102,7 +102,7 @@ namespace MainForms
                 string itemPriceText = menuTable.Rows[e.RowIndex].Cells["Price"].Value?.ToString();
                 
 
-                if (string.IsNullOrEmpty(itemName) || string.IsNullOrEmpty(itemPriceText) || string.IsNullOrEmpty(QuantityText))
+                if (string.IsNullOrEmpty(itemName) || string.IsNullOrEmpty(itemPriceText))
                 {
                     return;
                 }
@@ -489,7 +489,8 @@ namespace MainForms
             foreach (var food in foods)
             {
                 string formattedPrice = Utils.FormatCurrency(food.GetPrice());
-                menuTable.Rows.Add(food.GetFoodName(), food.GetStock(), formattedPrice);
+                string stock = food.GetStock() == null ? "" : food.GetStock().ToString();
+                menuTable.Rows.Add(food.GetFoodName(), stock, formattedPrice);
             }
         }
 
