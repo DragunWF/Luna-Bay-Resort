@@ -15,26 +15,26 @@
             this.roomstatus = roomstatus;
         }
 
-        //Room name
+        // Room name
         public Accommodation(string name)
         {
             this.name = name;
         }
 
-        //Room price
+        // Room price
         public Accommodation(int price)
         {
             this.price = price;
         }
 
-        //Room Availability
+        // Room Availability
         public Accommodation(int roomId, string name)
         {
             this.roomId = roomId;
             this.name = name;
         }
 
-        //Room Cleaning & Repair
+        // Room Cleaning & Repair
         public Accommodation(string roomstatus, int roomId)
         {
             this.roomstatus = roomstatus;

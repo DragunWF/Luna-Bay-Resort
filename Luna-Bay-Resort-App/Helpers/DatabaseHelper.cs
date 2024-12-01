@@ -980,7 +980,6 @@ namespace Luna_Bay_Resort_App.Helpers
                 updateitem.Parameters.AddWithValue("@price", price);
                 updateitem.ExecuteNonQuery();
                 con.Close();
-
             }
         }
 
