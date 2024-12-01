@@ -366,6 +366,14 @@ namespace Luna_Bay_Resort_App.Helpers
             return null;
         }
 
+        public static void CheckInReservations(List<int> reservationIds)
+        {
+            foreach (int id in reservationIds)
+            {
+                CheckInReservation(id, Utils.GenerateCheckInOutNo());
+            }
+        }
+
         public static void CheckInReservation(int reservationId, int checkInId)
         {
             using (SqlConnection con = new SqlConnection(Key))

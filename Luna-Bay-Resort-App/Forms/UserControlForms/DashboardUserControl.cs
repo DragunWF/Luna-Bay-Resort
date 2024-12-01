@@ -9,15 +9,12 @@ namespace Luna_Bay_Resort_App.Forms.UserControlForms
         public DashboardUserControl()
         {
             InitializeComponent();
-
-            GetReservation();
-            StockLevels();
-            DisplayActivities();
-            DisplayRevenue();
+            Refresh();
         }
 
         private void DisplayActivities()
         {
+            activitiesDataGrid.Rows.Clear();
             foreach (var activity in DatabaseHelper.GetActivities())
             {
                 activitiesDataGrid.Rows.Add(activity.GetDescription(), activity.GetDate());
@@ -63,8 +60,9 @@ namespace Luna_Bay_Resort_App.Forms.UserControlForms
             monthLabel.Text = Utils.FormatCurrency(monthlyRevenue);
         }
 
-        private void GetReservation()
+        private void DisplayReservations()
         {
+            reservationsDataGrid.Rows.Clear();
             List<Guest> reservations = DatabaseHelper.GetDashboardReservations(Utils.GetDateOnly());
             foreach (var reservation in reservations)
             {
@@ -72,14 +70,76 @@ namespace Luna_Bay_Resort_App.Forms.UserControlForms
             }
         }
 
-        private void StockLevels()
+        private void DisplayStockLevels()
         {
-            //Out of stock label
-            outOfStockLabel.Text = $"{DatabaseHelper.GetOutofStock().ToString()} Items";
-            //Low stock label
-            lowStockLabel.Text = $"{DatabaseHelper.GetLowStock().ToString()} Items";
-            //Full stock label
-            fullStockLabel.Text = $"{DatabaseHelper.GetFullStock().ToString()} Items";
+            // Out of stock label
+            outOfStockLabel.Text = $"{DatabaseHelper.GetOutofStock()} Items";
+            // Low stock label
+            lowStockLabel.Text = $"{DatabaseHelper.GetLowStock()} Items";
+            // Full stock label
+            fullStockLabel.Text = $"{DatabaseHelper.GetFullStock()} Items";
+        }
+
+        private void Refresh()
+        {
+            DisplayReservations();
+            DisplayStockLevels();
+            DisplayActivities();
+            DisplayRevenue();
+        }
+
+        private void RefreshBtn_Click(object sender, EventArgs e)
+        {
+            Refresh();
+        }
+
+        private void CheckInBtn_Click(object sender, EventArgs e)
+        {
+            const string checkBoxColumnName = "Select";
+            try
+            {
+                List<int> reservationIds = new(); // Reservations to select
+
+                foreach (DataGridViewRow row in reservationsDataGrid.Rows)
+                {
+                    // Skip new or uninitialized rows
+                    if (row.IsNewRow || row.Cells[checkBoxColumnName].Value == null)
+                        continue;
+
+                    // Safely check the checkbox value
+                    if (row.Cells[checkBoxColumnName].Value is bool isChecked && isChecked)
+                    {
+                        var reservationId = row.Cells["ReservationId"].Value?.ToString();
+                        if (!string.IsNullOrEmpty(reservationId))
+                            reservationIds.Add(int.Parse(reservationId));
+                    }
+                }
+
+                if (reservationIds.Count > 0)
+                {
+                    DialogResult result = MessageBox.Show(
+                        $"Are you sure you want to check-in the selected reservations?",
+                        "Confirm Check-in of Selected Reservations",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question
+                    );
+
+                    if (result == DialogResult.Yes)
+                    {
+                        DatabaseHelper.CheckInReservations(reservationIds);
+                        Refresh();
+                        MessageBox.Show("Selected reservations have been checked-in");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("There are no selected reservations to check-in!");
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show($"Error: {err.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
