@@ -48,11 +48,12 @@
             Description = new DataGridViewTextBoxColumn();
             Date = new DataGridViewTextBoxColumn();
             reservationsDataGrid = new DataGridView();
-            CheckInBtn = new Button();
-            RefreshBtn = new Button();
             ReservationId = new DataGridViewTextBoxColumn();
             Name = new DataGridViewTextBoxColumn();
             Select = new DataGridViewCheckBoxColumn();
+            CheckInBtn = new Button();
+            RefreshBtn = new Button();
+            ClearActivitiesBtn = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)activitiesDataGrid).BeginInit();
@@ -269,30 +270,6 @@
             reservationsDataGrid.Size = new Size(567, 442);
             reservationsDataGrid.TabIndex = 3;
             // 
-            // CheckInBtn
-            // 
-            CheckInBtn.Font = new Font("Consolas", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            CheckInBtn.Location = new Point(1052, 546);
-            CheckInBtn.Margin = new Padding(3, 2, 3, 2);
-            CheckInBtn.Name = "CheckInBtn";
-            CheckInBtn.Size = new Size(152, 34);
-            CheckInBtn.TabIndex = 4;
-            CheckInBtn.Text = "Check-in Now";
-            CheckInBtn.UseVisualStyleBackColor = true;
-            CheckInBtn.Click += CheckInBtn_Click;
-            // 
-            // RefreshBtn
-            // 
-            RefreshBtn.Font = new Font("Consolas", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            RefreshBtn.Location = new Point(882, 546);
-            RefreshBtn.Margin = new Padding(3, 2, 3, 2);
-            RefreshBtn.Name = "RefreshBtn";
-            RefreshBtn.Size = new Size(152, 34);
-            RefreshBtn.TabIndex = 5;
-            RefreshBtn.Text = "Refresh All";
-            RefreshBtn.UseVisualStyleBackColor = true;
-            RefreshBtn.Click += RefreshBtn_Click;
-            // 
             // ReservationId
             // 
             ReservationId.HeaderText = "ReservationId";
@@ -318,11 +295,48 @@
             Select.ToolTipText = "select";
             Select.Width = 120;
             // 
+            // CheckInBtn
+            // 
+            CheckInBtn.Font = new Font("Consolas", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            CheckInBtn.Location = new Point(1052, 546);
+            CheckInBtn.Margin = new Padding(3, 2, 3, 2);
+            CheckInBtn.Name = "CheckInBtn";
+            CheckInBtn.Size = new Size(152, 34);
+            CheckInBtn.TabIndex = 4;
+            CheckInBtn.Text = "Check-in Now";
+            CheckInBtn.UseVisualStyleBackColor = true;
+            CheckInBtn.Click += CheckInBtn_Click;
+            // 
+            // RefreshBtn
+            // 
+            RefreshBtn.Font = new Font("Consolas", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            RefreshBtn.Location = new Point(894, 547);
+            RefreshBtn.Margin = new Padding(3, 2, 3, 2);
+            RefreshBtn.Name = "RefreshBtn";
+            RefreshBtn.Size = new Size(152, 34);
+            RefreshBtn.TabIndex = 5;
+            RefreshBtn.Text = "Refresh All";
+            RefreshBtn.UseVisualStyleBackColor = true;
+            RefreshBtn.Click += RefreshBtn_Click;
+            // 
+            // ClearActivitiesBtn
+            // 
+            ClearActivitiesBtn.Font = new Font("Consolas", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ClearActivitiesBtn.Location = new Point(736, 547);
+            ClearActivitiesBtn.Margin = new Padding(3, 2, 3, 2);
+            ClearActivitiesBtn.Name = "ClearActivitiesBtn";
+            ClearActivitiesBtn.Size = new Size(152, 34);
+            ClearActivitiesBtn.TabIndex = 6;
+            ClearActivitiesBtn.Text = "Clear Activities";
+            ClearActivitiesBtn.UseVisualStyleBackColor = true;
+            ClearActivitiesBtn.Click += ClearActivitiesBtn_Click;
+            // 
             // DashboardUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BorderStyle = BorderStyle.FixedSingle;
+            Controls.Add(ClearActivitiesBtn);
             Controls.Add(RefreshBtn);
             Controls.Add(CheckInBtn);
             Controls.Add(reservationsDataGrid);
@@ -330,7 +344,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Margin = new Padding(3, 2, 3, 2);
-            //Name = "DashboardUserControl";
+            // Name = "DashboardUserControl";
             Size = new Size(1662, 675);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -368,5 +382,6 @@
         private DataGridViewTextBoxColumn ReservationId;
         private DataGridViewTextBoxColumn Name;
         private DataGridViewCheckBoxColumn Select;
+        private Button ClearActivitiesBtn;
     }
 }

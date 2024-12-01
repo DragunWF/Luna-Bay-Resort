@@ -141,5 +141,22 @@ namespace Luna_Bay_Resort_App.Forms.UserControlForms
                 MessageBox.Show($"Error: {err.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void ClearActivitiesBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                $"Are you sure you want to clear the activity log?",
+                "Confirm Check-in of Selected Reservations",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                DatabaseHelper.ClearActivities();
+                Refresh();
+                MessageBox.Show("Activities have been cleared!");
+            }
+        }
     }
 }

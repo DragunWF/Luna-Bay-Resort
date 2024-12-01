@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using System.Xml.Linq;
 using Luna_Bay_Resort_App.Data;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Luna_Bay_Resort_App.Helpers
@@ -662,7 +663,7 @@ namespace Luna_Bay_Resort_App.Helpers
             return availablerooms;
         }
 
-        public static int GetPax(String roomName)
+        public static int GetPax(string roomName)
         {
             int pax = 0;
             using (SqlConnection con = new SqlConnection(Key))
@@ -905,7 +906,7 @@ namespace Luna_Bay_Resort_App.Helpers
 
         #region Inventory
 
-        public static void AddNewFood(int foodType, String name, String serving, double price, int stock)
+        public static void AddNewFood(int foodType, string name, string serving, double price, int stock)
         {
             using (SqlConnection con = new SqlConnection(Key))
             {
@@ -928,7 +929,7 @@ namespace Luna_Bay_Resort_App.Helpers
             }
         }
 
-        public static void AddNewProduct(String name, double price, int stock)
+        public static void AddNewProduct(string name, double price, int stock)
         {
             using (SqlConnection con = new SqlConnection(Key))
             {
@@ -1088,6 +1089,18 @@ namespace Luna_Bay_Resort_App.Helpers
                 SqlCommand command = new SqlCommand(query, con);
                 command.Parameters.AddWithValue("@Description", description);
                 command.Parameters.AddWithValue("@Date", date);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public static void ClearActivities()
+        {
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "DELETE FROM Activities";
+
+                SqlCommand command = new SqlCommand(query, con);
                 command.ExecuteNonQuery();
             }
         }
