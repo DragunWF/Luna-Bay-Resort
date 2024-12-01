@@ -26,7 +26,7 @@ namespace Luna_Bay_Resort_App.Forms.AdminPanelForms
         {
             if (IsUsernameAvailable())
             {
-                MessageBox.Show($"The username '{TxtUsername.Text}' is already taken, please type a distinct username.");
+                MessageBox.Show($"The username \"{TxtUsername.Text}\" is already taken, please type a distinct username.");
             }
             else if (TxtPassword.Text != TxtConfirmPassword.Text)
             {
@@ -48,7 +48,9 @@ namespace Luna_Bay_Resort_App.Forms.AdminPanelForms
                     User user = new User(TxtUsername.Text, position, authId);
                     DatabaseHelper.AddUser(user.GetName(), TxtPassword.Text, authId);
                     ResetTextBoxes();
-                    MessageBox.Show($"Account named '{user.GetName()}' with the position '{position}' has been created!");
+
+                    MessageBox.Show($"Account named \"{user.GetName()}\" with the position \"{position}\" has been created!");
+                    DatabaseHelper.AddActivity($"Created account \"{user.GetName()}\" with the position of {position}.", Utils.GetCurrentDate());
                 }
             }
         }
