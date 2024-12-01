@@ -339,6 +339,6 @@ CREATE TABLE Revenue (
 -- Activities
 CREATE TABLE Activities(
 	ActivityID INT PRIMARY KEY NOT NULL,
-	Descritpion VARCHAR(500) NOT NULL,
+	Description VARCHAR(500) NOT NULL,
 	Date VARCHAR(50) NOT NULL
 );
