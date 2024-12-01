@@ -9,8 +9,19 @@ namespace Luna_Bay_Resort_App.Helpers
         public static int RoomPax = 0;
         public static int RoomCost = 0;
 
-        public static void LoginUser(User user) => currentUser = user;
-        public static void LogoutUser() => currentUser = null;
+        public static void LoginUser(User user)
+        {
+            DatabaseHelper.AddActivity($"{user.GetName()} [{user.GetPosition()}] has logged in!",
+                              Utils.GetCurrentDate());
+            currentUser = user;
+        }
+
+        public static void LogoutUser() { 
+            DatabaseHelper.AddActivity($"{currentUser.GetName()} [{currentUser.GetPosition()}] has logged out!",
+                                          Utils.GetCurrentDate());
+            currentUser = null;
+        }
+
         public static User GetCurrentUser() => currentUser;
 
         /* 
