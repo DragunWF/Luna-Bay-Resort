@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            button1 = new Button();
+            label5 = new Label();
             monthLabel = new Label();
             weekLabel = new Label();
             todayLabel = new Label();
@@ -37,10 +37,10 @@
             label2 = new Label();
             label1 = new Label();
             panel2 = new Panel();
+            label4 = new Label();
             fullStockLabel = new Label();
             lowStockLabel = new Label();
             outOfStockLabel = new Label();
-            button2 = new Button();
             label9 = new Label();
             label8 = new Label();
             label7 = new Label();
@@ -48,10 +48,11 @@
             Description = new DataGridViewTextBoxColumn();
             Date = new DataGridViewTextBoxColumn();
             reservationsDataGrid = new DataGridView();
+            CheckInBtn = new Button();
+            RefreshBtn = new Button();
             ReservationId = new DataGridViewTextBoxColumn();
             Name = new DataGridViewTextBoxColumn();
-            selectedReservation = new DataGridViewCheckBoxColumn();
-            button3 = new Button();
+            Select = new DataGridViewCheckBoxColumn();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)activitiesDataGrid).BeginInit();
@@ -61,7 +62,7 @@
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(label5);
             panel1.Controls.Add(monthLabel);
             panel1.Controls.Add(weekLabel);
             panel1.Controls.Add(todayLabel);
@@ -74,22 +75,21 @@
             panel1.Size = new Size(257, 191);
             panel1.TabIndex = 0;
             // 
-            // button1
+            // label5
             // 
-            button1.Font = new Font("Consolas", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(164, 144);
-            button1.Margin = new Padding(3, 2, 3, 2);
-            button1.Name = "button1";
-            button1.Size = new Size(66, 22);
-            button1.TabIndex = 6;
-            button1.Text = "View";
-            button1.UseVisualStyleBackColor = true;
+            label5.AutoSize = true;
+            label5.Font = new Font("Consolas", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(32, 13);
+            label5.Name = "label5";
+            label5.Size = new Size(72, 19);
+            label5.TabIndex = 12;
+            label5.Text = "Revenue";
             // 
             // monthLabel
             // 
             monthLabel.AutoSize = true;
             monthLabel.Font = new Font("Consolas", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            monthLabel.Location = new Point(132, 104);
+            monthLabel.Location = new Point(132, 129);
             monthLabel.Name = "monthLabel";
             monthLabel.Size = new Size(98, 14);
             monthLabel.TabIndex = 5;
@@ -99,7 +99,7 @@
             // 
             weekLabel.AutoSize = true;
             weekLabel.Font = new Font("Consolas", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            weekLabel.Location = new Point(132, 68);
+            weekLabel.Location = new Point(132, 90);
             weekLabel.Name = "weekLabel";
             weekLabel.Size = new Size(98, 14);
             weekLabel.TabIndex = 4;
@@ -109,7 +109,7 @@
             // 
             todayLabel.AutoSize = true;
             todayLabel.Font = new Font("Consolas", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            todayLabel.Location = new Point(132, 32);
+            todayLabel.Location = new Point(132, 51);
             todayLabel.Name = "todayLabel";
             todayLabel.Size = new Size(91, 14);
             todayLabel.TabIndex = 3;
@@ -119,7 +119,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Consolas", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label3.Location = new Point(32, 104);
+            label3.Location = new Point(32, 129);
             label3.Name = "label3";
             label3.Size = new Size(84, 14);
             label3.TabIndex = 2;
@@ -129,7 +129,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Consolas", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label2.Location = new Point(32, 68);
+            label2.Location = new Point(32, 90);
             label2.Name = "label2";
             label2.Size = new Size(77, 14);
             label2.TabIndex = 1;
@@ -139,7 +139,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Consolas", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label1.Location = new Point(32, 32);
+            label1.Location = new Point(32, 51);
             label1.Name = "label1";
             label1.Size = new Size(49, 14);
             label1.TabIndex = 0;
@@ -148,10 +148,10 @@
             // panel2
             // 
             panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(label4);
             panel2.Controls.Add(fullStockLabel);
             panel2.Controls.Add(lowStockLabel);
             panel2.Controls.Add(outOfStockLabel);
-            panel2.Controls.Add(button2);
             panel2.Controls.Add(label9);
             panel2.Controls.Add(label8);
             panel2.Controls.Add(label7);
@@ -161,11 +161,21 @@
             panel2.Size = new Size(257, 187);
             panel2.TabIndex = 1;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Consolas", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(32, 15);
+            label4.Name = "label4";
+            label4.Size = new Size(54, 19);
+            label4.TabIndex = 11;
+            label4.Text = "Stock";
+            // 
             // fullStockLabel
             // 
             fullStockLabel.AutoSize = true;
             fullStockLabel.Font = new Font("Consolas", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            fullStockLabel.Location = new Point(167, 113);
+            fullStockLabel.Location = new Point(164, 128);
             fullStockLabel.Name = "fullStockLabel";
             fullStockLabel.Size = new Size(56, 14);
             fullStockLabel.TabIndex = 10;
@@ -175,7 +185,7 @@
             // 
             lowStockLabel.AutoSize = true;
             lowStockLabel.Font = new Font("Consolas", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lowStockLabel.Location = new Point(164, 73);
+            lowStockLabel.Location = new Point(164, 90);
             lowStockLabel.Name = "lowStockLabel";
             lowStockLabel.Size = new Size(56, 14);
             lowStockLabel.TabIndex = 9;
@@ -185,28 +195,17 @@
             // 
             outOfStockLabel.AutoSize = true;
             outOfStockLabel.Font = new Font("Consolas", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            outOfStockLabel.Location = new Point(164, 30);
+            outOfStockLabel.Location = new Point(164, 55);
             outOfStockLabel.Name = "outOfStockLabel";
             outOfStockLabel.Size = new Size(56, 14);
             outOfStockLabel.TabIndex = 8;
             outOfStockLabel.Text = "3 items";
             // 
-            // button2
-            // 
-            button2.Font = new Font("Consolas", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.Location = new Point(164, 142);
-            button2.Margin = new Padding(3, 2, 3, 2);
-            button2.Name = "button2";
-            button2.Size = new Size(66, 22);
-            button2.TabIndex = 7;
-            button2.Text = "View";
-            button2.UseVisualStyleBackColor = true;
-            // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Consolas", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label9.Location = new Point(32, 113);
+            label9.Location = new Point(32, 128);
             label9.Name = "label9";
             label9.Size = new Size(84, 14);
             label9.TabIndex = 3;
@@ -216,7 +215,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Consolas", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label8.Location = new Point(32, 73);
+            label8.Location = new Point(32, 90);
             label8.Name = "label8";
             label8.Size = new Size(77, 14);
             label8.TabIndex = 2;
@@ -226,7 +225,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Consolas", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label7.Location = new Point(32, 30);
+            label7.Location = new Point(32, 55);
             label7.Name = "label7";
             label7.Size = new Size(98, 14);
             label7.TabIndex = 1;
@@ -262,7 +261,7 @@
             // reservationsDataGrid
             // 
             reservationsDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            reservationsDataGrid.Columns.AddRange(new DataGridViewColumn[] { ReservationId, Name, selectedReservation });
+            reservationsDataGrid.Columns.AddRange(new DataGridViewColumn[] { ReservationId, Name, Select });
             reservationsDataGrid.Location = new Point(637, 79);
             reservationsDataGrid.Margin = new Padding(3, 2, 3, 2);
             reservationsDataGrid.Name = "reservationsDataGrid";
@@ -270,13 +269,37 @@
             reservationsDataGrid.Size = new Size(567, 442);
             reservationsDataGrid.TabIndex = 3;
             // 
+            // CheckInBtn
+            // 
+            CheckInBtn.Font = new Font("Consolas", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            CheckInBtn.Location = new Point(1052, 546);
+            CheckInBtn.Margin = new Padding(3, 2, 3, 2);
+            CheckInBtn.Name = "CheckInBtn";
+            CheckInBtn.Size = new Size(152, 34);
+            CheckInBtn.TabIndex = 4;
+            CheckInBtn.Text = "CheckIn Now";
+            CheckInBtn.UseVisualStyleBackColor = true;
+            CheckInBtn.Click += CheckInBtn_Click;
+            // 
+            // RefreshBtn
+            // 
+            RefreshBtn.Font = new Font("Consolas", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            RefreshBtn.Location = new Point(882, 546);
+            RefreshBtn.Margin = new Padding(3, 2, 3, 2);
+            RefreshBtn.Name = "RefreshBtn";
+            RefreshBtn.Size = new Size(152, 34);
+            RefreshBtn.TabIndex = 5;
+            RefreshBtn.Text = "Refresh All";
+            RefreshBtn.UseVisualStyleBackColor = true;
+            RefreshBtn.Click += RefreshBtn_Click;
+            // 
             // ReservationId
             // 
             ReservationId.HeaderText = "ReservationId";
             ReservationId.MinimumWidth = 6;
             ReservationId.Name = "ReservationId";
             ReservationId.ReadOnly = true;
-            ReservationId.Width = 230;
+            ReservationId.Width = 125;
             // 
             // Name
             // 
@@ -284,34 +307,24 @@
             Name.MinimumWidth = 6;
             Name.Name = "Name";
             Name.ReadOnly = true;
-            Name.Width = 260;
+            Name.Width = 315;
             // 
-            // selectedReservation
+            // Select
             // 
-            selectedReservation.HeaderText = "SelectBox";
-            selectedReservation.MinimumWidth = 6;
-            selectedReservation.Name = "selectedReservation";
-            selectedReservation.Resizable = DataGridViewTriState.True;
-            selectedReservation.ToolTipText = "select";
-            selectedReservation.Width = 105;
-            // 
-            // button3
-            // 
-            button3.Font = new Font("Consolas", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.Location = new Point(1052, 546);
-            button3.Margin = new Padding(3, 2, 3, 2);
-            button3.Name = "button3";
-            button3.Size = new Size(152, 34);
-            button3.TabIndex = 4;
-            button3.Text = "CheckIn Now";
-            button3.UseVisualStyleBackColor = true;
+            Select.HeaderText = "Select";
+            Select.MinimumWidth = 6;
+            Select.Name = "Select";
+            Select.Resizable = DataGridViewTriState.True;
+            Select.ToolTipText = "select";
+            Select.Width = 80;
             // 
             // DashboardUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BorderStyle = BorderStyle.FixedSingle;
-            Controls.Add(button3);
+            Controls.Add(RefreshBtn);
+            Controls.Add(CheckInBtn);
             Controls.Add(reservationsDataGrid);
             Controls.Add(activitiesDataGrid);
             Controls.Add(panel2);
@@ -338,21 +351,22 @@
         private Label weekLabel;
         private Label todayLabel;
         private Panel panel2;
-        private Button button1;
         private Label label8;
         private Label label7;
         private Label fullStockLabel;
         private Label lowStockLabel;
         private Label outOfStockLabel;
-        private Button button2;
         private Label label9;
         private DataGridView activitiesDataGrid;
         private DataGridView reservationsDataGrid;
-        private Button button3;
-        private DataGridViewTextBoxColumn ReservationId;
-        private DataGridViewTextBoxColumn Name;
-        private DataGridViewCheckBoxColumn selectedReservation;
+        private Button CheckInBtn;
         private DataGridViewTextBoxColumn Description;
         private DataGridViewTextBoxColumn Date;
+        private Button RefreshBtn;
+        private Label label5;
+        private Label label4;
+        private DataGridViewTextBoxColumn ReservationId;
+        private DataGridViewTextBoxColumn Name;
+        private DataGridViewCheckBoxColumn Select;
     }
 }
