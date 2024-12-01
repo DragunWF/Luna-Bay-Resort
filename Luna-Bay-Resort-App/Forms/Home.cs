@@ -85,11 +85,11 @@ namespace MainForms
                         CreateNavButton("Amenities", 140, logoPictureBox.Right + margin + 270, (sender, e) => OnButtonClicked(sender, "Amenities"), topNavPanel);
                         CreateNavButton("Maintenance", 180, logoPictureBox.Right + margin + 410, (sender, e) => OnButtonClicked(sender, "Maintenance"), topNavPanel);
                         break;
-                    case 3: // Front Desk
-                        CreateNavButton("Amenities", 140, logoPictureBox.Right + margin, (sender, e) => OnButtonClicked(sender, "Amenities"), topNavPanel);
-                        break;
-                    case 4: // Cashier
+                    case 3: // Cashier
                         CreateNavButton("Booking", 120, logoPictureBox.Right + margin, (sender, e) => OnButtonClicked(sender, "Booking"), topNavPanel);
+                        break;
+                    case 4: // Front Desk
+                        CreateNavButton("Amenities", 140, logoPictureBox.Right + margin, (sender, e) => OnButtonClicked(sender, "Amenities"), topNavPanel);
                         break;
                     default: // When Role is Unknown
                         CreateNavButton("Dashboard", 150, logoPictureBox.Right + margin, (sender, e) => OnButtonClicked(sender, "Dashboard"), topNavPanel);
