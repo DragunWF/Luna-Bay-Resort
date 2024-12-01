@@ -1015,8 +1015,30 @@ namespace Luna_Bay_Resort_App.Helpers
 
         #endregion
 
-        #region Misc
-        //USE Utils.GetDateOnly
+        #region Revenue
+        // USE Utils.GetDateOnly
+        public static List<Revenue> GetRevenue()
+        {
+            List<Revenue> revenue = new List<Revenue>();
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "SELECT Date, Revenue FROM Revenue";
+                SqlCommand command = new SqlCommand(query, con);
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        revenue.Add(new Revenue(
+                            reader["Date"].ToString(),
+                            double.Parse(reader["Revenue"].ToString()
+                        )));
+                    }
+                }
+            }
+            return revenue;
+        }
+
         public static void AddRevenue(string date, double revenue)
         {
             using (SqlConnection con = new SqlConnection(Key))
@@ -1049,6 +1071,10 @@ namespace Luna_Bay_Resort_App.Helpers
                 con.Close();
             }
         }
+
+        #endregion
+
+        #region Misc
 
         public static void AddWalkIn(string name, int numofperson, string duration, string date, int total, int paymentId, string paymentreference)
         {

@@ -1,4 +1,7 @@
-﻿namespace MainForms
+﻿using Luna_Bay_Resort_App.Helpers;
+using Luna_Bay_Resort_App.Data;
+
+namespace MainForms
 {
     public partial class FinancialReportsUserControl : UserControl
     {
@@ -32,6 +35,33 @@
                 Padding = new Padding(10, 10, 0, 10)
             };
 
+            
+            // Add title and cards panel to mainContainer
+            mainContainer.Controls.Add(revenueTitle, 0, 0);
+            mainContainer.Controls.Add(CreateRevenueCardsPanel(), 0, 1);
+
+            // Add mainContainer to the form's controls
+            this.Controls.Add(mainContainer);
+        }
+
+        private TableLayoutPanel CreateRevenueCardsPanel()
+        {
+            Dictionary<string, double> revenueByDate = new(); // date, revenue
+            List<Revenue> revenue = DatabaseHelper.GetRevenue();
+
+            foreach (Revenue item in revenue)
+            {
+                if (revenueByDate.ContainsKey(item.GetDate()))
+                {
+                    double currentRevenue = revenueByDate[item.GetDate()];
+                    revenueByDate.Add(item.GetDate(), currentRevenue + item.GetRevenue());
+                }
+                else
+                {
+                    revenueByDate.Add(item.GetDate(), item.GetRevenue());
+                }
+            }
+
             // TableLayoutPanel for the revenue cards
             TableLayoutPanel cardsPanel = new TableLayoutPanel
             {
@@ -42,18 +72,18 @@
                 Padding = new Padding(10)
             };
 
+            // Add revenue cards to the panel
+            const int columnsPerRow = 5;
+            for (int column = 0, row = 0; column < revenueByDate.Keys.Count; column++, row++)
+            {
+                string date = revenueByDate.Keys.ElementAt<string>(column);
+                string formattedRevenue = Utils.FormatCurrency(revenueByDate[date]);
+                cardsPanel.Controls.Add(CreateVerticalRevenueCard(
+                    date, "Revenue for this day", formattedRevenue, "Total Revenue Gained", Color.Green
+                ), column, row / (columnsPerRow - 1));
+            }
 
-            // Add three cards to the panel
-            cardsPanel.Controls.Add(CreateVerticalRevenueCard("Today", "As of 8:00am, 09-10-2024", "PHP 9,000.00", "14% greater than yesterday", Color.Green), 0, 0);
-            cardsPanel.Controls.Add(CreateVerticalRevenueCard("This Week", "From 07 to 13-10-2024", "PHP 25,000.00", "9% more than last week", Color.Green), 1, 0);
-            cardsPanel.Controls.Add(CreateVerticalRevenueCard("This Month", "October, 2024", "PHP 25,000.00", "-50% less than last month", Color.Red), 2, 0);
-
-            // Add title and cards panel to mainContainer
-            mainContainer.Controls.Add(revenueTitle, 0, 0);
-            mainContainer.Controls.Add(cardsPanel, 0, 1);
-
-            // Add mainContainer to the form's controls
-            this.Controls.Add(mainContainer);
+            return cardsPanel;
         }
 
         private Panel CreateVerticalRevenueCard(string title, string dateRange, string amount, string comparisonText, Color percentageColor)
