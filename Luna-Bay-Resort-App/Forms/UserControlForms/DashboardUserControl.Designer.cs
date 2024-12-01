@@ -322,7 +322,7 @@
             // CheckInBtn
             // 
             CheckInBtn.Font = new Font("Consolas", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            CheckInBtn.Location = new Point(1052, 546);
+            CheckInBtn.Location = new Point(1052, 547);
             CheckInBtn.Margin = new Padding(3, 2, 3, 2);
             CheckInBtn.Name = "CheckInBtn";
             CheckInBtn.Size = new Size(152, 34);
@@ -368,7 +368,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Margin = new Padding(3, 2, 3, 2);
-            //Name = "DashboardUserControl";
+            // Name = "DashboardUserControl";
             Size = new Size(1662, 675);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
