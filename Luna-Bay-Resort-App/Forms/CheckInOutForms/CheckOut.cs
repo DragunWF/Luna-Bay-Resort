@@ -7,7 +7,8 @@ namespace SubForms
     {
         private int checkInNo = -1;
         string status = "Cleaning";
-        Guest checkin;
+        private Guest checkIn;
+
         public CheckOut()
         {
             InitializeComponent();
@@ -26,16 +27,16 @@ namespace SubForms
                 else
                 {
                     checkInNo = int.Parse(CheckInNoText.Text);
-                    checkin = DatabaseHelper.GetCheckIn(checkInNo);
-                    if (checkin != null)
+                    checkIn = DatabaseHelper.GetCheckIn(checkInNo);
+                    if (checkIn != null)
                     {
-                        NameText.Text = checkin.GetName();
-                        CheckInDate.Text = checkin.GetCheckIn();
-                        CheckOutDate.Text = checkin.GetCheckOut();
-                        RoomTypeText.Text = DatabaseHelper.GetRoomName(checkin.GetRoomNo());
-                        GuestNumText.Text = checkin.GetNumOfGuest().ToString();
-                        BillAmountText.Text = checkin.GetBillAmount().ToString();
-                        AmountDueText.Text = checkin.GetBalance().ToString();
+                        NameText.Text = checkIn.GetName();
+                        CheckInDate.Text = checkIn.GetCheckIn();
+                        CheckOutDate.Text = checkIn.GetCheckOut();
+                        RoomTypeText.Text = DatabaseHelper.GetRoomName(checkIn.GetRoomNo());
+                        GuestNumText.Text = checkIn.GetNumOfGuest().ToString();
+                        BillAmountText.Text = checkIn.GetBillAmount().ToString();
+                        AmountDueText.Text = checkIn.GetBalance().ToString();
                     }
                     else
                     {
@@ -63,11 +64,11 @@ namespace SubForms
                     {
                         int generatedCheckOutId = Utils.GenerateCheckInOutNo(); 
                         DatabaseHelper.CheckOutGuest(checkInNo, generatedCheckOutId);
-                        DatabaseHelper.SetRoomStatus(status, checkin.GetRoomNo());
+                        DatabaseHelper.SetRoomStatus(status, checkIn.GetRoomNo());
                         DatabaseHelper.AddRevenue(Utils.GetDateOnly(), double.Parse(BillAmountText.Text));
                         FormManager.OpenForm<CheckOutReceipt>(
-                        generatedCheckOutId, NameText.Text, CheckInDate.Text, CheckOutDate.Text, RoomTypeText.Text, 
-                        int.Parse(GuestNumText.Text), checkin.GetRoomNo(), double.Parse(BillAmountText.Text)
+                            generatedCheckOutId, NameText.Text, CheckInDate.Text, CheckOutDate.Text, RoomTypeText.Text, 
+                            int.Parse(GuestNumText.Text), checkIn.GetRoomNo(), double.Parse(BillAmountText.Text)
                         );
                         ResetTextLabels();
                         ResetTextBoxes();
