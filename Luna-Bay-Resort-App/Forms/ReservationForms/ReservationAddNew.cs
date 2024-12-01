@@ -66,11 +66,16 @@ namespace Luna_Bay_Sub_Forms
                         RoomTypeCB.Text, Paxlbl.Text, totalAmount, depositAmount,
                         remainingBalance
                     );
+
+                    // Database Operations
+                    DatabaseHelper.AddRevenue(Utils.GetDateOnly(), totalAmount);
                     DatabaseHelper.AddReservation(
                         reservationNo, fullName, EmailText.Text, ContactNoText.Text, RoomTypeCB.Text,
                         int.Parse(Paxlbl.Text), CheckInPicker.Text, CheckOutPicker.Text,
                         totalAmount, remainingBalance, PaymentID, PaymentMethods.paymentreference
                     );
+
+                    // Textbox Operations
                     Utils.ResetTextBoxes(new TextBox[] {
                         FirstNameText, LastNameText, EmailText, ContactNoText,
                         DepositText, TotalAmountText
@@ -120,7 +125,7 @@ namespace Luna_Bay_Sub_Forms
             }
         }
 
-        //Updates label whenever it regains focus
+        // Updates label whenever it regains focus
         protected override void OnActivated(EventArgs e)
         {
             UpdatePax();

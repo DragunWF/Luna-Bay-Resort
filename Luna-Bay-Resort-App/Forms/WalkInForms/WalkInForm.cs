@@ -2,24 +2,13 @@
 using Luna_Bay_Resort_App.Forms.CheckInOutForms;
 using Luna_Bay_Resort_App.Forms.WalkInForms;
 using Luna_Bay_Resort_App.Helpers;
-using SubForms;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Design;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Luna_Bay_Resort_App.Forms.UserControlForms
 {
     public partial class WalkInForm : Form
     {
-        int stayduration;
-        int price;
+        private int stayduration;
+        private double price;
         private string paymentMethod;
         private int PaymentID;
 
@@ -47,7 +36,7 @@ namespace Luna_Bay_Resort_App.Forms.UserControlForms
                     string durationformat = $"{stayduration} Hours";
 
                     DatabaseHelper.AddWalkIn(Nametxt.Text, int.Parse(Numofpersontxt.Text), durationformat, currentdate, int.Parse(Totaltxt.Text), PaymentID, PaymentMethods.paymentreference);
-                    DatabaseHelper.AddRevenue(Utils.GetDateOnly(), int.Parse(Totaltxt.Text));
+                    DatabaseHelper.AddRevenue(Utils.GetDateOnly(), double.Parse(Totaltxt.Text));
                     FormManager.OpenForm<WalkInReceipt>(Nametxt.Text, currentdate, durationformat, int.Parse(Numofpersontxt.Text), int.Parse(Totaltxt.Text), paymentMethod);
                     ClearInput();
                 }
