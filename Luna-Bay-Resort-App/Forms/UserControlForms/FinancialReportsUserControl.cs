@@ -66,7 +66,7 @@ namespace MainForms
             TableLayoutPanel cardsPanel = new TableLayoutPanel
             {
                 Dock = DockStyle.Fill,
-                ColumnCount = 3,
+                ColumnCount = 5,
                 AutoSize = true,
                 BackColor = Color.Transparent,
                 Padding = new Padding(10)
@@ -74,13 +74,17 @@ namespace MainForms
 
             // Add revenue cards to the panel
             const int columnsPerRow = 5;
-            for (int column = 0, row = 0; column < revenueByDate.Keys.Count; column++, row++)
+            for (int column = 0; column < revenueByDate.Keys.Count; column++)
             {
                 string date = revenueByDate.Keys.ElementAt<string>(column);
                 string formattedRevenue = Utils.FormatCurrency(revenueByDate[date]);
+
+                int row = column / columnsPerRow; // Calculate row by dividing column by columnsPerRow
+                int columnIndex = column % columnsPerRow; // Ensure column is within 0 to columnsPerRow - 1
+
                 cardsPanel.Controls.Add(CreateVerticalRevenueCard(
                     date, "Revenue for this day", formattedRevenue, "Total Revenue Gained", Color.Green
-                ), column, row / (columnsPerRow - 1));
+                ), columnIndex, row); // Add the card at the calculated column and row
             }
 
             return cardsPanel;
