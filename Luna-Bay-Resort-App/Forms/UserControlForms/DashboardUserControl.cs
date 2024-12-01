@@ -17,7 +17,10 @@ namespace Luna_Bay_Resort_App.Forms.UserControlForms
 
         private void DisplayActivities()
         {
-
+            foreach (var activity in DatabaseHelper.GetActivities())
+            {
+                activitiesDataGrid.Rows.Add(activity.GetDescription(), activity.GetDate());
+            }
         }
 
         private void GetReservation()
@@ -25,7 +28,7 @@ namespace Luna_Bay_Resort_App.Forms.UserControlForms
             List<Guest> reservations = DatabaseHelper.GetDashboardReservations(Utils.GetDateOnly());
             foreach (var reservation in reservations)
             {
-                dataGridView2.Rows.Add(reservation.GetReservationId(), reservation.GetName());
+                reservationsDataGrid.Rows.Add(reservation.GetReservationId(), reservation.GetName());
             }
         }
         private void StockLevels()

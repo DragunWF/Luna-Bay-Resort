@@ -44,18 +44,18 @@
             label9 = new Label();
             label8 = new Label();
             label7 = new Label();
-            dataGridView1 = new DataGridView();
-            Activity = new DataGridViewTextBoxColumn();
-            Description = new DataGridViewTextBoxColumn();
-            dataGridView2 = new DataGridView();
+            activitiesDataGrid = new DataGridView();
+            reservationsDataGrid = new DataGridView();
             ReservationId = new DataGridViewTextBoxColumn();
             Name = new DataGridViewTextBoxColumn();
             selectedReservation = new DataGridViewCheckBoxColumn();
             button3 = new Button();
+            Description = new DataGridViewTextBoxColumn();
+            Date = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)activitiesDataGrid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)reservationsDataGrid).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -232,43 +232,27 @@
             label7.TabIndex = 1;
             label7.Text = "Out of stock:";
             // 
-            // dataGridView1
+            // activitiesDataGrid
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Activity, Description });
-            dataGridView1.Location = new Point(60, 76);
-            dataGridView1.Margin = new Padding(3, 2, 3, 2);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(466, 442);
-            dataGridView1.TabIndex = 2;
+            activitiesDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            activitiesDataGrid.Columns.AddRange(new DataGridViewColumn[] { Description, Date });
+            activitiesDataGrid.Location = new Point(60, 76);
+            activitiesDataGrid.Margin = new Padding(3, 2, 3, 2);
+            activitiesDataGrid.Name = "activitiesDataGrid";
+            activitiesDataGrid.RowHeadersWidth = 51;
+            activitiesDataGrid.Size = new Size(466, 442);
+            activitiesDataGrid.TabIndex = 2;
             // 
-            // Activity
+            // reservationsDataGrid
             // 
-            Activity.HeaderText = "Activity";
-            Activity.MinimumWidth = 6;
-            Activity.Name = "Activity";
-            Activity.ReadOnly = true;
-            Activity.Width = 210;
-            // 
-            // Description
-            // 
-            Description.HeaderText = "Description";
-            Description.MinimumWidth = 6;
-            Description.Name = "Description";
-            Description.ReadOnly = true;
-            Description.Width = 270;
-            // 
-            // dataGridView2
-            // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { ReservationId, Name, selectedReservation });
-            dataGridView2.Location = new Point(637, 79);
-            dataGridView2.Margin = new Padding(3, 2, 3, 2);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowHeadersWidth = 51;
-            dataGridView2.Size = new Size(567, 442);
-            dataGridView2.TabIndex = 3;
+            reservationsDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            reservationsDataGrid.Columns.AddRange(new DataGridViewColumn[] { ReservationId, Name, selectedReservation });
+            reservationsDataGrid.Location = new Point(637, 79);
+            reservationsDataGrid.Margin = new Padding(3, 2, 3, 2);
+            reservationsDataGrid.Name = "reservationsDataGrid";
+            reservationsDataGrid.RowHeadersWidth = 51;
+            reservationsDataGrid.Size = new Size(567, 442);
+            reservationsDataGrid.TabIndex = 3;
             // 
             // ReservationId
             // 
@@ -306,25 +290,41 @@
             button3.Text = "CheckIn Now";
             button3.UseVisualStyleBackColor = true;
             // 
+            // Description
+            // 
+            Description.HeaderText = "Activity Description";
+            Description.MinimumWidth = 6;
+            Description.Name = "Description";
+            Description.ReadOnly = true;
+            Description.Width = 290;
+            // 
+            // Date
+            // 
+            Date.HeaderText = "Activity Date";
+            Date.MinimumWidth = 6;
+            Date.Name = "Date";
+            Date.ReadOnly = true;
+            Date.Width = 125;
+            // 
             // DashboardUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BorderStyle = BorderStyle.FixedSingle;
             Controls.Add(button3);
-            Controls.Add(dataGridView2);
-            Controls.Add(dataGridView1);
+            Controls.Add(reservationsDataGrid);
+            Controls.Add(activitiesDataGrid);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Margin = new Padding(3, 2, 3, 2);
-            Name = "DashboardUserControl";
+            //Name = "DashboardUserControl";
             Size = new Size(1662, 675);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)activitiesDataGrid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)reservationsDataGrid).EndInit();
             ResumeLayout(false);
         }
 
@@ -346,13 +346,13 @@
         private Label outOfStockLabel;
         private Button button2;
         private Label label9;
-        private DataGridView dataGridView1;
-        private DataGridView dataGridView2;
+        private DataGridView activitiesDataGrid;
+        private DataGridView reservationsDataGrid;
         private Button button3;
-        private DataGridViewTextBoxColumn Activity;
-        private DataGridViewTextBoxColumn Description;
         private DataGridViewTextBoxColumn ReservationId;
         private DataGridViewTextBoxColumn Name;
         private DataGridViewCheckBoxColumn selectedReservation;
+        private DataGridViewTextBoxColumn Description;
+        private DataGridViewTextBoxColumn Date;
     }
 }
