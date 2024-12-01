@@ -973,11 +973,51 @@ namespace Luna_Bay_Resort_App.Helpers
         }
         #endregion
 
+        #region Activities
+
+        public static List<Activity> GetActivities()
+        {
+            List<Activity> activities = new List<Activity>();
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = $"SELECT Description, Date FROM Activities";
+                SqlCommand command = new SqlCommand(query, con);
+                using (var reader = command.ExecuteReader()) 
+                {
+                    while (reader.Read())
+                    {
+                        activities.Add(new Activity(reader["Description"].ToString(), 
+                                                    reader["Date"].ToString()));
+                    }
+                }
+            }
+            return activities;
+        }
+
+        public static void AddActivity(string description, string date)
+        {
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = @"
+                INSERT INTO Activities (Description, Date)
+                VALUES (@Description, @Date)";
+
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@Description", description);
+                command.Parameters.AddWithValue("@Date", date);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        #endregion
+
         #region Misc
         //USE Utils.GetDateOnly
         public static void AddRevenue(string date, double revenue)
         {
-            using(SqlConnection con = new SqlConnection(Key)){
+            using (SqlConnection con = new SqlConnection(Key)){
                 con.Open();
                 string query = "SELECT COUNT(Date) FROM Revenue WHERE Date = @Date";
 
