@@ -30,6 +30,7 @@ namespace Luna_Bay_Resort_App.Forms.UserControlForms
             double todayRevenue = 0;
             double weeklyRevenue = 0;
             double monthlyRevenue = 0;
+            double yearlyRevenue = 0;
 
             foreach (Revenue item in revenue)
             {
@@ -52,12 +53,19 @@ namespace Luna_Bay_Resort_App.Forms.UserControlForms
                 {
                     monthlyRevenue += item.GetRevenue();
                 }
+
+                // Yearly revenue
+                if (itemDate.Year == todayDate.Year)
+                {
+                    yearlyRevenue += item.GetRevenue();
+                }
             }
 
             // Update labels with formatted revenue
             todayLabel.Text = Utils.FormatCurrency(todayRevenue);
             weekLabel.Text = Utils.FormatCurrency(weeklyRevenue);
             monthLabel.Text = Utils.FormatCurrency(monthlyRevenue);
+            yearLabel.Text = Utils.FormatCurrency(yearlyRevenue);
         }
 
         private void DisplayReservations()

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            yearLabel = new Label();
+            label6 = new Label();
             label5 = new Label();
             monthLabel = new Label();
             weekLabel = new Label();
@@ -63,6 +65,8 @@
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(yearLabel);
+            panel1.Controls.Add(label6);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(monthLabel);
             panel1.Controls.Add(weekLabel);
@@ -73,8 +77,28 @@
             panel1.Location = new Point(1316, 76);
             panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(257, 191);
+            panel1.Size = new Size(257, 208);
             panel1.TabIndex = 0;
+            // 
+            // yearLabel
+            // 
+            yearLabel.AutoSize = true;
+            yearLabel.Font = new Font("Consolas", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            yearLabel.Location = new Point(132, 168);
+            yearLabel.Name = "yearLabel";
+            yearLabel.Size = new Size(98, 14);
+            yearLabel.TabIndex = 14;
+            yearLabel.Text = "PHP 00,000.00";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Consolas", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label6.Location = new Point(32, 168);
+            label6.Name = "label6";
+            label6.Size = new Size(77, 14);
+            label6.TabIndex = 13;
+            label6.Text = "This Year:";
             // 
             // label5
             // 
@@ -344,7 +368,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Margin = new Padding(3, 2, 3, 2);
-            // Name = "DashboardUserControl";
+            //Name = "DashboardUserControl";
             Size = new Size(1662, 675);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -383,5 +407,7 @@
         private DataGridViewTextBoxColumn Name;
         private DataGridViewCheckBoxColumn Select;
         private Button ClearActivitiesBtn;
+        private Label yearLabel;
+        private Label label6;
     }
 }
