@@ -30,6 +30,8 @@ namespace SubForms
 
             // Outputs receipt data to the text labels
             DisplayReceiptData();
+
+            DatabaseHelper.AddActivity($"Generated Check-out ID: {checkOutNo}", Utils.GetCurrentDate());
         }
 
         private void DisplayReceiptData()

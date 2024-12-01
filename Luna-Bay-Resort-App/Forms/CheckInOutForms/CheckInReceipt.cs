@@ -34,6 +34,8 @@ namespace SubForms
 
             // Displays the data to the text labels
             DisplayReceiptData();
+
+            DatabaseHelper.AddActivity($"Generated Check-in ID: {checkInNo}", Utils.GetCurrentDate());
         }
 
         public void DisplayReceiptData()

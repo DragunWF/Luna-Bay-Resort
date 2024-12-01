@@ -30,6 +30,8 @@ namespace SubForms
 
             // Displays receipt data to the text labels
             DisplayReceiptData();
+
+            DatabaseHelper.AddActivity($"Reservation Generated ID: {reservationNo}", Utils.GetCurrentDate());
         }
 
         private void DisplayReceiptData()

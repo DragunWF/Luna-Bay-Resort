@@ -8,6 +8,7 @@ namespace SubForms
         private double totalPrice = 0;
         private double vat = 0;
         private double subTotalPrice = 0;
+        private string receiptNo;
 
         public AmenitiesReceipt()
         {
@@ -15,14 +16,16 @@ namespace SubForms
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
 
+            receiptNo = Utils.GenerateReceiptNo().ToString();
             DisplayReceiptData();
             UpdateStock();
             DatabaseHelper.AddRevenue(Utils.GetDateOnly(), totalPrice);
+            DatabaseHelper.AddActivity($"Amenities receipt generated: {receiptNo}", Utils.GetCurrentDate());
         }
 
         private void DisplayReceiptData()
         {
-            ReceiptNoText.Text = Utils.GenerateReceiptNo();
+            ReceiptNoText.Text = receiptNo;
             DateTimeText.Text = Utils.GetCurrentDate();
 
             List<Amenity> items = SessionData.GetAmenities();

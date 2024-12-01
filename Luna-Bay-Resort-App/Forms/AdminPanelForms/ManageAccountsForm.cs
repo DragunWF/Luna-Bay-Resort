@@ -96,6 +96,8 @@ namespace Luna_Bay_Resort_App.Forms.AdminPanelForms
                     DatabaseHelper.ResetUserPassword(empIds, newPassword);
                     RefreshDataGrid();
                     MessageBox.Show($"Selected account passwords have been reset to: {newPassword}");
+                    DatabaseHelper.AddActivity($"Reset password for accounts with IDs: {string.Join(", ", empIds)}",
+                                                Utils.GetCurrentDate());
                 }
                 else
                 {
@@ -120,6 +122,8 @@ namespace Luna_Bay_Resort_App.Forms.AdminPanelForms
                 {
                     // TODO:
                     DatabaseHelper.DeleteUserAccounts(empIds);
+                    DatabaseHelper.AddActivity($"Deleted Accounts (IDs): {string.Join(", ", empIds)}",
+                                                Utils.GetCurrentDate());
                     employees = DatabaseHelper.GetUsers();
                     RefreshDataGrid();
                 }
