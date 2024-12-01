@@ -30,9 +30,9 @@
         {
             panel1 = new Panel();
             button1 = new Button();
-            label6 = new Label();
-            label5 = new Label();
-            label4 = new Label();
+            monthLabel = new Label();
+            weekLabel = new Label();
+            todayLabel = new Label();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
@@ -45,13 +45,13 @@
             label8 = new Label();
             label7 = new Label();
             activitiesDataGrid = new DataGridView();
+            Description = new DataGridViewTextBoxColumn();
+            Date = new DataGridViewTextBoxColumn();
             reservationsDataGrid = new DataGridView();
             ReservationId = new DataGridViewTextBoxColumn();
             Name = new DataGridViewTextBoxColumn();
             selectedReservation = new DataGridViewCheckBoxColumn();
             button3 = new Button();
-            Description = new DataGridViewTextBoxColumn();
-            Date = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)activitiesDataGrid).BeginInit();
@@ -62,9 +62,9 @@
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(button1);
-            panel1.Controls.Add(label6);
-            panel1.Controls.Add(label5);
-            panel1.Controls.Add(label4);
+            panel1.Controls.Add(monthLabel);
+            panel1.Controls.Add(weekLabel);
+            panel1.Controls.Add(todayLabel);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
@@ -85,35 +85,35 @@
             button1.Text = "View";
             button1.UseVisualStyleBackColor = true;
             // 
-            // label6
+            // monthLabel
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Consolas", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(132, 104);
-            label6.Name = "label6";
-            label6.Size = new Size(98, 14);
-            label6.TabIndex = 5;
-            label6.Text = "PHP 50,000.00";
+            monthLabel.AutoSize = true;
+            monthLabel.Font = new Font("Consolas", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            monthLabel.Location = new Point(132, 104);
+            monthLabel.Name = "monthLabel";
+            monthLabel.Size = new Size(98, 14);
+            monthLabel.TabIndex = 5;
+            monthLabel.Text = "PHP 50,000.00";
             // 
-            // label5
+            // weekLabel
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Consolas", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(132, 68);
-            label5.Name = "label5";
-            label5.Size = new Size(98, 14);
-            label5.TabIndex = 4;
-            label5.Text = "PHP 15,000.00";
+            weekLabel.AutoSize = true;
+            weekLabel.Font = new Font("Consolas", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            weekLabel.Location = new Point(132, 68);
+            weekLabel.Name = "weekLabel";
+            weekLabel.Size = new Size(98, 14);
+            weekLabel.TabIndex = 4;
+            weekLabel.Text = "PHP 15,000.00";
             // 
-            // label4
+            // todayLabel
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Consolas", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(132, 32);
-            label4.Name = "label4";
-            label4.Size = new Size(91, 14);
-            label4.TabIndex = 3;
-            label4.Text = "PHP 1,000.00";
+            todayLabel.AutoSize = true;
+            todayLabel.Font = new Font("Consolas", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            todayLabel.Location = new Point(132, 32);
+            todayLabel.Name = "todayLabel";
+            todayLabel.Size = new Size(91, 14);
+            todayLabel.TabIndex = 3;
+            todayLabel.Text = "PHP 1,000.00";
             // 
             // label3
             // 
@@ -243,6 +243,22 @@
             activitiesDataGrid.Size = new Size(466, 442);
             activitiesDataGrid.TabIndex = 2;
             // 
+            // Description
+            // 
+            Description.HeaderText = "Activity Description";
+            Description.MinimumWidth = 6;
+            Description.Name = "Description";
+            Description.ReadOnly = true;
+            Description.Width = 290;
+            // 
+            // Date
+            // 
+            Date.HeaderText = "Activity Date";
+            Date.MinimumWidth = 6;
+            Date.Name = "Date";
+            Date.ReadOnly = true;
+            Date.Width = 125;
+            // 
             // reservationsDataGrid
             // 
             reservationsDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -290,22 +306,6 @@
             button3.Text = "CheckIn Now";
             button3.UseVisualStyleBackColor = true;
             // 
-            // Description
-            // 
-            Description.HeaderText = "Activity Description";
-            Description.MinimumWidth = 6;
-            Description.Name = "Description";
-            Description.ReadOnly = true;
-            Description.Width = 290;
-            // 
-            // Date
-            // 
-            Date.HeaderText = "Activity Date";
-            Date.MinimumWidth = 6;
-            Date.Name = "Date";
-            Date.ReadOnly = true;
-            Date.Width = 125;
-            // 
             // DashboardUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -334,9 +334,9 @@
         private Label label3;
         private Label label2;
         private Label label1;
-        private Label label6;
-        private Label label5;
-        private Label label4;
+        private Label monthLabel;
+        private Label weekLabel;
+        private Label todayLabel;
         private Panel panel2;
         private Button button1;
         private Label label8;
