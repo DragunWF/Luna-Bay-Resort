@@ -277,7 +277,7 @@
             CheckInBtn.Name = "CheckInBtn";
             CheckInBtn.Size = new Size(152, 34);
             CheckInBtn.TabIndex = 4;
-            CheckInBtn.Text = "CheckIn Now";
+            CheckInBtn.Text = "Check-in Now";
             CheckInBtn.UseVisualStyleBackColor = true;
             CheckInBtn.Click += CheckInBtn_Click;
             // 
@@ -299,7 +299,7 @@
             ReservationId.MinimumWidth = 6;
             ReservationId.Name = "ReservationId";
             ReservationId.ReadOnly = true;
-            ReservationId.Width = 125;
+            ReservationId.Width = 115;
             // 
             // Name
             // 
@@ -307,16 +307,16 @@
             Name.MinimumWidth = 6;
             Name.Name = "Name";
             Name.ReadOnly = true;
-            Name.Width = 315;
+            Name.Width = 280;
             // 
             // Select
             // 
-            Select.HeaderText = "Select";
+            Select.HeaderText = "Select to Check-in";
             Select.MinimumWidth = 6;
             Select.Name = "Select";
             Select.Resizable = DataGridViewTriState.True;
             Select.ToolTipText = "select";
-            Select.Width = 80;
+            Select.Width = 120;
             // 
             // DashboardUserControl
             // 
