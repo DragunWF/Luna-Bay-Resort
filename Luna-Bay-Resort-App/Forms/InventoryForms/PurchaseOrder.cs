@@ -36,13 +36,8 @@ namespace Luna_Bay_Resort_App.Forms.InventoryForms
             else if (cbCategory.Text == "Foods")
             {
                 cbItemName.Items.Clear();
-                var beverageList = DatabaseHelper.GetFoodbyType(6);
-                foreach (var food in beverageList)
-                {
-                    cbItemName.Items.Add(food.GetFoodName());
-                }
-                var snackList = DatabaseHelper.GetFoodbyType(5);
-                foreach (var food in snackList)
+                var foodList = DatabaseHelper.GetFoodListWithStock();
+                foreach (var food in foodList)
                 {
                     cbItemName.Items.Add(food.GetFoodName());
                 }

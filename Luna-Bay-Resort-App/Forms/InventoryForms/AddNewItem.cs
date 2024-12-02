@@ -8,7 +8,7 @@ namespace Luna_Bay_Resort_App.Forms.InventoryForms
     public partial class AddNewItem : Form
     {
         private int foodType;
-
+        private int stock;
         public AddNewItem()
         {
             InitializeComponent();
@@ -83,19 +83,22 @@ namespace Luna_Bay_Resort_App.Forms.InventoryForms
                 }
                 else
                 {
-                    if (string.IsNullOrWhiteSpace(ItemNametxt.Text) || string.IsNullOrEmpty(Pricetxt.Text) || string.IsNullOrEmpty(Stocktxt.Text))
+                    if ((string.IsNullOrWhiteSpace(ItemNametxt.Text) || string.IsNullOrEmpty(Pricetxt.Text)) || CategoryCB.Text == "Product")
                     {
                         MessageBox.Show("Please insert necessary informations");
                         return;
                     }
 
                     double price = double.Parse(Pricetxt.Text);
-                    int stock = int.Parse(Stocktxt.Text);
 
-                    if (stock <= 0)
+                    if (!string.IsNullOrEmpty(Stocktxt.Text))
                     {
-                        MessageBox.Show("Stock must be a positive number");
-                        return;
+                        stock = int.Parse(Stocktxt.Text);
+                        if (stock <= 0)
+                        {
+                            MessageBox.Show("Stock must be a positive number");
+                            return;
+                        }
                     }
 
                     if (price <= 0)
@@ -112,9 +115,14 @@ namespace Luna_Bay_Resort_App.Forms.InventoryForms
                             {
                                 MessageBox.Show("Fill out the necessary information to add new food to the menu");
                             }
+                            else if(string.IsNullOrEmpty(Stocktxt.Text)){
+                                DatabaseHelper.AddNewFoodMenu(foodType, ItemNametxt.Text, Servingtxt.Text, price);
+                                MessageBox.Show($"New food item added:\nName: {ItemNametxt.Text}\nServing: {Servingtxt.Text}\nPrice: {price}");
+                                ResetInput();
+                            }
                             else
                             {
-                                DatabaseHelper.AddNewFood(foodType, ItemNametxt.Text, Servingtxt.Text, price, stock);
+                                DatabaseHelper.AddNewFoodWithStock(foodType, ItemNametxt.Text, Servingtxt.Text, price, stock);
                                 MessageBox.Show($"New food item added:\nName: {ItemNametxt.Text}\nServing: {Servingtxt.Text}\nPrice: {price}\nStock: {stock}");
                                 ResetInput();
                             }

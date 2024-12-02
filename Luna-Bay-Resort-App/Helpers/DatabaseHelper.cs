@@ -906,7 +906,7 @@ namespace Luna_Bay_Resort_App.Helpers
 
         #region Inventory
 
-        public static void AddNewFood(int foodType, string name, string serving, double price, int stock)
+        public static void AddNewFoodWithStock(int foodType, string name, string serving, double price, int stock)
         {
             using (SqlConnection con = new SqlConnection(Key))
             {
@@ -924,6 +924,28 @@ namespace Luna_Bay_Resort_App.Helpers
                 command.Parameters.AddWithValue("@serving", serving);
                 command.Parameters.AddWithValue("@price", price);
                 command.Parameters.AddWithValue("@stock", stock);
+                command.ExecuteNonQuery();
+                con.Close();
+            }
+        }
+
+        public static void AddNewFoodMenu(int foodType, string name, string serving, double price)
+        {
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string getlastFoodId = "SELECT TOP 1 Food_ID FROM Food WHERE FoodType_ID = @foodType ORDER BY Food_ID DESC";
+                SqlCommand getlast = new SqlCommand(getlastFoodId, con);
+                getlast.Parameters.AddWithValue("@foodType", foodType);
+                int latestfoodId = Convert.ToInt32(getlast.ExecuteScalar());
+
+                string query = "INSERT INTO FOOD(Food_ID, FoodType_ID, Name, Serving, Price) VALUES (@foodId, @foodtype, @name, @serving, @price)";
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@foodId", latestfoodId += 1);
+                command.Parameters.AddWithValue("@foodtype", foodType);
+                command.Parameters.AddWithValue("@name", name);
+                command.Parameters.AddWithValue("@serving", serving);
+                command.Parameters.AddWithValue("@price", price);
                 command.ExecuteNonQuery();
                 con.Close();
             }
@@ -961,6 +983,31 @@ namespace Luna_Bay_Resort_App.Helpers
                         string foodname = reader["Name"].ToString();
                         double price = Convert.ToDouble(reader["Price"]);
                         foods.Add(new Food(foodname, price));
+                    }
+                }
+                con.Close();
+            }
+            return foods;
+        }
+
+        public static List<Food> GetFoodListWithStock()
+        {
+            var foods = new List<Food>();
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = "SELECT Name, Stock, Price FROM Food WHERE Stock IS NOT NULL";
+
+                SqlCommand getfoods = new SqlCommand(query, con);
+
+                using (var reader = getfoods.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string foodname = reader["Name"].ToString();
+                        int stock = Convert.ToInt32(reader["Stock"]);
+                        double price = Convert.ToDouble(reader["Price"]);
+                        foods.Add(new Food(foodname, stock, price));
                     }
                 }
                 con.Close();
@@ -1030,7 +1077,7 @@ namespace Luna_Bay_Resort_App.Helpers
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
-                string query = @"SELECT Name, Stock, Price from Food WHERE (FoodType_ID = 5 OR FoodType_ID = 6) AND STOCK IS NOT NULL AND Name LIKE '%' + @Name + '%' 
+                string query = @"SELECT Name, Stock, Price from Food WHERE STOCK IS NOT NULL AND Name LIKE '%' + @Name + '%' 
                                  UNION 
                                  SELECT Name, Stock, Price from Products WHERE Name LIKE '%' + @Name + '%'";
 
