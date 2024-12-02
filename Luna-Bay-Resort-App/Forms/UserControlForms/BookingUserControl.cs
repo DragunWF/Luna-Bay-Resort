@@ -1,4 +1,5 @@
-﻿using Luna_Bay_Resort_App.Helpers;
+﻿using Luna_Bay_Resort_App.Forms.UserControlForms;
+using Luna_Bay_Resort_App.Helpers;
 using Luna_Bay_Sub_Forms;
 using SubForms;
 
@@ -144,6 +145,9 @@ namespace MainForms
                         break;
                     case "Check Out":
                         FormManager.OpenForm<CheckOut>();
+                        break;
+                    case "Walk-In":
+                        FormManager.OpenForm<WalkInForm>();
                         break;
                     default:
                         MessageBox.Show($"{title} button clicked!");
