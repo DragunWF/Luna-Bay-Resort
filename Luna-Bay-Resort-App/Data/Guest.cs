@@ -78,6 +78,26 @@
             this.reservationId = reservationId;
             this.name = name;
         }
+        public Guest(int reservationId, string name, string checkin)
+        {
+            this.reservationId = reservationId;
+            this.name = name;
+            this.checkIn= checkin;
+        }
+
+        public Guest(string name, int checkInId, string checkout)
+        {
+            this.name = name;
+            this.checkInId = checkInId;
+            this.checkOut = checkout;
+        }
+
+        public Guest(string name, string checkout, int checkOutId)
+        {
+            this.name = name;
+            this.checkOutId = checkOutId;
+            this.checkOut = checkout;
+        }
 
         #region Getter Methods
 

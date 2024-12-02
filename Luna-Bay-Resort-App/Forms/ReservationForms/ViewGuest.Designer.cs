@@ -63,39 +63,42 @@
             // 
             dgvReservation.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvReservation.Columns.AddRange(new DataGridViewColumn[] { reservationId, reservationName, checkInDate });
-            dgvReservation.Location = new Point(29, 71);
+            dgvReservation.Location = new Point(25, 53);
+            dgvReservation.Margin = new Padding(3, 2, 3, 2);
             dgvReservation.Name = "dgvReservation";
             dgvReservation.RowHeadersWidth = 51;
-            dgvReservation.Size = new Size(430, 341);
+            dgvReservation.Size = new Size(376, 256);
             dgvReservation.TabIndex = 0;
             // 
             // dgvCheckIn
             // 
             dgvCheckIn.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCheckIn.Columns.AddRange(new DataGridViewColumn[] { checkInId, checkInName, checkOutDate });
-            dgvCheckIn.Location = new Point(507, 71);
+            dgvCheckIn.Location = new Point(444, 53);
+            dgvCheckIn.Margin = new Padding(3, 2, 3, 2);
             dgvCheckIn.Name = "dgvCheckIn";
             dgvCheckIn.RowHeadersWidth = 51;
-            dgvCheckIn.Size = new Size(428, 341);
+            dgvCheckIn.Size = new Size(374, 256);
             dgvCheckIn.TabIndex = 1;
             // 
             // dgvCheckOut
             // 
             dgvCheckOut.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCheckOut.Columns.AddRange(new DataGridViewColumn[] { checkOutId, checkOutName });
-            dgvCheckOut.Location = new Point(983, 71);
+            dgvCheckOut.Location = new Point(860, 53);
+            dgvCheckOut.Margin = new Padding(3, 2, 3, 2);
             dgvCheckOut.Name = "dgvCheckOut";
             dgvCheckOut.RowHeadersWidth = 51;
-            dgvCheckOut.Size = new Size(348, 341);
+            dgvCheckOut.Size = new Size(304, 256);
             dgvCheckOut.TabIndex = 2;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(29, 35);
+            label1.Location = new Point(25, 26);
             label1.Name = "label1";
-            label1.Size = new Size(241, 23);
+            label1.Size = new Size(198, 19);
             label1.TabIndex = 3;
             label1.Text = "List of Reservations:";
             // 
@@ -103,9 +106,9 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(507, 35);
+            label2.Location = new Point(444, 26);
             label2.Name = "label2";
-            label2.Size = new Size(208, 23);
+            label2.Size = new Size(171, 19);
             label2.TabIndex = 4;
             label2.Text = "List of Check-Ins:";
             // 
@@ -113,114 +116,133 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Consolas", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(983, 35);
+            label3.Location = new Point(860, 26);
             label3.Name = "label3";
-            label3.Size = new Size(219, 23);
+            label3.Size = new Size(180, 19);
             label3.TabIndex = 5;
             label3.Text = "List of Check-Outs:";
             // 
             // txtSearchReservation
             // 
-            txtSearchReservation.Location = new Point(29, 431);
+            txtSearchReservation.Location = new Point(25, 323);
+            txtSearchReservation.Margin = new Padding(3, 2, 3, 2);
             txtSearchReservation.Name = "txtSearchReservation";
-            txtSearchReservation.Size = new Size(304, 27);
+            txtSearchReservation.Size = new Size(266, 23);
             txtSearchReservation.TabIndex = 6;
             // 
             // txtSearchCheckIn
             // 
-            txtSearchCheckIn.Location = new Point(508, 431);
+            txtSearchCheckIn.Location = new Point(444, 323);
+            txtSearchCheckIn.Margin = new Padding(3, 2, 3, 2);
             txtSearchCheckIn.Name = "txtSearchCheckIn";
-            txtSearchCheckIn.Size = new Size(299, 27);
+            txtSearchCheckIn.Size = new Size(262, 23);
             txtSearchCheckIn.TabIndex = 7;
             // 
             // txtSearchCheckOut
             // 
-            txtSearchCheckOut.Location = new Point(983, 431);
+            txtSearchCheckOut.Location = new Point(860, 323);
+            txtSearchCheckOut.Margin = new Padding(3, 2, 3, 2);
             txtSearchCheckOut.Name = "txtSearchCheckOut";
-            txtSearchCheckOut.Size = new Size(241, 27);
+            txtSearchCheckOut.Size = new Size(211, 23);
             txtSearchCheckOut.TabIndex = 8;
             // 
             // reservationSearchBtn
             // 
-            reservationSearchBtn.Location = new Point(380, 431);
+            reservationSearchBtn.Location = new Point(332, 323);
+            reservationSearchBtn.Margin = new Padding(3, 2, 3, 2);
             reservationSearchBtn.Name = "reservationSearchBtn";
-            reservationSearchBtn.Size = new Size(79, 27);
+            reservationSearchBtn.Size = new Size(69, 20);
             reservationSearchBtn.TabIndex = 9;
             reservationSearchBtn.Text = "Search";
             reservationSearchBtn.UseVisualStyleBackColor = true;
+            reservationSearchBtn.Click += reservationSearchBtn_Click;
             // 
             // checkInSearchBtn
             // 
-            checkInSearchBtn.Location = new Point(856, 431);
+            checkInSearchBtn.Location = new Point(749, 323);
+            checkInSearchBtn.Margin = new Padding(3, 2, 3, 2);
             checkInSearchBtn.Name = "checkInSearchBtn";
-            checkInSearchBtn.Size = new Size(79, 27);
+            checkInSearchBtn.Size = new Size(69, 20);
             checkInSearchBtn.TabIndex = 10;
             checkInSearchBtn.Text = "Search";
             checkInSearchBtn.UseVisualStyleBackColor = true;
+            checkInSearchBtn.Click += checkInSearchBtn_Click;
             // 
             // checkOutSearchReservation
             // 
-            checkOutSearchReservation.Location = new Point(1252, 431);
+            checkOutSearchReservation.Location = new Point(1096, 323);
+            checkOutSearchReservation.Margin = new Padding(3, 2, 3, 2);
             checkOutSearchReservation.Name = "checkOutSearchReservation";
-            checkOutSearchReservation.Size = new Size(79, 27);
+            checkOutSearchReservation.Size = new Size(69, 20);
             checkOutSearchReservation.TabIndex = 11;
             checkOutSearchReservation.Text = "Search";
             checkOutSearchReservation.UseVisualStyleBackColor = true;
+            checkOutSearchReservation.Click += checkOutSearchReservation_Click;
             // 
             // reservationShowBtn
             // 
-            reservationShowBtn.Location = new Point(380, 479);
+            reservationShowBtn.Location = new Point(332, 359);
+            reservationShowBtn.Margin = new Padding(3, 2, 3, 2);
             reservationShowBtn.Name = "reservationShowBtn";
-            reservationShowBtn.Size = new Size(79, 27);
+            reservationShowBtn.Size = new Size(69, 20);
             reservationShowBtn.TabIndex = 13;
             reservationShowBtn.Text = "Show";
             reservationShowBtn.UseVisualStyleBackColor = true;
+            reservationShowBtn.Click += reservationShowBtn_Click;
             // 
             // dtpReservation
             // 
-            dtpReservation.Location = new Point(29, 481);
+            dtpReservation.CustomFormat = "";
+            dtpReservation.Location = new Point(25, 361);
+            dtpReservation.Margin = new Padding(3, 2, 3, 2);
             dtpReservation.Name = "dtpReservation";
-            dtpReservation.Size = new Size(304, 27);
+            dtpReservation.Size = new Size(266, 23);
             dtpReservation.TabIndex = 12;
             // 
             // dtpCheckIn
             // 
-            dtpCheckIn.Location = new Point(508, 479);
+            dtpCheckIn.Location = new Point(444, 359);
+            dtpCheckIn.Margin = new Padding(3, 2, 3, 2);
             dtpCheckIn.Name = "dtpCheckIn";
-            dtpCheckIn.Size = new Size(299, 27);
+            dtpCheckIn.Size = new Size(262, 23);
             dtpCheckIn.TabIndex = 14;
             // 
             // checkInShowBtn
             // 
-            checkInShowBtn.Location = new Point(856, 479);
+            checkInShowBtn.Location = new Point(749, 359);
+            checkInShowBtn.Margin = new Padding(3, 2, 3, 2);
             checkInShowBtn.Name = "checkInShowBtn";
-            checkInShowBtn.Size = new Size(79, 27);
+            checkInShowBtn.Size = new Size(69, 20);
             checkInShowBtn.TabIndex = 15;
             checkInShowBtn.Text = "Show";
             checkInShowBtn.UseVisualStyleBackColor = true;
+            checkInShowBtn.Click += checkInShowBtn_Click;
             // 
             // dtpCheckOut
             // 
-            dtpCheckOut.Location = new Point(983, 481);
+            dtpCheckOut.Location = new Point(860, 361);
+            dtpCheckOut.Margin = new Padding(3, 2, 3, 2);
             dtpCheckOut.Name = "dtpCheckOut";
-            dtpCheckOut.Size = new Size(241, 27);
+            dtpCheckOut.Size = new Size(211, 23);
             dtpCheckOut.TabIndex = 16;
             // 
             // checkOutShowBtn
             // 
-            checkOutShowBtn.Location = new Point(1252, 479);
+            checkOutShowBtn.Location = new Point(1096, 359);
+            checkOutShowBtn.Margin = new Padding(3, 2, 3, 2);
             checkOutShowBtn.Name = "checkOutShowBtn";
-            checkOutShowBtn.Size = new Size(79, 27);
+            checkOutShowBtn.Size = new Size(69, 20);
             checkOutShowBtn.TabIndex = 17;
             checkOutShowBtn.Text = "Show";
             checkOutShowBtn.UseVisualStyleBackColor = true;
+            checkOutShowBtn.Click += checkOutShowBtn_Click;
             // 
             // reservationId
             // 
             reservationId.HeaderText = "ID";
             reservationId.MinimumWidth = 6;
             reservationId.Name = "reservationId";
-            reservationId.Width = 125;
+            reservationId.Width = 80;
             // 
             // reservationName
             // 
@@ -241,7 +263,7 @@
             checkInId.HeaderText = "ID";
             checkInId.MinimumWidth = 6;
             checkInId.Name = "checkInId";
-            checkInId.Width = 125;
+            checkInId.Width = 80;
             // 
             // checkInName
             // 
@@ -262,7 +284,7 @@
             checkOutId.HeaderText = "ID";
             checkOutId.MinimumWidth = 6;
             checkOutId.Name = "checkOutId";
-            checkOutId.Width = 125;
+            checkOutId.Width = 80;
             // 
             // checkOutName
             // 
@@ -273,9 +295,9 @@
             // 
             // ViewGuest
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1370, 548);
+            ClientSize = new Size(1199, 411);
             Controls.Add(checkOutShowBtn);
             Controls.Add(dtpCheckOut);
             Controls.Add(checkInShowBtn);
@@ -294,6 +316,7 @@
             Controls.Add(dgvCheckOut);
             Controls.Add(dgvCheckIn);
             Controls.Add(dgvReservation);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "ViewGuest";
             Text = "ViewGuest";
             ((System.ComponentModel.ISupportInitialize)dgvReservation).EndInit();
@@ -318,14 +341,14 @@
         private Button checkInSearchBtn;
         private Button checkOutSearchReservation;
         private Button reservationShowBtn;
-        private DataGridViewTextBoxColumn reservationId;
-        private DataGridViewTextBoxColumn reservationName;
-        private DataGridViewTextBoxColumn checkInDate;
         private DateTimePicker dtpReservation;
         private DateTimePicker dtpCheckIn;
         private Button checkInShowBtn;
         private DateTimePicker dtpCheckOut;
         private Button checkOutShowBtn;
+        private DataGridViewTextBoxColumn reservationId;
+        private DataGridViewTextBoxColumn reservationName;
+        private DataGridViewTextBoxColumn checkInDate;
         private DataGridViewTextBoxColumn checkInId;
         private DataGridViewTextBoxColumn checkInName;
         private DataGridViewTextBoxColumn checkOutDate;

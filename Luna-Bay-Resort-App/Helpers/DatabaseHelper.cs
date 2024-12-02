@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using System.Xml.Linq;
 using Luna_Bay_Resort_App.Data;
+using SubForms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -485,6 +486,93 @@ namespace Luna_Bay_Resort_App.Helpers
             SetRoomStatus("Reserved", roomNo);
         }
 
+        public static List<Guest> GetReservationList(string name, string checkin)
+        {
+            var reservations = new List<Guest>();
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = @"SELECT Reservation_ID, Name, Check_in FROM Guest WHERE Checkin_ID IS NULL 
+                                AND Checkout_ID IS NULL 
+                                AND Name LIKE '%' + @Name + '%'
+                                AND Check_in LIKE '%' + @checkin + '%'";
+                
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@Name", name);
+                command.Parameters.AddWithValue("@checkin", checkin);
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int reservationid = Convert.ToInt32(reader["Reservation_ID"]);
+                        string reservationname = reader["Name"].ToString();
+                        string reservationcheckin = reader["Check_in"].ToString();
+
+                        reservations.Add(new Guest(reservationid, reservationname, reservationcheckin));
+                    }
+                }
+                return reservations;
+            }
+        }
+
+        public static List<Guest> GetCheckInList(string name, string checkout)
+        {
+            var checkins = new List<Guest>();
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = @"SELECT Checkin_ID, Name, Check_out FROM Guest WHERE Reservation_ID IS NULL AND Checkout_ID IS NULL
+                                AND Name LIKE '%' + @Name + '%'
+                                AND Check_out LIKE '%' + @checkout + '%'";
+
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@Name", name);
+                command.Parameters.AddWithValue("@checkout", checkout);
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int checkinId = Convert.ToInt32(reader["Checkin_ID"]);
+                        string checkinname = reader["Name"].ToString();
+                        string checkoutdate = reader["Check_out"].ToString();
+
+                        checkins.Add(new Guest(checkinname, checkinId, checkoutdate));
+                    }
+                }
+                return checkins;
+            }
+        }
+
+        public static List<Guest> GetCheckOutList(string name, string checkout)
+        {
+            var checkouts = new List<Guest>();
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = @"SELECT Checkout_ID, Name, Check_out FROM Guest WHERE Checkin_ID IS NULL AND Reservation_ID IS NULL
+                                AND Name LIKE '%' + @Name + '%'
+                                AND Check_out LIKE '%' + @checkout + '%'";
+
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@Name", name);
+                command.Parameters.AddWithValue("@checkout", checkout);
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int checkoutId = Convert.ToInt32(reader["Checkout_ID"]);
+                        string checkoutname = reader["Name"].ToString();
+                        string checkoutdate = reader["Check_out"].ToString();
+
+                        checkouts.Add(new Guest(checkoutname, checkoutdate, checkoutId));
+                    }
+                }
+                return checkouts;
+            }
+        }
         #endregion
 
         #region Room Methods
