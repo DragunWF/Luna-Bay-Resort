@@ -7,10 +7,13 @@ namespace Luna_Bay_Resort_App.Forms.UserControlForms
 {
     public partial class WalkInForm : Form
     {
-        private int stayduration;
+        private int stayDuration;
         private double price;
         private string paymentMethod;
-        private int PaymentID;
+        private int paymentID;
+
+        private const int numOfPersonLimit = 20;
+        private double totalPrice = 0;
 
         public WalkInForm()
         {
@@ -22,6 +25,12 @@ namespace Luna_Bay_Resort_App.Forms.UserControlForms
         {
             try
             {
+                int numOfPerson = int.Parse(Numofpersontxt.Text);
+
+                if (numOfPerson > numOfPersonLimit)
+                {
+                    MessageBox.Show($"The number of person cannot be greater than {numOfPersonLimit}");
+                }
                 if(string.IsNullOrEmpty(Nametxt.Text) || string.IsNullOrEmpty(Totaltxt.Text))
                 {
                     MessageBox.Show("Please fill out the required information");
@@ -33,27 +42,32 @@ namespace Luna_Bay_Resort_App.Forms.UserControlForms
                 else
                 {
                     string currentdate = Utils.GetCurrentDate();
-                    string durationformat = $"{stayduration} Hours";
+                    string durationformat = $"{stayDuration} Hours";
 
-                    DatabaseHelper.AddWalkIn(Nametxt.Text, int.Parse(Numofpersontxt.Text), durationformat, currentdate, int.Parse(Totaltxt.Text), PaymentID, PaymentMethods.paymentreference);
-                    DatabaseHelper.AddRevenue(Utils.GetDateOnly(), double.Parse(Totaltxt.Text));
-                    FormManager.OpenForm<WalkInReceipt>(Nametxt.Text, currentdate, durationformat, int.Parse(Numofpersontxt.Text), int.Parse(Totaltxt.Text), paymentMethod);
+                    DatabaseHelper.AddWalkIn(Nametxt.Text, numOfPerson, durationformat, currentdate, (int)totalPrice, paymentID, PaymentMethods.paymentreference);
+                    DatabaseHelper.AddRevenue(Utils.GetDateOnly(), totalPrice);
+                    FormManager.OpenForm<WalkInReceipt>(Nametxt.Text, currentdate, durationformat, numOfPerson, (int)totalPrice, paymentMethod);
                     ClearInput();
                 }
             }
-            catch(Exception ex)
+            catch (FormatException)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Please make sure to validate your input!");
+            }
+            catch(Exception err)
+            {
+                MessageBox.Show($"An unexpected error has occured: {err.Message}");
             }
         }
 
         #region Checkbox events
+
         private void Hours6cb_CheckedChanged(object sender, EventArgs e)
         {
             if (Hours6cb.Checked)
             {
                 Hours12cb.Checked = false;
-                stayduration = 6;
+                stayDuration = 6;
                 price = 100;
                 InputComplete();
             }
@@ -64,7 +78,7 @@ namespace Luna_Bay_Resort_App.Forms.UserControlForms
             if (Hours12cb.Checked)
             {
                 Hours6cb.Checked = false;
-                stayduration = 12;
+                stayDuration = 12;
                 price = 150;
                 InputComplete();
             }
@@ -74,7 +88,7 @@ namespace Luna_Bay_Resort_App.Forms.UserControlForms
         {
             if (CashCheckBox.Checked)
             {
-                PaymentID = 1;
+                paymentID = 1;
                 paymentMethod = "Cash";
                 OnlinePaymentCheckBox.Checked = false;
                 CardCheckBox.Checked = false;
@@ -85,7 +99,7 @@ namespace Luna_Bay_Resort_App.Forms.UserControlForms
         {
             if (OnlinePaymentCheckBox.Checked)
             {
-                PaymentID = 2;
+                paymentID = 2;
                 paymentMethod = "Online Payment";
                 CashCheckBox.Checked = false;
                 CardCheckBox.Checked = false;
@@ -98,7 +112,7 @@ namespace Luna_Bay_Resort_App.Forms.UserControlForms
         {
             if (CardCheckBox.Checked)
             {
-                PaymentID = 3;
+                paymentID = 3;
                 paymentMethod = "Debit/Credit Card";
                 CashCheckBox.Checked = false;
                 OnlinePaymentCheckBox.Checked = false;
@@ -106,6 +120,7 @@ namespace Luna_Bay_Resort_App.Forms.UserControlForms
                 FormManager.OpenForm<CardReference>();
             }
         }
+
         #endregion
 
         private void ClearInput()
@@ -126,10 +141,12 @@ namespace Luna_Bay_Resort_App.Forms.UserControlForms
             {
                 if (!string.IsNullOrEmpty(Numofpersontxt.Text) && (Hours6cb.Checked || Hours12cb.Checked))
                 {
-                    Totaltxt.Text = (int.Parse(Numofpersontxt.Text) * price).ToString();
+                    totalPrice = int.Parse(Numofpersontxt.Text) * price;
+                    Totaltxt.Text = Utils.FormatCurrency(totalPrice);
                 }
                 else
                 {
+                    totalPrice = 0;
                     Totaltxt.Text = "";
                 }
             }
