@@ -84,6 +84,8 @@ namespace MainForms
             // Add check-in/out cards
             CheckInOutPanel.Controls.Add(CreateBookingCard(Properties.Resources.check_in, "Check In", Color.White));
             CheckInOutPanel.Controls.Add(CreateBookingCard(Properties.Resources.check_out, "Check Out", Color.White));
+            CheckInOutPanel.Controls.Add(CreateBookingCard(Properties.Resources.register, "Walk-In", Color.White));
+
 
             // Add the main panel to the UserControl
             this.Controls.Add(mainPanel);
