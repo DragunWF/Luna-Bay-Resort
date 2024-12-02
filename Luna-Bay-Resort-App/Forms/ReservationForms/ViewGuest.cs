@@ -18,6 +18,8 @@ namespace Luna_Bay_Resort_App.Forms.ReservationForms
         public ViewGuest()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
 
             Reservations("", "");
             Checkin("", "");
@@ -59,6 +61,7 @@ namespace Luna_Bay_Resort_App.Forms.ReservationForms
                 dgvCheckOut.Rows.Add(guest.GetCheckOutId(), guest.GetName());
             }
         }
+
         #region Search Events
         private void reservationSearchBtn_Click(object sender, EventArgs e)
         {
@@ -94,6 +97,7 @@ namespace Luna_Bay_Resort_App.Forms.ReservationForms
             string formattedDate = dtpCheckOut.Value.ToString("M/dd/yyyy");
             Checkout("", formattedDate);
         }
+
         #endregion
     }
 }
