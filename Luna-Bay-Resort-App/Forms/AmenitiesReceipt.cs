@@ -40,6 +40,9 @@ namespace SubForms
             SubTotalText.Text = Utils.FormatCurrency(subTotalPrice);
             VATText.Text = Utils.FormatCurrency(vat);
             TotalText.Text = Utils.FormatCurrency(totalPrice);
+
+            // Database Operations
+            DatabaseHelper.AddRevenue(Utils.GetDateOnly(), totalPrice);
         }
 
         public void AddItemToListView(string itemName, int quantity, double price)
