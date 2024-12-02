@@ -42,27 +42,6 @@ namespace Luna_Bay_Resort_App.Forms.InventoryForms
         {
             SearchItem(txtSearch.Text);
         }
-        private void DisplayFoodByFoodID(int FoodType)
-        {
-            List<Food> foods = DatabaseHelper.GetFoodbyType(FoodType);
-
-            foreach (var food in foods)
-            {
-                string formattedPrice = Utils.FormatCurrency(food.GetPrice());
-                inventoryDataGrid.Rows.Add(food.GetFoodName(), formattedPrice, food.GetStock());
-            }
-        }
-
-        private void GetProduct()
-        {
-            List<Product> products = DatabaseHelper.GetProduct();
-
-            foreach (var product in products)
-            {
-                string formattedPrice = Utils.FormatCurrency(product.GetPrice());
-                inventoryDataGrid.Rows.Add(product.GetProductName(), formattedPrice, product.GetStock());
-            }
-        }
 
         private void SearchItem(string Name)
         {
