@@ -111,7 +111,7 @@
             // 
             cbCategory.DropDownStyle = ComboBoxStyle.DropDownList;
             cbCategory.FormattingEnabled = true;
-            cbCategory.Items.AddRange(new object[] { "Products", "Beverages" });
+            cbCategory.Items.AddRange(new object[] { "Products", "Foods" });
             cbCategory.Location = new Point(816, 189);
             cbCategory.Margin = new Padding(3, 2, 3, 2);
             cbCategory.Name = "cbCategory";

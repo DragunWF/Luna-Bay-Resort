@@ -33,7 +33,7 @@ namespace Luna_Bay_Resort_App.Forms.InventoryForms
                     cbItemName.Items.Add(product.GetProductName());
                 }
             }
-            else if (cbCategory.Text == "Beverages")
+            else if (cbCategory.Text == "Foods")
             {
                 cbItemName.Items.Clear();
                 var beverageList = DatabaseHelper.GetFoodbyType(6);
