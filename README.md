@@ -20,8 +20,6 @@ This resort is fictional and is primarily created as a college project to be sub
 2. `INTE1024`: Event-Driven Programming
 3. `INTE1086`: Enterprise Architecture
 
-**This app is still in development!**
-
 ## Introduction
 
 Luna Bay Resort currently lacks an integrated system for managing its various services, which include food services, swimming areas, cottages, and equipment rentals. Manual processes for bookings, billing, scheduling, and maintenance tracking lead to inefficiencies and potential errors. This management application seeks to address these challenges by providing a unified system for financial tracking, booking management, scheduling, and a point-of-sale (POS) system.
@@ -30,4 +28,4 @@ The **Luna Bay Resort App** aims to enhance the operational efficiency of the re
 
 ## Forms
 
-_To be added soon_
+_[Pictures]_
