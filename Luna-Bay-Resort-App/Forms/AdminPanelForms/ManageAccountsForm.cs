@@ -8,6 +8,7 @@ namespace Luna_Bay_Resort_App.Forms.AdminPanelForms
     public partial class ManageAccountsForm : Form
     {
         private List<User> employees;
+        private User currentUser;
 
         public ManageAccountsForm()
         {
@@ -15,6 +16,7 @@ namespace Luna_Bay_Resort_App.Forms.AdminPanelForms
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
 
+            currentUser = SessionData.GetCurrentUser();
             employees = DatabaseHelper.GetUsers();
             RefreshDataGrid();
             accountsDataGrid.AllowUserToAddRows = false;
@@ -25,7 +27,10 @@ namespace Luna_Bay_Resort_App.Forms.AdminPanelForms
             accountsDataGrid.Rows.Clear();
             foreach (User employee in employees)
             {
-                accountsDataGrid.Rows.Add(employee.GetEmpId(), employee.GetName(), employee.GetPosition(), false, false);
+                if (employee.GetEmpId() != currentUser.GetEmpId())
+                {
+                    accountsDataGrid.Rows.Add(employee.GetEmpId(), employee.GetName(), employee.GetPosition(), false, false);
+                }
             }
         }
 
@@ -67,6 +72,10 @@ namespace Luna_Bay_Resort_App.Forms.AdminPanelForms
                 accountsDataGrid.Rows.Clear();
                 foreach (User user in DatabaseHelper.GetUsers())
                 {
+                    if (user.GetEmpId() == currentUser.GetEmpId())
+                    {
+                        continue;
+                    }
                     if (user.GetName().ToLower().Contains(query) ||
                         user.GetPosition().ToLower().Contains(query))
                     {
@@ -120,7 +129,6 @@ namespace Luna_Bay_Resort_App.Forms.AdminPanelForms
 
                 if (result == DialogResult.Yes)
                 {
-                    // TODO:
                     DatabaseHelper.DeleteUserAccounts(empIds);
                     DatabaseHelper.AddActivity($"Deleted Accounts (IDs): {string.Join(", ", empIds)}",
                                                 Utils.GetCurrentDate());
