@@ -97,50 +97,58 @@ namespace MainForms
             //Click Option Event
             menuTable.CellClick += (sender, e) =>
             {
-                string itemName = menuTable.Rows[e.RowIndex].Cells["Name"].Value?.ToString();
-                string QuantityText = menuTable.Rows[e.RowIndex].Cells["Qty"].Value?.ToString();
-                string itemPriceText = menuTable.Rows[e.RowIndex].Cells["Price"].Value?.ToString();
-                
-
-                if (string.IsNullOrEmpty(itemName) || string.IsNullOrEmpty(itemPriceText))
+                try
                 {
-                    return;
-                }
+                    string itemName = menuTable.Rows[e.RowIndex].Cells["Name"].Value?.ToString();
+                    string QuantityText = menuTable.Rows[e.RowIndex].Cells["Qty"].Value?.ToString();
+                    string itemPriceText = menuTable.Rows[e.RowIndex].Cells["Price"].Value?.ToString();
 
-                // Remove "PHP" from the price
-                decimal itemPrice = 0;
-                if (decimal.TryParse(itemPriceText.Replace("PHP", "").Trim(), out decimal price))
-                {
-                    itemPrice = price;
-                }
 
-                // Check if the item is available in stock
-                if (QuantityText == "0")
-                {
-                    MessageBox.Show($"{itemName} is out of stock.");
-                    return;
-                }
-
-                // Check if the item already exists in the checkoutTable
-                bool itemExists = false;
-                foreach (DataGridViewRow row in checkoutTable.Rows)
-                {
-                    if (row.Cells["Name"].Value?.ToString() == itemName)
+                    if (string.IsNullOrEmpty(itemName) || string.IsNullOrEmpty(itemPriceText))
                     {
-                        int currentQty = Convert.ToInt32(row.Cells["Qty"].Value);
-                        row.Cells["Qty"].Value = currentQty + 1;
-                        row.Cells["Price"].Value = (currentQty + 1) * itemPrice;
-                        itemExists = true;
-                        break;
+                        return;
                     }
-                }
 
-                if (!itemExists)
+                    // Remove "PHP" from the price
+                    decimal itemPrice = 0;
+                    if (decimal.TryParse(itemPriceText.Replace("PHP", "").Trim(), out decimal price))
+                    {
+                        itemPrice = price;
+                    }
+
+                    // Check if the item is available in stock
+                    if (QuantityText == "0")
+                    {
+                        MessageBox.Show($"{itemName} is out of stock.");
+                        return;
+                    }
+
+                    // Check if the item already exists in the checkoutTable
+                    bool itemExists = false;
+                    foreach (DataGridViewRow row in checkoutTable.Rows)
+                    {
+                        if (row.Cells["Name"].Value?.ToString() == itemName)
+                        {
+                            int currentQty = Convert.ToInt32(row.Cells["Qty"].Value);
+                            row.Cells["Qty"].Value = currentQty + 1;
+                            row.Cells["Price"].Value = (currentQty + 1) * itemPrice;
+                            itemExists = true;
+                            break;
+                        }
+                    }
+
+                    if (!itemExists)
+                    {
+                        checkoutTable.Rows.Add(itemName, 1, itemPrice);
+                    }
+
+                    UpdateTotal();
+                }
+                catch(Exception ex)
                 {
-                    checkoutTable.Rows.Add(itemName, 1, itemPrice);
+                    MessageBox.Show("Only click on the items to add to checkout cart");
                 }
 
-                UpdateTotal();
             };
 
             FlowLayoutPanel bottomPanel = new FlowLayoutPanel
