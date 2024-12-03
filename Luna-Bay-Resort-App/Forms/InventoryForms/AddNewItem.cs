@@ -107,6 +107,13 @@ namespace Luna_Bay_Resort_App.Forms.InventoryForms
                         return;
                     }
 
+                    int duplicateCheck = DatabaseHelper.CheckItemName(CategoryCB.Text, ItemNametxt.Text);
+                    if(duplicateCheck > 0)
+                    {
+                        MessageBox.Show("There is already an Item with that name on the database");
+                        return;
+                    }
+
                     switch (CategoryCB.Text)
                     {
                         case "Food":

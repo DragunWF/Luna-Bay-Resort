@@ -1054,6 +1054,20 @@ namespace Luna_Bay_Resort_App.Helpers
             }
         }
 
+        public static int CheckItemName(string category, string name)
+        {
+            int duplicate = 0;
+            using (SqlConnection con = new SqlConnection(Key))
+            {
+                con.Open();
+                string query = $"SELECT COUNT(Name) FROM {category} WHERE Name LIKE '%' + @Name + '%'";
+                SqlCommand command = new SqlCommand(query, con);
+                command.Parameters.AddWithValue("@Name", name);
+                duplicate = Convert.ToInt32(command.ExecuteScalar());
+            }
+            return duplicate;
+        }
+
         public static List<Food> GetFoodList()
         {
             var foods = new List<Food>();
