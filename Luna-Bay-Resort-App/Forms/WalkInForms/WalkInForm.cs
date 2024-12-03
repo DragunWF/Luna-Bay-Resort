@@ -30,6 +30,12 @@ namespace Luna_Bay_Resort_App.Forms.UserControlForms
                 if (numOfPerson > numOfPersonLimit)
                 {
                     MessageBox.Show($"The number of person cannot be greater than {numOfPersonLimit}");
+                    return;
+                }
+                if(numOfPerson <= 0)
+                {
+                    MessageBox.Show("The number of person cannot be lower than or equal to 0");
+                    return;
                 }
                 if(string.IsNullOrEmpty(Nametxt.Text) || string.IsNullOrEmpty(Totaltxt.Text))
                 {

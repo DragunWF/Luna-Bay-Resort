@@ -24,8 +24,12 @@ namespace Luna_Bay_Resort_App.Forms
             try
             {
                 int additionalPax = Convert.ToInt32(Paxtxt.Text);
-
-                if (additionalPax >= 1)
+                if(additionalPax > 20)
+                {
+                    MessageBox.Show("The maximum number of additional pax is 20");
+                    return;
+                }
+                else if (additionalPax >= 1)
                 {
                     SessionData.RoomPax += additionalPax;
                     SessionData.RoomCost += 150 * additionalPax;
@@ -33,7 +37,7 @@ namespace Luna_Bay_Resort_App.Forms
                 }
                 else
                 {
-                    MessageBox.Show("Number of additional guests can be lower than 1");
+                    MessageBox.Show("Number of additional guests can't be lower than 1");
                 };
             }
             catch (FormatException eee)
