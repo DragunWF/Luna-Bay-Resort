@@ -29,19 +29,23 @@
         private void InitializeComponent()
         {
             inventoryDataGrid = new DataGridView();
+            itemName = new DataGridViewTextBoxColumn();
+            price = new DataGridViewTextBoxColumn();
+            quantity = new DataGridViewTextBoxColumn();
             PurchaseOrderBtn = new Button();
             txtSearch = new TextBox();
             SearchBtn = new Button();
             AddItemBtn = new Button();
             EditItemBtn = new Button();
-            itemName = new DataGridViewTextBoxColumn();
-            price = new DataGridViewTextBoxColumn();
-            quantity = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)inventoryDataGrid).BeginInit();
             SuspendLayout();
             // 
             // inventoryDataGrid
             // 
+            inventoryDataGrid.AllowUserToAddRows = false;
+            inventoryDataGrid.AllowUserToDeleteRows = false;
+            inventoryDataGrid.AllowUserToResizeColumns = false;
+            inventoryDataGrid.AllowUserToResizeRows = false;
             inventoryDataGrid.Columns.AddRange(new DataGridViewColumn[] { itemName, price, quantity });
             inventoryDataGrid.Location = new Point(28, 25);
             inventoryDataGrid.Margin = new Padding(3, 2, 3, 2);
@@ -49,6 +53,27 @@
             inventoryDataGrid.RowHeadersWidth = 51;
             inventoryDataGrid.Size = new Size(832, 351);
             inventoryDataGrid.TabIndex = 0;
+            // 
+            // itemName
+            // 
+            itemName.HeaderText = "Item Name";
+            itemName.MinimumWidth = 6;
+            itemName.Name = "itemName";
+            itemName.Width = 482;
+            // 
+            // price
+            // 
+            price.HeaderText = "Price";
+            price.MinimumWidth = 6;
+            price.Name = "price";
+            price.Width = 173;
+            // 
+            // quantity
+            // 
+            quantity.HeaderText = "Quantity";
+            quantity.MinimumWidth = 6;
+            quantity.Name = "quantity";
+            quantity.Width = 125;
             // 
             // PurchaseOrderBtn
             // 
@@ -105,27 +130,6 @@
             EditItemBtn.Text = "Edit Item";
             EditItemBtn.UseVisualStyleBackColor = true;
             EditItemBtn.Click += EditItemBtn_Click;
-            // 
-            // itemName
-            // 
-            itemName.HeaderText = "Item Name";
-            itemName.MinimumWidth = 6;
-            itemName.Name = "itemName";
-            itemName.Width = 482;
-            // 
-            // price
-            // 
-            price.HeaderText = "Price";
-            price.MinimumWidth = 6;
-            price.Name = "price";
-            price.Width = 173;
-            // 
-            // quantity
-            // 
-            quantity.HeaderText = "Quantity";
-            quantity.MinimumWidth = 6;
-            quantity.Name = "quantity";
-            quantity.Width = 125;
             // 
             // MainInventory
             // 

@@ -20,6 +20,15 @@ namespace Luna_Bay_Resort_App.Forms.InventoryForms
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             PopulateDataGridView();
+
+            //Make it so all columns cannot be edited expect the checkbox
+            dgvPurchaseOrder.Columns["selectItem"].ReadOnly = false;
+            dgvPurchaseOrder.Columns["itemName"].ReadOnly = true;
+            dgvPurchaseOrder.Columns["quantity"].ReadOnly = true;
+            dgvPurchaseOrder.Columns["status"].ReadOnly = true;
+            
+            //Makes it so there are no blank rows
+            dgvPurchaseOrder.AllowUserToAddRows = false;
         }
 
         private void cbCategory_SelectedValueChanged(object sender, EventArgs e)

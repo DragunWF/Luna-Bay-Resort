@@ -50,6 +50,10 @@
             // 
             // dgvPurchaseOrder
             // 
+            dgvPurchaseOrder.AllowUserToAddRows = false;
+            dgvPurchaseOrder.AllowUserToDeleteRows = false;
+            dgvPurchaseOrder.AllowUserToResizeColumns = false;
+            dgvPurchaseOrder.AllowUserToResizeRows = false;
             dgvPurchaseOrder.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPurchaseOrder.Columns.AddRange(new DataGridViewColumn[] { selectItem, itemName, quantity, status });
             dgvPurchaseOrder.Location = new Point(24, 22);

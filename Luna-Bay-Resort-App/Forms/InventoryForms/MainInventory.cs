@@ -21,6 +21,12 @@ namespace Luna_Bay_Resort_App.Forms.InventoryForms
             MaximizeBox = false;
 
             SearchItem("");
+
+            //Disable dgv edit and remove blank row
+            inventoryDataGrid.AllowUserToAddRows = false;
+            inventoryDataGrid.Columns["itemName"].ReadOnly = true;
+            inventoryDataGrid.Columns["quantity"].ReadOnly = true;
+            inventoryDataGrid.Columns["price"].ReadOnly = true;
         }
 
         private void PurchaseOrderBtn_Click(object sender, EventArgs e)
