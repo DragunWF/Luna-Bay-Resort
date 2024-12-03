@@ -29,8 +29,16 @@
         private void InitializeComponent()
         {
             dgvReservation = new DataGridView();
+            reservationId = new DataGridViewTextBoxColumn();
+            reservationName = new DataGridViewTextBoxColumn();
+            checkInDate = new DataGridViewTextBoxColumn();
             dgvCheckIn = new DataGridView();
+            checkInId = new DataGridViewTextBoxColumn();
+            checkInName = new DataGridViewTextBoxColumn();
+            checkOutDate = new DataGridViewTextBoxColumn();
             dgvCheckOut = new DataGridView();
+            checkOutId = new DataGridViewTextBoxColumn();
+            checkOutName = new DataGridViewTextBoxColumn();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -46,14 +54,6 @@
             checkInShowBtn = new Button();
             dtpCheckOut = new DateTimePicker();
             checkOutShowBtn = new Button();
-            reservationId = new DataGridViewTextBoxColumn();
-            reservationName = new DataGridViewTextBoxColumn();
-            checkInDate = new DataGridViewTextBoxColumn();
-            checkInId = new DataGridViewTextBoxColumn();
-            checkInName = new DataGridViewTextBoxColumn();
-            checkOutDate = new DataGridViewTextBoxColumn();
-            checkOutId = new DataGridViewTextBoxColumn();
-            checkOutName = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvReservation).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCheckIn).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCheckOut).BeginInit();
@@ -61,36 +61,107 @@
             // 
             // dgvReservation
             // 
+            dgvReservation.AllowUserToAddRows = false;
+            dgvReservation.AllowUserToDeleteRows = false;
+            dgvReservation.AllowUserToResizeColumns = false;
+            dgvReservation.AllowUserToResizeRows = false;
             dgvReservation.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvReservation.Columns.AddRange(new DataGridViewColumn[] { reservationId, reservationName, checkInDate });
             dgvReservation.Location = new Point(25, 53);
             dgvReservation.Margin = new Padding(3, 2, 3, 2);
             dgvReservation.Name = "dgvReservation";
+            dgvReservation.ReadOnly = true;
             dgvReservation.RowHeadersWidth = 51;
             dgvReservation.Size = new Size(376, 256);
             dgvReservation.TabIndex = 0;
             // 
+            // reservationId
+            // 
+            reservationId.HeaderText = "ID";
+            reservationId.MinimumWidth = 6;
+            reservationId.Name = "reservationId";
+            reservationId.Width = 80;
+            // 
+            // reservationName
+            // 
+            reservationName.HeaderText = "Name";
+            reservationName.MinimumWidth = 6;
+            reservationName.Name = "reservationName";
+            reservationName.Width = 125;
+            // 
+            // checkInDate
+            // 
+            checkInDate.HeaderText = "Check In Date";
+            checkInDate.MinimumWidth = 6;
+            checkInDate.Name = "checkInDate";
+            checkInDate.Width = 125;
+            // 
             // dgvCheckIn
             // 
+            dgvCheckIn.AllowUserToAddRows = false;
+            dgvCheckIn.AllowUserToDeleteRows = false;
+            dgvCheckIn.AllowUserToResizeColumns = false;
+            dgvCheckIn.AllowUserToResizeRows = false;
             dgvCheckIn.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCheckIn.Columns.AddRange(new DataGridViewColumn[] { checkInId, checkInName, checkOutDate });
             dgvCheckIn.Location = new Point(444, 53);
             dgvCheckIn.Margin = new Padding(3, 2, 3, 2);
             dgvCheckIn.Name = "dgvCheckIn";
+            dgvCheckIn.ReadOnly = true;
             dgvCheckIn.RowHeadersWidth = 51;
             dgvCheckIn.Size = new Size(374, 256);
             dgvCheckIn.TabIndex = 1;
             // 
+            // checkInId
+            // 
+            checkInId.HeaderText = "ID";
+            checkInId.MinimumWidth = 6;
+            checkInId.Name = "checkInId";
+            checkInId.Width = 80;
+            // 
+            // checkInName
+            // 
+            checkInName.HeaderText = "Name";
+            checkInName.MinimumWidth = 6;
+            checkInName.Name = "checkInName";
+            checkInName.Width = 125;
+            // 
+            // checkOutDate
+            // 
+            checkOutDate.HeaderText = "Check-out Date";
+            checkOutDate.MinimumWidth = 6;
+            checkOutDate.Name = "checkOutDate";
+            checkOutDate.Width = 125;
+            // 
             // dgvCheckOut
             // 
+            dgvCheckOut.AllowUserToAddRows = false;
+            dgvCheckOut.AllowUserToDeleteRows = false;
+            dgvCheckOut.AllowUserToResizeColumns = false;
+            dgvCheckOut.AllowUserToResizeRows = false;
             dgvCheckOut.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCheckOut.Columns.AddRange(new DataGridViewColumn[] { checkOutId, checkOutName });
             dgvCheckOut.Location = new Point(860, 53);
             dgvCheckOut.Margin = new Padding(3, 2, 3, 2);
             dgvCheckOut.Name = "dgvCheckOut";
+            dgvCheckOut.ReadOnly = true;
             dgvCheckOut.RowHeadersWidth = 51;
             dgvCheckOut.Size = new Size(304, 256);
             dgvCheckOut.TabIndex = 2;
+            // 
+            // checkOutId
+            // 
+            checkOutId.HeaderText = "ID";
+            checkOutId.MinimumWidth = 6;
+            checkOutId.Name = "checkOutId";
+            checkOutId.Width = 80;
+            // 
+            // checkOutName
+            // 
+            checkOutName.HeaderText = "Name";
+            checkOutName.MinimumWidth = 6;
+            checkOutName.Name = "checkOutName";
+            checkOutName.Width = 170;
             // 
             // label1
             // 
@@ -236,62 +307,6 @@
             checkOutShowBtn.Text = "Show";
             checkOutShowBtn.UseVisualStyleBackColor = true;
             checkOutShowBtn.Click += checkOutShowBtn_Click;
-            // 
-            // reservationId
-            // 
-            reservationId.HeaderText = "ID";
-            reservationId.MinimumWidth = 6;
-            reservationId.Name = "reservationId";
-            reservationId.Width = 80;
-            // 
-            // reservationName
-            // 
-            reservationName.HeaderText = "Name";
-            reservationName.MinimumWidth = 6;
-            reservationName.Name = "reservationName";
-            reservationName.Width = 125;
-            // 
-            // checkInDate
-            // 
-            checkInDate.HeaderText = "Check In Date";
-            checkInDate.MinimumWidth = 6;
-            checkInDate.Name = "checkInDate";
-            checkInDate.Width = 125;
-            // 
-            // checkInId
-            // 
-            checkInId.HeaderText = "ID";
-            checkInId.MinimumWidth = 6;
-            checkInId.Name = "checkInId";
-            checkInId.Width = 80;
-            // 
-            // checkInName
-            // 
-            checkInName.HeaderText = "Name";
-            checkInName.MinimumWidth = 6;
-            checkInName.Name = "checkInName";
-            checkInName.Width = 125;
-            // 
-            // checkOutDate
-            // 
-            checkOutDate.HeaderText = "Check-out Date";
-            checkOutDate.MinimumWidth = 6;
-            checkOutDate.Name = "checkOutDate";
-            checkOutDate.Width = 125;
-            // 
-            // checkOutId
-            // 
-            checkOutId.HeaderText = "ID";
-            checkOutId.MinimumWidth = 6;
-            checkOutId.Name = "checkOutId";
-            checkOutId.Width = 80;
-            // 
-            // checkOutName
-            // 
-            checkOutName.HeaderText = "Name";
-            checkOutName.MinimumWidth = 6;
-            checkOutName.Name = "checkOutName";
-            checkOutName.Width = 170;
             // 
             // ViewGuest
             // 
