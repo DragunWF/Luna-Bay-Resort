@@ -379,29 +379,36 @@ namespace MainForms
             //Remove quantity in checkout table
             checkoutTable.CellClick += (sender, e) =>
             {
-                string itemName = checkoutTable.Rows[e.RowIndex].Cells["Name"].Value?.ToString();
-                string qtyText = checkoutTable.Rows[e.RowIndex].Cells["Qty"].Value?.ToString();
-                string itemPriceText = checkoutTable.Rows[e.RowIndex].Cells["Price"].Value?.ToString();
+                try
+                {
+                    string itemName = checkoutTable.Rows[e.RowIndex].Cells["Name"].Value?.ToString();
+                    string qtyText = checkoutTable.Rows[e.RowIndex].Cells["Qty"].Value?.ToString();
+                    string itemPriceText = checkoutTable.Rows[e.RowIndex].Cells["Price"].Value?.ToString();
 
-                if (string.IsNullOrEmpty(itemName) || string.IsNullOrEmpty(qtyText))
-                {
-                    return;
-                }
-                int quantity = Convert.ToInt32(qtyText);
-                double totalItemPrice = Convert.ToDouble(itemPriceText);
-                double itemUnitPrice = totalItemPrice / quantity;
+                    if (string.IsNullOrEmpty(itemName) || string.IsNullOrEmpty(qtyText))
+                    {
+                        return;
+                    }
+                    int quantity = Convert.ToInt32(qtyText);
+                    double totalItemPrice = Convert.ToDouble(itemPriceText);
+                    double itemUnitPrice = totalItemPrice / quantity;
 
-                if (quantity > 1)
-                {
-                    quantity--;
-                    checkoutTable.Rows[e.RowIndex].Cells["Qty"].Value = quantity;
-                    checkoutTable.Rows[e.RowIndex].Cells["Price"].Value = quantity * itemUnitPrice;
+                    if (quantity > 1)
+                    {
+                        quantity--;
+                        checkoutTable.Rows[e.RowIndex].Cells["Qty"].Value = quantity;
+                        checkoutTable.Rows[e.RowIndex].Cells["Price"].Value = quantity * itemUnitPrice;
+                    }
+                    else
+                    {
+                        checkoutTable.Rows.RemoveAt(e.RowIndex);
+                    }
+                    UpdateTotal();
                 }
-                else
+                catch (Exception ex)
                 {
-                    checkoutTable.Rows.RemoveAt(e.RowIndex);
+                    MessageBox.Show("Only click on the items listed on the checkout table");
                 }
-                UpdateTotal();
             };
 
             TableLayoutPanel totalPanel = new TableLayoutPanel
