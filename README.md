@@ -10,7 +10,7 @@ The **Luna Bay Resort Management System** is a comprehensive Windows Forms appli
 - [Isaac Severino | Aysaaak](https://github.com/Aysaaak) - Developer, Database Administrator
 - [Jay Arnon Sinahunon | JasDevPH](https://github.com/JasDevPH) - Developer, UI/UX Designer
 - _Bastian Kyle Aguilar_ - Documentation
-- _Kurt Daniel Buante_ - Documentation
+- _Kurt Daniel Buante_ - Assistant
 
 ### Disclaimer
 
