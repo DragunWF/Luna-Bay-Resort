@@ -50,12 +50,12 @@
             Description = new DataGridViewTextBoxColumn();
             Date = new DataGridViewTextBoxColumn();
             reservationsDataGrid = new DataGridView();
-            CheckInBtn = new Button();
-            RefreshBtn = new Button();
-            ClearActivitiesBtn = new Button();
             ReservationId = new DataGridViewTextBoxColumn();
             Name = new DataGridViewTextBoxColumn();
             Select = new DataGridViewCheckBoxColumn();
+            CheckInBtn = new Button();
+            RefreshBtn = new Button();
+            ClearActivitiesBtn = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)activitiesDataGrid).BeginInit();
@@ -258,6 +258,10 @@
             // 
             // activitiesDataGrid
             // 
+            activitiesDataGrid.AllowUserToAddRows = false;
+            activitiesDataGrid.AllowUserToDeleteRows = false;
+            activitiesDataGrid.AllowUserToResizeColumns = false;
+            activitiesDataGrid.AllowUserToResizeRows = false;
             activitiesDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             activitiesDataGrid.Columns.AddRange(new DataGridViewColumn[] { Description, Date });
             activitiesDataGrid.Location = new Point(60, 76);
@@ -285,6 +289,10 @@
             // 
             // reservationsDataGrid
             // 
+            reservationsDataGrid.AllowUserToAddRows = false;
+            reservationsDataGrid.AllowUserToDeleteRows = false;
+            reservationsDataGrid.AllowUserToResizeColumns = false;
+            reservationsDataGrid.AllowUserToResizeRows = false;
             reservationsDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             reservationsDataGrid.Columns.AddRange(new DataGridViewColumn[] { ReservationId, Name, Select });
             reservationsDataGrid.Location = new Point(637, 79);
@@ -293,6 +301,31 @@
             reservationsDataGrid.RowHeadersWidth = 51;
             reservationsDataGrid.Size = new Size(567, 442);
             reservationsDataGrid.TabIndex = 3;
+            // 
+            // ReservationId
+            // 
+            ReservationId.HeaderText = "ReservationId";
+            ReservationId.MinimumWidth = 6;
+            ReservationId.Name = "ReservationId";
+            ReservationId.ReadOnly = true;
+            ReservationId.Width = 115;
+            // 
+            // Name
+            // 
+            Name.HeaderText = "Name";
+            Name.MinimumWidth = 6;
+            Name.Name = "Name";
+            Name.ReadOnly = true;
+            Name.Width = 280;
+            // 
+            // Select
+            // 
+            Select.HeaderText = "Select For Check-in";
+            Select.MinimumWidth = 6;
+            Select.Name = "Select";
+            Select.Resizable = DataGridViewTriState.True;
+            Select.ToolTipText = "select";
+            Select.Width = 120;
             // 
             // CheckInBtn
             // 
@@ -329,31 +362,6 @@
             ClearActivitiesBtn.Text = "Clear Activities";
             ClearActivitiesBtn.UseVisualStyleBackColor = true;
             ClearActivitiesBtn.Click += ClearActivitiesBtn_Click;
-            // 
-            // ReservationId
-            // 
-            ReservationId.HeaderText = "ReservationId";
-            ReservationId.MinimumWidth = 6;
-            ReservationId.Name = "ReservationId";
-            ReservationId.ReadOnly = true;
-            ReservationId.Width = 115;
-            // 
-            // Name
-            // 
-            Name.HeaderText = "Name";
-            Name.MinimumWidth = 6;
-            Name.Name = "Name";
-            Name.ReadOnly = true;
-            Name.Width = 280;
-            // 
-            // Select
-            // 
-            Select.HeaderText = "Select For Check-in";
-            Select.MinimumWidth = 6;
-            Select.Name = "Select";
-            Select.Resizable = DataGridViewTriState.True;
-            Select.ToolTipText = "select";
-            Select.Width = 120;
             // 
             // DashboardUserControl
             // 

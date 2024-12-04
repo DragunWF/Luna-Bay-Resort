@@ -79,7 +79,12 @@ namespace MainForms
             {
                 ColumnHeadersVisible = true,
                 AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None,
-                Dock = DockStyle.Fill,    
+                Dock = DockStyle.Fill,
+                AllowUserToAddRows = false,
+                AllowUserToDeleteRows = false,
+                AllowUserToOrderColumns = false,
+                AllowUserToResizeColumns = false,
+                AllowUserToResizeRows = false
             };
             menuTable.Columns.Add("Name", "Name");
             menuTable.Columns.Add("Qty", "Qty");
@@ -371,6 +376,11 @@ namespace MainForms
                 ColumnHeadersVisible = true,
                 AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
                 Dock = DockStyle.Fill,
+                AllowUserToAddRows = false,
+                AllowUserToDeleteRows = false,
+                AllowUserToOrderColumns = false,
+                AllowUserToResizeColumns = false,
+                AllowUserToResizeRows = false
             };
             checkoutTable.Columns.Add("Name", "Name");
             checkoutTable.Columns.Add("Qty", "Qty");

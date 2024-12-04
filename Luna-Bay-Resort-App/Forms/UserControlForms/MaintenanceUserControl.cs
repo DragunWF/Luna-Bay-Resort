@@ -108,6 +108,11 @@ namespace MainForms
                 BorderStyle = BorderStyle.None,
                 RowHeadersVisible = false,
                 ScrollBars = ScrollBars.Both,
+                AllowUserToAddRows = false,
+                AllowUserToDeleteRows = false,
+                AllowUserToOrderColumns = false,
+                AllowUserToResizeColumns = false,
+                AllowUserToResizeRows = false
             };
 
 
