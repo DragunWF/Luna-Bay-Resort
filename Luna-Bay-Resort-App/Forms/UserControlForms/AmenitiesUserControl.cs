@@ -130,6 +130,16 @@ namespace MainForms
                         if (row.Cells["Name"].Value?.ToString() == itemName)
                         {
                             int currentQty = Convert.ToInt32(row.Cells["Qty"].Value);
+
+                            if (string.IsNullOrEmpty(QuantityText))
+                            {
+                            }
+                            else if (currentQty + 1 > int.Parse(QuantityText))
+                            {
+                                MessageBox.Show("Cannot order more than current stock.");
+                                return;
+                            }
+
                             row.Cells["Qty"].Value = currentQty + 1;
                             row.Cells["Price"].Value = (currentQty + 1) * itemPrice;
                             itemExists = true;
