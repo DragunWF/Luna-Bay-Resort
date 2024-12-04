@@ -1060,7 +1060,7 @@ namespace Luna_Bay_Resort_App.Helpers
             using (SqlConnection con = new SqlConnection(Key))
             {
                 con.Open();
-                string query = $"SELECT COUNT(Name) FROM {category} WHERE Name LIKE '%' + @Name + '%'";
+                string query = $"SELECT COUNT(Name) FROM {category} WHERE Name LIKE @Name";
                 SqlCommand command = new SqlCommand(query, con);
                 command.Parameters.AddWithValue("@Name", name);
                 duplicate = Convert.ToInt32(command.ExecuteScalar());

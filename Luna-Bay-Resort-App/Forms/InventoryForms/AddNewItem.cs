@@ -83,7 +83,7 @@ namespace Luna_Bay_Resort_App.Forms.InventoryForms
                 }
                 else
                 {
-                    if ((string.IsNullOrWhiteSpace(ItemNametxt.Text) || string.IsNullOrEmpty(Pricetxt.Text)) || CategoryCB.Text == "Product")
+                    if (string.IsNullOrWhiteSpace(ItemNametxt.Text) || string.IsNullOrEmpty(Pricetxt.Text))
                     {
                         MessageBox.Show("Please insert necessary informations");
                         return;
@@ -134,7 +134,12 @@ namespace Luna_Bay_Resort_App.Forms.InventoryForms
                                 ResetInput();
                             }
                             break;
-                        case "Product":
+                        case "Products":
+                            if (string.IsNullOrEmpty(Stocktxt.Text))
+                            {
+                                MessageBox.Show("Input product stock amount");
+                                return;
+                            }
                             DatabaseHelper.AddNewProduct(ItemNametxt.Text, price, stock);
                             MessageBox.Show($"New product added:\nName: {ItemNametxt.Text}\nPrice: {price}\nStock: {stock}");
                             ResetInput();

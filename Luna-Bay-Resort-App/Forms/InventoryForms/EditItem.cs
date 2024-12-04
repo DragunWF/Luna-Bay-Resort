@@ -75,12 +75,6 @@ namespace Luna_Bay_Resort_App.Forms.InventoryForms
                 MessageBox.Show("Please fill up the necessary informations");
                 return;
             }
-            int itemDetect = DatabaseHelper.CheckItemName(Categorycb.Text, ItemNamecb.Text);
-            if (itemDetect == 0)
-            {
-                MessageBox.Show("There are no items like that in the database");
-                return;
-            }
             try
             {
                 double price = double.Parse(Pricetxt.Text);

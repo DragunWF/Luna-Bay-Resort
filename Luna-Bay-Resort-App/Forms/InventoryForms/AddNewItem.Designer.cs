@@ -48,7 +48,7 @@
             CategoryCB.DropDownStyle = ComboBoxStyle.DropDownList;
             CategoryCB.Font = new Font("Consolas", 9F);
             CategoryCB.FormattingEnabled = true;
-            CategoryCB.Items.AddRange(new object[] { "Food", "Product" });
+            CategoryCB.Items.AddRange(new object[] { "Food", "Products" });
             CategoryCB.Location = new Point(151, 19);
             CategoryCB.Name = "CategoryCB";
             CategoryCB.Size = new Size(163, 22);

@@ -69,6 +69,7 @@
             // 
             // ItemNamecb
             // 
+            ItemNamecb.DropDownStyle = ComboBoxStyle.DropDownList;
             ItemNamecb.Font = new Font("Consolas", 10F);
             ItemNamecb.FormattingEnabled = true;
             ItemNamecb.Location = new Point(107, 77);
