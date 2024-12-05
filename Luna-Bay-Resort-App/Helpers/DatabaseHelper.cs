@@ -1235,7 +1235,10 @@ namespace Luna_Bay_Resort_App.Helpers
                 VALUES (@Description, @Date)";
 
                 SqlCommand command = new SqlCommand(query, con);
-                command.Parameters.AddWithValue("@Description", description);
+                User currentUser = SessionData.GetCurrentUser();
+                string id = currentUser != null ? currentUser.GetEmpId() : "None";
+
+                command.Parameters.AddWithValue("@Description", $"EMP_ID ({id}): {description}");
                 command.Parameters.AddWithValue("@Date", date);
                 command.ExecuteNonQuery();
             }
