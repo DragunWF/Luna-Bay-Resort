@@ -14,6 +14,8 @@ namespace Luna_Bay_Resort_App.Forms.CheckInOutForms
 {
     public partial class CardReference : Form
     {
+        private const int characterLimit = 35;
+
         public CardReference()
         {
             InitializeComponent();
@@ -26,6 +28,10 @@ namespace Luna_Bay_Resort_App.Forms.CheckInOutForms
                 if (string.IsNullOrEmpty((Referencetxt.Text)))
                 {
                     MessageBox.Show("Please enter the reference number from your preferred mode of payment");
+                }
+                else if (Referencetxt.Text.Length > characterLimit)
+                {
+                    MessageBox.Show($"Card reference ID cannot be greater than {characterLimit} characters!");
                 }
                 else
                 {

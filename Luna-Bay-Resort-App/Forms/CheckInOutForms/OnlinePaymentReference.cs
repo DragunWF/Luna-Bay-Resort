@@ -15,6 +15,8 @@ namespace Luna_Bay_Resort_App.Forms
 {
     public partial class OnlinePaymentReference : Form
     {
+        private const int characterLimit = 40;
+
         public OnlinePaymentReference()
         {
             InitializeComponent();
@@ -24,9 +26,14 @@ namespace Luna_Bay_Resort_App.Forms
         {
             try
             {
+                
                 if (string.IsNullOrEmpty((ReferenceTxt.Text)))
                 {
                     MessageBox.Show("Please enter the reference number from your preferred mode of payment");
+                }
+                else if (ReferenceTxt.Text.Length > characterLimit)
+                {
+                    MessageBox.Show($"Online payment reference ID cannot be greater than {characterLimit} characters!");
                 }
                 else
                 {

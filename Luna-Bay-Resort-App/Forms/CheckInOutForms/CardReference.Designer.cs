@@ -62,7 +62,7 @@
             label1.Name = "label1";
             label1.Size = new Size(126, 19);
             label1.TabIndex = 3;
-            label1.Text = "Reference No:";
+            label1.Text = "Reference ID:";
             // 
             // CardReference
             // 
