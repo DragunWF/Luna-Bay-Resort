@@ -135,6 +135,7 @@ namespace Luna_Bay_Resort_App.Forms.UserControlForms
                     if (result == DialogResult.Yes)
                     {
                         DatabaseHelper.CheckInReservations(reservationIds);
+                        DatabaseHelper.AddActivity($"Checked in {reservationIds.Count} reservation(s)", Utils.GetCurrentDate());
                         Refresh();
                         MessageBox.Show("Selected reservations have been checked-in");
                     }
