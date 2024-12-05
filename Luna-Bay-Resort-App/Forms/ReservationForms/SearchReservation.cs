@@ -1,4 +1,5 @@
 ﻿using Luna_Bay_Resort_App.Data;
+using Luna_Bay_Resort_App.Forms.ReservationForms;
 using Luna_Bay_Resort_App.Helpers;
 
 namespace SubForms
@@ -90,8 +91,7 @@ namespace SubForms
 
         private void ViewAllBtn_Click(object sender, EventArgs e)
         {
-            // TODO: Create another form that displays the list of bookings
-            MessageBox.Show("Feature not implemented yet");
+            FormManager.OpenForm<ViewGuest>();
         }
     }
 }
